@@ -12,26 +12,24 @@ transcribe from a REPORT.md.
 
 # Abstract
 
-A median alert lead time is read as a statement about the model: how much warning it gives. It
-is also a statement about the cohort, because the first threshold crossing can only be found
-inside the pre-onset window each patient happened to supply, so the same model reports a longer
-lead wherever patients are watched longer. A single median cannot separate the two, which makes
-this a reporting problem before it is a modelling one.
-
-That a lead time cannot exceed its search window is definitional; what has not been measured is
-how much of a reported number that window accounts for. Across three perioperative cohorts and
-five model families, at thresholds transported unchanged from a development validation split,
-median lead rises from the shortest to the longest realized pre-onset window group in all
-fifteen model-by-cohort combinations, by 26 to 54 minutes. Read beside its operating point, the
-longest median lead here, 24 minutes, comes from the combination with the lowest case-level
-specificity, 0.406. Two natural repairs leave the dependence in place.
-
-This is an empirical measurement-and-reporting case study; we do not measure what clinicians
-understand from the term. A median lead remains a descriptive interval among detected cases,
-but on its own it does not support a model-intrinsic or cohort-comparable reading of warning
-capability. We recommend reporting the pre-onset window distribution, the operating point, and
-a window-conditional or fixed-horizon timing measure beside any single median, and set out four
-candidate disclosures, a task-specific complement to TRIPOD+AI.
+A median alert lead time is readily read as a statement about the model: how much warning it
+gives. Yet it is also shaped by the cohort, because a first threshold crossing can only be found
+within each patient's available pre-onset window. A single median cannot separate model behavior
+from the distribution of those windows, making this a reporting problem before it is a modelling
+one. That a lead time cannot exceed its search
+window is definitional; what has not been measured is how much of a reported number that window
+accounts for. Across three perioperative cohorts and five model families, at thresholds
+transported unchanged from a development validation split, median lead rises from the shortest
+to the longest realized pre-onset window group in all fifteen model-by-cohort combinations, by
+26 to 54 minutes. Read beside its operating point, the longest median lead here, 24 minutes,
+comes from the combination with the lowest case-level specificity, 0.406. Two natural repairs
+leave the dependence in place. This is an empirical measurement-and-reporting case study; we do
+not measure what clinicians understand from the term. A median lead remains a descriptive
+interval among detected cases, but on its own it does not support a model-intrinsic or
+cohort-comparable reading of warning capability. We recommend reporting the pre-onset window
+distribution, the operating point, and a window-conditional or explicitly qualified
+horizon-specific timing measure beside any single median, and set out four candidate disclosures,
+a task-specific complement to TRIPOD+AI.
 
 # 1 Introduction
 
@@ -311,7 +309,7 @@ The first thought is that the metric is dominated by cases already above thresho
 eligible minute. Such cases are
 **2.6 to 25.5%** of detected event cases across
 the fifteen cells, and removing them to recompute the median lead on incident alerts alone costs
-**0 to 3 minutes in all fifteen cells**, the transformer included (Appendix A, alert composition).
+**0 to 3 minutes in all fifteen cells**, the transformer included (Appendix A.11).
 The relationship of Section 3 is therefore carried by the ordinary cases. Prevalence stays this low
 alongside the settling of Section 4.1 because most detected event cases have an available window
 shorter than 60 minutes, so it opens while the score is still settling: prevalence and a warm-up
@@ -341,7 +339,7 @@ fixed-threshold gain above.
 **We therefore do not recommend the rule.** The problem is not that early minutes are noisy.
 It is that the reported quantity is coupled to the length of the window it was measured in.
 
-## 5.3 What does work, and why it is only a partial fix
+## 5.3 What partially helps, and what remains
 
 Both repairs above change the alert rule and leave the estimand alone. The remaining option
 reverses that: condition on window length, or treat the first alert as a time-to-event whose
@@ -350,21 +348,23 @@ point in a run-up [@vanhouwelingen2007landmark]. Both are computable from the sa
 so we report them rather than only recommending them (Tables A6 and A7).
 
 
-**A fixed-horizon detection rate does not inherit the window's length.** Among event cases
-observed for at least *X* minutes before onset, the share whose first alert came at least *X*
-minutes before onset moves numerator and denominator together, so a cohort watched for longer
-cannot inflate it. It runs 0.278 to 0.692 at a 10-minute horizon and 0.173 to 0.547 at 30 minutes,
-declining smoothly with the horizon, which is the shape a single median destroys (Table A6).
+**A horizon-specific detection rate reduces the dependence rather than removing it.** It makes the
+horizon explicit and conditions the denominator on event cases observed for at least *X* minutes
+before onset. That removes one ambiguity of the pooled median, but window length is still not
+constant: cases observed longer than *X* can contribute different amounts of pre-horizon alerting
+opportunity. The rate runs 0.278 to 0.692 at a 10-minute horizon and 0.173 to 0.547 at 30 minutes,
+declining smoothly with the horizon, a shape a single median suppresses (Table A6).
 Restricted instead to cases observed for the whole 60-minute window, so the window is a constant,
 the transformer reports the longest median lead of the five families in all three cohorts, 47, 60
 and 57 minutes, while detecting only 0.441, 0.247 and 0.304 of them against 0.762 to 0.910 for
 XGBoost and the random forest (Table A7): conditioning turns its reported advantage into a deficit.
 
-**It is a partial fix.** It changes the estimand and the population, discarding 53 to 60% of event
-cases, and those are the short-window cases a deployed monitor will meet; it leaves the pooled
-headline figure unrepaired; and for the reason given in Section 2, the censoring is not independent
-of the event, with short- and long-run-up cases differing in surgery duration and case mix
-(Appendix A, risk-set composition).
+**Both remain partial.** The full-window restriction is the stricter window-constant estimand, but
+it changes the estimand and the population, discarding 53 to 60% of event cases: the short-window
+cases a deployed monitor will meet. The horizon-specific curve keeps more cases at short horizons
+but does not equalize pre-horizon alerting opportunity. Neither repairs the pooled headline median,
+and for the reason given in Section 2 the censoring is not independent of the event, with short-
+and long-run-up cases differing in surgery duration and case mix (Appendix A.12).
 
 # 6 A task-specific reporting extension
 
@@ -409,13 +409,13 @@ general reporting framework.
    period, and those that fired later (Figure A2). One stacked bar would have made Section 4.1
    visible on inspection.
 
-2. **Report a window-conditional or fixed-horizon statistic as the primary timing quantity**, with
-   any single median secondary and stratified by the window distribution it was measured within. A
-   median is uninterpretable without its denominator: the transformer reports 5 to 9 minutes for
-   its shortest-observed band and 46 to 59 for its longest, and the pooled 17 to 24 carries
-   neither. Both substitutes are already conventional in early-warning evaluation
-   [@romerobrufau2015cstatistic; @paine2016alerts] and computable from what such a study already
-   has (Tables A6, A7); Section 5.3 gives the cost.
+2. **Report a window-conditional timing statistic as the primary timing quantity.** A
+   horizon-specific detection curve may be added as a secondary disclosure, provided its
+   denominator and its remaining dependence on pre-horizon alerting opportunity are stated. Any
+   single median should be secondary and stratified by the distribution of available pre-onset
+   windows it was measured over: the transformer reports 5 to 9 minutes for its shortest-window
+   band and 46 to 59 for its longest, and the pooled 17 to 24 carries neither. Tables A6 and A7
+   show the two alternatives; Section 5.3 gives their limits.
 
 3. **Report N(t) beside any event-aligned trajectory.** Here the risk set roughly halves between
    the event and 60 minutes before it (1,404 to 708, 2,804 to 1,433 and 2,641 to 1,374), and the
@@ -544,10 +544,11 @@ original collection was approved by its own institutional review board with cons
 after de-identification. The exemption from review and the consent waiver for the present
 secondary analysis were granted by an institutional review board whose identity and protocol
 number are withheld for anonymous review. This work added no data collection and no patient
-contact. Analysis code is available at an anonymized repository, [ANONYMIZED URL]. Neither
-dataset may be redistributed under the agreements above, so the repository carries the analysis
-code and the aggregate result files behind the tables and figures, and no patient-level data of
-any kind.
+contact. Analysis code is available at an anonymized repository,
+<https://anonymous.4open.science/r/ioh-leadtime-anon-BD0E>, under the Apache License 2.0.
+Neither dataset may be redistributed under the agreements above, so the repository carries the
+analysis code and the aggregate result files behind the tables and figures, and no
+patient-level data of any kind.
 
 ## Lead time by quantile-derived band of observed window, all fifteen cells
 

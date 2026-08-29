@@ -70,8 +70,9 @@ ANSWERS: list[tuple[str, str]] = [
     # 5 Open access to data and code
     (
         r"\answerYes{}",
-        "The analysis code is released at an anonymized repository, which Appendix A.1 "
-        "names, together with the aggregate result files behind every table and figure, so "
+        "The analysis code is released at an anonymized repository under the Apache License "
+        "2.0, which Appendix A.1 names, together with the aggregate result files behind every "
+        "table and figure, so "
         "the table and figure checks run from the repository as shipped. The datasets are "
         "not redistributed there and cannot be: VitalDB is under a Creative Commons "
         "Attribution-NonCommercial-ShareAlike 4.0 International license and a data use "
@@ -146,8 +147,12 @@ ANSWERS: list[tuple[str, str]] = [
     ),
     # 13 New assets
     (
-        r"\answerNA{}",
-        "The paper releases no new dataset, model or code asset.",
+        r"\answerYes{}",
+        "The analysis code is released at the anonymized repository named in Appendix A.1, "
+        "under the Apache License 2.0. It carries the documentation and the aggregate result "
+        "files needed to inspect and reproduce the reported tables and figures from the "
+        "released artifacts. No new dataset, model or checkpoint is released, and no "
+        "patient-level data are redistributed.",
     ),
     # 14 Crowdsourcing and human subjects
     (

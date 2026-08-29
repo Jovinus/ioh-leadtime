@@ -6,6 +6,8 @@ continuously evaluated clinical models*. The paper as submitted is `paper.pdf`.
 **No patient data is included in this repository, and none can be.** See
 [Data](#data-and-why-none-of-it-is-here).
 
+Licensed under the Apache License 2.0; see `LICENSE`.
+
 ## What the paper does, and what this code is
 
 Five model families (ITE Transformer, LSTM, XGBoost, random forest, logistic regression) were
