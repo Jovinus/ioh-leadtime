@@ -1,7 +1,7 @@
 """Generate NUMBER_PROVENANCE.md by reading every headline number from its source CSV.
 
 **Never hand-edit the output.** Keeping a provenance summary by hand is exactly what
-retired an earlier decision log: the summary drifted from the sources it
+retired the journal package's decision log: the summary drifted from the sources it
 described, and a reader could not tell which was right.
 
 This and ``verify_numbers.py`` are deliberately two independent gates over the same facts.
@@ -87,9 +87,9 @@ def main() -> None:
 
     strata = pd.read_csv(N / "n3_stratified" / "n3_strata.csv")
     src = N / "n3_stratified" / "n3_strata.csv"
-    add("§3.1, Table 1", "every quintile median and interval", src,
+    add("§3.1, Table A9", "every quintile median and interval", src,
         "lead_median, lead_ci_lo/hi, ratio_median, ratio_ci_lo/hi, per cell and stratum",
-        f"{len(strata)} rows, transformer rows shown in Table 1")
+        f"{len(strata)} rows, transformer rows shown in Table A9")
 
     # --- §3.2 observed ----------------------------------------------------------------------
     observed = pd.read_csv(B / "b1b_suppression" / "b1b_lead_vs_observation.csv")
@@ -205,7 +205,7 @@ def main() -> None:
         f"{d_lead.min():+.0f} to {d_lead.max():+.0f} minutes "
         f"({int((d_lead > 0).sum())} cells increased)")
 
-    # --- Table 1 and Table A4, the case-level operating point ------------------------------------
+    # --- Table A4, the case-level operating point ------------------------------------
     src = B / "b1b_suppression" / "b1b_suppression.csv"
     op = pd.read_csv(src)
     op = op[op["suppress_min"] == 0]
@@ -381,7 +381,7 @@ def main() -> None:
         "",
         "This file and `verify_numbers.py` are two independent gates over the same facts: this "
         "one records what the sources say, that one asserts the paper agrees. Keeping a "
-        "provenance summary by hand is what retired an earlier decision log.",
+        "provenance summary by hand is what retired the journal package's decision log.",
         "",
         "| Section | Quantity | Source | Derivation | Value |",
         "|---|---|---|---|---|",

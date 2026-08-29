@@ -54,21 +54,12 @@ def variant_full(text: str) -> str:
     return text
 
 
-def variant_no_table1(text: str) -> str:
-    """Table 1 (the case-level operating point) to the appendix; Table A4 already carries it."""
-    return _drop_block(
-        text,
-        "**Table 1 | Case-level operating point behind each reported lead time.**",
-        "## 4.3 What these findings do and do not license",
-    )
-
-
 def variant_no_figure1(text: str) -> str:
     """Figure 1 (lead against observed window) to the appendix beside Figure A1."""
     return _drop_block(
         text,
         "![](figures/Figure_2_wide.png)",
-        "# 4 Score behavior behind the reported lead",
+        "# 4 What the reported lead conceals about the operating point",
     )
 
 
@@ -76,11 +67,21 @@ def variant_no_table1_no_figure1(text: str) -> str:
     return variant_no_figure1(variant_no_table1(text))
 
 
-#: The body is at the 8-page ceiling, so these are the two remaining floats that could be
-#: relocated if an edit pushes it over.  Both are load-bearing -- Table 1 answers the "it just
-#: alerts constantly" objection and Figure 1 is the paper's signature exhibit -- so neither is a
-#: cut anyone should make without reading what it costs first.  The earlier candidates (the path
-#: decomposition table and the alert-composition figure) are already in the appendix.
+def variant_no_table1(text: str) -> str:
+    """The Section 1 reader-facing table to a four-item list; the rows are prose already."""
+    return _drop_block(
+        text,
+        "**Table 1 | What the label invites, and what the number supports.**",
+        "**What is already known, and what is new here.**",
+    )
+
+
+#: The body is at the 8-page ceiling, so these are the floats that could be relocated if an edit
+#: pushes it over.  Both are load-bearing -- Table 1 is the reader-facing exhibit the reporting
+#: argument turns on, and Figure 1 is the paper's signature exhibit -- so neither is a cut
+#: anyone should make without reading what it costs first.  The earlier candidates (the path
+#: decomposition table, the alert-composition figure and the case-level operating point) are
+#: already in the appendix.
 VARIANTS = {
     "full draft": variant_full,
     "- Table 1": variant_no_table1,

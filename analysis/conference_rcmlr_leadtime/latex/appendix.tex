@@ -11,21 +11,35 @@
 \subsection{Cohorts, models, training and compute}\label{cohorts-models-training-and-compute}
 
 \textbf{Cohorts and eligibility.} Two public datasets supply the three cohorts: VitalDB, and
-MOVER, whose single release carries both an EPIC-derived and an SIS-derived arm. Both are
-de-identified and both are obtained under their providers' data use agreements. Development
+MOVER, whose single release carries both an EPIC-derived and an SIS-derived arm. Both are de-identified. VitalDB v1.0.0 is openly accessible from PhysioNet under the Creative Commons Attribution 4.0 International (CC BY 4.0) license; MOVER is available from the UCI Machine Learning Repository to researchers who sign its data use agreement. Development
 used MOVER's EPIC arm. The subject-aware split at
 seed 1004 gave 6,409 training, 1,375 validation and 1,404 test cases
 out of 9,188, split on unique subject identifiers so that a patient with several operations
 lands in one fold. The test split holds 1,404 cases, 786 with a sustained event, 1,145 subjects.
 External evaluation used VitalDB, with 2,804 cases, 1,007 events and 2,730 subjects, and the
-SIS-derived arm of MOVER, with 2,641 cases and 1,409 events, neither of which contributed to
-training, calibration or threshold selection. Per-minute eligibility
+SIS-derived arm of MOVER, with 2,641 cases and 1,409 events, neither of which contributed to training, calibration or threshold selection. Neither arm of MOVER carries a subject key that resolves against the other, so that statement holds at the level of the released records and cannot be checked at the level of patients. Per-minute eligibility
 drops the induction prefix, 25 minutes where the record is anchored on anesthesia start, 10
 where it is anchored on surgical start, and every minute at or after first onset, so no
 model is asked to predict an event already in progress. Event cases required five valid
 pre-onset minutes after that exclusion and controls thirty. Procedure group is never a model
 input in any family: it separates the cohorts almost perfectly and would be learned as cohort
 identity.
+
+\textbf{Training samples, labels and the offset used here.} Training uses one sample per case: the
+120-minute window ending at that case's reference time, labeled 1 if the case has a sustained
+event and 0 otherwise. There is no per-minute training target. For an event case the reference
+time is the first sustained-onset minute shifted back by a lead-time offset, and that offset is
+\textbf{zero for every model reported in this paper}, so the reference time is onset itself. A control
+has no onset, so it is given a sampled pseudo-onset: its onset ratio, onset divided by case
+length, is drawn with replacement from the event cases of the same source cohort and multiplied
+by the control's own case length, then resampled rather than clipped until it falls inside the
+eligible range, so the control reference times match the event distribution within each source.
+Event cases with fewer than five eligible pre-onset minutes and controls shorter than thirty are
+dropped before that sampling. The scored checkpoint is the epoch with the best validation AUROC,
+and it is the only one used. Evaluation departs from training in the one respect that matters
+here: every eligible minute of a case is scored independently and inherits its case's label, and
+\texttt{t\_\allowbreak{}to\_\allowbreak{}event} is measured against that same reference time, real onset for an event case and the
+sampled pseudo-onset for a control.
 
 \textbf{Features.} The same twenty inputs for every family: sixteen per-minute channels, being
 MAP, systolic and diastolic pressure, their non-invasive counterparts, heart rate, SpO2,
@@ -63,19 +77,12 @@ this paper add no training and read cached per-minute scores on the same machine
 was PyTorch 2.10.0, scikit-learn 1.7.1, XGBoost 3.3.0, NumPy
 2.2.6, pandas 2.3.2 and SciPy 1.16.1.
 
-\textbf{Data and code.} Both datasets are obtained from their own project sites once access is
-granted: VitalDB under a Creative Commons Attribution-NonCommercial-ShareAlike 4.0
-International license and a data use agreement, MOVER from the UCI Machine Learning
-Repository under a data use agreement, one download supplying both arms used here. Each
-original collection was approved by its own institutional review board with consent waived
-after de-identification. The exemption from review and the consent waiver for the present
-secondary analysis were granted by an institutional review board whose identity and protocol
-number are withheld for anonymous review. This work added no data collection and no patient
-contact. Analysis code is available at an anonymized repository,
+\textbf{Data and code.} Both cohorts are public, de-identified datasets. VitalDB v1.0.0 is openly accessible from PhysioNet under the Creative Commons Attribution 4.0 International (CC BY 4.0) license; MOVER is available from the UCI Machine Learning Repository under its data use agreement, one download supplying both arms used here. An
+institutional review board granted this secondary analysis an exemption from review and a
+waiver of consent, its identity and protocol number withheld for anonymous review. This work
+added no data collection and no patient contact. Analysis code is available at an anonymized repository,
 \url{https://anonymous.4open.science/r/ioh-leadtime-anon-BD0E}, under the Apache License 2.0.
-Neither dataset may be redistributed under the agreements above, so the repository carries the
-analysis code and the aggregate result files behind the tables and figures, and no
-patient-level data of any kind.
+The repository carries the analysis code and the aggregate result files behind the tables and figures, and no patient-level or derived patient-level data of any kind; each dataset is obtained from its own provider under the access and license terms above.
 
 \subsection{Lead time by quantile-derived band of observed window, all fifteen cells}\label{lead-time-by-quantile-derived-band-of-observed-window-all-fifteen-cells}
 
@@ -90,7 +97,9 @@ The gradient is the difference of the highest and lowest band medians, and its i
 paired cluster bootstrap of that difference: one weight matrix is drawn per cell and reused
 across bands, and the band edges and the window span are held fixed at their full-sample values
 so the ratio's denominator is not itself resampled. The interval excludes zero in all fifteen
-cells.
+cells. \texttt{Lead\ min\ per\ window\ min} is the ratio of those two between-band median contrasts and not
+a per-case slope, so a value slightly above 1.0 carries no contradiction with the per-case
+constraint that a lead cannot exceed its own window.
 
 \vspace{0.5em}
 \centering\footnotesize
@@ -175,7 +184,9 @@ Three cells in this table are the ones Section 3.3 names as not exceeding the un
 reference, all of them VitalDB. The observed ratio sits below it for XGBoost by $-$0.054 and for
 logistic regression by $-$0.067, and random forest is indistinguishable from it (+0.011,
 \emph{P} = 0.824). For the transformer the excess over the uniform reference is +0.372 to +0.421.
-Under the length-matched shuffle variant the transformer's null spans 0.77 to 0.93.
+Under the length-matched shuffle variant the transformer's null spans 0.77 to 0.93. Every
+contrast quoted here is computed from the unrounded values rather than from the rounded columns
+above, so recomputing one from the table can differ in the third decimal.
 
 \subsection{Path decomposition}\label{path-decomposition}
 
@@ -217,8 +228,8 @@ MOVER (SIS) & Logistic reg. & 670 & 0.134 {[}0.119, 0.154{]} & 7.9 \\
 \vspace{0.8em}
 
 Directedness is net displacement divided by total distance traveled: over the window from 60 to 5
-minutes before onset it is \textbf{+0.021 to +0.151 across all fifteen cells}, every interval excluding
-zero, so no family approaches a directed climb. \textbf{Directedness describes path shape and does not
+minutes before onset it is \textbf{+0.021 to +0.151 across all fifteen cells}, each pointwise interval
+excluding zero, so no family approaches a directed climb. \textbf{Directedness describes path shape and does not
 establish when or whether a particular threshold is touched.} Three further things belong here. The ratio of the median path length to the absolute median net displacement is 7.0 to
 146.6 across the fifteen cells; because that ratio becomes unstable as net displacement
 approaches zero, directedness is the primary summary and both quantities describe path shape
@@ -234,15 +245,16 @@ isolate architecture from representation or training.
 \subsection{Case-level operating point, complete detail}\label{case-level-operating-point-complete-detail}
 
 \begin{minipage}{\linewidth}
-\textbf{Table A4 \textbar{} Case-level operating point, all fifteen cells.} Main text Table 1 carries the ITE
-Transformer's three rows without intervals; this is every family and every interval, and it is
-where the cross-combination claim of Section 4.1 is checked. Sensitivity and specificity are
+\textbf{Table A4 \textbar{} Case-level operating point, all fifteen cells.} This is the operating point behind every reported lead time in the paper: every family, every cohort and every interval, and it is where the cross-combination claim of Section 4.1 is checked. Sensitivity and specificity are
 case-level as defined in Section 2, NNE is alerting cases per detected event and equals 1/PPV, and
 \texttt{Min.\ above\ thr.} is the median share of an event case's monitored minutes at or above the
 transported threshold. Cohort composition, prevalence, PPV in excess of prevalence, the
 control-side minute share and the share of event cases already alerting by the first elapsed
 minute are Table A10. Intervals are 95\% cluster bootstrap over subjects, or over cases in MOVER
-(SIS).
+(SIS). Section 4.1's cross-combination rank correlations are computed from the
+unrounded per-cell values rather than from the rounded columns here: recomputing the PPV-lift
+correlation from PPV and prevalence each rounded to three decimals gives $-$0.727 instead of
+$-$0.719, and the specificity correlation is unchanged at $-$0.803 either way.
 
 \vspace{0.5em}
 \centering\footnotesize
@@ -287,7 +299,7 @@ not over the detected subset Table A9 and Table A1 cut on, because a within-band
 needs every event case of that window length in its denominator. The two banding schemes are
 therefore not interchangeable, the band counts here are event-case counts rather than detected
 counts, and the median leads differ slightly from Table A1's. The detection rate summed over
-bands reproduces the case-level sensitivity of Table 1 exactly in all fifteen cells, which is the
+bands reproduces the case-level sensitivity of Table A4 exactly in all fifteen cells, which is the
 check that the denominators are the same event cases. Intervals are 95\% cluster bootstrap.
 
 \begin{longtable}[]{@{}
@@ -410,7 +422,7 @@ Logistic regression & MOVER (SIS) & 0.664 & 0.611 & 0.573 & 0.546 & 0.474 & 0.35
 \begin{minipage}{\linewidth}
 \textbf{Table A7 \textbar{} Event cases observed for the whole 60-minute alert window.} Restricting to these
 cases makes the observation window a constant rather than a covariate, which is the
-window-conditional estimand of Section 5.3. \texttt{n} is the number of event cases observed for the
+full-window restriction of Section 5.3. \texttt{n} is the number of event cases observed for the
 whole window and \texttt{Detected} the share of them that alert at all. \texttt{Alerted\ by\ min\ 1} is one minus the
 Kaplan-Meier survival of time to first alert at the first elapsed monitoring minute, with each
 case censored at the end of its own window; it is the censoring-aware form of Section 4.1's
@@ -448,8 +460,7 @@ Logistic regression & MOVER (SIS) & 665 & 0.857 & 40 {[}37, 43{]} & 0.121 {[}0.1
 \subsection{The reporting items that came close}\label{the-reporting-items-that-came-close}
 
 \begin{minipage}{\linewidth}
-\textbf{Table A8 \textbar{} The four TRIPOD+AI items that came close and missed.} Main text Section 6.1 keeps
-items 12e, 23a and 14. The item numbering is that of the TRIPOD+AI statement
+\textbf{Table A8 \textbar{} The five TRIPOD+AI items that came close and missed.} Main text Section 6.1 keeps items 12e, 23a and 14, and reads item 15 beside 23a. The item numbering is that of the TRIPOD+AI statement
 \citep{collins2024tripodai}. This is an author-completed self-assessment of one study, not a validity
 assessment of the standard.
 
@@ -463,10 +474,10 @@ assessment of the standard.
 Item & What it asked for & What it did not ask for \\
 \midrule
 12a, how the model was applied in validation & Calibration and thresholds fitted on the development validation split and transported unchanged, which is reported & Anything about what that disciplined choice implies; it is the exact setting in which Section 3 holds, so doing the right thing here does not help \\
-20b, participant characteristics & Participant characteristics, which are reported & The distribution of the observed pre-onset window, the variable the reported lead correlates with at $\rho$ = 0.501 to 0.906 \\
-21, event counts & Event and non-event counts, which are reported & How long each case was observed before its event \\
+20a and 20b, participant flow and characteristics & Participant flow and characteristics \emph{including follow-up time}, answered here with surgery duration and first-onset time & The distribution of the window the alert rule actually searches --- the run-up after the induction exclusion, capped at the 60-minute alert window --- or any pairing of it with the timing statistic it bounds. This is the closest the standard comes: it asks for the raw material as a cohort descriptor, and never connects it to the timing metric it constrains \\
+21, event counts & The number of participants and outcome events \emph{in each analysis}, which are reported & The same counts broken out by band of available window. The item's ``in each analysis'' clause reaches development, tuning and evaluation, not the window strata of a timing statistic \\
 8c, blinding of outcome assessment & A blinding statement; answered ``not applicable'' because the outcome is computed from a monitored channel that is also a predictor & The closest the checklist comes to Section 4, and still about blinding rather than about what a timing metric measures \\
-15, model output & The model output and its threshold; answered with the transported threshold itself & Anything about the operating point that threshold defines, which is where the artifact lives (Table 1) \\
+15, model output & Details and rationale for classification, and how any threshold was identified; answered with the transported threshold itself & Joint presentation or interpretation of a lead-time summary with the realized operating-point metrics that threshold defines, which is where the artifact lives (Table A4) \\
 \bottomrule
 \end{tabular}
 \end{minipage}
@@ -497,6 +508,19 @@ crossing fell separates alerts that were already active at the first eligible mi
 raised while the score was still settling and those raised later, which is the disclosure
 Section 6.2's first item asks for.
 
+\textbf{That share and Table A10's \texttt{Alerted\ by\ elapsed\ min\ 1} are different quantities rather than two
+estimates of one.} The prevalent share counts detected event cases whose first crossing falls at
+elapsed minute zero, the first minute of the case's own alert window, over the detected event
+cases of that cell: 53 of 611, 66 of 684 and 83 of 926 for the transformer. Table A10's column
+counts event cases whose first crossing falls at elapsed minute zero \textbf{or} minute one, over
+every event case with a positive observed window, detected or not, as one minus the Kaplan-Meier
+survival of time to first alert with each case censored at the end of its own window: 418 of 786,
+463 of 1,007 and 434 of 1,409. Numerator, denominator and conditioning set all differ, and the
+extra minute is the larger of the differences: minute one alone adds 365, 397 and 351 cases,
+which is Section 4.1's settling read on the elapsed axis and not a second estimate of the same
+immediate-alert probability. No case is censored before elapsed minute one in any of the three
+cohorts, so the survival estimate at that mark equals the crude share.
+
 \begin{figure}[H]
   \centering
   \includegraphics[width=\linewidth]{figures/Figure_3_wide.pdf}
@@ -520,6 +544,13 @@ curve is the true one: which denominator is used is a reporting choice, it chang
 horizon a reader would quote by up to twenty minutes, and it is not currently disclosed.
 That is the whole of Section 6.2's third item.
 
+\textbf{Short and long run-ups are different operations, which is why Section 5.3 calls this censoring
+non-independent.} Splitting event cases at a 40-minute observable run-up, the long group's
+operations are longer in every cohort, by a standardized mean difference of 0.394, 0.515 and
+0.428, the largest imbalance on the list in all three; procedure group and ASA class are also
+imbalanced beyond 0.1 in each. So a case with a short run-up is not a briefly watched version of
+a case with a long one.
+
 \begin{figure}[H]
   \centering
   \includegraphics[width=\linewidth]{figures/Figure_A3_wide.pdf}
@@ -535,8 +566,8 @@ Three things about it are worth reporting, and none is visible in a trend statis
 
 \textbf{When the separation arrives runs opposite to near-onset discrimination.} For the three
 tabular families the event and control means are already distinguishable 60 minutes before
-onset in every cohort, the gap at that range running +0.049 to +0.109 with every interval
-excluding zero. For the transformer the gap at 60 minutes \textbf{covers zero in all three
+onset in every cohort, the gap at that range running +0.049 to +0.109 with each pointwise
+interval excluding zero. For the transformer the gap at 60 minutes \textbf{covers zero in all three
 cohorts} ($-$0.023 {[}$-$0.080, 0.035{]}, $-$0.014 {[}$-$0.057, 0.030{]} and $-$0.006 {[}$-$0.043, 0.032{]}), and
 first excludes it at 35, 20 and 30 minutes. The LSTM sits between the two. The family whose
 scores separate latest is the one with the highest discrimination near onset.
@@ -583,18 +614,19 @@ shortest records.
 
 \subsection{Score against elapsed monitoring time}\label{score-against-elapsed-monitoring-time}
 
-Section 4.1 reads the first ten monitored minutes of every case, and reports that only the ITE
-Transformer clears its own threshold there. The margins for the others are wide. Over those ten
-minutes the highest median score reached in either group is 0.69 against a threshold of 0.78 for
-logistic regression in MOVER (EPIC), 0.65 against a threshold of 0.91 for XGBoost, and 0.54
-against a threshold of 0.79 for random forest; the LSTM clears its threshold in MOVER (EPIC)
-event cases and nowhere else. This is that view for all fifteen cells, on the elapsed axis rather
-than the event-aligned one of Figure A4.
+Section 4.1 reads the first ten monitored minutes of every case, and reports that the ITE
+Transformer clears its own threshold there in every cohort. The margins for the others are wide.
+Over those ten minutes the highest median score reached in either group is 0.69 against a
+threshold of 0.78 for logistic regression in MOVER (EPIC), 0.65 against a threshold of 0.91 for
+XGBoost, and 0.54 against a threshold of 0.79 for random forest. The LSTM is the one exception:
+in MOVER (EPIC) it reaches 0.99 in event and 0.99 in control cases against a threshold of 0.97,
+clearing it in both groups, and it clears it in neither external cohort. This is that view for
+all fifteen cells, on the elapsed axis rather than the event-aligned one of Figure A4.
 
 \begin{figure}[H]
   \centering
   \includegraphics[width=\linewidth]{figures/Figure_1_wide.pdf}
-  \caption{\textbf{Median score against elapsed monitoring time, with each family's own alert threshold.} Rows are cohorts, columns are model families. Elapsed time is measured from the case's first scored minute. The dashed rule in each panel is that family's transported raw-score threshold at the 80\%-sensitivity target, transferred unchanged from the MOVER (EPIC) validation split. Only the ITE Transformer's early rise clears its own threshold, and it does so in event and control cases together. The elevation ends around minute 20, past the right edge of this axis. This axis is elapsed time; the event-aligned view is Figure A4.}
+  \caption{\textbf{Median score against elapsed monitoring time, with each family's own alert threshold.} Rows are cohorts, columns are model families. Elapsed time is measured from the case's first scored minute. The dashed rule in each panel is that family's transported raw-score threshold at the 80\%-sensitivity target, transferred unchanged from the MOVER (EPIC) validation split. Only the ITE Transformer's early rise clears its own threshold in every cohort, and it does so in event and control cases together; the LSTM does the same in MOVER (EPIC) alone. The elevation ends around minute 20, past the right edge of this axis. This axis is elapsed time; the event-aligned view is Figure A4.}
   \label{fig:A5}
 \end{figure}
 
@@ -661,7 +693,9 @@ MOVER (SIS) & 4 & 362 & 60 & 46 {[}43, 49{]} & 0.95 {[}0.93, 0.97{]} \\
 \textbf{Table A10 \textbar{} Cohort composition, PPV against prevalence, and the control side.} \texttt{PPV\ $-$\ prevalence} is the lift over the base rate of the cohort the PPV is measured in, because raw PPV
 is not comparable across cohorts whose prevalence runs from 0.359 to 0.560. \texttt{Alerted\ by\ elapsed\ min\ 1} is one minus the Kaplan-Meier survival of time to first alert at the first elapsed
 monitoring minute, censored at the end of each case's own window; it is the censoring-aware form
-of Section 4.1's settling. Intervals are 95\% cluster bootstrap.
+of Section 4.1's settling. It is \textbf{not} the prevalent share of Section 5.1, which uses a
+different numerator and a different denominator; Appendix A.11 sets the two estimands out side by
+side. Intervals are 95\% cluster bootstrap.
 
 \vspace{0.5em}
 \centering\footnotesize
@@ -698,14 +732,50 @@ Logistic regression & MOVER (SIS) & 1409 & 1232 & 0.534 & +0.152 & 0.000 {[}0.00
 
 \vspace{0.8em}
 
+\subsection{What the label invites, and what the number supports}\label{what-the-label-invites-and-what-the-number-supports}
+
+\begin{minipage}{\linewidth}
+\textbf{Table A11 \textbar{} What the label invites, and what the number supports.} Column one is an affordance
+of the reported label in the sense Section 1 defines, not measured comprehension. Column two is what this paper's
+measurement supports in its place, and column three the disclosure that would separate them.
+
+\vspace{0.5em}
+\centering\footnotesize
+\begin{tabular}{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.21}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.45}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.34}}@{}}
+\toprule
+What the label invites & What the number supports here & The disclosure that would close the gap \\
+\midrule
+The model warns about 24 minutes ahead & A median over detected event cases, itself a window-dependent set, under this cohort's window distribution (Section 3.1) & The pre-onset window distribution, and a window-conditional timing statistic (Section 6.2) \\
+Twenty-four minutes is a property of the model & Within one model and cohort, median lead rises across window bands by 26 to 54 minutes, in 15 of 15 cells (Table A1) & Any single median stratified by the realized available window (Section 6.2) \\
+Twenty-four minutes of usable warning & A lead read at case-level specificity 0.406, the lowest of the five families in that cohort (Table A4) & The operating point reported beside the lead (Sections 4.1, 6.3) \\
+A longer lead indicates a better model & A descriptive association running the other way: lead is opposite to specificity across the fifteen combinations, Spearman $-$0.803 (Section 4.1) & Lead and operating point reported together, not lead alone (Section 6.3) \\
+\bottomrule
+\end{tabular}
+\end{minipage}
+
+\vspace{0.8em}
+
 \subsection{Multiplicity}\label{multiplicity}
 
 The two nulls of Section 3.3 form one Benjamini--Hochberg family of 75 formal tests,
 adjusted within that family, of which 57 are significant at \emph{q} \textless{} 0.05. The stratification of Section 3.1 produces intervals rather than tests and does not enter the family.
+Every bootstrap interval in this paper, including the fifteen window-gradient intervals of
+Table A1, is a \textbf{pointwise descriptive interval}: no family-wise coverage claim is made across
+the fifteen contrasts, and ``each interval excludes zero'' is fifteen separate statements rather
+than one simultaneous one.
 
 \subsection{Seeds and reproducibility}\label{seeds-and-reproducibility}
 
-Cluster bootstraps use 2,000 replicates and permutation nulls 1,000, with the clustering
-unit the subject for two cohorts and the case for MOVER (SIS), whose released subject key is
-a copy of the case identifier. Model training and the reference-time construction are fixed
-at a single seed, reported in Appendix A.1.
+Cluster bootstraps use 2,000 replicates, with the clustering unit the subject for two cohorts
+and the case for MOVER (SIS), whose released subject key is a copy of the case identifier. The
+two nulls of Section 3.3 draw 1,000 permutations per cell. The cross-combination rank
+correlations of Section 4.1 are reported as \textbf{point estimates with no accompanying test}. A
+permutation of the pairing was computed while this analysis was being developed, and is not
+reported: its unit is a cell, and cells sharing a cohort or a model family are not
+exchangeable, so the resulting \emph{P} value would overstate what fifteen dependent combinations
+can establish. Section 4.1 gives the untied-pair counts and the within-cohort correlations in
+its place. Model training and the reference-time construction are fixed at a single seed,
+reported in Appendix A.1.

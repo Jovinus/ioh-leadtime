@@ -1,7 +1,7 @@
 {
   "step": "a6_window_trend",
   "run_time": "2026-08-20T22:45:32",
-  "git_commit": "727f8a6270cf7b8cd8d5410ee97bbe4f4928595f",
+  "git_commit": "omitted for anonymous review",
   "sign_convention": "trajectory ordered by time_window_min DESCENDING (farthest-from-onset first); positive tau / Sen's slope == AUROC rises toward onset == clinical faithfulness",
   "lead_time_bins_min": [
     60,

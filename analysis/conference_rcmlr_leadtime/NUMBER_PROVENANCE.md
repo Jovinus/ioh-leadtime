@@ -4,7 +4,7 @@
 
 Every headline number in `PAPER.md`, the file it is read from, and how. Regenerate with `conda run -n torch python build_provenance.py`.
 
-This file and `verify_numbers.py` are two independent gates over the same facts: this one records what the sources say, that one asserts the paper agrees. Keeping a provenance summary by hand is what retired an earlier decision log.
+This file and `verify_numbers.py` are two independent gates over the same facts: this one records what the sources say, that one asserts the paper agrees. Keeping a provenance summary by hand is what retired the journal package's decision log.
 
 | Section | Quantity | Source | Derivation | Value |
 |---|---|---|---|---|
@@ -19,7 +19,7 @@ This file and `verify_numbers.py` are two independent gates over the same facts:
 | §3.1 | cells with a positive Q1→Q_last gradient | `analysis/lead_time_null_2026/n3_stratified/n3_summary.csv` | count of lead_gradient_min > 0 | 15 of 15 |
 | §3.1 | gradient range, minutes | `analysis/lead_time_null_2026/n3_stratified/n3_summary.csv` | min/max of lead_gradient_min | +26 to +54 |
 | §3.1 | lead minutes per window minute | `analysis/lead_time_null_2026/n3_stratified/n3_summary.csv` | min/max of lead_per_window_minute | 0.51 to 1.02 |
-| §3.1, Table 1 | every quintile median and interval | `analysis/lead_time_null_2026/n3_stratified/n3_strata.csv` | lead_median, lead_ci_lo/hi, ratio_median, ratio_ci_lo/hi, per cell and stratum | 53 rows, transformer rows shown in Table 1 |
+| §3.1, Table A9 | every quintile median and interval | `analysis/lead_time_null_2026/n3_stratified/n3_strata.csv` | lead_median, lead_ci_lo/hi, ratio_median, ratio_ci_lo/hi, per cell and stratum | 53 rows, transformer rows shown in Table A9 |
 | §3.2 | median lead / observed window, all cells | `analysis/lead_time_origin_2026/b1b_suppression/b1b_lead_vs_observation.csv` | min/max of lead_over_observed_median | 0.455 to 0.944 |
 | §3.2 | Spearman lead vs window, all cells | `analysis/lead_time_origin_2026/b1b_suppression/b1b_lead_vs_observation.csv` | min/max of spearman_lead_vs_observed | 0.501 to 0.906 |
 | §3.2 | transformer ratio / rho | `analysis/lead_time_origin_2026/b1b_suppression/b1b_lead_vs_observation.csv` | same columns, family=='transformer' | 0.899–0.944 / 0.706–0.906 |

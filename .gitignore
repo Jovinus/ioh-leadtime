@@ -6,3 +6,13 @@ __pycache__/
 .DS_Store
 /outputs/
 /data
+
+# NEVER DISTRIBUTE per-case or per-patient rows. Any file whose rows are keyed by case_id or by
+# a subject/MRN cluster id is patient data even when the identifier is hashed, and this tree is
+# what the anonymous mirror serves. README promises none is here; keep that true.
+*_episodes.csv
+*_episodes.csv.gz
+episode_*.csv
+episode_*.csv.gz
+*_paired_windows.csv
+*_paired_windows.csv.gz

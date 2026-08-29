@@ -44,7 +44,6 @@ FAMILY = {
 COHORT = {
     "MOVER (EPIC) test": "epic_test",
     "MOVER (EPIC)": "epic_test",
-    "EPIC test": "epic_test",       # main text Table 1 abbreviates, to keep its rows one line
     "VitalDB": "vitaldb",
     "MOVER (SIS)": "mover",
     "MOVER SIS": "mover",
@@ -92,7 +91,8 @@ def numbers(text: str) -> list[str]:
 def table_a9() -> None:
     """Table A9: transformer quintiles, three cohorts, from n3_strata.csv.
 
-    This was main text Table 1 until the operating-point table took that number; the checks are
+    This was main text Table 1 until the operating-point table took that number, and Table 1 is
+    now the Section 1 reader-facing table; the checks are
     unchanged apart from the label.
     """
     strata = pd.read_csv(NULL / "n3_stratified" / "n3_strata.csv")
@@ -212,21 +212,6 @@ def _row_of(frame: pd.DataFrame, family: str, cohort: str, name: str) -> pd.Seri
     if len(src) != 1:
         raise SystemExit(f"{name} has {len(src)} rows for {family}/{cohort}")
     return src.iloc[0]
-
-
-def table_1() -> None:
-    """Table 1: the transformer's case-level operating point, point estimates only."""
-    sup, mech, _ = _operating()
-    for row in parse("Table 1"):
-        family, cohort = family_of(row[0]), COHORT[row[1]]
-        r = _row_of(sup, family, cohort, "b1b_suppression")
-        q = _row_of(mech, family, cohort, "b1b_lead_vs_observation")
-        tag = f"Table 1 {family}/{cohort}"
-        cell(f"{tag} sens", row[2], round(r.sensitivity, 3), 5e-4)
-        cell(f"{tag} spec", row[3], round(r.specificity, 3), 5e-4)
-        cell(f"{tag} ppv", row[4], round(r.ppv, 3), 5e-4)
-        cell(f"{tag} burden", row[5], round(q.median_above_fraction_events, 3), 5e-4)
-        cell(f"{tag} lead", row[6], round(r.lead_median))
 
 
 def table_a4() -> None:
@@ -349,7 +334,6 @@ def table_a10() -> None:
 
 
 def main() -> int:
-    table_1()
     table_a1()
     table_a2()
     table_a3()

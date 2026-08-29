@@ -4,11 +4,12 @@
 # PAPER.md is the single source of truth. Nobody edits the DOCX; comments come
 # back against it and are applied to the markdown, then this is re-run.
 #
-# NOTE ON THE READER. A --from=gfm build will NOT work here. pandoc 2.12's gfm reader
+# NOTE ON THE READER. analysis/revision_v01/build_package.py renders the journal
+# article with --from=gfm, and that will NOT work here. pandoc 2.12's gfm reader
 # has no citation support at all -- neither `gfm+citations` nor
 # `gfm+yaml_metadata_block` is accepted -- so every [@key] passes through as
-# literal text and the reference list comes out empty. A manuscript whose references
-# are typed inline as numbered markdown never hits this.
+# literal text and the reference list comes out empty. The journal manuscript
+# never hit this because its references are typed inline as numbered markdown.
 # Since this paper uses [@key] so that the LaTeX port can hand them to natbib
 # untouched, it needs pandoc's own `markdown` reader.
 #

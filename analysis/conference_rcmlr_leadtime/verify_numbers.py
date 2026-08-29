@@ -12,6 +12,7 @@ appendix are not, and their checks are added as they land.
 
 from __future__ import annotations
 
+import re
 import sys
 from pathlib import Path
 
@@ -102,18 +103,18 @@ def main() -> int:
         f"{article} {HEADLINE_TARGET:.0%} case-level sensitivity target",
     )
 
-    # ---- §3.1 and Table 1: N3 strata -------------------------------------------------
+    # ---- §3.1 and Table A9: N3 strata -------------------------------------------------
     strata = pd.read_csv(N / "n3_stratified" / "n3_strata.csv")
     summary = pd.read_csv(N / "n3_stratified" / "n3_summary.csv")
 
     transformer = strata[strata["family"] == "transformer"]
     for row in transformer.itertuples():
         present(
-            f"Table 1 lead, {row.cohort} Q{row.stratum}",
+            f"Table A9 lead, {row.cohort} Q{row.stratum}",
             f"| {row.lead_median:.0f} [{row.lead_ci_lo:.0f}, {row.lead_ci_hi:.0f}] "
             f"| {row.ratio_median:.2f} [{row.ratio_ci_lo:.2f}, {row.ratio_ci_hi:.2f}] |",
         )
-        present(f"Table 1 n, {row.cohort} Q{row.stratum}", f"| {row.n_cases} |")
+        present(f"Table A9 n, {row.cohort} Q{row.stratum}", f"| {row.n_cases} |")
 
     rising = int((summary["lead_gradient_min"] > 0).sum())
     present("N3 cells rising", f"**{rising} of 15**")
@@ -310,7 +311,7 @@ def main() -> int:
         f"{others['median_above_fraction_controls'].max() * 100:.1f}%",
     )
 
-    # ---- §4.2 and Table 2: path decomposition -------------------------------------------
+    # ---- §4.2 and Table A3: path decomposition -------------------------------------------
     b3 = pd.read_csv(B / "b3_cross_family_path" / "b3_comparison.csv")
     b3 = b3[b3["endpoint_min"] == 5]
     present(
@@ -324,7 +325,7 @@ def main() -> int:
     )
     for row in b3.itertuples():
         present(
-            f"Table 2 {row.family}/{row.cohort}",
+            f"Table A3 {row.family}/{row.cohort}",
             f"| {row.directedness_median:.3f} "
             f"[{row.directedness_median_ci_lo:.3f}, {row.directedness_median_ci_hi:.3f}] "
             f"| {row.path_per_net:.1f} |",
@@ -347,7 +348,7 @@ def main() -> int:
     present("median steps", f"median {steps} steps per episode")
     for cohort in ("epic_test", "vitaldb", "mover"):
         episodes = int(b3[b3["cohort"] == cohort]["n_episodes_spanning"].iloc[0])
-        present(f"Table 2 episodes {cohort}", f"| {episodes} |")
+        present(f"Table A3 episodes {cohort}", f"| {episodes} |")
 
     # ---- §5.1: prevalence ---------------------------------------------------------------
     b1 = pd.read_csv(B / "b1_prevalent_incident" / "b1_summary.csv")
@@ -552,7 +553,7 @@ def main() -> int:
     tabular_far = [row["gap_event_minus_control"] for row in tabular_rows]
     present(
         "tabular gap at 60 min",
-        f"running +{min(tabular_far):.3f} to +{max(tabular_far):.3f} with every interval",
+        f"running +{min(tabular_far):.3f} to +{max(tabular_far):.3f} with each pointwise",
     )
 
     # Event rise and control fall over the hour, transformer.
@@ -622,7 +623,274 @@ def main() -> int:
 
     present("operating point", f"transported {HEADLINE_TARGET:.0%}-sensitivity operating point")
 
+    # ---- §4.1 and the Abstract: the operating point behind the reported lead --------------
+    # Every value here is read unrounded from the cell-level CSV, then formatted the way the
+    # paper prints it.  These are the numbers a reviewer disputed, so each one is asserted
+    # against its source rather than against a table cell.
+    cells = pd.read_csv(B / "b1b_suppression" / "b1b_suppression.csv")
+    cells = cells[cells["suppress_min"] == 0]
+    assert len(cells) == 15, f"expected fifteen cells, got {len(cells)}"
+
+    spec = cells.set_index(["family", "cohort"])["specificity"]
+    lead = cells.set_index(["family", "cohort"])["lead_median"]
+
+    # The Abstract: 24 minutes is the longest lead of the fifteen, and the specificity it
+    # occurs at is 0.406, which is NOT the minimum -- 0.379 is.
+    longest = lead.idxmax()
+    present(
+        "abstract longest lead",
+        f"the longest pooled median lead here, {lead.max():.0f} minutes, occurs at a case-level "
+        f"specificity of {spec[longest]:.3f}",
+    )
+    present(
+        "abstract minimum specificity",
+        f"the minimum specificity across the fifteen combinations is {spec.min():.3f}",
+    )
+    check(
+        "0.406 is not the minimum specificity",
+        spec.min() < spec[longest],
+        f"a specificity below {spec[longest]:.3f}; the paper must not call it the minimum",
+    )
+    ranked = spec.sort_values()
+    check(
+        "0.406 is second-lowest of the fifteen",
+        ranked.index[1] == longest and ranked.index[0] == ("transformer", "vitaldb"),
+        "0.406 second in the sorted specificities, behind the transformer in VitalDB",
+    )
+
+    # §4.1: lowest specificity within every cohort, longest lead in two and tied in the third.
+    tr_lowest = all(
+        spec[("transformer", c)] == spec.xs(c, level="cohort").min() for c in COHORT_ORDER
+    )
+    check("transformer specificity lowest in every cohort", tr_lowest,
+          "the transformer to hold the minimum specificity in all three cohorts")
+    strict = sum(
+        1 for c in COHORT_ORDER
+        if (lead.xs(c, level="cohort") < lead[("transformer", c)]).sum() == 4
+    )
+    tied = sum(
+        1 for c in COHORT_ORDER
+        if lead[("transformer", c)] == lead.xs(c, level="cohort").max()
+        and (lead.xs(c, level="cohort") == lead[("transformer", c)]).sum() > 1
+    )
+    check(
+        "transformer lead longest in two cohorts, tied in the third",
+        (strict, tied) == (2, 1),
+        f"two strict and one tied, got {strict} strict and {tied} tied",
+    )
+    present(
+        "transformer leads",
+        f"Its median leads, {lead[('transformer', 'epic_test')]:.0f}, "
+        f"{lead[('transformer', 'vitaldb')]:.0f} and {lead[('transformer', 'mover')]:.0f} minutes, "
+        f"are the longest of the five families in two cohorts and tied for longest in the third",
+    )
+
+    # §4.1: the cross-combination rank correlations, from the unrounded per-cell values.
+    op = pd.read_csv(B / "b1b_suppression" / "b1b_lead_vs_operating_point.csv")
+    pooled = op[op["scope"] == "pooled"].iloc[0]
+    present(
+        "lead vs specificity across combinations",
+        f"(Spearman \u2212{abs(pooled.spearman_lead_vs_specificity):.3f}, permutation "
+        f"*P* = {pooled.p_permutation_specificity:.4f}, *q* = 0.006; "
+        f"{int(pooled.n_pairs_longer_lead_lower_specificity)} of "
+        f"{int(pooled.n_untied_pairs)} untied pairs)",
+    )
+    present(
+        "lead vs PPV lift",
+        f"opposite to PPV in excess of prevalence at \u2212"
+        f"{abs(pooled.spearman_lead_vs_ppv_lift):.3f}",
+    )
+    present(
+        "realized sensitivity spread",
+        f"it runs from {cells['sensitivity'].min():.3f} to {cells['sensitivity'].max():.3f}",
+    )
+
+    # ---- Section 1, Table 1: the reader-facing table carries no new evidence -------------
+    # Every cell restates a result measured elsewhere, so every numeric cell is asserted here
+    # against the same source as the section it points at.  Without this the table would be the
+    # one place in the paper where a number is transcribed rather than derived.
+    present(
+        "Table 1 row 1, the invited reading",
+        f"The model warns about {lead.max():.0f} minutes ahead",
+    )
+    present(
+        "Table 1 row 2, the window-band gradient",
+        f"median lead rises across window bands by {summary['lead_gradient_min'].min():.0f} to "
+        f"{summary['lead_gradient_min'].max():.0f} minutes, in {rising} of 15 cells",
+    )
+    check(
+        "Table 1 row 3, 0.406 is lowest within its own cohort",
+        spec[("transformer", "epic_test")] == spec.xs("epic_test", level="cohort").min(),
+        "the transformer to hold the minimum specificity within MOVER (EPIC) test",
+    )
+    present(
+        "Table 1 row 3, the operating point read beside the lead",
+        f"case-level specificity {spec[('transformer', 'epic_test')]:.3f}, the lowest of the five "
+        f"families in that cohort",
+    )
+    present(
+        "Table 1 row 4, lead against specificity",
+        f"Spearman \u2212{abs(pooled.spearman_lead_vs_specificity):.3f}",
+    )
+
+    # ---- A.11: the two estimands the appendix distinguishes ------------------------------
+    # The prevalent share is over DETECTED event cases at elapsed minute 0; Table A10's
+    # column is over ALL event cases at elapsed minute 0 or 1.  Both are recomputed here
+    # from the same per-case construction the analyses use, so the bridge text cannot drift.
+    from lib_n import per_case_all  # noqa: PLC0415
+
+    cut = float(headline_cuts()["transformer"])
+    prevalent, detected_n, by_min1, event_n, minute_one = [], [], [], [], []
+    for cohort in COHORT_ORDER:
+        per_case = per_case_all("transformer", cohort, cut)
+        events = per_case[(per_case["label"] == 1) & (per_case["observed_min"] > 0)]
+        alerted = events["lead"].notna()
+        elapsed = (events["observed_min"] - events["lead"])[alerted]
+        prevalent.append(int((elapsed == 0).sum()))
+        detected_n.append(int(alerted.sum()))
+        by_min1.append(int((elapsed <= 1).sum()))
+        event_n.append(len(events))
+        minute_one.append(int((elapsed == 1).sum()))
+    present(
+        "A.11 prevalent numerators",
+        f"{prevalent[0]} of {detected_n[0]:,}, {prevalent[1]} of {detected_n[1]:,} and "
+        f"{prevalent[2]} of {detected_n[2]:,} for the transformer",
+    )
+    present(
+        "A.11 elapsed-minute-one numerators",
+        f"{by_min1[0]} of {event_n[0]:,}, {by_min1[1]} of {event_n[1]:,} and "
+        f"{by_min1[2]} of {event_n[2]:,}",
+    )
+    present(
+        "A.11 minute-one contribution",
+        f"minute one alone adds {minute_one[0]}, {minute_one[1]} and {minute_one[2]} cases",
+    )
+    km = pd.read_csv(N / "n5_time_to_alert" / "n5_time_to_alert.csv")
+    km = km[km["family"] == "transformer"].set_index("cohort")
+    for cohort, numerator, denominator in zip(COHORT_ORDER, by_min1, event_n):
+        check(
+            f"A.11 KM equals the crude share, {cohort}",
+            abs((1 - km.loc[cohort, "km_unalerted_by_min1"]) - numerator / denominator) < 5e-4,
+            "one minus the survival at minute 1 to equal the crude cumulative share",
+        )
+
+    # ---- A.12: the balance Section 5.3 cites ----------------------------------------------
+    balance = pd.read_csv(
+        REPO / "analysis" / "patient_trajectory_2026" / "a7_observability"
+        / "a7_balance_short_vs_long.csv"
+    )
+    duration = balance[balance["variable"].str.startswith("surgery_min")].set_index("cohort")
+    present(
+        "A.12 surgery-duration imbalance",
+        "by a standardized mean difference of "
+        + ", ".join(f"{duration.loc[c, 'smd']:.3f}" for c in COHORT_ORDER[:2])
+        + f" and {duration.loc[COHORT_ORDER[2], 'smd']:.3f}",
+    )
+    for cohort in COHORT_ORDER:
+        rows = balance[balance["cohort"] == cohort].dropna(subset=["smd"])
+        check(
+            f"A.12 duration is the largest imbalance, {cohort}",
+            rows["smd"].abs().idxmax() == duration.loc[cohort].name
+            or rows.loc[rows["smd"].abs().idxmax(), "variable"].startswith("surgery_min"),
+            "operation length to be the largest standardized mean difference",
+        )
+
+    # ---- A.19: the two resampling counts are different and both are stated ---------------
+    sys.path.insert(0, str(REPO / "analysis" / "lead_time_origin_2026"))
+    from b1b_suppression import N_CELL_PERMUTATIONS  # noqa: PLC0415
+
+    present("A.19 cell permutations", f"use {N_CELL_PERMUTATIONS:,} permutations")
+    present(
+        "A.19 permutation floor",
+        f"floored at 1/({N_CELL_PERMUTATIONS:,} + 1)",
+    )
+
     # ---- report -------------------------------------------------------------------------
+    # ---- A.18: the Benjamini-Hochberg family, derived from the collected null results -----
+    # Ungated until 2026-08-29: the family size and the significant count were stated in prose
+    # with nothing comparing them to the tests they count.
+    n_long = pd.read_csv(N / "collect_results" / "n_results_long.csv")
+    adjusted = n_long[n_long["q_value"].notna()]
+    present(
+        "A.18 BH family size",
+        f"one Benjamini\u2013Hochberg family of {len(adjusted)} formal tests",
+    )
+    present(
+        "A.18 significant after adjustment",
+        f"of which {int((adjusted['q_value'] < 0.05).sum())} are significant at *q* < 0.05",
+    )
+
+    # ---- The title, the abstract, and every count the paper states about itself ----------
+    # Added 2026-08-29, after two errors reached the built PDF through the same blind spot: a
+    # count stated in prose that no gate compared against the thing it counted. "Four more
+    # items came close and missed" stood against a five-row Table A8, and audit_references.py
+    # compared only the first author's family name, so five wrong co-authors survived. Every
+    # count below is derived from what it counts, never transcribed.
+    from lib_n import FAMILY_ORDER  # noqa: PLC0415
+
+    #: House style spells the lead in the title. Extend if the longest lead ever changes.
+    TITLE_WORDS = {24: "Twenty-four"}
+    lead_max = int(lead.max())
+    check(
+        "title names the longest median lead of the fifteen",
+        f"{TITLE_WORDS.get(lead_max, lead_max)} minutes of warning" in PAPER,
+        f"the title to name {lead_max} minutes, the longest median lead of the fifteen cells",
+    )
+    present(
+        "abstract cohort and family counts",
+        f"Across {WORDS[len(COHORT_ORDER)]} perioperative cohorts and "
+        f"{WORDS[len(FAMILY_ORDER)]} model families",
+    )
+    present(
+        "abstract combination count",
+        f"in all {WORDS[len(cells)]} model-by-cohort combinations",
+    )
+    check(
+        "the fifteen combinations are the cohorts times the families",
+        len(cells) == len(COHORT_ORDER) * len(FAMILY_ORDER),
+        f"{len(COHORT_ORDER)} x {len(FAMILY_ORDER)} cells, got {len(cells)}",
+    )
+    present(
+        "abstract gradient range",
+        f"The rise is {summary['lead_gradient_min'].min():.0f} to "
+        f"{summary['lead_gradient_min'].max():.0f} minutes.",
+    )
+
+    # Counts the paper states about its own structure, each against the structure itself.
+    section = lambda start, end: _RAW[_RAW.index(start):_RAW.index(end)]  # noqa: E731
+    disclosures = len(re.findall(r"^\d+\. \*\*", section("## 6.2", "## 6.3"), re.M))
+    present(
+        "abstract disclosure count",
+        f"We set out {WORDS[disclosures]} candidate disclosures",
+    )
+    check(
+        "Section 6.2's heading agrees with its own list",
+        f"## 6.2 {WORDS[disclosures].capitalize()} candidate disclosures" in _RAW,
+        f"the heading to say {WORDS[disclosures]}, the number of numbered items under it",
+    )
+    check(
+        "the abstract's repair count agrees with Section 5's heading",
+        ("natural repairs leave the dependence in place" in PAPER)
+        and (f"# 5 {WORDS[2].capitalize()} natural remedies" in _RAW)
+        and (f"{WORDS[2].capitalize()} natural repairs" in PAPER),
+        "the abstract and Section 5's heading to name the same number of repairs",
+    )
+
+    # Table A8 states its own row count in its caption and again in Section 6.1. Both are
+    # asserted against the rows, which is the check that was missing when both said "four".
+    a8 = _RAW[_RAW.index("**Table A8 |"):]
+    a8_rows = sum(
+        1 for line in a8.split("\n\n")[1].splitlines() if line.startswith("| ")
+    ) - 1  # minus the header; the alignment rule starts "|-"
+    present(
+        "Table A8 caption states its own row count",
+        f"**Table A8 | The {WORDS[a8_rows]} TRIPOD+AI items that came close and missed.**",
+    )
+    present(
+        "Section 6.1 states the same count",
+        f"{WORDS[a8_rows].capitalize()} more items came close and missed (Table A8)",
+    )
+
     total = PASSED + len(FAILURES)
     if FAILURES:
         print(f"{PASSED}/{total} passed, {len(FAILURES)} FAILED\n")

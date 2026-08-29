@@ -8,7 +8,7 @@
 #
 # Usage — source it, then it exports HW_OVERRIDES:
 #
-#   source scripts/hw_profiles.sh            # autodetect from hostname
+#   source scripts/hw_profiles.sh            # autodetect from the runtime
 #   source scripts/hw_profiles.sh rtx3090    # force a profile
 #   EXTRA_OVERRIDES="$HW_OVERRIDES" bash scripts/run_gap_sweep.sh
 #
@@ -22,17 +22,12 @@
 _hw_profile="${1:-}"
 
 if [ -z "${_hw_profile}" ]; then
-    case "$(hostname)" in
-        bioelab-server-3) _hw_profile="rtx6000" ;;
-        *)
-            # fall back to runtime detection
-            if python -c "import torch,sys; sys.exit(0 if torch.backends.mps.is_available() else 1)" 2>/dev/null; then
-                _hw_profile="m3ultra"
-            else
-                _hw_profile="rtx3090"
-            fi
-            ;;
-    esac
+    # Runtime detection only. Pass a profile name as $1 to force one.
+    if python -c "import torch,sys; sys.exit(0 if torch.backends.mps.is_available() else 1)" 2>/dev/null; then
+        _hw_profile="m3ultra"
+    else
+        _hw_profile="rtx3090"
+    fi
 fi
 
 case "${_hw_profile}" in

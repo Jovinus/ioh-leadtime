@@ -1,7 +1,7 @@
-# What a median alert lead time measures — analysis code
+# Twenty-four minutes of warning — analysis code
 
-Code for the workshop paper *What a median alert lead time measures: a reporting gap in
-continuously evaluated clinical models*. The paper as submitted is `paper.pdf`.
+Code for the workshop paper *Twenty-four minutes of warning: what a reported lead time
+licenses, and what reporting standards do not ask*. The paper as submitted is `paper.pdf`.
 
 **No patient data is included in this repository, and none can be.** See
 [Data](#data-and-why-none-of-it-is-here).
@@ -70,8 +70,10 @@ either. Both are obtained directly from their own project sites once access is g
 - **MOVER** — a data use agreement. Available from the UCI Machine Learning Repository; one
   download supplies both arms used in the paper.
 
-Each original collection was approved by its own institutional review board with consent waived
-after de-identification. This work added no data collection and no patient contact.
+Both cohorts are public, de-identified datasets obtained from their providers under the access
+and license terms above. An institutional review board granted this secondary analysis an
+exemption from review and a waiver of consent; its identity and protocol number are withheld for
+anonymous review. This work added no data collection and no patient contact.
 
 What is excluded for that reason: the per-minute vitals parquets, the cached per-minute model
 scores (`outputs/runs/*/predictions/`), the fitted calibrators, and every case- or

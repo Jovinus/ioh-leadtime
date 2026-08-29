@@ -2,7 +2,7 @@
 
 Two kinds of entry live here.
 
-**Carried over** from an earlier phrase table, because the same terminology
+**Carried over** from the journal package's phrase table, because the same terminology
 decisions apply: `alarm` -> `alert`, `justify` -> `provides an empirical basis for`,
 `prospective validation` -> `retrospective forward-running simulation`, `online simulation`
 -> `deployment simulation`.
@@ -10,7 +10,8 @@ decisions apply: `alarm` -> `alert`, `justify` -> `provides an empirical basis f
 **Specific to this paper.**
 
 * `faithfulness` is banned as a bare word, not merely in the bigram it usually appears in.
-  The construct is not needed for this argument and is avoided throughout. Banning
+  The construct is not needed for this argument, and it is strongly associated with one
+  group's prior work, so leaving it in the anonymised PDF would identify the authors. Banning
   the bare word rather than the two-word phrase matters because a line break between the two
   words would defeat a bigram pattern.
 * Claims that the score anticipates or tracks physiology are banned outright. The outcome is
@@ -26,7 +27,8 @@ Three things this file cannot check, and a human must read for:
 1. whether the plateau is *described* as a defect of one architecture, which is a claim
    rather than a string;
 2. whether suppression is recommended by implication rather than by the word;
-3. whether any citation is phrased in a way the reference list does not support.
+3. whether a self-citation is phrased in the first person. `check_anonymity.py` looks for the
+   common constructions near a citation key, but the general case needs a reader.
 
 Exit status is 1 if anything outside the allowlist matches, so this can gate a commit.
 """
@@ -142,7 +144,7 @@ def main() -> int:
     )
     print(
         "\nStill needs a human read: is the plateau described as a defect of one "
-        "architecture? is suppression recommended by implication? is any citation phrased in a way the reference list does not support, in "
+        "architecture? is suppression recommended by implication? is any self-citation in "
         "the first person?"
     )
     return 0

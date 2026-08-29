@@ -32,10 +32,11 @@ ANSWERS: list[tuple[str, str]] = [
     # 1 Claims
     (
         r"\answerYes{}",
-        "The abstract and Section 1 state the four contributions and their scope. They "
-        "distinguish the observed lead--window association from what the upward-biased "
-        "shuffle can establish, treat low directedness as descriptive rather than causal, "
-        "and state that the paper measures neither clinician comprehension nor physiology.",
+        "The abstract and Section 1 state the four contributions and their scope, and both "
+        "say the paper measures neither clinician comprehension nor physiology. Section 3.3 "
+        "and Section 7 distinguish the observed lead--window association from what the "
+        "upward-biased references can establish, and Section 4.1 treats the cross-family "
+        "score-path property as descriptive rather than causal.",
     ),
     # 2 Limitations
     (
@@ -62,9 +63,9 @@ ANSWERS: list[tuple[str, str]] = [
         "resampling counts; both datasets are available under their providers' access "
         "procedures; and the analysis code is released at the anonymized repository "
         "Appendix A.1 names. Bit-for-bit reproduction from raw data is not supported here, "
-        "because neither dataset may be redistributed and the cached per-minute scores the "
-        "analyses read are derived patient-level data governed by the same agreements, so "
-        "they are not in the repository and a reader must obtain the data themselves. We "
+        "because the repository carries no patient-level or derived patient-level files: the "
+        "cached per-minute scores the analyses read are derived patient-level data and are not "
+        "redistributed there, so a reader must obtain the data from its provider. We "
         "claim the first and not the second.",
     ),
     # 5 Open access to data and code
@@ -73,13 +74,13 @@ ANSWERS: list[tuple[str, str]] = [
         "The analysis code is released at an anonymized repository under the Apache License "
         "2.0, which Appendix A.1 names, together with the aggregate result files behind every "
         "table and figure, so "
-        "the table and figure checks run from the repository as shipped. The datasets are "
-        "not redistributed there and cannot be: VitalDB is under a Creative Commons "
-        "Attribution-NonCommercial-ShareAlike 4.0 International license and a data use "
-        "agreement and MOVER is under a data use agreement, and the cached per-minute scores "
-        "are derived patient-level data governed by the same agreements. Both are obtained "
-        "from their own project sites once access is granted, as Appendix A.1 records, and "
-        "Appendix A.1 specifies the construction to the level a reimplementation needs.",
+        "the table and figure checks run from the repository as shipped. Neither dataset is "
+        "redistributed there, and neither are the cached per-minute scores, which are derived "
+        "patient-level data. Each is obtained from its own provider: VitalDB v1.0.0 is openly "
+        "accessible from PhysioNet under the Creative Commons Attribution 4.0 International "
+        "(CC BY 4.0) license, and MOVER is available from the UCI Machine Learning Repository "
+        "to researchers who sign its data use agreement, as Appendix A.1 records. Appendix A.1 "
+        "specifies the construction to the level a reimplementation needs.",
     ),
     # 6 Experimental setting/details
     (
@@ -96,10 +97,14 @@ ANSWERS: list[tuple[str, str]] = [
         r"\answerYes{}",
         "Every interval in the paper is a 95\\% cluster bootstrap on the clustering unit "
         "named in Section 2, the subject for two cohorts and the case for MOVER (SIS), at "
-        "2,000 replicates; permutation nulls use 1,000 replicates and are reported as the "
-        "2.5th and 97.5th percentiles of the null distribution rather than as symmetric "
-        "error bars. Appendix A.18 records the multiplicity family and its "
-        "Benjamini--Hochberg adjustment, and Appendix A.19 the seeds.",
+        "2,000 replicates. The two nulls of Section 3.3 use 1,000 permutations per cell "
+        "and the cross-combination rank correlations of Section 4.1 use 10,000 "
+        "permutations of the cell pairing; nulls are reported as the 2.5th and 97.5th "
+        "percentiles of the null distribution rather than as symmetric error bars. Every "
+        "interval is pointwise and descriptive, and no family-wise coverage is claimed "
+        "across the fifteen cells. Appendix A.18 records the multiplicity family and its "
+        "Benjamini--Hochberg adjustment, and Appendix A.19 the seeds and every "
+        "resampling count.",
     ),
     # 8 Compute
     (
@@ -114,7 +119,8 @@ ANSWERS: list[tuple[str, str]] = [
     (
         r"\answerYes{}",
         "The research conforms to the NeurIPS Code of Ethics. It is a secondary analysis of "
-        "de-identified data obtained under the providers' data use agreements, with an "
+        "de-identified data obtained under their respective provider access and license "
+        "terms, with an "
         "institutional review board exemption and consent waiver recorded in Section 2 and "
         "Appendix A.1, and it proposes no model for clinical use.",
     ),
@@ -139,10 +145,10 @@ ANSWERS: list[tuple[str, str]] = [
     (
         r"\answerYes{}",
         "Section 2 cites both the descriptor paper and the dataset record for VitalDB and "
-        "for MOVER. Appendix A.1 names the terms: VitalDB under a Creative Commons "
-        "Attribution-NonCommercial-ShareAlike 4.0 International license with a data use "
-        "agreement, and MOVER free to download from the UCI Machine Learning Repository for "
-        "researchers who sign its data use agreement. Software versions are listed in the "
+        "for MOVER. Appendix A.1 names the terms: VitalDB v1.0.0 under the Creative Commons "
+        "Attribution 4.0 International (CC BY 4.0) license, openly accessible from PhysioNet, "
+        "and MOVER free to download from the UCI Machine Learning Repository for researchers "
+        "who sign its data use agreement. Software versions are listed in the "
         "same subsection.",
     ),
     # 13 New assets
@@ -165,11 +171,10 @@ ANSWERS: list[tuple[str, str]] = [
     (
         r"\answerYes{}",
         "Section 2 records that an institutional review board granted an exemption from "
-        "review and waived informed consent for this secondary analysis of publicly "
-        "available de-identified data, with the institution and protocol number withheld for "
-        "anonymous review. Appendix A.1 records that each source collection carried its own "
-        "review-board approval with consent waived after de-identification, and that this "
-        "work added no data collection and no patient contact.",
+        "review and waived informed consent for this secondary analysis. Both cohorts are "
+        "public, de-identified datasets obtained from their providers under the access and "
+        "license terms in Appendix A.1; the institution and protocol number are withheld for "
+        "anonymous review. This work added no data collection and no patient contact.",
     ),
     # 16 LLM usage
     (

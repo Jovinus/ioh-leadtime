@@ -141,7 +141,8 @@ connects it to a timing metric three tables away.
 
 | Exhibit | Where | What it shows | Cost of dropping it |
 |---|---|---|---|
-| **Table 1** | §3.1 | Median lead by quintile of observed window, transformer, three cohorts | ⛔ Not a candidate. The most legible exhibit in the paper and §3.1 is built on it |
+| **Table 1** | §1 | What the label invites, what the number supports, and the disclosure that would close the gap | ⛔ Not a candidate. The reader-facing exhibit the reporting argument turns on. `measure_pages.py` now prices removing it at 0.00 pp, which is a statement about page breaks, not about its value |
+| **Table A4** | A.5 | Case-level operating point behind every reported lead time, all fifteen cells with intervals | It answers the "it just alerts constantly" objection, and it is what §6.1's TRIPOD item 23a argument points at. Moved out of the body on 2026-08-29 to pay for Table 1 |
 | **Figure 1** | §3.3 | Every detected case's lead against its window, with the ceiling diagonal and the shuffle-null band | The null becomes a table of numbers; the reader cannot see that the null covers the observed points |
 | **Figure 2** | §4.1 | Median score against elapsed time, five families, event and control, each family's own threshold drawn on the same axes | Mechanism 1 becomes an assertion. Drawing the threshold on the same axes is the whole point — what separates the transformer is not the shape of its rise but whether the rise clears its own cut |
 | **Table A1** | A.1 | The quintile gradient in all fifteen cells | §3.1's "15 of 15" loses its per-cell backing |
@@ -234,5 +235,5 @@ Carried here from `README.md` so this file holds the argument end to end.
 - Report the N2 caveats at full strength — the observed ratio sits slightly *below* the
   shuffle null, and both variants bias **upward**, the direction that favours our own reading.
   The null is a ceiling, not a point estimate.
-- ⛔ **Table 1 and §6.2's four items are not cut candidates.** The first is the most legible
+- ⛔ **Table 1 and §6.2's four items are not cut candidates.** The first is the reader-facing
   exhibit in the paper; the second is the contribution.
