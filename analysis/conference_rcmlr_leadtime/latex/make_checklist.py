@@ -171,9 +171,9 @@ ANSWERS: list[tuple[str, str]] = [
     (
         r"\answerYes{}",
         "Section 2 records that an institutional review board granted an exemption from "
-        "review and waived informed consent for this secondary analysis. Both cohorts are "
-        "public, de-identified datasets obtained from their providers under the access and "
-        "license terms in Appendix A.1; the institution and protocol number are withheld for "
+        "review and waived informed consent for this secondary analysis. Both source datasets "
+        "are public and de-identified and were obtained from their providers under the access "
+        "and license terms in Appendix A.1; the institution and protocol number are withheld for "
         "anonymous review. This work added no data collection and no patient contact.",
     ),
     # 16 LLM usage

@@ -33,8 +33,8 @@ the longest pooled median lead here, 24 minutes — a median over the event case
 detected — stands beside a case-level specificity of 0.406 measured over all control cases; the
 minimum specificity across the fifteen combinations is 0.379. Two natural repairs leave the
 dependence in place; a horizon-specific detection rate reduces it without removing it, and
-restricting to a constant window removes it but disagrees with the median about which model
-looks best. In our author-completed TRIPOD+AI item-level review, the closest requests are items
+restricting to a constant window removes it but reveals that the longest median co-occurs
+with the lowest detection rate. In our author-completed TRIPOD+AI item-level review, the closest requests are items
 20a and 20b, which ask for follow-up time as a cohort descriptor; we did not identify an item
 that asks for the distribution of the window the alert rule actually searches, for a
 window-conditional timing measure, or for a lead-time summary to be interpreted jointly with
@@ -111,7 +111,8 @@ dependence, in the metric's own units and against two explicit references rather
 the ceiling (Section 3). We report the operating point beside the lead, which no lead-time
 statistic carries, and find the two run opposite across combinations (Section 4). And we
 implement the two repairs the first two sections invite, neither of which works, while a
-constant-window restriction that does remove it disagrees with the median (Section 5). The argument
+constant-window restriction removes the dependence and reveals that the longest median
+co-occurs with the lowest detection rate (Section 5). The argument
 is about a reported quantity, not about how well any model discriminates, which is not in
 dispute.
 
@@ -349,8 +350,9 @@ minutes before onset. That removes one ambiguity of the pooled median, but windo
 instead to cases observed for the whole 60-minute window, so the window is a constant, the
 transformer reports the longest median lead of the five families in all three cohorts, 47, 60
 and 57 minutes, while detecting only 0.441, 0.247 and 0.304 of them against 0.762 to 0.910 for
-XGBoost and the random forest (Table A7): conditioning turns its reported advantage into a
-deficit.
+XGBoost and the random forest (Table A7). Conditioning removes variation in window length but
+does not by itself reverse the lead-time ranking; jointly reporting the detected share reveals
+the corresponding deficit.
 
 **Both remain partial.** The full-window restriction is the stricter window-constant estimand,
 but it changes the estimand and the population, discarding 53 to 60% of event cases: the
@@ -536,7 +538,7 @@ this paper add no training and read cached per-minute scores on the same machine
 was PyTorch 2.10.0, scikit-learn 1.7.1, XGBoost 3.3.0, NumPy
 2.2.6, pandas 2.3.2 and SciPy 1.16.1.
 
-**Data and code.** Both cohorts are public, de-identified datasets. VitalDB v1.0.0 is openly accessible from PhysioNet under the Creative Commons Attribution 4.0 International (CC BY 4.0) license; MOVER is available from the UCI Machine Learning Repository under its data use agreement, one download supplying both arms used here. An
+**Data and code.** Both source datasets are public and de-identified. VitalDB v1.0.0 is openly accessible from PhysioNet under the Creative Commons Attribution 4.0 International (CC BY 4.0) license; MOVER is available from the UCI Machine Learning Repository under its data use agreement, one download supplying both arms used here. An
 institutional review board granted this secondary analysis an exemption from review and a
 waiver of consent, its identity and protocol number withheld for anonymous review. This work
 added no data collection and no patient contact. Analysis code is available at an anonymized repository,

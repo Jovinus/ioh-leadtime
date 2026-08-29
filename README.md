@@ -70,8 +70,8 @@ either. Both are obtained directly from their own project sites once access is g
 - **MOVER** — a data use agreement. Available from the UCI Machine Learning Repository; one
   download supplies both arms used in the paper.
 
-Both cohorts are public, de-identified datasets obtained from their providers under the access
-and license terms above. An institutional review board granted this secondary analysis an
+Both source datasets are public and de-identified and were obtained from their providers under
+the access and license terms above. An institutional review board granted this secondary analysis an
 exemption from review and a waiver of consent; its identity and protocol number are withheld for
 anonymous review. This work added no data collection and no patient contact.
 
