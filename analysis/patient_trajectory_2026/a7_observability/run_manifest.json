@@ -1,0 +1,44 @@
+{
+  "step": "a7_observability",
+  "run_time": "2026-08-20T23:02:57",
+  "git_commit": "727f8a6270cf7b8cd8d5410ee97bbe4f4928595f",
+  "sign_convention": "trajectory ordered by time_window_min DESCENDING (farthest-from-onset first); positive tau / Sen's slope == AUROC rises toward onset == clinical faithfulness",
+  "lead_time_bins_min": [
+    60,
+    55,
+    50,
+    45,
+    40,
+    35,
+    30,
+    25,
+    20,
+    15,
+    10,
+    5,
+    0
+  ],
+  "window_size_min": 2,
+  "bootstrap_seed": 20260706,
+  "n_bootstrap": 1000,
+  "bootstrap_resample_unit": "highest identifiable unit: patient (subject_id) for EPIC/VitalDB, surgical case (case_id) for MOVER/SIS",
+  "grid_n_cells": 0,
+  "versions": {
+    "numpy": "2.2.6",
+    "scipy": "1.16.1",
+    "scikit-learn": "1.7.1",
+    "pandas": "2.3.2",
+    "pymannkendall": "1.4.3"
+  },
+  "inputs": [],
+  "common_starts_min": [
+    20,
+    30,
+    40,
+    60
+  ],
+  "long_runup_min": 40,
+  "smd_flag": 0.1,
+  "seed": 20350706,
+  "observable_definition": "first sustained onset minus the induction exclusion for events; sampled pseudo-onset minus the induction exclusion for controls"
+}

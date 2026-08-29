@@ -1,0 +1,49 @@
+# 1-epoch dry-run on VitalDB (small cohort) to verify train.py wires up
+# manifest -> split -> normalizer -> trainer -> post-eval end-to-end.
+# Intended as the smoke for the entrypoint, not a real experiment.
+
+experiment:
+  name: "ioh-prediction-dryrun"
+  run_name: "dryrun_vitaldb"
+
+data:
+  sources: ["vitaldb"]
+  pos_min_pre_onset_min: 5
+  neg_min_pre_onset_min: 30
+  window_min: 120
+  max_seq_len: 2048
+  val_frac: 0.15
+  test_frac: 0.15
+  seed: 1004
+
+model:
+  d_model: 64
+  num_layers: 2
+  num_heads: 4
+  dim_feedforward: null
+  dropout: 0.1
+  num_classes: 2
+
+train:
+  batch_size: 16
+  epochs: 1
+  lr: 3.0e-4
+  weight_decay: 1.0e-2
+  grad_clip: 1.0
+  warmup_frac: 0.1
+  loss_type: "cross_entropy"     # or "cosine_ce"
+  cosine_ce_weight: 0.1
+  class_weights: null            # e.g. [1.0, 2.0] for 2:1 positive weighting
+  use_amp: true
+  amp_dtype: "bfloat16"
+  num_workers: 2
+  patience: 5
+  monitor: "val_auroc"
+  monitor_mode: "max"
+
+paths:
+  out_dir: "outputs/runs/dryrun_vitaldb"
+  ckpt_subdir: "ckpts"
+  predictions_subdir: "predictions"
+  manifest_path: "outputs/runs/dryrun_vitaldb/manifest.csv"
+  normalizer_path: "outputs/runs/dryrun_vitaldb/normalizer.parquet"

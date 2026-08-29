@@ -1,0 +1,16 @@
+__pycache__/
+# Generated from PAPER.md by ./render.sh -- edit PAPER.md, never these.
+PAPER.docx
+PAPER_REVIEW.md
+# LaTeX build products. body.tex comes from build_tex.py; the rest from tectonic.
+latex/body.tex
+latex/main.pdf
+latex/*.aux
+latex/*.log
+latex/*.blg
+latex/*.bbl
+latex/*.out
+latex/bibtest.*
+latex/references.bib
+REVIEW.md
+REVIEW.docx

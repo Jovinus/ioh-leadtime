@@ -1,0 +1,37 @@
+{
+  "step": "n3_stratified",
+  "run_time": "2026-08-29T00:58:23",
+  "git_commit": "omitted for anonymous review",
+  "sign_convention": "trajectory ordered by time_window_min DESCENDING (farthest-from-onset first); positive tau / Sen's slope == AUROC rises toward onset == clinical faithfulness",
+  "lead_time_bins_min": [
+    60,
+    55,
+    50,
+    45,
+    40,
+    35,
+    30,
+    25,
+    20,
+    15,
+    10,
+    5,
+    0
+  ],
+  "window_size_min": 2,
+  "bootstrap_seed": 20260706,
+  "n_bootstrap": 2000,
+  "bootstrap_resample_unit": "highest identifiable unit: patient (subject_id) for EPIC/VitalDB, surgical case (case_id) for MOVER/SIS",
+  "grid_n_cells": 0,
+  "versions": {
+    "numpy": "2.2.6",
+    "scipy": "1.16.1",
+    "scikit-learn": "1.7.1",
+    "pandas": "2.3.2",
+    "pymannkendall": "1.4.3"
+  },
+  "inputs": [],
+  "n_cells": 15,
+  "n_strata": 5,
+  "n_censored_cells": 0
+}

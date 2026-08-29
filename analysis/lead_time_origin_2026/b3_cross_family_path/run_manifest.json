@@ -1,0 +1,45 @@
+{
+  "step": "b3_cross_family_path",
+  "run_time": "2026-08-21T11:52:37",
+  "git_commit": "omitted for anonymous review",
+  "sign_convention": "trajectory ordered by time_window_min DESCENDING (farthest-from-onset first); positive tau / Sen's slope == AUROC rises toward onset == clinical faithfulness",
+  "lead_time_bins_min": [
+    60,
+    55,
+    50,
+    45,
+    40,
+    35,
+    30,
+    25,
+    20,
+    15,
+    10,
+    5,
+    0
+  ],
+  "window_size_min": 2,
+  "bootstrap_seed": 20260706,
+  "n_bootstrap": 1000,
+  "bootstrap_resample_unit": "highest identifiable unit: patient (subject_id) for EPIC/VitalDB, surgical case (case_id) for MOVER/SIS",
+  "grid_n_cells": 0,
+  "versions": {
+    "numpy": "2.2.6",
+    "scipy": "1.16.1",
+    "scikit-learn": "1.7.1",
+    "pandas": "2.3.2",
+    "pymannkendall": "1.4.3"
+  },
+  "inputs": [],
+  "source": "analysis/patient_trajectory_2026/a6_window_trend/a6_window_trend.csv",
+  "window_start_min": 60,
+  "endpoints_min": [
+    5,
+    10
+  ],
+  "group": "event",
+  "sample": "spanning (an observed bin at both window edges)",
+  "min_median_steps": 3,
+  "n_windows_excluded_for_step_count": 0,
+  "recomputed": "nothing; A6 medians and cluster-bootstrap intervals are read"
+}

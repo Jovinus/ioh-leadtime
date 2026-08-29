@@ -1,0 +1,1008 @@
+analysis,quantity,family,family_label,cohort,cohort_label,value,ci_lo,ci_hi,p_value,unit,destination,note,bh_family,q_value,significant_q05
+B1,prop_prevalent,transformer,ITE Transformer,epic_test,MOVER (EPIC) test,0.0867430441898527,0.0665529764899033,0.1100364876085845,,proportion,main text candidate,detected event alerts already above threshold at the window's first minute,,,False
+B1,prop_warmup,transformer,ITE Transformer,epic_test,MOVER (EPIC) test,0.7643207855973814,0.7307045526775783,0.7983743115656963,,proportion,main text candidate,incident crossings within the first 5 minutes of monitoring,,,False
+B1,prop_settled,transformer,ITE Transformer,epic_test,MOVER (EPIC) test,0.1489361702127659,,,,proportion,main text candidate,neither prevalent nor warm-up,,,False
+B1,lead_median_all,transformer,ITE Transformer,epic_test,MOVER (EPIC) test,24.0,21.0,27.0,,min,supplement,"published Table 2 quantity, reproduced",,,False
+B1,lead_median_incident,transformer,ITE Transformer,epic_test,MOVER (EPIC) test,21.0,19.0,24.0,,min,main text candidate,,,,False
+B1,lead_median_settled,transformer,ITE Transformer,epic_test,MOVER (EPIC) test,17.0,12.0,28.0,,min,main text candidate,,,,False
+B1,lead_shift_all_minus_incident,transformer,ITE Transformer,epic_test,MOVER (EPIC) test,3.0,1.0,5.0,0.001,min,main text candidate,paired; BH family B,B1-B4,0.003206896551724138,True
+B1,lead_shift_all_minus_settled,transformer,ITE Transformer,epic_test,MOVER (EPIC) test,7.0,-3.0,13.0,0.502,min,main text candidate,paired; BH family B,B1-B4,0.8482241379310346,False
+B1,prop_control_prevalent,transformer,ITE Transformer,epic_test,MOVER (EPIC) test,0.1763754045307443,0.1467682847644278,0.2063547954393024,,proportion,main text candidate,control cases flagged at their own first eligible minute,,,False
+B1,prop_control_prevalent_or_warmup_of_alerting,transformer,ITE Transformer,epic_test,MOVER (EPIC) test,0.904632152588556,,,,proportion,main text candidate,share of alerting controls flagged on arrival or during warm-up,,,False
+B1,prop_prevalent,transformer,ITE Transformer,vitaldb,VitalDB,0.0964912280701754,0.0753560222834091,0.119887429041124,,proportion,main text candidate,detected event alerts already above threshold at the window's first minute,,,False
+B1,prop_warmup,transformer,ITE Transformer,vitaldb,VitalDB,0.8289473684210527,0.7997002709922684,0.856109659517152,,proportion,main text candidate,incident crossings within the first 5 minutes of monitoring,,,False
+B1,prop_settled,transformer,ITE Transformer,vitaldb,VitalDB,0.0745614035087719,,,,proportion,main text candidate,neither prevalent nor warm-up,,,False
+B1,lead_median_all,transformer,ITE Transformer,vitaldb,VitalDB,17.0,15.0,19.0,,min,supplement,"published Table 2 quantity, reproduced",,,False
+B1,lead_median_incident,transformer,ITE Transformer,vitaldb,VitalDB,15.0,13.0,17.0,,min,main text candidate,,,,False
+B1,lead_median_settled,transformer,ITE Transformer,vitaldb,VitalDB,26.0,14.0,31.0,,min,main text candidate,,,,False
+B1,lead_shift_all_minus_incident,transformer,ITE Transformer,vitaldb,VitalDB,2.0,1.0,3.0,0.001,min,main text candidate,paired; BH family B,B1-B4,0.003206896551724138,True
+B1,lead_shift_all_minus_settled,transformer,ITE Transformer,vitaldb,VitalDB,-9.0,-14.0125,3.0,0.189,min,main text candidate,paired; BH family B,B1-B4,0.3994772727272728,False
+B1,prop_control_prevalent,transformer,ITE Transformer,vitaldb,VitalDB,0.1441291040623261,0.1276477146042363,0.1605351170568562,,proportion,main text candidate,control cases flagged at their own first eligible minute,,,False
+B1,prop_control_prevalent_or_warmup_of_alerting,transformer,ITE Transformer,vitaldb,VitalDB,0.9229390681003584,,,,proportion,main text candidate,share of alerting controls flagged on arrival or during warm-up,,,False
+B1,prop_prevalent,transformer,ITE Transformer,mover,MOVER (SIS),0.0896328293736501,0.0723542116630669,0.1079913606911447,,proportion,main text candidate,detected event alerts already above threshold at the window's first minute,,,False
+B1,prop_warmup,transformer,ITE Transformer,mover,MOVER (SIS),0.67170626349892,0.6414416846652268,0.7008639308855291,,proportion,main text candidate,incident crossings within the first 5 minutes of monitoring,,,False
+B1,prop_settled,transformer,ITE Transformer,mover,MOVER (SIS),0.2386609071274298,,,,proportion,main text candidate,neither prevalent nor warm-up,,,False
+B1,lead_median_all,transformer,ITE Transformer,mover,MOVER (SIS),22.0,20.0,24.0,,min,supplement,"published Table 2 quantity, reproduced",,,False
+B1,lead_median_incident,transformer,ITE Transformer,mover,MOVER (SIS),19.0,17.0,21.0,,min,main text candidate,,,,False
+B1,lead_median_settled,transformer,ITE Transformer,mover,MOVER (SIS),21.0,17.0,26.0,,min,main text candidate,,,,False
+B1,lead_shift_all_minus_incident,transformer,ITE Transformer,mover,MOVER (SIS),3.0,2.0,4.0,0.001,min,main text candidate,paired; BH family B,B1-B4,0.003206896551724138,True
+B1,lead_shift_all_minus_settled,transformer,ITE Transformer,mover,MOVER (SIS),1.0,-3.5124999999999993,5.0,0.911,min,main text candidate,paired; BH family B,B1-B4,1.0,False
+B1,prop_control_prevalent,transformer,ITE Transformer,mover,MOVER (SIS),0.0933441558441558,0.0771103896103896,0.109577922077922,,proportion,main text candidate,control cases flagged at their own first eligible minute,,,False
+B1,prop_control_prevalent_or_warmup_of_alerting,transformer,ITE Transformer,mover,MOVER (SIS),0.726027397260274,,,,proportion,main text candidate,share of alerting controls flagged on arrival or during warm-up,,,False
+B1,prop_prevalent,lstm,LSTM,epic_test,MOVER (EPIC) test,0.0536277602523659,0.0362190486802357,0.0717757635659785,,proportion,main text candidate,detected event alerts already above threshold at the window's first minute,,,False
+B1,prop_warmup,lstm,LSTM,epic_test,MOVER (EPIC) test,0.5394321766561514,0.4984841470258137,0.5765097631308432,,proportion,main text candidate,incident crossings within the first 5 minutes of monitoring,,,False
+B1,prop_settled,lstm,LSTM,epic_test,MOVER (EPIC) test,0.4069400630914827,,,,proportion,main text candidate,neither prevalent nor warm-up,,,False
+B1,lead_median_all,lstm,LSTM,epic_test,MOVER (EPIC) test,23.0,20.0,25.0,,min,supplement,"published Table 2 quantity, reproduced",,,False
+B1,lead_median_incident,lstm,LSTM,epic_test,MOVER (EPIC) test,21.0,18.0,23.0,,min,main text candidate,,,,False
+B1,lead_median_settled,lstm,LSTM,epic_test,MOVER (EPIC) test,23.0,17.0,27.0,,min,main text candidate,,,,False
+B1,lead_shift_all_minus_incident,lstm,LSTM,epic_test,MOVER (EPIC) test,2.0,1.0,3.0,0.029,min,main text candidate,paired; BH family B,B1-B4,0.07097368421052631,False
+B1,lead_shift_all_minus_settled,lstm,LSTM,epic_test,MOVER (EPIC) test,0.0,-4.0,4.0,1.0,min,main text candidate,paired; BH family B,B1-B4,1.0,False
+B1,prop_control_prevalent,lstm,LSTM,epic_test,MOVER (EPIC) test,0.0857605177993527,0.0636208202252727,0.108325099655889,,proportion,main text candidate,control cases flagged at their own first eligible minute,,,False
+B1,prop_control_prevalent_or_warmup_of_alerting,lstm,LSTM,epic_test,MOVER (EPIC) test,0.563076923076923,,,,proportion,main text candidate,share of alerting controls flagged on arrival or during warm-up,,,False
+B1,prop_prevalent,lstm,LSTM,vitaldb,VitalDB,0.0262626262626262,0.0121951219512195,0.0420841683366733,,proportion,main text candidate,detected event alerts already above threshold at the window's first minute,,,False
+B1,prop_warmup,lstm,LSTM,vitaldb,VitalDB,0.4525252525252525,0.4081612038754896,0.494955379326637,,proportion,main text candidate,incident crossings within the first 5 minutes of monitoring,,,False
+B1,prop_settled,lstm,LSTM,vitaldb,VitalDB,0.5212121212121212,,,,proportion,main text candidate,neither prevalent nor warm-up,,,False
+B1,lead_median_all,lstm,LSTM,vitaldb,VitalDB,9.0,8.0,10.0,,min,supplement,"published Table 2 quantity, reproduced",,,False
+B1,lead_median_incident,lstm,LSTM,vitaldb,VitalDB,9.0,8.0,10.0,,min,main text candidate,,,,False
+B1,lead_median_settled,lstm,LSTM,vitaldb,VitalDB,9.0,7.0,13.0,,min,main text candidate,,,,False
+B1,lead_shift_all_minus_incident,lstm,LSTM,vitaldb,VitalDB,0.0,0.0,1.0,1.0,min,main text candidate,paired; BH family B,B1-B4,1.0,False
+B1,lead_shift_all_minus_settled,lstm,LSTM,vitaldb,VitalDB,0.0,-3.0,2.0,1.0,min,main text candidate,paired; BH family B,B1-B4,1.0,False
+B1,prop_control_prevalent,lstm,LSTM,vitaldb,VitalDB,0.0172509738452977,0.0116729896238651,0.0233856263687178,,proportion,main text candidate,control cases flagged at their own first eligible minute,,,False
+B1,prop_control_prevalent_or_warmup_of_alerting,lstm,LSTM,vitaldb,VitalDB,0.4243323442136498,,,,proportion,main text candidate,share of alerting controls flagged on arrival or during warm-up,,,False
+B1,prop_prevalent,lstm,LSTM,mover,MOVER (SIS),0.0398970398970398,0.027027027027027,0.054054054054054,,proportion,main text candidate,detected event alerts already above threshold at the window's first minute,,,False
+B1,prop_warmup,lstm,LSTM,mover,MOVER (SIS),0.3796653796653796,0.3436293436293436,0.4144144144144144,,proportion,main text candidate,incident crossings within the first 5 minutes of monitoring,,,False
+B1,prop_settled,lstm,LSTM,mover,MOVER (SIS),0.5804375804375804,,,,proportion,main text candidate,neither prevalent nor warm-up,,,False
+B1,lead_median_all,lstm,LSTM,mover,MOVER (SIS),15.0,14.0,18.0,,min,supplement,"published Table 2 quantity, reproduced",,,False
+B1,lead_median_incident,lstm,LSTM,mover,MOVER (SIS),14.0,12.9875,16.0,,min,main text candidate,,,,False
+B1,lead_median_settled,lstm,LSTM,mover,MOVER (SIS),14.0,12.0,17.0,,min,main text candidate,,,,False
+B1,lead_shift_all_minus_incident,lstm,LSTM,mover,MOVER (SIS),1.0,0.0,2.0,0.239,min,main text candidate,paired; BH family B,B1-B4,0.47291489361702127,False
+B1,lead_shift_all_minus_settled,lstm,LSTM,mover,MOVER (SIS),1.0,0.0,3.0,0.207,min,main text candidate,paired; BH family B,B1-B4,0.42779999999999996,False
+B1,prop_control_prevalent,lstm,LSTM,mover,MOVER (SIS),0.0194805194805194,0.0121753246753246,0.0268060064935063,,proportion,main text candidate,control cases flagged at their own first eligible minute,,,False
+B1,prop_control_prevalent_or_warmup_of_alerting,lstm,LSTM,mover,MOVER (SIS),0.3994413407821229,,,,proportion,main text candidate,share of alerting controls flagged on arrival or during warm-up,,,False
+B1,prop_prevalent,xgb,XGBoost,epic_test,MOVER (EPIC) test,0.2182103610675039,0.1854685777155046,0.2496273150408487,,proportion,main text candidate,detected event alerts already above threshold at the window's first minute,,,False
+B1,prop_warmup,xgb,XGBoost,epic_test,MOVER (EPIC) test,0.1726844583987441,0.1433070866141732,0.2022349165722324,,proportion,main text candidate,incident crossings within the first 5 minutes of monitoring,,,False
+B1,prop_settled,xgb,XGBoost,epic_test,MOVER (EPIC) test,0.609105180533752,,,,proportion,main text candidate,neither prevalent nor warm-up,,,False
+B1,lead_median_all,xgb,XGBoost,epic_test,MOVER (EPIC) test,21.0,19.0,23.0,,min,supplement,"published Table 2 quantity, reproduced",,,False
+B1,lead_median_incident,xgb,XGBoost,epic_test,MOVER (EPIC) test,19.0,16.5,22.0,,min,main text candidate,,,,False
+B1,lead_median_settled,xgb,XGBoost,epic_test,MOVER (EPIC) test,20.0,17.0,24.0,,min,main text candidate,,,,False
+B1,lead_shift_all_minus_incident,xgb,XGBoost,epic_test,MOVER (EPIC) test,2.0,1.0,4.0,0.02,min,main text candidate,paired; BH family B,B1-B4,0.051666666666666666,False
+B1,lead_shift_all_minus_settled,xgb,XGBoost,epic_test,MOVER (EPIC) test,1.0,-1.0,3.0,0.73,min,main text candidate,paired; BH family B,B1-B4,1.0,False
+B1,prop_control_prevalent,xgb,XGBoost,epic_test,MOVER (EPIC) test,0.0647249190938511,0.0458227760230467,0.0845300890807951,,proportion,main text candidate,control cases flagged at their own first eligible minute,,,False
+B1,prop_control_prevalent_or_warmup_of_alerting,xgb,XGBoost,epic_test,MOVER (EPIC) test,0.256198347107438,,,,proportion,main text candidate,share of alerting controls flagged on arrival or during warm-up,,,False
+B1,prop_prevalent,xgb,XGBoost,vitaldb,VitalDB,0.0786838340486409,0.0599144079885877,0.098715981898004,,proportion,main text candidate,detected event alerts already above threshold at the window's first minute,,,False
+B1,prop_warmup,xgb,XGBoost,vitaldb,VitalDB,0.1273247496423462,0.103593401141156,0.1527407369287772,,proportion,main text candidate,incident crossings within the first 5 minutes of monitoring,,,False
+B1,prop_settled,xgb,XGBoost,vitaldb,VitalDB,0.7939914163090128,,,,proportion,main text candidate,neither prevalent nor warm-up,,,False
+B1,lead_median_all,xgb,XGBoost,vitaldb,VitalDB,13.0,12.0,16.0,,min,supplement,"published Table 2 quantity, reproduced",,,False
+B1,lead_median_incident,xgb,XGBoost,vitaldb,VitalDB,13.0,11.0,15.0,,min,main text candidate,,,,False
+B1,lead_median_settled,xgb,XGBoost,vitaldb,VitalDB,14.0,12.0,17.0,,min,main text candidate,,,,False
+B1,lead_shift_all_minus_incident,xgb,XGBoost,vitaldb,VitalDB,0.0,0.0,2.0,0.887,min,main text candidate,paired; BH family B,B1-B4,1.0,False
+B1,lead_shift_all_minus_settled,xgb,XGBoost,vitaldb,VitalDB,-1.0,-3.0,0.0,0.606,min,main text candidate,paired; BH family B,B1-B4,0.9552203389830508,False
+B1,prop_control_prevalent,xgb,XGBoost,vitaldb,VitalDB,0.0194769059543683,0.0134003350083752,0.0261853059789818,,proportion,main text candidate,control cases flagged at their own first eligible minute,,,False
+B1,prop_control_prevalent_or_warmup_of_alerting,xgb,XGBoost,vitaldb,VitalDB,0.1628959276018099,,,,proportion,main text candidate,share of alerting controls flagged on arrival or during warm-up,,,False
+B1,prop_prevalent,xgb,XGBoost,mover,MOVER (SIS),0.1311769991015274,0.1114106019766397,0.1509433962264151,,proportion,main text candidate,detected event alerts already above threshold at the window's first minute,,,False
+B1,prop_warmup,xgb,XGBoost,mover,MOVER (SIS),0.1114106019766397,0.0934411500449236,0.1302785265049416,,proportion,main text candidate,incident crossings within the first 5 minutes of monitoring,,,False
+B1,prop_settled,xgb,XGBoost,mover,MOVER (SIS),0.7574123989218329,,,,proportion,main text candidate,neither prevalent nor warm-up,,,False
+B1,lead_median_all,xgb,XGBoost,mover,MOVER (SIS),19.0,18.0,22.0,,min,supplement,"published Table 2 quantity, reproduced",,,False
+B1,lead_median_incident,xgb,XGBoost,mover,MOVER (SIS),19.0,17.0,21.0,,min,main text candidate,,,,False
+B1,lead_median_settled,xgb,XGBoost,mover,MOVER (SIS),19.0,17.0,22.0,,min,main text candidate,,,,False
+B1,lead_shift_all_minus_incident,xgb,XGBoost,mover,MOVER (SIS),0.0,0.0,2.0,0.424,min,main text candidate,paired; BH family B,B1-B4,0.744,False
+B1,lead_shift_all_minus_settled,xgb,XGBoost,mover,MOVER (SIS),0.0,-1.0,2.0,1.0,min,main text candidate,paired; BH family B,B1-B4,1.0,False
+B1,prop_control_prevalent,xgb,XGBoost,mover,MOVER (SIS),0.0373376623376623,0.0275974025974025,0.0478896103896103,,proportion,main text candidate,control cases flagged at their own first eligible minute,,,False
+B1,prop_control_prevalent_or_warmup_of_alerting,xgb,XGBoost,mover,MOVER (SIS),0.2017937219730941,,,,proportion,main text candidate,share of alerting controls flagged on arrival or during warm-up,,,False
+B1,prop_prevalent,rf,Random forest,epic_test,MOVER (EPIC) test,0.1996927803379416,0.1694650136850249,0.229488926488454,,proportion,main text candidate,detected event alerts already above threshold at the window's first minute,,,False
+B1,prop_warmup,rf,Random forest,epic_test,MOVER (EPIC) test,0.1720430107526881,0.1439507053691586,0.1997057876747994,,proportion,main text candidate,incident crossings within the first 5 minutes of monitoring,,,False
+B1,prop_settled,rf,Random forest,epic_test,MOVER (EPIC) test,0.6282642089093702,,,,proportion,main text candidate,neither prevalent nor warm-up,,,False
+B1,lead_median_all,rf,Random forest,epic_test,MOVER (EPIC) test,22.0,20.0,24.0,,min,supplement,"published Table 2 quantity, reproduced",,,False
+B1,lead_median_incident,rf,Random forest,epic_test,MOVER (EPIC) test,21.0,18.0,23.0,,min,main text candidate,,,,False
+B1,lead_median_settled,rf,Random forest,epic_test,MOVER (EPIC) test,22.0,19.4875,25.0,,min,main text candidate,,,,False
+B1,lead_shift_all_minus_incident,rf,Random forest,epic_test,MOVER (EPIC) test,1.0,0.0,3.0,0.256,min,main text candidate,paired; BH family B,B1-B4,0.496,False
+B1,lead_shift_all_minus_settled,rf,Random forest,epic_test,MOVER (EPIC) test,0.0,-2.0,2.0,1.0,min,main text candidate,paired; BH family B,B1-B4,1.0,False
+B1,prop_control_prevalent,rf,Random forest,epic_test,MOVER (EPIC) test,0.076051779935275,0.0555532898314301,0.0974105292102034,,proportion,main text candidate,control cases flagged at their own first eligible minute,,,False
+B1,prop_control_prevalent_or_warmup_of_alerting,rf,Random forest,epic_test,MOVER (EPIC) test,0.2581818181818182,,,,proportion,main text candidate,share of alerting controls flagged on arrival or during warm-up,,,False
+B1,prop_prevalent,rf,Random forest,vitaldb,VitalDB,0.1149567367119901,0.0938644008135169,0.1374275335011531,,proportion,main text candidate,detected event alerts already above threshold at the window's first minute,,,False
+B1,prop_warmup,rf,Random forest,vitaldb,VitalDB,0.1372064276885043,0.1149567367119901,0.1606486876315177,,proportion,main text candidate,incident crossings within the first 5 minutes of monitoring,,,False
+B1,prop_settled,rf,Random forest,vitaldb,VitalDB,0.7478368355995055,,,,proportion,main text candidate,neither prevalent nor warm-up,,,False
+B1,lead_median_all,rf,Random forest,vitaldb,VitalDB,15.0,13.0,18.0,,min,supplement,"published Table 2 quantity, reproduced",,,False
+B1,lead_median_incident,rf,Random forest,vitaldb,VitalDB,13.5,11.0,16.0,,min,main text candidate,,,,False
+B1,lead_median_settled,rf,Random forest,vitaldb,VitalDB,16.0,14.0,19.0,,min,main text candidate,,,,False
+B1,lead_shift_all_minus_incident,rf,Random forest,vitaldb,VitalDB,1.5,0.0,3.0,0.067,min,main text candidate,paired; BH family B,B1-B4,0.15577500000000002,False
+B1,lead_shift_all_minus_settled,rf,Random forest,vitaldb,VitalDB,-1.0,-3.0,0.0,0.345,min,main text candidate,paired; BH family B,B1-B4,0.6291176470588236,False
+B1,prop_control_prevalent,rf,Random forest,vitaldb,VitalDB,0.0333889816360601,0.0250556792873051,0.0419737522908117,,proportion,main text candidate,control cases flagged at their own first eligible minute,,,False
+B1,prop_control_prevalent_or_warmup_of_alerting,rf,Random forest,vitaldb,VitalDB,0.1843003412969283,,,,proportion,main text candidate,share of alerting controls flagged on arrival or during warm-up,,,False
+B1,prop_prevalent,rf,Random forest,mover,MOVER (SIS),0.1747491638795986,0.153010033444816,0.1964882943143812,,proportion,main text candidate,detected event alerts already above threshold at the window's first minute,,,False
+B1,prop_warmup,rf,Random forest,mover,MOVER (SIS),0.1053511705685618,0.088628762541806,0.1220735785953177,,proportion,main text candidate,incident crossings within the first 5 minutes of monitoring,,,False
+B1,prop_settled,rf,Random forest,mover,MOVER (SIS),0.7198996655518395,,,,proportion,main text candidate,neither prevalent nor warm-up,,,False
+B1,lead_median_all,rf,Random forest,mover,MOVER (SIS),22.0,20.0,24.5,,min,supplement,"published Table 2 quantity, reproduced",,,False
+B1,lead_median_incident,rf,Random forest,mover,MOVER (SIS),20.0,19.0,23.0,,min,main text candidate,,,,False
+B1,lead_median_settled,rf,Random forest,mover,MOVER (SIS),22.0,19.5,24.0,,min,main text candidate,,,,False
+B1,lead_shift_all_minus_incident,rf,Random forest,mover,MOVER (SIS),2.0,0.0,3.0,0.163,min,main text candidate,paired; BH family B,B1-B4,0.3525348837209302,False
+B1,lead_shift_all_minus_settled,rf,Random forest,mover,MOVER (SIS),0.0,-1.0,2.0,1.0,min,main text candidate,paired; BH family B,B1-B4,1.0,False
+B1,prop_control_prevalent,rf,Random forest,mover,MOVER (SIS),0.060064935064935,0.047077922077922,0.0738636363636363,,proportion,main text candidate,control cases flagged at their own first eligible minute,,,False
+B1,prop_control_prevalent_or_warmup_of_alerting,rf,Random forest,mover,MOVER (SIS),0.2265193370165746,,,,proportion,main text candidate,share of alerting controls flagged on arrival or during warm-up,,,False
+B1,prop_prevalent,logreg,Logistic regression,epic_test,MOVER (EPIC) test,0.2553191489361702,0.2237402714552434,0.2900375207094825,,proportion,main text candidate,detected event alerts already above threshold at the window's first minute,,,False
+B1,prop_warmup,logreg,Logistic regression,epic_test,MOVER (EPIC) test,0.1641337386018237,0.1369810967231544,0.1929569278103864,,proportion,main text candidate,incident crossings within the first 5 minutes of monitoring,,,False
+B1,prop_settled,logreg,Logistic regression,epic_test,MOVER (EPIC) test,0.5805471124620061,,,,proportion,main text candidate,neither prevalent nor warm-up,,,False
+B1,lead_median_all,logreg,Logistic regression,epic_test,MOVER (EPIC) test,23.0,21.0,26.0,,min,supplement,"published Table 2 quantity, reproduced",,,False
+B1,lead_median_incident,logreg,Logistic regression,epic_test,MOVER (EPIC) test,22.0,19.0,25.0,,min,main text candidate,,,,False
+B1,lead_median_settled,logreg,Logistic regression,epic_test,MOVER (EPIC) test,23.0,19.0,26.0,,min,main text candidate,,,,False
+B1,lead_shift_all_minus_incident,logreg,Logistic regression,epic_test,MOVER (EPIC) test,1.0,-1.0,3.0,0.84,min,main text candidate,paired; BH family B,B1-B4,1.0,False
+B1,lead_shift_all_minus_settled,logreg,Logistic regression,epic_test,MOVER (EPIC) test,0.0,-2.0,3.0,1.0,min,main text candidate,paired; BH family B,B1-B4,1.0,False
+B1,prop_control_prevalent,logreg,Logistic regression,epic_test,MOVER (EPIC) test,0.0841423948220064,0.0623949464108657,0.1066890093397341,,proportion,main text candidate,control cases flagged at their own first eligible minute,,,False
+B1,prop_control_prevalent_or_warmup_of_alerting,logreg,Logistic regression,epic_test,MOVER (EPIC) test,0.3255033557046979,,,,proportion,main text candidate,share of alerting controls flagged on arrival or during warm-up,,,False
+B1,prop_prevalent,logreg,Logistic regression,vitaldb,VitalDB,0.0711206896551724,0.0476190476190476,0.0948275862068965,,proportion,main text candidate,detected event alerts already above threshold at the window's first minute,,,False
+B1,prop_warmup,logreg,Logistic regression,vitaldb,VitalDB,0.1120689655172413,0.084051724137931,0.1403963656933418,,proportion,main text candidate,incident crossings within the first 5 minutes of monitoring,,,False
+B1,prop_settled,logreg,Logistic regression,vitaldb,VitalDB,0.8168103448275862,,,,proportion,main text candidate,neither prevalent nor warm-up,,,False
+B1,lead_median_all,logreg,Logistic regression,vitaldb,VitalDB,14.0,11.0,16.0,,min,supplement,"published Table 2 quantity, reproduced",,,False
+B1,lead_median_incident,logreg,Logistic regression,vitaldb,VitalDB,13.0,10.0,16.0,,min,main text candidate,,,,False
+B1,lead_median_settled,logreg,Logistic regression,vitaldb,VitalDB,14.0,12.0,18.0,,min,main text candidate,,,,False
+B1,lead_shift_all_minus_incident,logreg,Logistic regression,vitaldb,VitalDB,1.0,0.0,2.0,0.711,min,main text candidate,paired; BH family B,B1-B4,1.0,False
+B1,lead_shift_all_minus_settled,logreg,Logistic regression,vitaldb,VitalDB,0.0,-3.0,0.5,0.63,min,main text candidate,paired; BH family B,B1-B4,0.9765,False
+B1,prop_control_prevalent,logreg,Logistic regression,vitaldb,VitalDB,0.01669449081803,0.0106145251396648,0.0228158041179744,,proportion,main text candidate,control cases flagged at their own first eligible minute,,,False
+B1,prop_control_prevalent_or_warmup_of_alerting,logreg,Logistic regression,vitaldb,VitalDB,0.1783439490445859,,,,proportion,main text candidate,share of alerting controls flagged on arrival or during warm-up,,,False
+B1,prop_prevalent,logreg,Logistic regression,mover,MOVER (SIS),0.1383647798742138,0.1176999101527403,0.1581311769991015,,proportion,main text candidate,detected event alerts already above threshold at the window's first minute,,,False
+B1,prop_warmup,logreg,Logistic regression,mover,MOVER (SIS),0.1087151841868823,0.091644204851752,0.1266846361185983,,proportion,main text candidate,incident crossings within the first 5 minutes of monitoring,,,False
+B1,prop_settled,logreg,Logistic regression,mover,MOVER (SIS),0.7529200359389039,,,,proportion,main text candidate,neither prevalent nor warm-up,,,False
+B1,lead_median_all,logreg,Logistic regression,mover,MOVER (SIS),21.0,19.0,23.0,,min,supplement,"published Table 2 quantity, reproduced",,,False
+B1,lead_median_incident,logreg,Logistic regression,mover,MOVER (SIS),20.0,18.0,22.0,,min,main text candidate,,,,False
+B1,lead_median_settled,logreg,Logistic regression,mover,MOVER (SIS),21.0,19.0,24.0,,min,main text candidate,,,,False
+B1,lead_shift_all_minus_incident,logreg,Logistic regression,mover,MOVER (SIS),1.0,0.0,2.0,0.394,min,main text candidate,paired; BH family B,B1-B4,0.7046538461538462,False
+B1,lead_shift_all_minus_settled,logreg,Logistic regression,mover,MOVER (SIS),0.0,-2.0,1.0,1.0,min,main text candidate,paired; BH family B,B1-B4,1.0,False
+B1,prop_control_prevalent,logreg,Logistic regression,mover,MOVER (SIS),0.0446428571428571,0.034090909090909,0.0568181818181818,,proportion,main text candidate,control cases flagged at their own first eligible minute,,,False
+B1,prop_control_prevalent_or_warmup_of_alerting,logreg,Logistic regression,mover,MOVER (SIS),0.2015655577299412,,,,proportion,main text candidate,share of alerting controls flagged on arrival or during warm-up,,,False
+B1b,sensitivity,transformer,ITE Transformer,epic_test,MOVER (EPIC) test,0.77735368956743,0.7464607464607464,0.805934173385237,,proportion,main text candidate,suppress=0 min; reproduces Table 2,,,False
+B1b,specificity,transformer,ITE Transformer,epic_test,MOVER (EPIC) test,0.4061488673139158,0.3679088317080706,0.4429546360433926,,proportion,main text candidate,suppress=0 min,,,False
+B1b,lead_median,transformer,ITE Transformer,epic_test,MOVER (EPIC) test,24.0,21.0,27.0,,min,main text candidate,suppress=0 min,,,False
+B1b,ppv,transformer,ITE Transformer,epic_test,MOVER (EPIC) test,0.6247443762781186,0.5938076008476874,0.6556050608802122,,proportion,main text candidate,suppress=0 min,,,False
+B1b,nne,transformer,ITE Transformer,epic_test,MOVER (EPIC) test,1.6006546644844517,1.5253085443037977,1.684047157857944,,cases per event,main text candidate,suppress=0 min,,,False
+B1b,sensitivity,transformer,ITE Transformer,epic_test,MOVER (EPIC) test,0.77735368956743,0.7480569155446757,0.806951500372553,,proportion,supplement,suppress=3 min,,,False
+B1b,specificity,transformer,ITE Transformer,epic_test,MOVER (EPIC) test,0.4061488673139158,0.3660835155554153,0.4435496164437451,,proportion,supplement,suppress=3 min,,,False
+B1b,lead_median,transformer,ITE Transformer,epic_test,MOVER (EPIC) test,22.0,19.0,24.0,,min,supplement,suppress=3 min,,,False
+B1b,ppv,transformer,ITE Transformer,epic_test,MOVER (EPIC) test,0.6247443762781186,0.5925534405620717,0.6542075364331664,,proportion,supplement,suppress=3 min,,,False
+B1b,nne,transformer,ITE Transformer,epic_test,MOVER (EPIC) test,1.6006546644844517,1.5285669220369535,1.6876114995617189,,cases per event,supplement,suppress=3 min,,,False
+B1b,sensitivity,transformer,ITE Transformer,epic_test,MOVER (EPIC) test,0.7391857506361323,0.7063954708829887,0.7703057635492286,,proportion,main text candidate,suppress=5 min,,,False
+B1b,specificity,transformer,ITE Transformer,epic_test,MOVER (EPIC) test,0.4061488673139158,0.3685928276269185,0.4447908387836093,,proportion,main text candidate,suppress=5 min,,,False
+B1b,lead_median,transformer,ITE Transformer,epic_test,MOVER (EPIC) test,21.0,19.0,24.0,,min,main text candidate,suppress=5 min,,,False
+B1b,ppv,transformer,ITE Transformer,epic_test,MOVER (EPIC) test,0.6128691983122363,0.5812661491568731,0.6426348759952285,,proportion,main text candidate,suppress=5 min,,,False
+B1b,nne,transformer,ITE Transformer,epic_test,MOVER (EPIC) test,1.6316695352839932,1.556093572897863,1.7203823125245383,,cases per event,main text candidate,suppress=5 min,,,False
+B1b,sensitivity,transformer,ITE Transformer,epic_test,MOVER (EPIC) test,0.6590330788804071,0.6245259165613148,0.6924186462626712,,proportion,supplement,suppress=10 min,,,False
+B1b,specificity,transformer,ITE Transformer,epic_test,MOVER (EPIC) test,0.4093851132686084,0.3713342954816654,0.4464414905833715,,proportion,supplement,suppress=10 min,,,False
+B1b,lead_median,transformer,ITE Transformer,epic_test,MOVER (EPIC) test,21.0,18.0,23.0,,min,supplement,suppress=10 min,,,False
+B1b,ppv,transformer,ITE Transformer,epic_test,MOVER (EPIC) test,0.5866364665911665,0.5539855673424579,0.6202583865981535,,proportion,supplement,suppress=10 min,,,False
+B1b,nne,transformer,ITE Transformer,epic_test,MOVER (EPIC) test,1.704633204633205,1.6122313287016934,1.8051012011065584,,cases per event,supplement,suppress=10 min,,,False
+B1b,sensitivity,transformer,ITE Transformer,epic_test,MOVER (EPIC) test,0.5674300254452926,0.5325347958814094,0.6009984753143048,,proportion,supplement,suppress=15 min,,,False
+B1b,specificity,transformer,ITE Transformer,epic_test,MOVER (EPIC) test,0.4158576051779935,0.3771559583185367,0.4542620755319093,,proportion,supplement,suppress=15 min,,,False
+B1b,lead_median,transformer,ITE Transformer,epic_test,MOVER (EPIC) test,20.0,17.0,23.0,,min,supplement,suppress=15 min,,,False
+B1b,ppv,transformer,ITE Transformer,epic_test,MOVER (EPIC) test,0.5526641883519207,0.5177441876423268,0.5870609685159601,,proportion,supplement,suppress=15 min,,,False
+B1b,nne,transformer,ITE Transformer,epic_test,MOVER (EPIC) test,1.8094170403587444,1.703400590654994,1.9314557764796256,,cases per event,supplement,suppress=15 min,,,False
+B1b,sensitivity,transformer,ITE Transformer,vitaldb,VitalDB,0.6792452830188679,0.6507397478626286,0.7066453248647767,,proportion,main text candidate,suppress=0 min; reproduces Table 2,,,False
+B1b,specificity,transformer,ITE Transformer,vitaldb,VitalDB,0.3789649415692822,0.3580393691114331,0.4027794882320744,,proportion,main text candidate,suppress=0 min,,,False
+B1b,lead_median,transformer,ITE Transformer,vitaldb,VitalDB,17.0,15.4875,19.0,,min,main text candidate,suppress=0 min,,,False
+B1b,ppv,transformer,ITE Transformer,vitaldb,VitalDB,0.38,0.3571827607818763,0.4022093998013613,,proportion,main text candidate,suppress=0 min,,,False
+B1b,nne,transformer,ITE Transformer,vitaldb,VitalDB,2.6315789473684212,2.486267123287671,2.7996871904208125,,cases per event,main text candidate,suppress=0 min,,,False
+B1b,sensitivity,transformer,ITE Transformer,vitaldb,VitalDB,0.6792452830188679,0.6518373651691277,0.7085354867596887,,proportion,supplement,suppress=3 min,,,False
+B1b,specificity,transformer,ITE Transformer,vitaldb,VitalDB,0.3795214245965498,0.3569050485383224,0.4019609181739326,,proportion,supplement,suppress=3 min,,,False
+B1b,lead_median,transformer,ITE Transformer,vitaldb,VitalDB,15.0,13.5,16.0,,min,supplement,suppress=3 min,,,False
+B1b,ppv,transformer,ITE Transformer,vitaldb,VitalDB,0.3802112284602557,0.3571418775957997,0.4024342831627408,,proportion,supplement,suppress=3 min,,,False
+B1b,nne,transformer,ITE Transformer,vitaldb,VitalDB,2.6301169590643276,2.48487776216321,2.8000076804915515,,cases per event,supplement,suppress=3 min,,,False
+B1b,sensitivity,transformer,ITE Transformer,vitaldb,VitalDB,0.6156901688182721,0.5835903572910639,0.6460053211888782,,proportion,main text candidate,suppress=5 min,,,False
+B1b,specificity,transformer,ITE Transformer,vitaldb,VitalDB,0.3795214245965498,0.3578919372900336,0.4032547233567876,,proportion,main text candidate,suppress=5 min,,,False
+B1b,lead_median,transformer,ITE Transformer,vitaldb,VitalDB,15.0,13.0,17.0,,min,main text candidate,suppress=5 min,,,False
+B1b,ppv,transformer,ITE Transformer,vitaldb,VitalDB,0.3573487031700288,0.3346732636118393,0.3800002823263693,,proportion,main text candidate,suppress=5 min,,,False
+B1b,nne,transformer,ITE Transformer,vitaldb,VitalDB,2.7983870967741935,2.631576992257762,2.98798892754115,,cases per event,main text candidate,suppress=5 min,,,False
+B1b,sensitivity,transformer,ITE Transformer,vitaldb,VitalDB,0.4766633565044687,0.4457311730755858,0.509733439781729,,proportion,supplement,suppress=10 min,,,False
+B1b,specificity,transformer,ITE Transformer,vitaldb,VitalDB,0.3828603227601558,0.3606427115683229,0.4047884187082405,,proportion,supplement,suppress=10 min,,,False
+B1b,lead_median,transformer,ITE Transformer,vitaldb,VitalDB,19.0,15.4875,22.0,,min,supplement,suppress=10 min,,,False
+B1b,ppv,transformer,ITE Transformer,vitaldb,VitalDB,0.302076777847703,0.2794346817212129,0.3245288475529902,,proportion,supplement,suppress=10 min,,,False
+B1b,nne,transformer,ITE Transformer,vitaldb,VitalDB,3.310416666666667,3.081390168086576,3.578653899282225,,cases per event,supplement,suppress=10 min,,,False
+B1b,sensitivity,transformer,ITE Transformer,vitaldb,VitalDB,0.3833167825223436,0.3529995212734127,0.4133942688924731,,proportion,supplement,suppress=15 min,,,False
+B1b,specificity,transformer,ITE Transformer,vitaldb,VitalDB,0.4101279910962715,0.3881429179469006,0.4331112603810454,,proportion,supplement,suppress=15 min,,,False
+B1b,lead_median,transformer,ITE Transformer,vitaldb,VitalDB,22.0,18.0,25.0,,min,supplement,suppress=15 min,,,False
+B1b,ppv,transformer,ITE Transformer,vitaldb,VitalDB,0.2669432918395574,0.2442639659161861,0.2904132803063371,,proportion,supplement,suppress=15 min,,,False
+B1b,nne,transformer,ITE Transformer,vitaldb,VitalDB,3.7461139896373057,3.4433687020810515,4.093931728492502,,cases per event,supplement,suppress=15 min,,,False
+B1b,sensitivity,transformer,ITE Transformer,mover,MOVER (SIS),0.6572036905606813,0.632098574682272,0.6821151210303092,,proportion,main text candidate,suppress=0 min; reproduces Table 2,,,False
+B1b,specificity,transformer,ITE Transformer,mover,MOVER (SIS),0.4667207792207792,0.4409385113268608,0.4943572989622207,,proportion,main text candidate,suppress=0 min,,,False
+B1b,lead_median,transformer,ITE Transformer,mover,MOVER (SIS),22.0,20.0,24.5,,min,main text candidate,suppress=0 min,,,False
+B1b,ppv,transformer,ITE Transformer,mover,MOVER (SIS),0.5849652558433355,0.5613593455003146,0.6092766963479964,,proportion,main text candidate,suppress=0 min,,,False
+B1b,nne,transformer,ITE Transformer,mover,MOVER (SIS),1.7095032397408207,1.6412904122084,1.781390134529148,,cases per event,main text candidate,suppress=0 min,,,False
+B1b,sensitivity,transformer,ITE Transformer,mover,MOVER (SIS),0.6564939673527325,0.6324311392316156,0.6804695175051212,,proportion,supplement,suppress=3 min,,,False
+B1b,specificity,transformer,ITE Transformer,mover,MOVER (SIS),0.471590909090909,0.445489485809139,0.5011878854170418,,proportion,supplement,suppress=3 min,,,False
+B1b,lead_median,transformer,ITE Transformer,mover,MOVER (SIS),20.0,18.0,22.0,,min,supplement,suppress=3 min,,,False
+B1b,ppv,transformer,ITE Transformer,mover,MOVER (SIS),0.5869289340101523,0.5624565438373571,0.611652394785792,,proportion,supplement,suppress=3 min,,,False
+B1b,nne,transformer,ITE Transformer,mover,MOVER (SIS),1.7037837837837837,1.6349155425471535,1.7779151367923944,,cases per event,supplement,suppress=3 min,,,False
+B1b,sensitivity,transformer,ITE Transformer,mover,MOVER (SIS),0.609652235628105,0.5848780944073083,0.6349796969071778,,proportion,main text candidate,suppress=5 min,,,False
+B1b,specificity,transformer,ITE Transformer,mover,MOVER (SIS),0.474025974025974,0.4447092878486055,0.5032259367345875,,proportion,main text candidate,suppress=5 min,,,False
+B1b,lead_median,transformer,ITE Transformer,mover,MOVER (SIS),21.0,19.0,23.0,,min,main text candidate,suppress=5 min,,,False
+B1b,ppv,transformer,ITE Transformer,mover,MOVER (SIS),0.5700066357000664,0.5448429766904498,0.5954154677323125,,proportion,main text candidate,suppress=5 min,,,False
+B1b,nne,transformer,ITE Transformer,mover,MOVER (SIS),1.7543655413271246,1.6794995331132871,1.8353912253921465,,cases per event,main text candidate,suppress=5 min,,,False
+B1b,sensitivity,transformer,ITE Transformer,mover,MOVER (SIS),0.5152590489709014,0.4891926937135871,0.5405036902279214,,proportion,supplement,suppress=10 min,,,False
+B1b,specificity,transformer,ITE Transformer,mover,MOVER (SIS),0.4902597402597403,0.4612887591849497,0.5187071612669918,,proportion,supplement,suppress=10 min,,,False
+B1b,lead_median,transformer,ITE Transformer,mover,MOVER (SIS),21.0,19.0,23.0,,min,supplement,suppress=10 min,,,False
+B1b,ppv,transformer,ITE Transformer,mover,MOVER (SIS),0.5361890694239291,0.5095611963947696,0.5621664840660361,,proportion,supplement,suppress=10 min,,,False
+B1b,nne,transformer,ITE Transformer,mover,MOVER (SIS),1.8650137741046833,1.77883247818703,1.9624728642436875,,cases per event,supplement,suppress=10 min,,,False
+B1b,sensitivity,transformer,ITE Transformer,mover,MOVER (SIS),0.3711852377572747,0.3484124901195534,0.396785519658636,,proportion,supplement,suppress=15 min,,,False
+B1b,specificity,transformer,ITE Transformer,mover,MOVER (SIS),0.6493506493506493,0.6237934163191239,0.6751050030276745,,proportion,supplement,suppress=15 min,,,False
+B1b,lead_median,transformer,ITE Transformer,mover,MOVER (SIS),19.0,17.5,21.0,,min,supplement,suppress=15 min,,,False
+B1b,ppv,transformer,ITE Transformer,mover,MOVER (SIS),0.5476439790575917,0.5161281669666343,0.5808803909206237,,proportion,supplement,suppress=15 min,,,False
+B1b,nne,transformer,ITE Transformer,mover,MOVER (SIS),1.8260038240917784,1.7215248081162535,1.9375032484407484,,cases per event,supplement,suppress=15 min,,,False
+B1b,sensitivity,lstm,LSTM,epic_test,MOVER (EPIC) test,0.806615776081425,0.7786131713091586,0.8335451486788352,,proportion,main text candidate,suppress=0 min; reproduces Table 2,,,False
+B1b,specificity,lstm,LSTM,epic_test,MOVER (EPIC) test,0.4741100323624595,0.4334270044726205,0.5128718290150762,,proportion,main text candidate,suppress=0 min,,,False
+B1b,lead_median,lstm,LSTM,epic_test,MOVER (EPIC) test,23.0,20.0,25.0,,min,main text candidate,suppress=0 min,,,False
+B1b,ppv,lstm,LSTM,epic_test,MOVER (EPIC) test,0.6611053180396246,0.6314681074706455,0.6898412415765662,,proportion,main text candidate,suppress=0 min,,,False
+B1b,nne,lstm,LSTM,epic_test,MOVER (EPIC) test,1.5126182965299684,1.4496088954365287,1.5836112540192926,,cases per event,main text candidate,suppress=0 min,,,False
+B1b,sensitivity,lstm,LSTM,epic_test,MOVER (EPIC) test,0.7989821882951654,0.7692307692307693,0.8280812275550138,,proportion,supplement,suppress=3 min,,,False
+B1b,specificity,lstm,LSTM,epic_test,MOVER (EPIC) test,0.4789644012944983,0.4397980880451793,0.5185199518403854,,proportion,supplement,suppress=3 min,,,False
+B1b,lead_median,lstm,LSTM,epic_test,MOVER (EPIC) test,21.0,18.0,23.0,,min,supplement,suppress=3 min,,,False
+B1b,ppv,lstm,LSTM,epic_test,MOVER (EPIC) test,0.6610526315789473,0.6318552172973265,0.6912272907518101,,proportion,supplement,suppress=3 min,,,False
+B1b,nne,lstm,LSTM,epic_test,MOVER (EPIC) test,1.5127388535031847,1.446702139983073,1.5826410430672742,,cases per event,supplement,suppress=3 min,,,False
+B1b,sensitivity,lstm,LSTM,epic_test,MOVER (EPIC) test,0.767175572519084,0.736316697761194,0.7960551619433198,,proportion,main text candidate,suppress=5 min,,,False
+B1b,specificity,lstm,LSTM,epic_test,MOVER (EPIC) test,0.4838187702265372,0.4432167694293089,0.5222788735987753,,proportion,main text candidate,suppress=5 min,,,False
+B1b,lead_median,lstm,LSTM,epic_test,MOVER (EPIC) test,21.0,19.0,23.0,,min,main text candidate,suppress=5 min,,,False
+B1b,ppv,lstm,LSTM,epic_test,MOVER (EPIC) test,0.6540130151843818,0.6236499591670069,0.685031185031185,,proportion,main text candidate,suppress=5 min,,,False
+B1b,nne,lstm,LSTM,epic_test,MOVER (EPIC) test,1.529021558872305,1.4597875569044003,1.6034635918081568,,cases per event,main text candidate,suppress=5 min,,,False
+B1b,sensitivity,lstm,LSTM,epic_test,MOVER (EPIC) test,0.6844783715012722,0.6511845491565237,0.7184422348484848,,proportion,supplement,suppress=10 min,,,False
+B1b,specificity,lstm,LSTM,epic_test,MOVER (EPIC) test,0.5161812297734627,0.4774548104709202,0.5532925809822361,,proportion,supplement,suppress=10 min,,,False
+B1b,lead_median,lstm,LSTM,epic_test,MOVER (EPIC) test,21.0,18.0,24.0,,min,supplement,suppress=10 min,,,False
+B1b,ppv,lstm,LSTM,epic_test,MOVER (EPIC) test,0.6427718040621266,0.6127124970671672,0.6746713195556336,,proportion,supplement,suppress=10 min,,,False
+B1b,nne,lstm,LSTM,epic_test,MOVER (EPIC) test,1.555762081784387,1.4822032168777663,1.6320868379177085,,cases per event,supplement,suppress=10 min,,,False
+B1b,sensitivity,lstm,LSTM,epic_test,MOVER (EPIC) test,0.5852417302798982,0.5512177967687606,0.6214212687078189,,proportion,supplement,suppress=15 min,,,False
+B1b,specificity,lstm,LSTM,epic_test,MOVER (EPIC) test,0.56957928802589,0.5302910685805422,0.6060630617356711,,proportion,supplement,suppress=15 min,,,False
+B1b,lead_median,lstm,LSTM,epic_test,MOVER (EPIC) test,20.0,18.0,23.0,,min,supplement,suppress=15 min,,,False
+B1b,ppv,lstm,LSTM,epic_test,MOVER (EPIC) test,0.6336088154269972,0.5977804724970749,0.6671388605692318,,proportion,supplement,suppress=15 min,,,False
+B1b,nne,lstm,LSTM,epic_test,MOVER (EPIC) test,1.5782608695652174,1.4989383157008405,1.67285491250515,,cases per event,supplement,suppress=15 min,,,False
+B1b,sensitivity,lstm,LSTM,vitaldb,VitalDB,0.4915590863952334,0.4600548204590695,0.5225416515941267,,proportion,main text candidate,suppress=0 min; reproduces Table 2,,,False
+B1b,specificity,lstm,LSTM,vitaldb,VitalDB,0.8124652198107958,0.794842953267058,0.8297632623773624,,proportion,main text candidate,suppress=0 min,,,False
+B1b,lead_median,lstm,LSTM,vitaldb,VitalDB,9.0,8.0,10.0,,min,main text candidate,suppress=0 min,,,False
+B1b,ppv,lstm,LSTM,vitaldb,VitalDB,0.5949519230769231,0.5625712719298246,0.6291689676342556,,proportion,main text candidate,suppress=0 min,,,False
+B1b,nne,lstm,LSTM,vitaldb,VitalDB,1.6808080808080808,1.589398187085319,1.7775525525525524,,cases per event,main text candidate,suppress=0 min,,,False
+B1b,sensitivity,lstm,LSTM,vitaldb,VitalDB,0.4766633565044687,0.4452329121647285,0.5054918094553549,,proportion,supplement,suppress=3 min,,,False
+B1b,specificity,lstm,LSTM,vitaldb,VitalDB,0.8202559821925431,0.8018640062620692,0.8379443291523441,,proportion,supplement,suppress=3 min,,,False
+B1b,lead_median,lstm,LSTM,vitaldb,VitalDB,8.0,7.0,10.0,,min,supplement,suppress=3 min,,,False
+B1b,ppv,lstm,LSTM,vitaldb,VitalDB,0.597758405977584,0.5625661116627912,0.6317780955164064,,proportion,supplement,suppress=3 min,,,False
+B1b,nne,lstm,LSTM,vitaldb,VitalDB,1.6729166666666666,1.5828342407743496,1.7775688780112036,,cases per event,supplement,suppress=3 min,,,False
+B1b,sensitivity,lstm,LSTM,vitaldb,VitalDB,0.4240317775571003,0.3949993718592965,0.4528789068484755,,proportion,main text candidate,suppress=5 min,,,False
+B1b,specificity,lstm,LSTM,vitaldb,VitalDB,0.8241513633834168,0.8070313671347894,0.8419617769444435,,proportion,main text candidate,suppress=5 min,,,False
+B1b,lead_median,lstm,LSTM,vitaldb,VitalDB,9.0,7.0,11.0,,min,main text candidate,suppress=5 min,,,False
+B1b,ppv,lstm,LSTM,vitaldb,VitalDB,0.5746971736204576,0.5398279862792574,0.6116020962816987,,proportion,main text candidate,suppress=5 min,,,False
+B1b,nne,lstm,LSTM,vitaldb,VitalDB,1.740046838407494,1.635049987753557,1.8524419487630388,,cases per event,main text candidate,suppress=5 min,,,False
+B1b,sensitivity,lstm,LSTM,vitaldb,VitalDB,0.2969215491559086,0.2687931289445193,0.3248031496062992,,proportion,supplement,suppress=10 min,,,False
+B1b,specificity,lstm,LSTM,vitaldb,VitalDB,0.8436282693377852,0.8270103641999225,0.8605177836846054,,proportion,supplement,suppress=10 min,,,False
+B1b,lead_median,lstm,LSTM,vitaldb,VitalDB,11.0,9.0,15.0,,min,supplement,suppress=10 min,,,False
+B1b,ppv,lstm,LSTM,vitaldb,VitalDB,0.5155172413793103,0.4746398052464229,0.5551587929475588,,proportion,supplement,suppress=10 min,,,False
+B1b,nne,lstm,LSTM,vitaldb,VitalDB,1.939799331103679,1.801286435476607,2.10686098306623,,cases per event,supplement,suppress=10 min,,,False
+B1b,sensitivity,lstm,LSTM,vitaldb,VitalDB,0.2035749751737835,0.1796266741862333,0.2294673329131485,,proportion,supplement,suppress=15 min,,,False
+B1b,specificity,lstm,LSTM,vitaldb,VitalDB,0.8842515303283249,0.8686582746614702,0.8995594962631985,,proportion,supplement,suppress=15 min,,,False
+B1b,lead_median,lstm,LSTM,vitaldb,VitalDB,13.0,9.0,17.0,,min,supplement,suppress=15 min,,,False
+B1b,ppv,lstm,LSTM,vitaldb,VitalDB,0.4963680387409201,0.4481901375995786,0.5454598680008516,,proportion,supplement,suppress=15 min,,,False
+B1b,nne,lstm,LSTM,vitaldb,VitalDB,2.014634146341463,1.8333154506437768,2.2311959087332807,,cases per event,supplement,suppress=15 min,,,False
+B1b,sensitivity,lstm,LSTM,mover,MOVER (SIS),0.5514549325762953,0.5264614754320649,0.5767059459026889,,proportion,main text candidate,suppress=0 min; reproduces Table 2,,,False
+B1b,specificity,lstm,LSTM,mover,MOVER (SIS),0.7094155844155844,0.6832082401788566,0.734963523962868,,proportion,main text candidate,suppress=0 min,,,False
+B1b,lead_median,lstm,LSTM,mover,MOVER (SIS),15.0,14.0,18.0,,min,main text candidate,suppress=0 min,,,False
+B1b,ppv,lstm,LSTM,mover,MOVER (SIS),0.6845814977973568,0.6574629648586596,0.7117475347641369,,proportion,main text candidate,suppress=0 min,,,False
+B1b,nne,lstm,LSTM,mover,MOVER (SIS),1.4607464607464606,1.404992574257426,1.5209982211348414,,cases per event,main text candidate,suppress=0 min,,,False
+B1b,sensitivity,lstm,LSTM,mover,MOVER (SIS),0.5216465578424414,0.4957358410084813,0.5487076559711432,,proportion,supplement,suppress=3 min,,,False
+B1b,specificity,lstm,LSTM,mover,MOVER (SIS),0.7224025974025974,0.6961002540984714,0.7466059505336906,,proportion,supplement,suppress=3 min,,,False
+B1b,lead_median,lstm,LSTM,mover,MOVER (SIS),14.0,12.0,16.0,,min,supplement,suppress=3 min,,,False
+B1b,ppv,lstm,LSTM,mover,MOVER (SIS),0.6824512534818942,0.6534839924670434,0.7098051738943753,,proportion,supplement,suppress=3 min,,,False
+B1b,nne,lstm,LSTM,mover,MOVER (SIS),1.4653061224489796,1.4088372935278162,1.5302593659942365,,cases per event,supplement,suppress=3 min,,,False
+B1b,sensitivity,lstm,LSTM,mover,MOVER (SIS),0.4904187366926898,0.4638505764632419,0.5165980637214946,,proportion,main text candidate,suppress=5 min,,,False
+B1b,specificity,lstm,LSTM,mover,MOVER (SIS),0.7288961038961039,0.7050413678191587,0.7547643702451394,,proportion,main text candidate,suppress=5 min,,,False
+B1b,lead_median,lstm,LSTM,mover,MOVER (SIS),14.0,12.5,17.0,,min,main text candidate,suppress=5 min,,,False
+B1b,ppv,lstm,LSTM,mover,MOVER (SIS),0.6741463414634147,0.6443111436612116,0.7023051299997407,,proportion,main text candidate,suppress=5 min,,,False
+B1b,nne,lstm,LSTM,mover,MOVER (SIS),1.4833574529667148,1.4238825286111472,1.552045174357168,,cases per event,main text candidate,suppress=5 min,,,False
+B1b,sensitivity,lstm,LSTM,mover,MOVER (SIS),0.4137686302342087,0.3878088912341883,0.4387528224967439,,proportion,supplement,suppress=10 min,,,False
+B1b,specificity,lstm,LSTM,mover,MOVER (SIS),0.7597402597402597,0.7362004362417854,0.782465826127479,,proportion,supplement,suppress=10 min,,,False
+B1b,lead_median,lstm,LSTM,mover,MOVER (SIS),15.0,13.0,17.5,,min,supplement,suppress=10 min,,,False
+B1b,ppv,lstm,LSTM,mover,MOVER (SIS),0.6632536973833902,0.6325546883296167,0.6948975035321262,,proportion,supplement,suppress=10 min,,,False
+B1b,nne,lstm,LSTM,mover,MOVER (SIS),1.5077186963979416,1.439061149611625,1.5808909800382245,,cases per event,supplement,suppress=10 min,,,False
+B1b,sensitivity,lstm,LSTM,mover,MOVER (SIS),0.3300212916962384,0.3049121984898487,0.3544045338280492,,proportion,supplement,suppress=15 min,,,False
+B1b,specificity,lstm,LSTM,mover,MOVER (SIS),0.8092532467532467,0.788273144144217,0.830744387974721,,proportion,supplement,suppress=15 min,,,False
+B1b,lead_median,lstm,LSTM,mover,MOVER (SIS),14.0,12.0,17.0,,min,supplement,suppress=15 min,,,False
+B1b,ppv,lstm,LSTM,mover,MOVER (SIS),0.6642857142857143,0.6298408071064441,0.700155606437435,,proportion,supplement,suppress=15 min,,,False
+B1b,nne,lstm,LSTM,mover,MOVER (SIS),1.5053763440860215,1.4282539363034532,1.58770277965893,,cases per event,supplement,suppress=15 min,,,False
+B1b,sensitivity,xgb,XGBoost,epic_test,MOVER (EPIC) test,0.8104325699745547,0.7822875893315895,0.8354451199200533,,proportion,main text candidate,suppress=0 min; reproduces Table 2,,,False
+B1b,specificity,xgb,XGBoost,epic_test,MOVER (EPIC) test,0.6084142394822006,0.5702988523755433,0.6474192008066588,,proportion,main text candidate,suppress=0 min,,,False
+B1b,lead_median,xgb,XGBoost,epic_test,MOVER (EPIC) test,21.0,18.0,23.0,,min,main text candidate,suppress=0 min,,,False
+B1b,ppv,xgb,XGBoost,epic_test,MOVER (EPIC) test,0.7246871444823664,0.6963037706934881,0.7543089711584426,,proportion,main text candidate,suppress=0 min,,,False
+B1b,nne,xgb,XGBoost,epic_test,MOVER (EPIC) test,1.379905808477237,1.3257167011286293,1.4361547964873618,,cases per event,main text candidate,suppress=0 min,,,False
+B1b,sensitivity,xgb,XGBoost,epic_test,MOVER (EPIC) test,0.7888040712468194,0.7604559234312086,0.817840147935073,,proportion,supplement,suppress=3 min,,,False
+B1b,specificity,xgb,XGBoost,epic_test,MOVER (EPIC) test,0.6197411003236246,0.5802196643684936,0.659131547008006,,proportion,supplement,suppress=3 min,,,False
+B1b,lead_median,xgb,XGBoost,epic_test,MOVER (EPIC) test,19.0,17.0,22.0,,min,supplement,suppress=3 min,,,False
+B1b,ppv,xgb,XGBoost,epic_test,MOVER (EPIC) test,0.7251461988304093,0.6951027652178045,0.7553554996192685,,proportion,supplement,suppress=3 min,,,False
+B1b,nne,xgb,XGBoost,epic_test,MOVER (EPIC) test,1.3790322580645162,1.323879948598241,1.4386362021809398,,cases per event,supplement,suppress=3 min,,,False
+B1b,sensitivity,xgb,XGBoost,epic_test,MOVER (EPIC) test,0.7582697201017812,0.7294956422636443,0.7881504151586118,,proportion,main text candidate,suppress=5 min,,,False
+B1b,specificity,xgb,XGBoost,epic_test,MOVER (EPIC) test,0.627831715210356,0.5888175574798448,0.6650487391148007,,proportion,main text candidate,suppress=5 min,,,False
+B1b,lead_median,xgb,XGBoost,epic_test,MOVER (EPIC) test,19.0,17.0,22.0,,min,main text candidate,suppress=5 min,,,False
+B1b,ppv,xgb,XGBoost,epic_test,MOVER (EPIC) test,0.7215496368038741,0.6906773340743689,0.7520668580194982,,proportion,main text candidate,suppress=5 min,,,False
+B1b,nne,xgb,XGBoost,epic_test,MOVER (EPIC) test,1.3859060402684564,1.329669017288444,1.447854089757966,,cases per event,main text candidate,suppress=5 min,,,False
+B1b,sensitivity,xgb,XGBoost,epic_test,MOVER (EPIC) test,0.6793893129770993,0.6460157337945286,0.7142857142857143,,proportion,supplement,suppress=10 min,,,False
+B1b,specificity,xgb,XGBoost,epic_test,MOVER (EPIC) test,0.645631067961165,0.6073251682872102,0.6835463162343282,,proportion,supplement,suppress=10 min,,,False
+B1b,lead_median,xgb,XGBoost,epic_test,MOVER (EPIC) test,20.0,18.0,23.0,,min,supplement,suppress=10 min,,,False
+B1b,ppv,xgb,XGBoost,epic_test,MOVER (EPIC) test,0.7091633466135459,0.6776739466731558,0.7407407407407407,,proportion,supplement,suppress=10 min,,,False
+B1b,nne,xgb,XGBoost,epic_test,MOVER (EPIC) test,1.4101123595505618,1.35,1.4756358939419747,,cases per event,supplement,suppress=10 min,,,False
+B1b,sensitivity,xgb,XGBoost,epic_test,MOVER (EPIC) test,0.6043256997455471,0.56904305200341,0.6389938349864519,,proportion,supplement,suppress=15 min,,,False
+B1b,specificity,xgb,XGBoost,epic_test,MOVER (EPIC) test,0.6650485436893203,0.6279834107312706,0.7001713294034274,,proportion,supplement,suppress=15 min,,,False
+B1b,lead_median,xgb,XGBoost,epic_test,MOVER (EPIC) test,20.0,18.0,24.0,,min,supplement,suppress=15 min,,,False
+B1b,ppv,xgb,XGBoost,epic_test,MOVER (EPIC) test,0.6964809384164223,0.6626323751891074,0.7294197138314784,,proportion,supplement,suppress=15 min,,,False
+B1b,nne,xgb,XGBoost,epic_test,MOVER (EPIC) test,1.4357894736842105,1.370952807646356,1.5091324200913243,,cases per event,supplement,suppress=15 min,,,False
+B1b,sensitivity,xgb,XGBoost,vitaldb,VitalDB,0.6941410129096326,0.6649575000050367,0.7210779603495409,,proportion,main text candidate,suppress=0 min; reproduces Table 2,,,False
+B1b,specificity,xgb,XGBoost,vitaldb,VitalDB,0.7540345019476906,0.7345776084357444,0.7744289378686613,,proportion,main text candidate,suppress=0 min,,,False
+B1b,lead_median,xgb,XGBoost,vitaldb,VitalDB,13.0,12.0,16.0,,min,main text candidate,suppress=0 min,,,False
+B1b,ppv,xgb,XGBoost,vitaldb,VitalDB,0.6126205083260298,0.5842877559419855,0.6402473369404404,,proportion,main text candidate,suppress=0 min,,,False
+B1b,nne,xgb,XGBoost,vitaldb,VitalDB,1.6323319027181689,1.561896385076358,1.7114854627307694,,cases per event,main text candidate,suppress=0 min,,,False
+B1b,sensitivity,xgb,XGBoost,vitaldb,VitalDB,0.6772591857000994,0.6471744544592031,0.7064041630058147,,proportion,supplement,suppress=3 min,,,False
+B1b,specificity,xgb,XGBoost,vitaldb,VitalDB,0.7595993322203672,0.7399315955986484,0.7791039124987585,,proportion,supplement,suppress=3 min,,,False
+B1b,lead_median,xgb,XGBoost,vitaldb,VitalDB,13.0,12.0,16.0,,min,supplement,suppress=3 min,,,False
+B1b,ppv,xgb,XGBoost,vitaldb,VitalDB,0.6122082585278277,0.5838037572165108,0.6413258178222929,,proportion,supplement,suppress=3 min,,,False
+B1b,nne,xgb,XGBoost,vitaldb,VitalDB,1.6334310850439884,1.5592698322742455,1.7129043581098082,,cases per event,supplement,suppress=3 min,,,False
+B1b,sensitivity,xgb,XGBoost,vitaldb,VitalDB,0.6444885799404171,0.6149307861957694,0.6726952373647381,,proportion,main text candidate,suppress=5 min,,,False
+B1b,specificity,xgb,XGBoost,vitaldb,VitalDB,0.763494713411241,0.7426917488538308,0.7828539903522288,,proportion,main text candidate,suppress=5 min,,,False
+B1b,lead_median,xgb,XGBoost,vitaldb,VitalDB,14.0,12.0,16.0,,min,main text candidate,suppress=5 min,,,False
+B1b,ppv,xgb,XGBoost,vitaldb,VitalDB,0.6042830540037244,0.5740718923447481,0.6327498028680565,,proportion,main text candidate,suppress=5 min,,,False
+B1b,nne,xgb,XGBoost,vitaldb,VitalDB,1.654853620955316,1.58040349598486,1.7419421049843742,,cases per event,main text candidate,suppress=5 min,,,False
+B1b,sensitivity,xgb,XGBoost,vitaldb,VitalDB,0.564051638530288,0.5320808489634749,0.5942963549524729,,proportion,supplement,suppress=10 min,,,False
+B1b,specificity,xgb,XGBoost,vitaldb,VitalDB,0.7801892042292711,0.7604091370543038,0.7982516568907916,,proportion,supplement,suppress=10 min,,,False
+B1b,lead_median,xgb,XGBoost,vitaldb,VitalDB,16.5,13.5,20.0,,min,supplement,suppress=10 min,,,False
+B1b,ppv,xgb,XGBoost,vitaldb,VitalDB,0.5898234683281413,0.5581850319002098,0.6215939996600374,,proportion,supplement,suppress=10 min,,,False
+B1b,nne,xgb,XGBoost,vitaldb,VitalDB,1.6954225352112675,1.6087671383532516,1.7915206312843797,,cases per event,supplement,suppress=10 min,,,False
+B1b,sensitivity,xgb,XGBoost,vitaldb,VitalDB,0.5024826216484608,0.4709236612800104,0.5321129527551546,,proportion,supplement,suppress=15 min,,,False
+B1b,specificity,xgb,XGBoost,vitaldb,VitalDB,0.7902058987200891,0.7705092934767731,0.8087924230465667,,proportion,supplement,suppress=15 min,,,False
+B1b,lead_median,xgb,XGBoost,vitaldb,VitalDB,18.0,16.0,21.0,,min,supplement,suppress=15 min,,,False
+B1b,ppv,xgb,XGBoost,vitaldb,VitalDB,0.5730464326160816,0.5385513039732679,0.6043489594165522,,proportion,supplement,suppress=15 min,,,False
+B1b,nne,xgb,XGBoost,vitaldb,VitalDB,1.745059288537549,1.6546731631793448,1.856833309331149,,cases per event,supplement,suppress=15 min,,,False
+B1b,sensitivity,xgb,XGBoost,mover,MOVER (SIS),0.7899219304471257,0.7682111916805794,0.8100962275004621,,proportion,main text candidate,suppress=0 min; reproduces Table 2,,,False
+B1b,specificity,xgb,XGBoost,mover,MOVER (SIS),0.637987012987013,0.6102079129412775,0.6661431218376896,,proportion,main text candidate,suppress=0 min,,,False
+B1b,lead_median,xgb,XGBoost,mover,MOVER (SIS),19.0,18.0,22.0,,min,main text candidate,suppress=0 min,,,False
+B1b,ppv,xgb,XGBoost,mover,MOVER (SIS),0.7139191789608723,0.6908271423201425,0.7361820850851797,,proportion,main text candidate,suppress=0 min,,,False
+B1b,nne,xgb,XGBoost,mover,MOVER (SIS),1.4007187780772687,1.3583595965726096,1.447540113507141,,cases per event,main text candidate,suppress=0 min,,,False
+B1b,sensitivity,xgb,XGBoost,mover,MOVER (SIS),0.7707594038325053,0.7487439105623162,0.7925318623522637,,proportion,supplement,suppress=3 min,,,False
+B1b,specificity,xgb,XGBoost,mover,MOVER (SIS),0.6436688311688312,0.616755473974214,0.6699041082787316,,proportion,supplement,suppress=3 min,,,False
+B1b,lead_median,xgb,XGBoost,mover,MOVER (SIS),19.0,17.0,21.0,,min,supplement,suppress=3 min,,,False
+B1b,ppv,xgb,XGBoost,mover,MOVER (SIS),0.7121311475409836,0.6894263733858612,0.7348284960422163,,proportion,supplement,suppress=3 min,,,False
+B1b,nne,xgb,XGBoost,mover,MOVER (SIS),1.4042357274401474,1.3608617594254937,1.4504812102790825,,cases per event,supplement,suppress=3 min,,,False
+B1b,sensitivity,xgb,XGBoost,mover,MOVER (SIS),0.7402413058907026,0.7174678758899581,0.7628820725456267,,proportion,main text candidate,suppress=5 min,,,False
+B1b,specificity,xgb,XGBoost,mover,MOVER (SIS),0.6525974025974026,0.6245931521344549,0.6801642896209348,,proportion,main text candidate,suppress=5 min,,,False
+B1b,lead_median,xgb,XGBoost,mover,MOVER (SIS),19.0,18.0,22.0,,min,main text candidate,suppress=5 min,,,False
+B1b,ppv,xgb,XGBoost,mover,MOVER (SIS),0.7090414683888511,0.6861164694589557,0.7320223637013193,,proportion,main text candidate,suppress=5 min,,,False
+B1b,nne,xgb,XGBoost,mover,MOVER (SIS),1.4103547459252157,1.3660784828688048,1.4574784960241105,,cases per event,main text candidate,suppress=5 min,,,False
+B1b,sensitivity,xgb,XGBoost,mover,MOVER (SIS),0.6855926188786373,0.6605972323379461,0.7102602934481274,,proportion,supplement,suppress=10 min,,,False
+B1b,specificity,xgb,XGBoost,mover,MOVER (SIS),0.6663961038961039,0.6407719514800484,0.6924992160095695,,proportion,supplement,suppress=10 min,,,False
+B1b,lead_median,xgb,XGBoost,mover,MOVER (SIS),19.5,18.0,22.0,,min,supplement,suppress=10 min,,,False
+B1b,ppv,xgb,XGBoost,mover,MOVER (SIS),0.7015250544662309,0.677440867224164,0.7259600405289242,,proportion,supplement,suppress=10 min,,,False
+B1b,nne,xgb,XGBoost,mover,MOVER (SIS),1.4254658385093169,1.3774862863815671,1.4761435993834189,,cases per event,supplement,suppress=10 min,,,False
+B1b,sensitivity,xgb,XGBoost,mover,MOVER (SIS),0.6295244854506742,0.604194951951016,0.655817504869669,,proportion,supplement,suppress=15 min,,,False
+B1b,specificity,xgb,XGBoost,mover,MOVER (SIS),0.6834415584415585,0.6569217633042097,0.7085129616632743,,proportion,supplement,suppress=15 min,,,False
+B1b,lead_median,xgb,XGBoost,mover,MOVER (SIS),20.0,19.0,23.012499999999932,,min,supplement,suppress=15 min,,,False
+B1b,ppv,xgb,XGBoost,mover,MOVER (SIS),0.6945967110415036,0.6690196078431373,0.7196560242536316,,proportion,supplement,suppress=15 min,,,False
+B1b,nne,xgb,XGBoost,mover,MOVER (SIS),1.4396843291995491,1.3895527395363751,1.4947245017584994,,cases per event,supplement,suppress=15 min,,,False
+B1b,sensitivity,rf,Random forest,epic_test,MOVER (EPIC) test,0.8282442748091603,0.8007952298385917,0.8539969444821175,,proportion,main text candidate,suppress=0 min; reproduces Table 2,,,False
+B1b,specificity,rf,Random forest,epic_test,MOVER (EPIC) test,0.5550161812297735,0.5148841583535921,0.5965219790447825,,proportion,main text candidate,suppress=0 min,,,False
+B1b,lead_median,rf,Random forest,epic_test,MOVER (EPIC) test,22.0,20.0,24.0,,min,main text candidate,suppress=0 min,,,False
+B1b,ppv,rf,Random forest,epic_test,MOVER (EPIC) test,0.703023758099352,0.6740730509515039,0.7322442853844378,,proportion,main text candidate,suppress=0 min,,,False
+B1b,nne,rf,Random forest,epic_test,MOVER (EPIC) test,1.422427035330261,1.365664466130884,1.4835187353629975,,cases per event,main text candidate,suppress=0 min,,,False
+B1b,sensitivity,rf,Random forest,epic_test,MOVER (EPIC) test,0.7989821882951654,0.7714979183729185,0.825478140568834,,proportion,supplement,suppress=3 min,,,False
+B1b,specificity,rf,Random forest,epic_test,MOVER (EPIC) test,0.5647249190938511,0.5265538954385692,0.6066892399627852,,proportion,supplement,suppress=3 min,,,False
+B1b,lead_median,rf,Random forest,epic_test,MOVER (EPIC) test,21.0,18.0,23.0,,min,supplement,suppress=3 min,,,False
+B1b,ppv,rf,Random forest,epic_test,MOVER (EPIC) test,0.7001114827201784,0.6689417860432,0.7306906390223491,,proportion,supplement,suppress=3 min,,,False
+B1b,nne,rf,Random forest,epic_test,MOVER (EPIC) test,1.428343949044586,1.368568241475725,1.4948983915600138,,cases per event,supplement,suppress=3 min,,,False
+B1b,sensitivity,rf,Random forest,epic_test,MOVER (EPIC) test,0.7684478371501272,0.7374583482919315,0.7974427480916031,,proportion,main text candidate,suppress=5 min,,,False
+B1b,specificity,rf,Random forest,epic_test,MOVER (EPIC) test,0.5744336569579288,0.5367373178524117,0.6116753246753247,,proportion,main text candidate,suppress=5 min,,,False
+B1b,lead_median,rf,Random forest,epic_test,MOVER (EPIC) test,21.0,19.0,23.0,,min,main text candidate,suppress=5 min,,,False
+B1b,ppv,rf,Random forest,epic_test,MOVER (EPIC) test,0.6966551326412919,0.6651532349602725,0.7279126120182527,,proportion,main text candidate,suppress=5 min,,,False
+B1b,nne,rf,Random forest,epic_test,MOVER (EPIC) test,1.435430463576159,1.3737912845940004,1.5034129692832765,,cases per event,main text candidate,suppress=5 min,,,False
+B1b,sensitivity,rf,Random forest,epic_test,MOVER (EPIC) test,0.7086513994910941,0.6771750354976119,0.7393539157628585,,proportion,supplement,suppress=10 min,,,False
+B1b,specificity,rf,Random forest,epic_test,MOVER (EPIC) test,0.598705501618123,0.5595396116719205,0.6366700000000001,,proportion,supplement,suppress=10 min,,,False
+B1b,lead_median,rf,Random forest,epic_test,MOVER (EPIC) test,21.0,18.0,24.0,,min,supplement,suppress=10 min,,,False
+B1b,ppv,rf,Random forest,epic_test,MOVER (EPIC) test,0.6919254658385093,0.6609267848539535,0.7235387710657897,,proportion,supplement,suppress=10 min,,,False
+B1b,nne,rf,Random forest,epic_test,MOVER (EPIC) test,1.44524236983842,1.3820959432969977,1.5130268933389166,,cases per event,supplement,suppress=10 min,,,False
+B1b,sensitivity,rf,Random forest,epic_test,MOVER (EPIC) test,0.6437659033078881,0.6067349266094841,0.6780792789888396,,proportion,supplement,suppress=15 min,,,False
+B1b,specificity,rf,Random forest,epic_test,MOVER (EPIC) test,0.6181229773462783,0.5817878540305012,0.6563060796593868,,proportion,supplement,suppress=15 min,,,False
+B1b,lead_median,rf,Random forest,epic_test,MOVER (EPIC) test,21.0,18.0,24.0,,min,supplement,suppress=15 min,,,False
+B1b,ppv,rf,Random forest,epic_test,MOVER (EPIC) test,0.6819407008086253,0.6499288601177625,0.7159552899255626,,proportion,supplement,suppress=15 min,,,False
+B1b,nne,rf,Random forest,epic_test,MOVER (EPIC) test,1.466403162055336,1.3967352631796055,1.5386299368561551,,cases per event,supplement,suppress=15 min,,,False
+B1b,sensitivity,rf,Random forest,vitaldb,VitalDB,0.8033763654419066,0.7778935598906062,0.8273177790759944,,proportion,main text candidate,suppress=0 min; reproduces Table 2,,,False
+B1b,specificity,rf,Random forest,vitaldb,VitalDB,0.6739009460211464,0.6512932285716788,0.6946178964579729,,proportion,main text candidate,suppress=0 min,,,False
+B1b,lead_median,rf,Random forest,vitaldb,VitalDB,15.0,12.5,18.0,,min,main text candidate,suppress=0 min,,,False
+B1b,ppv,rf,Random forest,vitaldb,VitalDB,0.5799283154121864,0.5533270233088761,0.6044892971738189,,proportion,main text candidate,suppress=0 min,,,False
+B1b,nne,rf,Random forest,vitaldb,VitalDB,1.7243510506798516,1.6542890153643572,1.8072495254638663,,cases per event,main text candidate,suppress=0 min,,,False
+B1b,sensitivity,rf,Random forest,vitaldb,VitalDB,0.7924528301886793,0.7661685457253847,0.8183655011405759,,proportion,supplement,suppress=3 min,,,False
+B1b,specificity,rf,Random forest,vitaldb,VitalDB,0.6789092932665554,0.6566684829809266,0.7009375599338589,,proportion,supplement,suppress=3 min,,,False
+B1b,lead_median,rf,Random forest,vitaldb,VitalDB,15.0,12.0,17.0,,min,supplement,suppress=3 min,,,False
+B1b,ppv,rf,Random forest,vitaldb,VitalDB,0.5803636363636364,0.5547156746795753,0.6061259557507728,,proportion,supplement,suppress=3 min,,,False
+B1b,nne,rf,Random forest,vitaldb,VitalDB,1.7230576441102756,1.6498221047134092,1.8027253345490628,,cases per event,supplement,suppress=3 min,,,False
+B1b,sensitivity,rf,Random forest,vitaldb,VitalDB,0.7517378351539226,0.7255652228575685,0.7782140323944072,,proportion,main text candidate,suppress=5 min,,,False
+B1b,specificity,rf,Random forest,vitaldb,VitalDB,0.682804674457429,0.6605849439502542,0.7039916869980497,,proportion,main text candidate,suppress=5 min,,,False
+B1b,lead_median,rf,Random forest,vitaldb,VitalDB,16.0,13.0,19.0,,min,main text candidate,suppress=5 min,,,False
+B1b,ppv,rf,Random forest,vitaldb,VitalDB,0.5704596834966089,0.5449686695400299,0.595641126879303,,proportion,main text candidate,suppress=5 min,,,False
+B1b,nne,rf,Random forest,vitaldb,VitalDB,1.7529722589167769,1.678863257365203,1.8349678724416945,,cases per event,main text candidate,suppress=5 min,,,False
+B1b,sensitivity,rf,Random forest,vitaldb,VitalDB,0.6514399205561072,0.6201351320319272,0.6799233956282129,,proportion,supplement,suppress=10 min,,,False
+B1b,specificity,rf,Random forest,vitaldb,VitalDB,0.6978297161936561,0.6760926123317954,0.7184915565869926,,proportion,supplement,suppress=10 min,,,False
+B1b,lead_median,rf,Random forest,vitaldb,VitalDB,19.0,16.4875,23.0,,min,supplement,suppress=10 min,,,False
+B1b,ppv,rf,Random forest,vitaldb,VitalDB,0.5471226021684737,0.5193269203654617,0.5747055592311567,,proportion,supplement,suppress=10 min,,,False
+B1b,nne,rf,Random forest,vitaldb,VitalDB,1.8277439024390243,1.7400214506038754,1.9255693492479256,,cases per event,supplement,suppress=10 min,,,False
+B1b,sensitivity,rf,Random forest,vitaldb,VitalDB,0.5819265143992055,0.5523715415019763,0.6111111111111112,,proportion,supplement,suppress=15 min,,,False
+B1b,specificity,rf,Random forest,vitaldb,VitalDB,0.7128547579298832,0.6913371894810556,0.7348318862785155,,proportion,supplement,suppress=15 min,,,False
+B1b,lead_median,rf,Random forest,vitaldb,VitalDB,22.0,19.0,25.0,,min,supplement,suppress=15 min,,,False
+B1b,ppv,rf,Random forest,vitaldb,VitalDB,0.5317604355716878,0.5026579639991166,0.5615126105034083,,proportion,supplement,suppress=15 min,,,False
+B1b,nne,rf,Random forest,vitaldb,VitalDB,1.880546075085324,1.7809039039706165,1.9894243641231593,,cases per event,supplement,suppress=15 min,,,False
+B1b,sensitivity,rf,Random forest,mover,MOVER (SIS),0.8488289567068843,0.8296503529863147,0.8669649154292767,,proportion,main text candidate,suppress=0 min; reproduces Table 2,,,False
+B1b,specificity,rf,Random forest,mover,MOVER (SIS),0.5592532467532467,0.5315663096202015,0.5858875038420818,,proportion,main text candidate,suppress=0 min,,,False
+B1b,lead_median,rf,Random forest,mover,MOVER (SIS),22.0,20.0,25.0,,min,main text candidate,suppress=0 min,,,False
+B1b,ppv,rf,Random forest,mover,MOVER (SIS),0.6877515813686026,0.6662772536892786,0.7099585952576387,,proportion,main text candidate,suppress=0 min,,,False
+B1b,nne,rf,Random forest,mover,MOVER (SIS),1.4540133779264215,1.4085328470583156,1.5008766939641296,,cases per event,main text candidate,suppress=0 min,,,False
+B1b,sensitivity,rf,Random forest,mover,MOVER (SIS),0.8353442157558553,0.815687807210218,0.8543432785045836,,proportion,supplement,suppress=3 min,,,False
+B1b,specificity,rf,Random forest,mover,MOVER (SIS),0.5673701298701299,0.5399662459440137,0.5944642584486971,,proportion,supplement,suppress=3 min,,,False
+B1b,lead_median,rf,Random forest,mover,MOVER (SIS),21.0,19.0,24.0,,min,supplement,suppress=3 min,,,False
+B1b,ppv,rf,Random forest,mover,MOVER (SIS),0.6883040935672514,0.6670540383497966,0.7099946551046742,,proportion,supplement,suppress=3 min,,,False
+B1b,nne,rf,Random forest,mover,MOVER (SIS),1.4528462192013594,1.4084613071728211,1.4991289198606272,,cases per event,supplement,suppress=3 min,,,False
+B1b,sensitivity,rf,Random forest,mover,MOVER (SIS),0.7991483321504613,0.7769119018781422,0.8211267605633803,,proportion,main text candidate,suppress=5 min,,,False
+B1b,specificity,rf,Random forest,mover,MOVER (SIS),0.5738636363636364,0.5455971411820895,0.6022492542101042,,proportion,main text candidate,suppress=5 min,,,False
+B1b,lead_median,rf,Random forest,mover,MOVER (SIS),22.0,20.0,24.0,,min,main text candidate,suppress=5 min,,,False
+B1b,ppv,rf,Random forest,mover,MOVER (SIS),0.6820109024833434,0.6600242839352428,0.7039669511577354,,proportion,main text candidate,suppress=5 min,,,False
+B1b,nne,rf,Random forest,mover,MOVER (SIS),1.466252220248668,1.4205212309417523,1.5150957690108633,,cases per event,main text candidate,suppress=5 min,,,False
+B1b,sensitivity,rf,Random forest,mover,MOVER (SIS),0.7381121362668559,0.7160666015096525,0.7604401154401154,,proportion,supplement,suppress=10 min,,,False
+B1b,specificity,rf,Random forest,mover,MOVER (SIS),0.5876623376623377,0.5604201644816487,0.6153861625100563,,proportion,supplement,suppress=10 min,,,False
+B1b,lead_median,rf,Random forest,mover,MOVER (SIS),22.0,20.0,24.0,,min,supplement,suppress=10 min,,,False
+B1b,ppv,rf,Random forest,mover,MOVER (SIS),0.6718346253229974,0.6481931828811193,0.6950816761363636,,proportion,supplement,suppress=10 min,,,False
+B1b,nne,rf,Random forest,mover,MOVER (SIS),1.4884615384615385,1.4386798518201025,1.5427499502982107,,cases per event,supplement,suppress=10 min,,,False
+B1b,sensitivity,rf,Random forest,mover,MOVER (SIS),0.6763662171753017,0.6517706577368749,0.701190499581587,,proportion,supplement,suppress=15 min,,,False
+B1b,specificity,rf,Random forest,mover,MOVER (SIS),0.6055194805194806,0.5778282386868608,0.6335468411999271,,proportion,supplement,suppress=15 min,,,False
+B1b,lead_median,rf,Random forest,mover,MOVER (SIS),23.0,20.0,26.0,,min,supplement,suppress=15 min,,,False
+B1b,ppv,rf,Random forest,mover,MOVER (SIS),0.6622654621264767,0.6368652636086451,0.6866395825443853,,proportion,supplement,suppress=15 min,,,False
+B1b,nne,rf,Random forest,mover,MOVER (SIS),1.5099685204617,1.4563681230147756,1.5701908408144103,,cases per event,supplement,suppress=15 min,,,False
+B1b,sensitivity,logreg,Logistic regression,epic_test,MOVER (EPIC) test,0.8371501272264631,0.8095824278123054,0.8639205121735215,,proportion,main text candidate,suppress=0 min; reproduces Table 2,,,False
+B1b,specificity,logreg,Logistic regression,epic_test,MOVER (EPIC) test,0.5177993527508091,0.4770523303979626,0.5573817676876617,,proportion,main text candidate,suppress=0 min,,,False
+B1b,lead_median,logreg,Logistic regression,epic_test,MOVER (EPIC) test,23.0,21.0,26.0,,min,main text candidate,suppress=0 min,,,False
+B1b,ppv,logreg,Logistic regression,epic_test,MOVER (EPIC) test,0.6882845188284519,0.6584602683178534,0.7189082611428416,,proportion,main text candidate,suppress=0 min,,,False
+B1b,nne,logreg,Logistic regression,epic_test,MOVER (EPIC) test,1.452887537993921,1.3909980647822089,1.518694518501157,,cases per event,main text candidate,suppress=0 min,,,False
+B1b,sensitivity,logreg,Logistic regression,epic_test,MOVER (EPIC) test,0.8053435114503816,0.7770616456538394,0.8323249409428178,,proportion,supplement,suppress=3 min,,,False
+B1b,specificity,logreg,Logistic regression,epic_test,MOVER (EPIC) test,0.5339805825242718,0.4935275080906148,0.5726243946308863,,proportion,supplement,suppress=3 min,,,False
+B1b,lead_median,logreg,Logistic regression,epic_test,MOVER (EPIC) test,22.0,19.0,24.0,,min,supplement,suppress=3 min,,,False
+B1b,ppv,logreg,Logistic regression,epic_test,MOVER (EPIC) test,0.6872964169381107,0.6563493066957491,0.7171279204513532,,proportion,supplement,suppress=3 min,,,False
+B1b,nne,logreg,Logistic regression,epic_test,MOVER (EPIC) test,1.4549763033175356,1.3944513545438613,1.5235789715335168,,cases per event,supplement,suppress=3 min,,,False
+B1b,sensitivity,logreg,Logistic regression,epic_test,MOVER (EPIC) test,0.7798982188295165,0.751854734919251,0.8088679986762637,,proportion,main text candidate,suppress=5 min,,,False
+B1b,specificity,logreg,Logistic regression,epic_test,MOVER (EPIC) test,0.5501618122977346,0.5097379108030233,0.5875423920829131,,proportion,main text candidate,suppress=5 min,,,False
+B1b,lead_median,logreg,Logistic regression,epic_test,MOVER (EPIC) test,21.0,18.5,24.0,,min,main text candidate,suppress=5 min,,,False
+B1b,ppv,logreg,Logistic regression,epic_test,MOVER (EPIC) test,0.6879910213243546,0.6559943355119826,0.7194094602849876,,proportion,main text candidate,suppress=5 min,,,False
+B1b,nne,logreg,Logistic regression,epic_test,MOVER (EPIC) test,1.4535073409461663,1.3900289823909673,1.524403411392918,,cases per event,main text candidate,suppress=5 min,,,False
+B1b,sensitivity,logreg,Logistic regression,epic_test,MOVER (EPIC) test,0.683206106870229,0.6499984316185696,0.7150160103493834,,proportion,supplement,suppress=10 min,,,False
+B1b,specificity,logreg,Logistic regression,epic_test,MOVER (EPIC) test,0.5792880258899676,0.5398057577595795,0.6202276110734452,,proportion,supplement,suppress=10 min,,,False
+B1b,lead_median,logreg,Logistic regression,epic_test,MOVER (EPIC) test,22.0,19.0,25.0,,min,supplement,suppress=10 min,,,False
+B1b,ppv,logreg,Logistic regression,epic_test,MOVER (EPIC) test,0.6737766624843162,0.6411280341743851,0.7068794048665652,,proportion,supplement,suppress=10 min,,,False
+B1b,nne,logreg,Logistic regression,epic_test,MOVER (EPIC) test,1.484171322160149,1.4146684627612325,1.5597508559772713,,cases per event,supplement,suppress=10 min,,,False
+B1b,sensitivity,logreg,Logistic regression,epic_test,MOVER (EPIC) test,0.6132315521628499,0.5781541218637993,0.6468331473214286,,proportion,supplement,suppress=15 min,,,False
+B1b,specificity,logreg,Logistic regression,epic_test,MOVER (EPIC) test,0.6051779935275081,0.5673010904684975,0.6434686013563222,,proportion,supplement,suppress=15 min,,,False
+B1b,lead_median,logreg,Logistic regression,epic_test,MOVER (EPIC) test,22.0,20.0,26.0,,min,supplement,suppress=15 min,,,False
+B1b,ppv,logreg,Logistic regression,epic_test,MOVER (EPIC) test,0.6639118457300276,0.6285714285714286,0.6978054187192118,,proportion,supplement,suppress=15 min,,,False
+B1b,nne,logreg,Logistic regression,epic_test,MOVER (EPIC) test,1.5062240663900417,1.4330642525909556,1.5909090909090908,,cases per event,supplement,suppress=15 min,,,False
+B1b,sensitivity,logreg,Logistic regression,vitaldb,VitalDB,0.4607745779543197,0.4306492813231748,0.4921437427279836,,proportion,main text candidate,suppress=0 min; reproduces Table 2,,,False
+B1b,specificity,logreg,Logistic regression,vitaldb,VitalDB,0.8252643294379521,0.8082491480774344,0.8423398328690808,,proportion,main text candidate,suppress=0 min,,,False
+B1b,lead_median,logreg,Logistic regression,vitaldb,VitalDB,14.0,10.4875,16.0,,min,main text candidate,suppress=0 min,,,False
+B1b,ppv,logreg,Logistic regression,vitaldb,VitalDB,0.596401028277635,0.5650399374375977,0.6308105660260512,,proportion,main text candidate,suppress=0 min,,,False
+B1b,nne,logreg,Logistic regression,vitaldb,VitalDB,1.6767241379310345,1.5852619690911056,1.7697864137086905,,cases per event,main text candidate,suppress=0 min,,,False
+B1b,sensitivity,logreg,Logistic regression,vitaldb,VitalDB,0.4498510427010923,0.418472999672252,0.4815201795371767,,proportion,supplement,suppress=3 min,,,False
+B1b,specificity,logreg,Logistic regression,vitaldb,VitalDB,0.8302726766833611,0.81298297560672,0.8467048223826038,,proportion,supplement,suppress=3 min,,,False
+B1b,lead_median,logreg,Logistic regression,vitaldb,VitalDB,13.0,10.0,15.0,,min,supplement,suppress=3 min,,,False
+B1b,ppv,logreg,Logistic regression,vitaldb,VitalDB,0.5976253298153035,0.563725934964437,0.633157797948923,,proportion,supplement,suppress=3 min,,,False
+B1b,nne,logreg,Logistic regression,vitaldb,VitalDB,1.6732891832229582,1.579385117446975,1.7739116517285531,,cases per event,supplement,suppress=3 min,,,False
+B1b,sensitivity,logreg,Logistic regression,vitaldb,VitalDB,0.4250248262164846,0.3940498748150677,0.4560170144599906,,proportion,main text candidate,suppress=5 min,,,False
+B1b,specificity,logreg,Logistic regression,vitaldb,VitalDB,0.8324986087924319,0.8148554575960316,0.848485268893149,,proportion,main text candidate,suppress=5 min,,,False
+B1b,lead_median,logreg,Logistic regression,vitaldb,VitalDB,14.0,12.0,17.0,,min,main text candidate,suppress=5 min,,,False
+B1b,ppv,logreg,Logistic regression,vitaldb,VitalDB,0.5871056241426612,0.5521372733375545,0.6210120481270192,,proportion,main text candidate,suppress=5 min,,,False
+B1b,nne,logreg,Logistic regression,vitaldb,VitalDB,1.7032710280373833,1.610274717240989,1.811143801890747,,cases per event,main text candidate,suppress=5 min,,,False
+B1b,sensitivity,logreg,Logistic regression,vitaldb,VitalDB,0.3664349553128103,0.3366427624737076,0.395049504950495,,proportion,supplement,suppress=10 min,,,False
+B1b,specificity,logreg,Logistic regression,vitaldb,VitalDB,0.8447412353923205,0.8274109678059989,0.8616271752063658,,proportion,supplement,suppress=10 min,,,False
+B1b,lead_median,logreg,Logistic regression,vitaldb,VitalDB,17.0,13.0,20.0,,min,supplement,suppress=10 min,,,False
+B1b,ppv,logreg,Logistic regression,vitaldb,VitalDB,0.5694444444444444,0.5289492283916708,0.6071469341161121,,proportion,supplement,suppress=10 min,,,False
+B1b,nne,logreg,Logistic regression,vitaldb,VitalDB,1.7560975609756098,1.647047766475011,1.8905406171999093,,cases per event,supplement,suppress=10 min,,,False
+B1b,sensitivity,logreg,Logistic regression,vitaldb,VitalDB,0.3177755710029791,0.2895721125634,0.3437537524015369,,proportion,supplement,suppress=15 min,,,False
+B1b,specificity,logreg,Logistic regression,vitaldb,VitalDB,0.8530884808013356,0.8368593946592379,0.8691223622126523,,proportion,supplement,suppress=15 min,,,False
+B1b,lead_median,logreg,Logistic regression,vitaldb,VitalDB,18.0,15.0,21.0,,min,supplement,suppress=15 min,,,False
+B1b,ppv,logreg,Logistic regression,vitaldb,VitalDB,0.547945205479452,0.5077976178047173,0.5889744119726327,,proportion,supplement,suppress=15 min,,,False
+B1b,nne,logreg,Logistic regression,vitaldb,VitalDB,1.825,1.6978666378938283,1.9692884826748425,,cases per event,supplement,suppress=15 min,,,False
+B1b,sensitivity,logreg,Logistic regression,mover,MOVER (SIS),0.7899219304471257,0.7685525119257115,0.8120203688163408,,proportion,main text candidate,suppress=0 min; reproduces Table 2,,,False
+B1b,specificity,logreg,Logistic regression,mover,MOVER (SIS),0.5852272727272727,0.5587037842540235,0.6111560226354082,,proportion,main text candidate,suppress=0 min,,,False
+B1b,lead_median,logreg,Logistic regression,mover,MOVER (SIS),21.0,19.0,23.0,,min,main text candidate,suppress=0 min,,,False
+B1b,ppv,logreg,Logistic regression,mover,MOVER (SIS),0.6853448275862069,0.6617822338021276,0.70809583206821,,proportion,main text candidate,suppress=0 min,,,False
+B1b,nne,logreg,Logistic regression,mover,MOVER (SIS),1.4591194968553458,1.4122382238223825,1.5110710997106025,,cases per event,main text candidate,suppress=0 min,,,False
+B1b,sensitivity,logreg,Logistic regression,mover,MOVER (SIS),0.7750177430801988,0.7531791738039562,0.796669936122662,,proportion,supplement,suppress=3 min,,,False
+B1b,specificity,logreg,Logistic regression,mover,MOVER (SIS),0.5917207792207793,0.5644357960466372,0.618975827748859,,proportion,supplement,suppress=3 min,,,False
+B1b,lead_median,logreg,Logistic regression,mover,MOVER (SIS),20.0,18.0,23.0,,min,supplement,suppress=3 min,,,False
+B1b,ppv,logreg,Logistic regression,mover,MOVER (SIS),0.6846394984326019,0.6614171987171213,0.7072711974641341,,proportion,supplement,suppress=3 min,,,False
+B1b,nne,logreg,Logistic regression,mover,MOVER (SIS),1.4606227106227103,1.4138848063288754,1.5119050456216805,,cases per event,supplement,suppress=3 min,,,False
+B1b,sensitivity,logreg,Logistic regression,mover,MOVER (SIS),0.7437899219304471,0.7204213648945698,0.7665034201971723,,proportion,main text candidate,suppress=5 min,,,False
+B1b,specificity,logreg,Logistic regression,mover,MOVER (SIS),0.5982142857142857,0.5711933961562995,0.6251063905277457,,proportion,main text candidate,suppress=5 min,,,False
+B1b,lead_median,logreg,Logistic regression,mover,MOVER (SIS),21.0,19.0,23.0,,min,main text candidate,suppress=5 min,,,False
+B1b,ppv,logreg,Logistic regression,mover,MOVER (SIS),0.679196370706416,0.6562668792009716,0.7016320840744132,,proportion,main text candidate,suppress=5 min,,,False
+B1b,nne,logreg,Logistic regression,mover,MOVER (SIS),1.4723282442748091,1.425248393886382,1.523770332641975,,cases per event,main text candidate,suppress=5 min,,,False
+B1b,sensitivity,logreg,Logistic regression,mover,MOVER (SIS),0.6841731724627396,0.6579859254046446,0.7096563747944562,,proportion,supplement,suppress=10 min,,,False
+B1b,specificity,logreg,Logistic regression,mover,MOVER (SIS),0.6168831168831168,0.5900823799535496,0.6453455718833122,,proportion,supplement,suppress=10 min,,,False
+B1b,lead_median,logreg,Logistic regression,mover,MOVER (SIS),22.0,20.0,25.0,,min,supplement,suppress=10 min,,,False
+B1b,ppv,logreg,Logistic regression,mover,MOVER (SIS),0.6713091922005571,0.6466879316244258,0.6953573611991668,,proportion,supplement,suppress=10 min,,,False
+B1b,nne,logreg,Logistic regression,mover,MOVER (SIS),1.4896265560165975,1.4381094616661756,1.546340903328416,,cases per event,supplement,suppress=10 min,,,False
+B1b,sensitivity,logreg,Logistic regression,mover,MOVER (SIS),0.631653655074521,0.6070395999432281,0.6569951919399986,,proportion,supplement,suppress=15 min,,,False
+B1b,specificity,logreg,Logistic regression,mover,MOVER (SIS),0.6323051948051948,0.6052631578947368,0.6583001020321401,,proportion,supplement,suppress=15 min,,,False
+B1b,lead_median,logreg,Logistic regression,mover,MOVER (SIS),22.0,20.0,25.0,,min,supplement,suppress=15 min,,,False
+B1b,ppv,logreg,Logistic regression,mover,MOVER (SIS),0.6626954579300074,0.637995179428678,0.6871322883737268,,proportion,supplement,suppress=15 min,,,False
+B1b,nne,logreg,Logistic regression,mover,MOVER (SIS),1.5089887640449438,1.4553238398020234,1.567409962103656,,cases per event,supplement,suppress=15 min,,,False
+B1b,lead_over_observed_window,transformer,ITE Transformer,epic_test,MOVER (EPIC) test,0.9444444444444444,0.9393939393939394,0.95,,ratio,main text candidate,"median lead divided by the case's own observed pre-onset window, capped at 60 min",,,False
+B1b,spearman_lead_vs_observed,transformer,ITE Transformer,epic_test,MOVER (EPIC) test,0.7063150654661298,0.6247288760698498,0.7851160248663733,,rho,main text candidate,"bounded above by the window length, so the ratio is the primary quantity",,,False
+B1b,median_above_fraction_events,transformer,ITE Transformer,epic_test,MOVER (EPIC) test,0.5227272727272727,0.4444444444444444,0.5753787878787879,,proportion,supplement,share of a case's monitored minutes at or above threshold,,,False
+B1b,median_above_fraction_controls,transformer,ITE Transformer,epic_test,MOVER (EPIC) test,0.15,0.05,0.2333333333333333,,proportion,supplement,,,,False
+B1b,lead_over_observed_window,transformer,ITE Transformer,vitaldb,VitalDB,0.9230769230769232,0.9090909090909092,0.9285714285714286,,ratio,main text candidate,"median lead divided by the case's own observed pre-onset window, capped at 60 min",,,False
+B1b,spearman_lead_vs_observed,transformer,ITE Transformer,vitaldb,VitalDB,0.9060623510095632,0.8632853778493069,0.9445362903581718,,rho,main text candidate,"bounded above by the window length, so the ratio is the primary quantity",,,False
+B1b,median_above_fraction_events,transformer,ITE Transformer,vitaldb,VitalDB,0.4444444444444444,0.3888888888888889,0.5,,proportion,supplement,share of a case's monitored minutes at or above threshold,,,False
+B1b,median_above_fraction_controls,transformer,ITE Transformer,vitaldb,VitalDB,0.1833333333333333,0.1626792635658915,0.2333333333333333,,proportion,supplement,,,,False
+B1b,lead_over_observed_window,transformer,ITE Transformer,mover,MOVER (SIS),0.8991525423728814,0.8823529411764706,0.9090909090909092,,ratio,main text candidate,"median lead divided by the case's own observed pre-onset window, capped at 60 min",,,False
+B1b,spearman_lead_vs_observed,transformer,ITE Transformer,mover,MOVER (SIS),0.8011617704487778,0.7518313251233298,0.8497576283206811,,rho,main text candidate,"bounded above by the window length, so the ratio is the primary quantity",,,False
+B1b,median_above_fraction_events,transformer,ITE Transformer,mover,MOVER (SIS),0.2,0.15,0.23836163922027,,proportion,supplement,share of a case's monitored minutes at or above threshold,,,False
+B1b,median_above_fraction_controls,transformer,ITE Transformer,mover,MOVER (SIS),0.0253205128205128,0.0166666666666666,0.0465116279069767,,proportion,supplement,,,,False
+B1b,lead_over_observed_window,lstm,LSTM,epic_test,MOVER (EPIC) test,0.8509259259259259,0.8333333333333334,0.8666666666666667,,ratio,main text candidate,"median lead divided by the case's own observed pre-onset window, capped at 60 min",,,False
+B1b,spearman_lead_vs_observed,lstm,LSTM,epic_test,MOVER (EPIC) test,0.6504059347079533,0.5804992901297433,0.717061677861862,,rho,main text candidate,"bounded above by the window length, so the ratio is the primary quantity",,,False
+B1b,median_above_fraction_events,lstm,LSTM,epic_test,MOVER (EPIC) test,0.2666666666666666,0.2093023255813953,0.3084090909090908,,proportion,supplement,share of a case's monitored minutes at or above threshold,,,False
+B1b,median_above_fraction_controls,lstm,LSTM,epic_test,MOVER (EPIC) test,0.0166666666666666,0.0,0.027027027027027,,proportion,supplement,,,,False
+B1b,lead_over_observed_window,lstm,LSTM,vitaldb,VitalDB,0.6190476190476191,0.5714285714285714,0.6833333333333333,,ratio,main text candidate,"median lead divided by the case's own observed pre-onset window, capped at 60 min",,,False
+B1b,spearman_lead_vs_observed,lstm,LSTM,vitaldb,VitalDB,0.7589066826072862,0.7044627104734659,0.8080665340337738,,rho,main text candidate,"bounded above by the window length, so the ratio is the primary quantity",,,False
+B1b,median_above_fraction_events,lstm,LSTM,vitaldb,VitalDB,0.0,0.0,0.0166666666666666,,proportion,supplement,share of a case's monitored minutes at or above threshold,,,False
+B1b,median_above_fraction_controls,lstm,LSTM,vitaldb,VitalDB,0.0,0.0,0.0,,proportion,supplement,,,,False
+B1b,lead_over_observed_window,lstm,LSTM,mover,MOVER (SIS),0.7166666666666667,0.6666666666666666,0.7692307692307693,,ratio,main text candidate,"median lead divided by the case's own observed pre-onset window, capped at 60 min",,,False
+B1b,spearman_lead_vs_observed,lstm,LSTM,mover,MOVER (SIS),0.5011154152827383,0.4389228546974024,0.5608817295309174,,rho,main text candidate,"bounded above by the window length, so the ratio is the primary quantity",,,False
+B1b,median_above_fraction_events,lstm,LSTM,mover,MOVER (SIS),0.0166666666666666,0.0166666666666666,0.0196078431372549,,proportion,supplement,share of a case's monitored minutes at or above threshold,,,False
+B1b,median_above_fraction_controls,lstm,LSTM,mover,MOVER (SIS),0.0,0.0,0.0,,proportion,supplement,,,,False
+B1b,lead_over_observed_window,xgb,XGBoost,epic_test,MOVER (EPIC) test,0.7192982456140351,0.6666666666666666,0.7647058823529411,,ratio,main text candidate,"median lead divided by the case's own observed pre-onset window, capped at 60 min",,,False
+B1b,spearman_lead_vs_observed,xgb,XGBoost,epic_test,MOVER (EPIC) test,0.5580213012568724,0.4953480154520256,0.6184501813989034,,rho,main text candidate,"bounded above by the window length, so the ratio is the primary quantity",,,False
+B1b,median_above_fraction_events,xgb,XGBoost,epic_test,MOVER (EPIC) test,0.1166666666666666,0.1,0.1333333333333333,,proportion,supplement,share of a case's monitored minutes at or above threshold,,,False
+B1b,median_above_fraction_controls,xgb,XGBoost,epic_test,MOVER (EPIC) test,0.0,0.0,0.0,,proportion,supplement,,,,False
+B1b,lead_over_observed_window,xgb,XGBoost,vitaldb,VitalDB,0.4666666666666667,0.4,0.5166898148148147,,ratio,main text candidate,"median lead divided by the case's own observed pre-onset window, capped at 60 min",,,False
+B1b,spearman_lead_vs_observed,xgb,XGBoost,vitaldb,VitalDB,0.5986604254122689,0.5452351065365081,0.646604371930786,,rho,main text candidate,"bounded above by the window length, so the ratio is the primary quantity",,,False
+B1b,median_above_fraction_events,xgb,XGBoost,vitaldb,VitalDB,0.0666666666666666,0.05,0.0666666666666666,,proportion,supplement,share of a case's monitored minutes at or above threshold,,,False
+B1b,median_above_fraction_controls,xgb,XGBoost,vitaldb,VitalDB,0.0,0.0,0.0,,proportion,supplement,,,,False
+B1b,lead_over_observed_window,xgb,XGBoost,mover,MOVER (SIS),0.6,0.5555555555555556,0.6333333333333333,,ratio,main text candidate,"median lead divided by the case's own observed pre-onset window, capped at 60 min",,,False
+B1b,spearman_lead_vs_observed,xgb,XGBoost,mover,MOVER (SIS),0.5733484928330314,0.5283765455922327,0.6129764897022367,,rho,main text candidate,"bounded above by the window length, so the ratio is the primary quantity",,,False
+B1b,median_above_fraction_events,xgb,XGBoost,mover,MOVER (SIS),0.1,0.1,0.1166666666666666,,proportion,supplement,share of a case's monitored minutes at or above threshold,,,False
+B1b,median_above_fraction_controls,xgb,XGBoost,mover,MOVER (SIS),0.0,0.0,0.0,,proportion,supplement,,,,False
+B1b,lead_over_observed_window,rf,Random forest,epic_test,MOVER (EPIC) test,0.7142857142857143,0.6666666666666666,0.756668835393624,,ratio,main text candidate,"median lead divided by the case's own observed pre-onset window, capped at 60 min",,,False
+B1b,spearman_lead_vs_observed,rf,Random forest,epic_test,MOVER (EPIC) test,0.5839288877361544,0.52425492528641,0.6395395054398456,,rho,main text candidate,"bounded above by the window length, so the ratio is the primary quantity",,,False
+B1b,median_above_fraction_events,rf,Random forest,epic_test,MOVER (EPIC) test,0.15,0.1333333333333333,0.1666666666666666,,proportion,supplement,share of a case's monitored minutes at or above threshold,,,False
+B1b,median_above_fraction_controls,rf,Random forest,epic_test,MOVER (EPIC) test,0.0,0.0,0.0,,proportion,supplement,,,,False
+B1b,lead_over_observed_window,rf,Random forest,vitaldb,VitalDB,0.5333333333333333,0.5,0.5833333333333334,,ratio,main text candidate,"median lead divided by the case's own observed pre-onset window, capped at 60 min",,,False
+B1b,spearman_lead_vs_observed,rf,Random forest,vitaldb,VitalDB,0.6509535517146766,0.6011637769683664,0.6950436864658254,,rho,main text candidate,"bounded above by the window length, so the ratio is the primary quantity",,,False
+B1b,median_above_fraction_events,rf,Random forest,vitaldb,VitalDB,0.1333333333333333,0.1176470588235294,0.15,,proportion,supplement,share of a case's monitored minutes at or above threshold,,,False
+B1b,median_above_fraction_controls,rf,Random forest,vitaldb,VitalDB,0.0,0.0,0.0,,proportion,supplement,,,,False
+B1b,lead_over_observed_window,rf,Random forest,mover,MOVER (SIS),0.6666666666666666,0.6198686371100164,0.7018518518518518,,ratio,main text candidate,"median lead divided by the case's own observed pre-onset window, capped at 60 min",,,False
+B1b,spearman_lead_vs_observed,rf,Random forest,mover,MOVER (SIS),0.6183362114956168,0.5792135858734405,0.6545671568603767,,rho,main text candidate,"bounded above by the window length, so the ratio is the primary quantity",,,False
+B1b,median_above_fraction_events,rf,Random forest,mover,MOVER (SIS),0.1724137931034483,0.1666666666666666,0.1833333333333333,,proportion,supplement,share of a case's monitored minutes at or above threshold,,,False
+B1b,median_above_fraction_controls,rf,Random forest,mover,MOVER (SIS),0.0,0.0,0.0,,proportion,supplement,,,,False
+B1b,lead_over_observed_window,logreg,Logistic regression,epic_test,MOVER (EPIC) test,0.7805555555555556,0.7350877192982456,0.8333333333333334,,ratio,main text candidate,"median lead divided by the case's own observed pre-onset window, capped at 60 min",,,False
+B1b,spearman_lead_vs_observed,logreg,Logistic regression,epic_test,MOVER (EPIC) test,0.5973029159839175,0.535268157633728,0.6568219076995553,,rho,main text candidate,"bounded above by the window length, so the ratio is the primary quantity",,,False
+B1b,median_above_fraction_events,logreg,Logistic regression,epic_test,MOVER (EPIC) test,0.1387329591018444,0.1136363636363636,0.1621700188560653,,proportion,supplement,share of a case's monitored minutes at or above threshold,,,False
+B1b,median_above_fraction_controls,logreg,Logistic regression,epic_test,MOVER (EPIC) test,0.0,0.0,0.0166666666666666,,proportion,supplement,,,,False
+B1b,lead_over_observed_window,logreg,Logistic regression,vitaldb,VitalDB,0.4545454545454545,0.3888888888888889,0.5083333333333333,,ratio,main text candidate,"median lead divided by the case's own observed pre-onset window, capped at 60 min",,,False
+B1b,spearman_lead_vs_observed,logreg,Logistic regression,vitaldb,VitalDB,0.606717007822519,0.5408002605533275,0.6681191810742173,,rho,main text candidate,"bounded above by the window length, so the ratio is the primary quantity",,,False
+B1b,median_above_fraction_events,logreg,Logistic regression,vitaldb,VitalDB,0.0,0.0,0.0,,proportion,supplement,share of a case's monitored minutes at or above threshold,,,False
+B1b,median_above_fraction_controls,logreg,Logistic regression,vitaldb,VitalDB,0.0,0.0,0.0,,proportion,supplement,,,,False
+B1b,lead_over_observed_window,logreg,Logistic regression,mover,MOVER (SIS),0.6176470588235294,0.5813953488372093,0.6666666666666666,,ratio,main text candidate,"median lead divided by the case's own observed pre-onset window, capped at 60 min",,,False
+B1b,spearman_lead_vs_observed,logreg,Logistic regression,mover,MOVER (SIS),0.596970078132724,0.5570841135185324,0.6359881791870462,,rho,main text candidate,"bounded above by the window length, so the ratio is the primary quantity",,,False
+B1b,median_above_fraction_events,logreg,Logistic regression,mover,MOVER (SIS),0.1166666666666666,0.1,0.1304347826086956,,proportion,supplement,share of a case's monitored minutes at or above threshold,,,False
+B1b,median_above_fraction_controls,logreg,Logistic regression,mover,MOVER (SIS),0.0,0.0,0.0,,proportion,supplement,,,,False
+B2,difference_median_min,transformer,ITE Transformer,epic_test,MOVER (EPIC) test,0.0,-1.0,3.0,1.0,min,main text candidate,"rule=primary; score departure minus MAP departure, positive = score first; BH family B",B1-B4,1.0,False
+B2,prop_score_first,transformer,ITE Transformer,epic_test,MOVER (EPIC) test,0.4390243902439024,0.2857142857142857,0.6,0.472,proportion,main text candidate,rule=primary; BH family B,B1-B4,0.8128888888888889,False
+B2,prop_both_departed,transformer,ITE Transformer,epic_test,MOVER (EPIC) test,0.1009852216748768,,,,proportion,main text candidate,rule=primary,,,False
+B2,prop_no_score_departure,transformer,ITE Transformer,epic_test,MOVER (EPIC) test,0.8793103448275863,,,,proportion,main text candidate,rule=primary; episodes in which the model never signalled,,,False
+B2,score_baseline_median,transformer,ITE Transformer,epic_test,MOVER (EPIC) test,0.9701663106679916,,,,score,main text candidate,rule=primary; median of an episode's first 10 eligible minutes,,,False
+B2,prop_baseline_above_alert_threshold,transformer,ITE Transformer,epic_test,MOVER (EPIC) test,0.812807881773399,,,,proportion,main text candidate,rule=primary; baseline already at or above the 80%-target transformer threshold,,,False
+B2,difference_median_min,transformer,ITE Transformer,epic_test,MOVER (EPIC) test,0.0,-1.0,2.0,1.0,min,supplement,"rule=scale_2.0; score departure minus MAP departure, positive = score first; BH family B",B1-B4,1.0,False
+B2,prop_score_first,transformer,ITE Transformer,epic_test,MOVER (EPIC) test,0.4705882352941176,0.303030303030303,0.6389423076923073,0.787,proportion,supplement,rule=scale_2.0; BH family B,B1-B4,1.0,False
+B2,prop_both_departed,transformer,ITE Transformer,epic_test,MOVER (EPIC) test,0.083743842364532,,,,proportion,supplement,rule=scale_2.0,,,False
+B2,prop_no_score_departure,transformer,ITE Transformer,epic_test,MOVER (EPIC) test,0.9014778325123153,,,,proportion,supplement,rule=scale_2.0; episodes in which the model never signalled,,,False
+B2,score_baseline_median,transformer,ITE Transformer,epic_test,MOVER (EPIC) test,0.9701663106679916,,,,score,supplement,rule=scale_2.0; median of an episode's first 10 eligible minutes,,,False
+B2,prop_baseline_above_alert_threshold,transformer,ITE Transformer,epic_test,MOVER (EPIC) test,0.812807881773399,,,,proportion,supplement,rule=scale_2.0; baseline already at or above the 80%-target transformer threshold,,,False
+B2,difference_median_min,transformer,ITE Transformer,epic_test,MOVER (EPIC) test,0.0,-1.0,3.0,1.0,min,supplement,"rule=run_5; score departure minus MAP departure, positive = score first; BH family B",B1-B4,1.0,False
+B2,prop_score_first,transformer,ITE Transformer,epic_test,MOVER (EPIC) test,0.4333333333333333,0.2580645161290322,0.6216216216216216,0.529,proportion,supplement,rule=run_5; BH family B,B1-B4,0.8482241379310346,False
+B2,prop_both_departed,transformer,ITE Transformer,epic_test,MOVER (EPIC) test,0.0738916256157635,,,,proportion,supplement,rule=run_5,,,False
+B2,prop_no_score_departure,transformer,ITE Transformer,epic_test,MOVER (EPIC) test,0.9039408866995073,,,,proportion,supplement,rule=run_5; episodes in which the model never signalled,,,False
+B2,score_baseline_median,transformer,ITE Transformer,epic_test,MOVER (EPIC) test,0.9701663106679916,,,,score,supplement,rule=run_5; median of an episode's first 10 eligible minutes,,,False
+B2,prop_baseline_above_alert_threshold,transformer,ITE Transformer,epic_test,MOVER (EPIC) test,0.812807881773399,,,,proportion,supplement,rule=run_5; baseline already at or above the 80%-target transformer threshold,,,False
+B2,difference_median_min,transformer,ITE Transformer,epic_test,MOVER (EPIC) test,0.0,-1.0,0.0,1.0,min,supplement,"rule=cap_60; score departure minus MAP departure, positive = score first; BH family B",B1-B4,1.0,False
+B2,prop_score_first,transformer,ITE Transformer,epic_test,MOVER (EPIC) test,0.3396226415094339,0.2666666666666666,0.414207995951417,0.001,proportion,supplement,rule=cap_60; BH family B,B1-B4,0.003206896551724138,True
+B2,prop_both_departed,transformer,ITE Transformer,epic_test,MOVER (EPIC) test,0.3916256157635468,,,,proportion,supplement,rule=cap_60,,,False
+B2,prop_no_score_departure,transformer,ITE Transformer,epic_test,MOVER (EPIC) test,0.5246305418719212,,,,proportion,supplement,rule=cap_60; episodes in which the model never signalled,,,False
+B2,score_baseline_median,transformer,ITE Transformer,epic_test,MOVER (EPIC) test,0.4808549657464027,,,,score,supplement,rule=cap_60; median of an episode's first 10 eligible minutes,,,False
+B2,prop_baseline_above_alert_threshold,transformer,ITE Transformer,epic_test,MOVER (EPIC) test,0.3374384236453202,,,,proportion,supplement,rule=cap_60; baseline already at or above the 80%-target transformer threshold,,,False
+B2,difference_median_min,transformer,ITE Transformer,vitaldb,VitalDB,3.5,1.0,10.0,0.002,min,main text candidate,"rule=primary; score departure minus MAP departure, positive = score first; BH family B",B1-B4,0.0062,True
+B2,prop_score_first,transformer,ITE Transformer,vitaldb,VitalDB,0.6774193548387096,0.5555555555555556,0.7872501611863313,0.004,proportion,main text candidate,rule=primary; BH family B,B1-B4,0.011625,True
+B2,prop_both_departed,transformer,ITE Transformer,vitaldb,VitalDB,0.1070811744386874,,,,proportion,main text candidate,rule=primary,,,False
+B2,prop_no_score_departure,transformer,ITE Transformer,vitaldb,VitalDB,0.8860103626943004,,,,proportion,main text candidate,rule=primary; episodes in which the model never signalled,,,False
+B2,score_baseline_median,transformer,ITE Transformer,vitaldb,VitalDB,0.9662453830242156,,,,score,main text candidate,rule=primary; median of an episode's first 10 eligible minutes,,,False
+B2,prop_baseline_above_alert_threshold,transformer,ITE Transformer,vitaldb,VitalDB,0.9136442141623488,,,,proportion,main text candidate,rule=primary; baseline already at or above the 80%-target transformer threshold,,,False
+B2,difference_median_min,transformer,ITE Transformer,vitaldb,VitalDB,11.0,5.0,18.0,0.001,min,supplement,"rule=scale_2.0; score departure minus MAP departure, positive = score first; BH family B",B1-B4,0.003206896551724138,True
+B2,prop_score_first,transformer,ITE Transformer,vitaldb,VitalDB,0.8125,0.6666666666666666,0.9412184873949576,0.001,proportion,supplement,rule=scale_2.0; BH family B,B1-B4,0.003206896551724138,True
+B2,prop_both_departed,transformer,ITE Transformer,vitaldb,VitalDB,0.0552677029360967,,,,proportion,supplement,rule=scale_2.0,,,False
+B2,prop_no_score_departure,transformer,ITE Transformer,vitaldb,VitalDB,0.9412780656303972,,,,proportion,supplement,rule=scale_2.0; episodes in which the model never signalled,,,False
+B2,score_baseline_median,transformer,ITE Transformer,vitaldb,VitalDB,0.9662453830242156,,,,score,supplement,rule=scale_2.0; median of an episode's first 10 eligible minutes,,,False
+B2,prop_baseline_above_alert_threshold,transformer,ITE Transformer,vitaldb,VitalDB,0.9136442141623488,,,,proportion,supplement,rule=scale_2.0; baseline already at or above the 80%-target transformer threshold,,,False
+B2,difference_median_min,transformer,ITE Transformer,vitaldb,VitalDB,6.5,1.0,17.0,0.007,min,supplement,"rule=run_5; score departure minus MAP departure, positive = score first; BH family B",B1-B4,0.01972727272727273,True
+B2,prop_score_first,transformer,ITE Transformer,vitaldb,VitalDB,0.7105263157894737,0.5588235294117647,0.8518790849673201,0.013,proportion,supplement,rule=run_5; BH family B,B1-B4,0.03454285714285714,True
+B2,prop_both_departed,transformer,ITE Transformer,vitaldb,VitalDB,0.0656303972366148,,,,proportion,supplement,rule=run_5,,,False
+B2,prop_no_score_departure,transformer,ITE Transformer,vitaldb,VitalDB,0.927461139896373,,,,proportion,supplement,rule=run_5; episodes in which the model never signalled,,,False
+B2,score_baseline_median,transformer,ITE Transformer,vitaldb,VitalDB,0.9662453830242156,,,,score,supplement,rule=run_5; median of an episode's first 10 eligible minutes,,,False
+B2,prop_baseline_above_alert_threshold,transformer,ITE Transformer,vitaldb,VitalDB,0.9136442141623488,,,,proportion,supplement,rule=run_5; baseline already at or above the 80%-target transformer threshold,,,False
+B2,difference_median_min,transformer,ITE Transformer,vitaldb,VitalDB,0.0,-1.0,0.0,1.0,min,supplement,"rule=cap_60; score departure minus MAP departure, positive = score first; BH family B",B1-B4,1.0,False
+B2,prop_score_first,transformer,ITE Transformer,vitaldb,VitalDB,0.3759398496240601,0.3161667956656346,0.4367816091954023,0.001,proportion,supplement,rule=cap_60; BH family B,B1-B4,0.003206896551724138,True
+B2,prop_both_departed,transformer,ITE Transformer,vitaldb,VitalDB,0.459412780656304,,,,proportion,supplement,rule=cap_60,,,False
+B2,prop_no_score_departure,transformer,ITE Transformer,vitaldb,VitalDB,0.47150259067357514,,,,proportion,supplement,rule=cap_60; episodes in which the model never signalled,,,False
+B2,score_baseline_median,transformer,ITE Transformer,vitaldb,VitalDB,0.3490896075963974,,,,score,supplement,rule=cap_60; median of an episode's first 10 eligible minutes,,,False
+B2,prop_baseline_above_alert_threshold,transformer,ITE Transformer,vitaldb,VitalDB,0.3436960276338515,,,,proportion,supplement,rule=cap_60; baseline already at or above the 80%-target transformer threshold,,,False
+B2,difference_median_min,transformer,ITE Transformer,mover,MOVER (SIS),0.0,0.0,3.5,1.0,min,main text candidate,"rule=primary; score departure minus MAP departure, positive = score first; BH family B",B1-B4,1.0,False
+B2,prop_score_first,transformer,ITE Transformer,mover,MOVER (SIS),0.4677419354838709,0.3809418457648545,0.5574132111861135,0.526,proportion,main text candidate,rule=primary; BH family B,B1-B4,0.8482241379310346,False
+B2,prop_both_departed,transformer,ITE Transformer,mover,MOVER (SIS),0.1404303510758777,,,,proportion,main text candidate,rule=primary,,,False
+B2,prop_no_score_departure,transformer,ITE Transformer,mover,MOVER (SIS),0.8505096262740657,,,,proportion,main text candidate,rule=primary; episodes in which the model never signalled,,,False
+B2,score_baseline_median,transformer,ITE Transformer,mover,MOVER (SIS),0.9394435286521912,,,,score,main text candidate,rule=primary; median of an episode's first 10 eligible minutes,,,False
+B2,prop_baseline_above_alert_threshold,transformer,ITE Transformer,mover,MOVER (SIS),0.6115515288788222,,,,proportion,main text candidate,rule=primary; baseline already at or above the 80%-target transformer threshold,,,False
+B2,difference_median_min,transformer,ITE Transformer,mover,MOVER (SIS),0.0,0.0,3.5,1.0,min,supplement,"rule=scale_2.0; score departure minus MAP departure, positive = score first; BH family B",B1-B4,1.0,False
+B2,prop_score_first,transformer,ITE Transformer,mover,MOVER (SIS),0.4631578947368421,0.3626339285714285,0.5632336757153337,0.522,proportion,supplement,rule=scale_2.0; BH family B,B1-B4,0.8482241379310346,False
+B2,prop_both_departed,transformer,ITE Transformer,mover,MOVER (SIS),0.1075877689694224,,,,proportion,supplement,rule=scale_2.0,,,False
+B2,prop_no_score_departure,transformer,ITE Transformer,mover,MOVER (SIS),0.8788221970554926,,,,proportion,supplement,rule=scale_2.0; episodes in which the model never signalled,,,False
+B2,score_baseline_median,transformer,ITE Transformer,mover,MOVER (SIS),0.9394435286521912,,,,score,supplement,rule=scale_2.0; median of an episode's first 10 eligible minutes,,,False
+B2,prop_baseline_above_alert_threshold,transformer,ITE Transformer,mover,MOVER (SIS),0.6115515288788222,,,,proportion,supplement,rule=scale_2.0; baseline already at or above the 80%-target transformer threshold,,,False
+B2,difference_median_min,transformer,ITE Transformer,mover,MOVER (SIS),0.0,0.0,4.0,1.0,min,supplement,"rule=run_5; score departure minus MAP departure, positive = score first; BH family B",B1-B4,1.0,False
+B2,prop_score_first,transformer,ITE Transformer,mover,MOVER (SIS),0.4943820224719101,0.3939393939393939,0.5974065568577763,0.963,proportion,supplement,rule=run_5; BH family B,B1-B4,1.0,False
+B2,prop_both_departed,transformer,ITE Transformer,mover,MOVER (SIS),0.1007927519818799,,,,proportion,supplement,rule=run_5,,,False
+B2,prop_no_score_departure,transformer,ITE Transformer,mover,MOVER (SIS),0.8890147225368064,,,,proportion,supplement,rule=run_5; episodes in which the model never signalled,,,False
+B2,score_baseline_median,transformer,ITE Transformer,mover,MOVER (SIS),0.9394435286521912,,,,score,supplement,rule=run_5; median of an episode's first 10 eligible minutes,,,False
+B2,prop_baseline_above_alert_threshold,transformer,ITE Transformer,mover,MOVER (SIS),0.6115515288788222,,,,proportion,supplement,rule=run_5; baseline already at or above the 80%-target transformer threshold,,,False
+B2,difference_median_min,transformer,ITE Transformer,mover,MOVER (SIS),0.0,0.0,1.0,1.0,min,supplement,"rule=cap_60; score departure minus MAP departure, positive = score first; BH family B",B1-B4,1.0,False
+B2,prop_score_first,transformer,ITE Transformer,mover,MOVER (SIS),0.4715025906735751,0.4243081811600032,0.5207280872193436,0.267,proportion,supplement,rule=cap_60; BH family B,B1-B4,0.5067551020408164,False
+B2,prop_both_departed,transformer,ITE Transformer,mover,MOVER (SIS),0.4371460928652321,,,,proportion,supplement,rule=cap_60,,,False
+B2,prop_no_score_departure,transformer,ITE Transformer,mover,MOVER (SIS),0.48018120045300106,,,,proportion,supplement,rule=cap_60; episodes in which the model never signalled,,,False
+B2,score_baseline_median,transformer,ITE Transformer,mover,MOVER (SIS),0.4099797308444977,,,,score,supplement,rule=cap_60; median of an episode's first 10 eligible minutes,,,False
+B2,prop_baseline_above_alert_threshold,transformer,ITE Transformer,mover,MOVER (SIS),0.2638731596828992,,,,proportion,supplement,rule=cap_60; baseline already at or above the 80%-target transformer threshold,,,False
+B2,difference_median_min,xgb,XGBoost,epic_test,MOVER (EPIC) test,-1.0,-1.0,-1.0,0.004,min,main text candidate,"rule=primary; score departure minus MAP departure, positive = score first; BH family B",B1-B4,0.011625,True
+B2,prop_score_first,xgb,XGBoost,epic_test,MOVER (EPIC) test,0.2666666666666666,0.2074664894735836,0.3242099254986781,0.001,proportion,main text candidate,rule=primary; BH family B,B1-B4,0.003206896551724138,True
+B2,prop_both_departed,xgb,XGBoost,epic_test,MOVER (EPIC) test,0.5541871921182266,,,,proportion,main text candidate,rule=primary,,,False
+B2,prop_no_score_departure,xgb,XGBoost,epic_test,MOVER (EPIC) test,0.3596059113300492,,,,proportion,main text candidate,rule=primary; episodes in which the model never signalled,,,False
+B2,score_baseline_median,xgb,XGBoost,epic_test,MOVER (EPIC) test,0.2874548509716987,,,,score,main text candidate,rule=primary; median of an episode's first 10 eligible minutes,,,False
+B2,prop_baseline_above_alert_threshold,xgb,XGBoost,epic_test,MOVER (EPIC) test,0.0788177339901477,,,,proportion,main text candidate,rule=primary; baseline already at or above the 80%-target transformer threshold,,,False
+B2,difference_median_min,xgb,XGBoost,epic_test,MOVER (EPIC) test,-1.0,-1.0,-1.0,0.024,min,supplement,"rule=scale_2.0; score departure minus MAP departure, positive = score first; BH family B",B1-B4,0.06032432432432433,False
+B2,prop_score_first,xgb,XGBoost,epic_test,MOVER (EPIC) test,0.3048128342245989,0.2419354838709677,0.3695652173913043,0.001,proportion,supplement,rule=scale_2.0; BH family B,B1-B4,0.003206896551724138,True
+B2,prop_both_departed,xgb,XGBoost,epic_test,MOVER (EPIC) test,0.4605911330049261,,,,proportion,supplement,rule=scale_2.0,,,False
+B2,prop_no_score_departure,xgb,XGBoost,epic_test,MOVER (EPIC) test,0.3990147783251231,,,,proportion,supplement,rule=scale_2.0; episodes in which the model never signalled,,,False
+B2,score_baseline_median,xgb,XGBoost,epic_test,MOVER (EPIC) test,0.2874548509716987,,,,score,supplement,rule=scale_2.0; median of an episode's first 10 eligible minutes,,,False
+B2,prop_baseline_above_alert_threshold,xgb,XGBoost,epic_test,MOVER (EPIC) test,0.0788177339901477,,,,proportion,supplement,rule=scale_2.0; baseline already at or above the 80%-target transformer threshold,,,False
+B2,difference_median_min,xgb,XGBoost,epic_test,MOVER (EPIC) test,-1.0,-1.0,0.0,0.064,min,supplement,"rule=run_5; score departure minus MAP departure, positive = score first; BH family B",B1-B4,0.15261538461538462,False
+B2,prop_score_first,xgb,XGBoost,epic_test,MOVER (EPIC) test,0.2989130434782608,0.2359550561797752,0.3654849626112111,0.001,proportion,supplement,rule=run_5; BH family B,B1-B4,0.003206896551724138,True
+B2,prop_both_departed,xgb,XGBoost,epic_test,MOVER (EPIC) test,0.4532019704433497,,,,proportion,supplement,rule=run_5,,,False
+B2,prop_no_score_departure,xgb,XGBoost,epic_test,MOVER (EPIC) test,0.4433497536945812,,,,proportion,supplement,rule=run_5; episodes in which the model never signalled,,,False
+B2,score_baseline_median,xgb,XGBoost,epic_test,MOVER (EPIC) test,0.2874548509716987,,,,score,supplement,rule=run_5; median of an episode's first 10 eligible minutes,,,False
+B2,prop_baseline_above_alert_threshold,xgb,XGBoost,epic_test,MOVER (EPIC) test,0.0788177339901477,,,,proportion,supplement,rule=run_5; baseline already at or above the 80%-target transformer threshold,,,False
+B2,difference_median_min,xgb,XGBoost,epic_test,MOVER (EPIC) test,0.0,-1.0,0.0,1.0,min,supplement,"rule=cap_60; score departure minus MAP departure, positive = score first; BH family B",B1-B4,1.0,False
+B2,prop_score_first,xgb,XGBoost,epic_test,MOVER (EPIC) test,0.3122171945701357,0.25,0.3734525440116021,0.001,proportion,supplement,rule=cap_60; BH family B,B1-B4,0.003206896551724138,True
+B2,prop_both_departed,xgb,XGBoost,epic_test,MOVER (EPIC) test,0.5443349753694581,,,,proportion,supplement,rule=cap_60,,,False
+B2,prop_no_score_departure,xgb,XGBoost,epic_test,MOVER (EPIC) test,0.3374384236453202,,,,proportion,supplement,rule=cap_60; episodes in which the model never signalled,,,False
+B2,score_baseline_median,xgb,XGBoost,epic_test,MOVER (EPIC) test,0.2236185669898986,,,,score,supplement,rule=cap_60; median of an episode's first 10 eligible minutes,,,False
+B2,prop_baseline_above_alert_threshold,xgb,XGBoost,epic_test,MOVER (EPIC) test,0.0935960591133004,,,,proportion,supplement,rule=cap_60; baseline already at or above the 80%-target transformer threshold,,,False
+B2,difference_median_min,xgb,XGBoost,vitaldb,VitalDB,0.0,0.0,0.0,1.0,min,main text candidate,"rule=primary; score departure minus MAP departure, positive = score first; BH family B",B1-B4,1.0,False
+B2,prop_score_first,xgb,XGBoost,vitaldb,VitalDB,0.3436123348017621,0.3004481846432223,0.3880266075388026,0.001,proportion,main text candidate,rule=primary; BH family B,B1-B4,0.003206896551724138,True
+B2,prop_both_departed,xgb,XGBoost,vitaldb,VitalDB,0.7841105354058722,,,,proportion,main text candidate,rule=primary,,,False
+B2,prop_no_score_departure,xgb,XGBoost,vitaldb,VitalDB,0.1191709844559585,,,,proportion,main text candidate,rule=primary; episodes in which the model never signalled,,,False
+B2,score_baseline_median,xgb,XGBoost,vitaldb,VitalDB,0.0609931983053684,,,,score,main text candidate,rule=primary; median of an episode's first 10 eligible minutes,,,False
+B2,prop_baseline_above_alert_threshold,xgb,XGBoost,vitaldb,VitalDB,0.0207253886010362,,,,proportion,main text candidate,rule=primary; baseline already at or above the 80%-target transformer threshold,,,False
+B2,difference_median_min,xgb,XGBoost,vitaldb,VitalDB,0.0,0.0,0.0,1.0,min,supplement,"rule=scale_2.0; score departure minus MAP departure, positive = score first; BH family B",B1-B4,1.0,False
+B2,prop_score_first,xgb,XGBoost,vitaldb,VitalDB,0.4375,0.3935899531437289,0.4852941176470588,0.011,proportion,supplement,rule=scale_2.0; BH family B,B1-B4,0.030088235294117645,True
+B2,prop_both_departed,xgb,XGBoost,vitaldb,VitalDB,0.7184801381692574,,,,proportion,supplement,rule=scale_2.0,,,False
+B2,prop_no_score_departure,xgb,XGBoost,vitaldb,VitalDB,0.1468048359240068,,,,proportion,supplement,rule=scale_2.0; episodes in which the model never signalled,,,False
+B2,score_baseline_median,xgb,XGBoost,vitaldb,VitalDB,0.0609931983053684,,,,score,supplement,rule=scale_2.0; median of an episode's first 10 eligible minutes,,,False
+B2,prop_baseline_above_alert_threshold,xgb,XGBoost,vitaldb,VitalDB,0.0207253886010362,,,,proportion,supplement,rule=scale_2.0; baseline already at or above the 80%-target transformer threshold,,,False
+B2,difference_median_min,xgb,XGBoost,vitaldb,VitalDB,0.0,0.0,0.0,1.0,min,supplement,"rule=run_5; score departure minus MAP departure, positive = score first; BH family B",B1-B4,1.0,False
+B2,prop_score_first,xgb,XGBoost,vitaldb,VitalDB,0.3155452436194895,0.2727218871176217,0.3597126371301149,0.001,proportion,supplement,rule=run_5; BH family B,B1-B4,0.003206896551724138,True
+B2,prop_both_departed,xgb,XGBoost,vitaldb,VitalDB,0.7443868739205527,,,,proportion,supplement,rule=run_5,,,False
+B2,prop_no_score_departure,xgb,XGBoost,vitaldb,VitalDB,0.15025906735751288,,,,proportion,supplement,rule=run_5; episodes in which the model never signalled,,,False
+B2,score_baseline_median,xgb,XGBoost,vitaldb,VitalDB,0.0609931983053684,,,,score,supplement,rule=run_5; median of an episode's first 10 eligible minutes,,,False
+B2,prop_baseline_above_alert_threshold,xgb,XGBoost,vitaldb,VitalDB,0.0207253886010362,,,,proportion,supplement,rule=run_5; baseline already at or above the 80%-target transformer threshold,,,False
+B2,difference_median_min,xgb,XGBoost,vitaldb,VitalDB,0.0,0.0,0.0,1.0,min,supplement,"rule=cap_60; score departure minus MAP departure, positive = score first; BH family B",B1-B4,1.0,False
+B2,prop_score_first,xgb,XGBoost,vitaldb,VitalDB,0.3753026634382566,0.3293838862559242,0.4232583602104905,0.001,proportion,supplement,rule=cap_60; BH family B,B1-B4,0.003206896551724138,True
+B2,prop_both_departed,xgb,XGBoost,vitaldb,VitalDB,0.7132987910189983,,,,proportion,supplement,rule=cap_60,,,False
+B2,prop_no_score_departure,xgb,XGBoost,vitaldb,VitalDB,0.17789291882556119,,,,proportion,supplement,rule=cap_60; episodes in which the model never signalled,,,False
+B2,score_baseline_median,xgb,XGBoost,vitaldb,VitalDB,0.1104997806251049,,,,score,supplement,rule=cap_60; median of an episode's first 10 eligible minutes,,,False
+B2,prop_baseline_above_alert_threshold,xgb,XGBoost,vitaldb,VitalDB,0.0241796200345423,,,,proportion,supplement,rule=cap_60; baseline already at or above the 80%-target transformer threshold,,,False
+B2,difference_median_min,xgb,XGBoost,mover,MOVER (SIS),0.0,-1.0,0.0,1.0,min,main text candidate,"rule=primary; score departure minus MAP departure, positive = score first; BH family B",B1-B4,1.0,False
+B2,prop_score_first,xgb,XGBoost,mover,MOVER (SIS),0.352253756260434,0.3152462579793088,0.3930976051793496,0.001,proportion,main text candidate,rule=primary; BH family B,B1-B4,0.003206896551724138,True
+B2,prop_both_departed,xgb,XGBoost,mover,MOVER (SIS),0.6783691959229898,,,,proportion,main text candidate,rule=primary,,,False
+B2,prop_no_score_departure,xgb,XGBoost,mover,MOVER (SIS),0.2276330690826726,,,,proportion,main text candidate,rule=primary; episodes in which the model never signalled,,,False
+B2,score_baseline_median,xgb,XGBoost,mover,MOVER (SIS),0.1231410503387451,,,,score,main text candidate,rule=primary; median of an episode's first 10 eligible minutes,,,False
+B2,prop_baseline_above_alert_threshold,xgb,XGBoost,mover,MOVER (SIS),0.0600226500566251,,,,proportion,main text candidate,rule=primary; baseline already at or above the 80%-target transformer threshold,,,False
+B2,difference_median_min,xgb,XGBoost,mover,MOVER (SIS),0.0,0.0,0.0,1.0,min,supplement,"rule=scale_2.0; score departure minus MAP departure, positive = score first; BH family B",B1-B4,1.0,False
+B2,prop_score_first,xgb,XGBoost,mover,MOVER (SIS),0.4174573055028463,0.3768354253683721,0.4593668283174059,0.001,proportion,supplement,rule=scale_2.0; BH family B,B1-B4,0.003206896551724138,True
+B2,prop_both_departed,xgb,XGBoost,mover,MOVER (SIS),0.5968289920724802,,,,proportion,supplement,rule=scale_2.0,,,False
+B2,prop_no_score_departure,xgb,XGBoost,mover,MOVER (SIS),0.2774631936579841,,,,proportion,supplement,rule=scale_2.0; episodes in which the model never signalled,,,False
+B2,score_baseline_median,xgb,XGBoost,mover,MOVER (SIS),0.1231410503387451,,,,score,supplement,rule=scale_2.0; median of an episode's first 10 eligible minutes,,,False
+B2,prop_baseline_above_alert_threshold,xgb,XGBoost,mover,MOVER (SIS),0.0600226500566251,,,,proportion,supplement,rule=scale_2.0; baseline already at or above the 80%-target transformer threshold,,,False
+B2,difference_median_min,xgb,XGBoost,mover,MOVER (SIS),0.0,-1.0,0.0,1.0,min,supplement,"rule=run_5; score departure minus MAP departure, positive = score first; BH family B",B1-B4,1.0,False
+B2,prop_score_first,xgb,XGBoost,mover,MOVER (SIS),0.3494423791821561,0.3088370725972372,0.3908336436575375,0.001,proportion,supplement,rule=run_5; BH family B,B1-B4,0.003206896551724138,True
+B2,prop_both_departed,xgb,XGBoost,mover,MOVER (SIS),0.609286523216308,,,,proportion,supplement,rule=run_5,,,False
+B2,prop_no_score_departure,xgb,XGBoost,mover,MOVER (SIS),0.2808607021517553,,,,proportion,supplement,rule=run_5; episodes in which the model never signalled,,,False
+B2,score_baseline_median,xgb,XGBoost,mover,MOVER (SIS),0.1231410503387451,,,,score,supplement,rule=run_5; median of an episode's first 10 eligible minutes,,,False
+B2,prop_baseline_above_alert_threshold,xgb,XGBoost,mover,MOVER (SIS),0.0600226500566251,,,,proportion,supplement,rule=run_5; baseline already at or above the 80%-target transformer threshold,,,False
+B2,difference_median_min,xgb,XGBoost,mover,MOVER (SIS),0.0,0.0,0.0,1.0,min,supplement,"rule=cap_60; score departure minus MAP departure, positive = score first; BH family B",B1-B4,1.0,False
+B2,prop_score_first,xgb,XGBoost,mover,MOVER (SIS),0.391713747645951,0.3524675094628107,0.4335306643019793,0.001,proportion,supplement,rule=cap_60; BH family B,B1-B4,0.003206896551724138,True
+B2,prop_both_departed,xgb,XGBoost,mover,MOVER (SIS),0.6013590033975085,,,,proportion,supplement,rule=cap_60,,,False
+B2,prop_no_score_departure,xgb,XGBoost,mover,MOVER (SIS),0.2978482446206114,,,,proportion,supplement,rule=cap_60; episodes in which the model never signalled,,,False
+B2,score_baseline_median,xgb,XGBoost,mover,MOVER (SIS),0.2397739887237548,,,,score,supplement,rule=cap_60; median of an episode's first 10 eligible minutes,,,False
+B2,prop_baseline_above_alert_threshold,xgb,XGBoost,mover,MOVER (SIS),0.0781426953567383,,,,proportion,supplement,rule=cap_60; baseline already at or above the 80%-target transformer threshold,,,False
+B3,directedness[60-5],transformer,ITE Transformer,epic_test,MOVER (EPIC) test,0.0252018176761526,0.0019553201923618,0.0496889088527322,,ratio,main text candidate,net change / total path length,,,False
+B3,delta[60-5],transformer,ITE Transformer,epic_test,MOVER (EPIC) test,0.0464701652526855,,,,score,supplement,,,,False
+B3,gross_up[60-5],transformer,ITE Transformer,epic_test,MOVER (EPIC) test,0.9685407057404518,,,,score,supplement,,,,False
+B3,gross_down[60-5],transformer,ITE Transformer,epic_test,MOVER (EPIC) test,0.9506953489035368,,,,score,supplement,,,,False
+B3,max_up_share[60-5],transformer,ITE Transformer,epic_test,MOVER (EPIC) test,0.4878765793523736,0.4570544404221833,0.5072495649783987,,proportion,supplement,,,,False
+B3,path_per_net[60-5],transformer,ITE Transformer,epic_test,MOVER (EPIC) test,40.681136325740134,,,,ratio,main text candidate,path length per unit of absolute net displacement,,,False
+B3,directedness[60-5],lstm,LSTM,epic_test,MOVER (EPIC) test,0.0431488075608939,0.0242842205088786,0.0572705865994498,,ratio,main text candidate,net change / total path length,,,False
+B3,delta[60-5],lstm,LSTM,epic_test,MOVER (EPIC) test,0.0764733236283063,,,,score,supplement,,,,False
+B3,gross_up[60-5],lstm,LSTM,epic_test,MOVER (EPIC) test,1.043807324022055,,,,score,supplement,,,,False
+B3,gross_down[60-5],lstm,LSTM,epic_test,MOVER (EPIC) test,0.9209616426378489,,,,score,supplement,,,,False
+B3,max_up_share[60-5],lstm,LSTM,epic_test,MOVER (EPIC) test,0.4779981157804244,0.4583634473132302,0.4985761272435484,,proportion,supplement,,,,False
+B3,path_per_net[60-5],lstm,LSTM,epic_test,MOVER (EPIC) test,25.932380516579904,,,,ratio,main text candidate,path length per unit of absolute net displacement,,,False
+B3,directedness[60-5],xgb,XGBoost,epic_test,MOVER (EPIC) test,0.0485834904579485,0.0328526881763633,0.070424976367683,,ratio,main text candidate,net change / total path length,,,False
+B3,delta[60-5],xgb,XGBoost,epic_test,MOVER (EPIC) test,0.1077856756746769,,,,score,supplement,,,,False
+B3,gross_up[60-5],xgb,XGBoost,epic_test,MOVER (EPIC) test,1.1602903977036476,,,,score,supplement,,,,False
+B3,gross_down[60-5],xgb,XGBoost,epic_test,MOVER (EPIC) test,1.0336335860192776,,,,score,supplement,,,,False
+B3,max_up_share[60-5],xgb,XGBoost,epic_test,MOVER (EPIC) test,0.4215506700802564,0.4077455973458079,0.4293387034448228,,proportion,supplement,,,,False
+B3,path_per_net[60-5],xgb,XGBoost,epic_test,MOVER (EPIC) test,19.982329823456872,,,,ratio,main text candidate,path length per unit of absolute net displacement,,,False
+B3,directedness[60-5],rf,Random forest,epic_test,MOVER (EPIC) test,0.0667152752460809,0.0383747178329571,0.0931372549019609,,ratio,main text candidate,net change / total path length,,,False
+B3,delta[60-5],rf,Random forest,epic_test,MOVER (EPIC) test,0.1174999999999999,,,,score,supplement,,,,False
+B3,gross_up[60-5],rf,Random forest,epic_test,MOVER (EPIC) test,1.0425,,,,score,supplement,,,,False
+B3,gross_down[60-5],rf,Random forest,epic_test,MOVER (EPIC) test,0.8862500000000002,,,,score,supplement,,,,False
+B3,max_up_share[60-5],rf,Random forest,epic_test,MOVER (EPIC) test,0.4048556430446194,0.3910081743869208,0.4198250728862974,,proportion,supplement,,,,False
+B3,path_per_net[60-5],rf,Random forest,epic_test,MOVER (EPIC) test,16.308510638297886,,,,ratio,main text candidate,path length per unit of absolute net displacement,,,False
+B3,directedness[60-5],logreg,Logistic regression,epic_test,MOVER (EPIC) test,0.0612127698223264,0.0437230031414528,0.0891244723504285,,ratio,main text candidate,net change / total path length,,,False
+B3,delta[60-5],logreg,Logistic regression,epic_test,MOVER (EPIC) test,0.0995028610536425,,,,score,supplement,,,,False
+B3,gross_up[60-5],logreg,Logistic regression,epic_test,MOVER (EPIC) test,0.9627128759632884,,,,score,supplement,,,,False
+B3,gross_down[60-5],logreg,Logistic regression,epic_test,MOVER (EPIC) test,0.8379277203821207,,,,score,supplement,,,,False
+B3,max_up_share[60-5],logreg,Logistic regression,epic_test,MOVER (EPIC) test,0.3865037574004908,0.3698592408385613,0.4033330674712002,,proportion,supplement,,,,False
+B3,path_per_net[60-5],logreg,Logistic regression,epic_test,MOVER (EPIC) test,17.567497228989108,,,,ratio,main text candidate,path length per unit of absolute net displacement,,,False
+B3,directedness[60-5],transformer,ITE Transformer,vitaldb,VitalDB,0.0208016184883129,0.0047345690935924,0.0376015483075131,,ratio,main text candidate,net change / total path length,,,False
+B3,delta[60-5],transformer,ITE Transformer,vitaldb,VitalDB,0.0127126574516296,,,,score,supplement,,,,False
+B3,gross_up[60-5],transformer,ITE Transformer,vitaldb,VitalDB,0.9587508514523506,,,,score,supplement,,,,False
+B3,gross_down[60-5],transformer,ITE Transformer,vitaldb,VitalDB,0.9495053393766284,,,,score,supplement,,,,False
+B3,max_up_share[60-5],transformer,ITE Transformer,vitaldb,VitalDB,0.489520817933784,0.4763618605242727,0.5124257169572196,,proportion,supplement,,,,False
+B3,path_per_net[60-5],transformer,ITE Transformer,vitaldb,VitalDB,146.60254978127696,,,,ratio,main text candidate,path length per unit of absolute net displacement,,,False
+B3,directedness[60-5],lstm,LSTM,vitaldb,VitalDB,0.0590968366342784,0.0351468413885643,0.0704912083893047,,ratio,main text candidate,net change / total path length,,,False
+B3,delta[60-5],lstm,LSTM,vitaldb,VitalDB,0.056860476732254,,,,score,supplement,,,,False
+B3,gross_up[60-5],lstm,LSTM,vitaldb,VitalDB,0.8602704615332186,,,,score,supplement,,,,False
+B3,gross_down[60-5],lstm,LSTM,vitaldb,VitalDB,0.7711567170917988,,,,score,supplement,,,,False
+B3,max_up_share[60-5],lstm,LSTM,vitaldb,VitalDB,0.4821359665764105,0.4612333511627044,0.5030899823776955,,proportion,supplement,,,,False
+B3,path_per_net[60-5],lstm,LSTM,vitaldb,VitalDB,28.192640379240036,,,,ratio,main text candidate,path length per unit of absolute net displacement,,,False
+B3,directedness[60-5],xgb,XGBoost,vitaldb,VitalDB,0.0693283255232781,0.0486934719507593,0.0986606057101982,,ratio,main text candidate,net change / total path length,,,False
+B3,delta[60-5],xgb,XGBoost,vitaldb,VitalDB,0.1076072007417678,,,,score,supplement,,,,False
+B3,gross_up[60-5],xgb,XGBoost,vitaldb,VitalDB,1.055361601524055,,,,score,supplement,,,,False
+B3,gross_down[60-5],xgb,XGBoost,vitaldb,VitalDB,0.8717868011444807,,,,score,supplement,,,,False
+B3,max_up_share[60-5],xgb,XGBoost,vitaldb,VitalDB,0.4332329623961823,0.4124598000115367,0.4475161557359658,,proportion,supplement,,,,False
+B3,path_per_net[60-5],xgb,XGBoost,vitaldb,VitalDB,17.947552928470778,,,,ratio,main text candidate,path length per unit of absolute net displacement,,,False
+B3,directedness[60-5],rf,Random forest,vitaldb,VitalDB,0.0751708428246013,0.0528846153846154,0.0942390942390942,,ratio,main text candidate,net change / total path length,,,False
+B3,delta[60-5],rf,Random forest,vitaldb,VitalDB,0.1262499999999999,,,,score,supplement,,,,False
+B3,gross_up[60-5],rf,Random forest,vitaldb,VitalDB,1.0025,,,,score,supplement,,,,False
+B3,gross_down[60-5],rf,Random forest,vitaldb,VitalDB,0.7999999999999999,,,,score,supplement,,,,False
+B3,max_up_share[60-5],rf,Random forest,vitaldb,VitalDB,0.4194857916102842,0.4053794428434198,0.4317180616740088,,proportion,supplement,,,,False
+B3,path_per_net[60-5],rf,Random forest,vitaldb,VitalDB,14.415841584158432,,,,ratio,main text candidate,path length per unit of absolute net displacement,,,False
+B3,directedness[60-5],logreg,Logistic regression,vitaldb,VitalDB,0.088208971410013,0.0628009980385151,0.1083080467589035,,ratio,main text candidate,net change / total path length,,,False
+B3,delta[60-5],logreg,Logistic regression,vitaldb,VitalDB,0.1150359110488835,,,,score,supplement,,,,False
+B3,gross_up[60-5],logreg,Logistic regression,vitaldb,VitalDB,0.7963606046694383,,,,score,supplement,,,,False
+B3,gross_down[60-5],logreg,Logistic regression,vitaldb,VitalDB,0.6554271309580297,,,,score,supplement,,,,False
+B3,max_up_share[60-5],logreg,Logistic regression,vitaldb,VitalDB,0.3655181994091551,0.3559234191822614,0.3797499264859478,,proportion,supplement,,,,False
+B3,path_per_net[60-5],logreg,Logistic regression,vitaldb,VitalDB,12.582931564298892,,,,ratio,main text candidate,path length per unit of absolute net displacement,,,False
+B3,directedness[60-5],transformer,ITE Transformer,mover,MOVER (SIS),0.0890268479763438,0.0656377412546736,0.1218490590254483,,ratio,main text candidate,net change / total path length,,,False
+B3,delta[60-5],transformer,ITE Transformer,mover,MOVER (SIS),0.1389686646871268,,,,score,supplement,,,,False
+B3,gross_up[60-5],transformer,ITE Transformer,mover,MOVER (SIS),0.9983353549614548,,,,score,supplement,,,,False
+B3,gross_down[60-5],transformer,ITE Transformer,mover,MOVER (SIS),0.8676314493641257,,,,score,supplement,,,,False
+B3,max_up_share[60-5],transformer,ITE Transformer,mover,MOVER (SIS),0.4552280053856101,0.4429903045746059,0.4693907101902836,,proportion,supplement,,,,False
+B3,path_per_net[60-5],transformer,ITE Transformer,mover,MOVER (SIS),13.074112935959974,,,,ratio,main text candidate,path length per unit of absolute net displacement,,,False
+B3,directedness[60-5],lstm,LSTM,mover,MOVER (SIS),0.1423247082709216,0.1178285123063959,0.183129727311232,,ratio,main text candidate,net change / total path length,,,False
+B3,delta[60-5],lstm,LSTM,mover,MOVER (SIS),0.2224286173004657,,,,score,supplement,,,,False
+B3,gross_up[60-5],lstm,LSTM,mover,MOVER (SIS),1.0216084833955392,,,,score,supplement,,,,False
+B3,gross_down[60-5],lstm,LSTM,mover,MOVER (SIS),0.7505565093597397,,,,score,supplement,,,,False
+B3,max_up_share[60-5],lstm,LSTM,mover,MOVER (SIS),0.4418147844666758,0.422953641641238,0.4632872989869752,,proportion,supplement,,,,False
+B3,path_per_net[60-5],lstm,LSTM,mover,MOVER (SIS),7.870947649859102,,,,ratio,main text candidate,path length per unit of absolute net displacement,,,False
+B3,directedness[60-5],xgb,XGBoost,mover,MOVER (SIS),0.1436588795534438,0.1200129966649573,0.166540427093314,,ratio,main text candidate,net change / total path length,,,False
+B3,delta[60-5],xgb,XGBoost,mover,MOVER (SIS),0.2680680081248283,,,,score,supplement,,,,False
+B3,gross_up[60-5],xgb,XGBoost,mover,MOVER (SIS),1.1218655412085354,,,,score,supplement,,,,False
+B3,gross_down[60-5],xgb,XGBoost,mover,MOVER (SIS),0.8458449495956302,,,,score,supplement,,,,False
+B3,max_up_share[60-5],xgb,XGBoost,mover,MOVER (SIS),0.4089442362675349,0.3967887940227836,0.4212748056412695,,proportion,supplement,,,,False
+B3,path_per_net[60-5],xgb,XGBoost,mover,MOVER (SIS),7.4803032671067875,,,,ratio,main text candidate,path length per unit of absolute net displacement,,,False
+B3,directedness[60-5],rf,Random forest,mover,MOVER (SIS),0.1508777305958061,0.1321209602167247,0.16796875,,ratio,main text candidate,net change / total path length,,,False
+B3,delta[60-5],rf,Random forest,mover,MOVER (SIS),0.260625,,,,score,supplement,,,,False
+B3,gross_up[60-5],rf,Random forest,mover,MOVER (SIS),1.0612499999999998,,,,score,supplement,,,,False
+B3,gross_down[60-5],rf,Random forest,mover,MOVER (SIS),0.786875,,,,score,supplement,,,,False
+B3,max_up_share[60-5],rf,Random forest,mover,MOVER (SIS),0.404831948100051,0.3926788685524127,0.4190839694656488,,proportion,supplement,,,,False
+B3,path_per_net[60-5],rf,Random forest,mover,MOVER (SIS),6.956834532374101,,,,ratio,main text candidate,path length per unit of absolute net displacement,,,False
+B3,directedness[60-5],logreg,Logistic regression,mover,MOVER (SIS),0.1336220154724394,0.1185135410413038,0.1536327342968863,,ratio,main text candidate,net change / total path length,,,False
+B3,delta[60-5],logreg,Logistic regression,mover,MOVER (SIS),0.186861173874565,,,,score,supplement,,,,False
+B3,gross_up[60-5],logreg,Logistic regression,mover,MOVER (SIS),0.8349164830175954,,,,score,supplement,,,,False
+B3,gross_down[60-5],logreg,Logistic regression,mover,MOVER (SIS),0.6325566557554394,,,,score,supplement,,,,False
+B3,max_up_share[60-5],logreg,Logistic regression,mover,MOVER (SIS),0.3654187534426081,0.355828027200519,0.3760141484305796,,proportion,supplement,,,,False
+B3,path_per_net[60-5],logreg,Logistic regression,mover,MOVER (SIS),7.932963389483762,,,,ratio,main text candidate,path length per unit of absolute net displacement,,,False
+B3,directedness[60-10],transformer,ITE Transformer,epic_test,MOVER (EPIC) test,-5.229270167087617e-05,-0.0119337820003366,0.0170680351074776,,ratio,main text candidate,net change / total path length,,,False
+B3,delta[60-10],transformer,ITE Transformer,epic_test,MOVER (EPIC) test,-2.9647722840309143e-05,,,,score,supplement,,,,False
+B3,gross_up[60-10],transformer,ITE Transformer,epic_test,MOVER (EPIC) test,0.8245520815253258,,,,score,supplement,,,,False
+B3,gross_down[60-10],transformer,ITE Transformer,epic_test,MOVER (EPIC) test,0.8967046216130257,,,,score,supplement,,,,False
+B3,max_up_share[60-10],transformer,ITE Transformer,epic_test,MOVER (EPIC) test,0.5100011215430656,0.4911469547529601,0.5463419619865668,,proportion,supplement,,,,False
+B3,path_per_net[60-10],transformer,ITE Transformer,epic_test,MOVER (EPIC) test,57754.241063014386,,,,ratio,main text candidate,path length per unit of absolute net displacement,,,False
+B3,directedness[60-10],lstm,LSTM,epic_test,MOVER (EPIC) test,0.0209308359176633,0.003596556688827,0.0497290075482174,,ratio,main text candidate,net change / total path length,,,False
+B3,delta[60-10],lstm,LSTM,epic_test,MOVER (EPIC) test,0.0234630302293226,,,,score,supplement,,,,False
+B3,gross_up[60-10],lstm,LSTM,epic_test,MOVER (EPIC) test,0.915206293342635,,,,score,supplement,,,,False
+B3,gross_down[60-10],lstm,LSTM,epic_test,MOVER (EPIC) test,0.8890627101063728,,,,score,supplement,,,,False
+B3,max_up_share[60-10],lstm,LSTM,epic_test,MOVER (EPIC) test,0.5007138753554459,0.4786363123335739,0.5282088261616943,,proportion,supplement,,,,False
+B3,path_per_net[60-10],lstm,LSTM,epic_test,MOVER (EPIC) test,76.71237474720093,,,,ratio,main text candidate,path length per unit of absolute net displacement,,,False
+B3,directedness[60-10],xgb,XGBoost,epic_test,MOVER (EPIC) test,0.0421819114916717,0.0178421500062548,0.0647029265484252,,ratio,main text candidate,net change / total path length,,,False
+B3,delta[60-10],xgb,XGBoost,epic_test,MOVER (EPIC) test,0.0587351024150848,,,,score,supplement,,,,False
+B3,gross_up[60-10],xgb,XGBoost,epic_test,MOVER (EPIC) test,1.0088398717343807,,,,score,supplement,,,,False
+B3,gross_down[60-10],xgb,XGBoost,epic_test,MOVER (EPIC) test,0.943355968222022,,,,score,supplement,,,,False
+B3,max_up_share[60-10],xgb,XGBoost,epic_test,MOVER (EPIC) test,0.4562527562561714,0.4291574870835745,0.4755209394914235,,proportion,supplement,,,,False
+B3,path_per_net[60-10],xgb,XGBoost,epic_test,MOVER (EPIC) test,33.69455165430891,,,,ratio,main text candidate,path length per unit of absolute net displacement,,,False
+B3,directedness[60-10],rf,Random forest,epic_test,MOVER (EPIC) test,0.0465595385249279,0.0221543162719633,0.0691927512355848,,ratio,main text candidate,net change / total path length,,,False
+B3,delta[60-10],rf,Random forest,epic_test,MOVER (EPIC) test,0.07,,,,score,supplement,,,,False
+B3,gross_up[60-10],rf,Random forest,epic_test,MOVER (EPIC) test,0.93625,,,,score,supplement,,,,False
+B3,gross_down[60-10],rf,Random forest,epic_test,MOVER (EPIC) test,0.81375,,,,score,supplement,,,,False
+B3,max_up_share[60-10],rf,Random forest,epic_test,MOVER (EPIC) test,0.438423645320197,0.4265734265734265,0.4501661129568106,,proportion,supplement,,,,False
+B3,path_per_net[60-10],rf,Random forest,epic_test,MOVER (EPIC) test,23.982142857142858,,,,ratio,main text candidate,path length per unit of absolute net displacement,,,False
+B3,directedness[60-10],logreg,Logistic regression,epic_test,MOVER (EPIC) test,0.0367934204844709,0.0157990358071225,0.0639725830204474,,ratio,main text candidate,net change / total path length,,,False
+B3,delta[60-10],logreg,Logistic regression,epic_test,MOVER (EPIC) test,0.0522195448928197,,,,score,supplement,,,,False
+B3,gross_up[60-10],logreg,Logistic regression,epic_test,MOVER (EPIC) test,0.8345151070674839,,,,score,supplement,,,,False
+B3,gross_down[60-10],logreg,Logistic regression,epic_test,MOVER (EPIC) test,0.7646375117064949,,,,score,supplement,,,,False
+B3,max_up_share[60-10],logreg,Logistic regression,epic_test,MOVER (EPIC) test,0.418087532144115,0.3989095675481863,0.4381100588062853,,proportion,supplement,,,,False
+B3,path_per_net[60-10],logreg,Logistic regression,epic_test,MOVER (EPIC) test,30.716293309527536,,,,ratio,main text candidate,path length per unit of absolute net displacement,,,False
+B3,directedness[60-10],transformer,ITE Transformer,vitaldb,VitalDB,-1.811658136239869e-05,-0.0178654543890629,0.0073582280186595,,ratio,main text candidate,net change / total path length,,,False
+B3,delta[60-10],transformer,ITE Transformer,vitaldb,VitalDB,-1.7535872757434845e-05,,,,score,supplement,,,,False
+B3,gross_up[60-10],transformer,ITE Transformer,vitaldb,VitalDB,0.8181073060259223,,,,score,supplement,,,,False
+B3,gross_down[60-10],transformer,ITE Transformer,vitaldb,VitalDB,0.8514164462685585,,,,score,supplement,,,,False
+B3,max_up_share[60-10],transformer,ITE Transformer,vitaldb,VitalDB,0.5250506564291725,0.5079494545862165,0.5473605248993149,,proportion,supplement,,,,False
+B3,path_per_net[60-10],transformer,ITE Transformer,vitaldb,VitalDB,92858.69499176805,,,,ratio,main text candidate,path length per unit of absolute net displacement,,,False
+B3,directedness[60-10],lstm,LSTM,vitaldb,VitalDB,0.0134269412161923,0.0013160851144851,0.0365270107600866,,ratio,main text candidate,net change / total path length,,,False
+B3,delta[60-10],lstm,LSTM,vitaldb,VitalDB,0.0067828237079083,,,,score,supplement,,,,False
+B3,gross_up[60-10],lstm,LSTM,vitaldb,VitalDB,0.7286439990857616,,,,score,supplement,,,,False
+B3,gross_down[60-10],lstm,LSTM,vitaldb,VitalDB,0.7175128501839936,,,,score,supplement,,,,False
+B3,max_up_share[60-10],lstm,LSTM,vitaldb,VitalDB,0.5240954021376174,0.5077926163812017,0.5424448853957188,,proportion,supplement,,,,False
+B3,path_per_net[60-10],lstm,LSTM,vitaldb,VitalDB,208.05014745637777,,,,ratio,main text candidate,path length per unit of absolute net displacement,,,False
+B3,directedness[60-10],xgb,XGBoost,vitaldb,VitalDB,0.0423081943138556,0.0191900124913876,0.0679278629590937,,ratio,main text candidate,net change / total path length,,,False
+B3,delta[60-10],xgb,XGBoost,vitaldb,VitalDB,0.0494079571217298,,,,score,supplement,,,,False
+B3,gross_up[60-10],xgb,XGBoost,vitaldb,VitalDB,0.9384426791220905,,,,score,supplement,,,,False
+B3,gross_down[60-10],xgb,XGBoost,vitaldb,VitalDB,0.765391536988318,,,,score,supplement,,,,False
+B3,max_up_share[60-10],xgb,XGBoost,vitaldb,VitalDB,0.4617643301191654,0.4489884356637408,0.4754311005378266,,proportion,supplement,,,,False
+B3,path_per_net[60-10],xgb,XGBoost,vitaldb,VitalDB,34.85889282071595,,,,ratio,main text candidate,path length per unit of absolute net displacement,,,False
+B3,directedness[60-10],rf,Random forest,vitaldb,VitalDB,0.0430107526881721,0.0211480362537764,0.0714285714285714,,ratio,main text candidate,net change / total path length,,,False
+B3,delta[60-10],rf,Random forest,vitaldb,VitalDB,0.06125,,,,score,supplement,,,,False
+B3,gross_up[60-10],rf,Random forest,vitaldb,VitalDB,0.86875,,,,score,supplement,,,,False
+B3,gross_down[60-10],rf,Random forest,vitaldb,VitalDB,0.72875,,,,score,supplement,,,,False
+B3,max_up_share[60-10],rf,Random forest,vitaldb,VitalDB,0.4381443298969071,0.4241461477362986,0.4547511312217195,,proportion,supplement,,,,False
+B3,path_per_net[60-10],rf,Random forest,vitaldb,VitalDB,26.28571428571429,,,,ratio,main text candidate,path length per unit of absolute net displacement,,,False
+B3,directedness[60-10],logreg,Logistic regression,vitaldb,VitalDB,0.0556831654690736,0.028909822775757,0.0850483371903871,,ratio,main text candidate,net change / total path length,,,False
+B3,delta[60-10],logreg,Logistic regression,vitaldb,VitalDB,0.0667442022169647,,,,score,supplement,,,,False
+B3,gross_up[60-10],logreg,Logistic regression,vitaldb,VitalDB,0.6944030960106221,,,,score,supplement,,,,False
+B3,gross_down[60-10],logreg,Logistic regression,vitaldb,VitalDB,0.5853667375323934,,,,score,supplement,,,,False
+B3,max_up_share[60-10],logreg,Logistic regression,vitaldb,VitalDB,0.3908515567515415,0.3741244301495727,0.4033141987554454,,proportion,supplement,,,,False
+B3,path_per_net[60-10],logreg,Logistic regression,vitaldb,VitalDB,19.32666989090647,,,,ratio,main text candidate,path length per unit of absolute net displacement,,,False
+B3,directedness[60-10],transformer,ITE Transformer,mover,MOVER (SIS),0.058349950941074,0.0393371895785562,0.0815705031559757,,ratio,main text candidate,net change / total path length,,,False
+B3,delta[60-10],transformer,ITE Transformer,mover,MOVER (SIS),0.0576525190845131,,,,score,supplement,,,,False
+B3,gross_up[60-10],transformer,ITE Transformer,mover,MOVER (SIS),0.8480569231323898,,,,score,supplement,,,,False
+B3,gross_down[60-10],transformer,ITE Transformer,mover,MOVER (SIS),0.7940814895555377,,,,score,supplement,,,,False
+B3,max_up_share[60-10],transformer,ITE Transformer,mover,MOVER (SIS),0.5008496594413026,0.4852461993192152,0.5204830923494029,,proportion,supplement,,,,False
+B3,path_per_net[60-10],transformer,ITE Transformer,mover,MOVER (SIS),27.45671580318802,,,,ratio,main text candidate,path length per unit of absolute net displacement,,,False
+B3,directedness[60-10],lstm,LSTM,mover,MOVER (SIS),0.0959669276510001,0.0786578640830426,0.1391579845763121,,ratio,main text candidate,net change / total path length,,,False
+B3,delta[60-10],lstm,LSTM,mover,MOVER (SIS),0.1517286134767346,,,,score,supplement,,,,False
+B3,gross_up[60-10],lstm,LSTM,mover,MOVER (SIS),0.8955015701940283,,,,score,supplement,,,,False
+B3,gross_down[60-10],lstm,LSTM,mover,MOVER (SIS),0.681649590987945,,,,score,supplement,,,,False
+B3,max_up_share[60-10],lstm,LSTM,mover,MOVER (SIS),0.4831315610084666,0.4699789203333121,0.5035851900552776,,proportion,supplement,,,,False
+B3,path_per_net[60-10],lstm,LSTM,mover,MOVER (SIS),10.0445628980593,,,,ratio,main text candidate,path length per unit of absolute net displacement,,,False
+B3,directedness[60-10],xgb,XGBoost,mover,MOVER (SIS),0.1191655102779962,0.0967214029872265,0.1428986257211473,,ratio,main text candidate,net change / total path length,,,False
+B3,delta[60-10],xgb,XGBoost,mover,MOVER (SIS),0.2082620575092733,,,,score,supplement,,,,False
+B3,gross_up[60-10],xgb,XGBoost,mover,MOVER (SIS),0.9842526819556952,,,,score,supplement,,,,False
+B3,gross_down[60-10],xgb,XGBoost,mover,MOVER (SIS),0.7607307145372033,,,,score,supplement,,,,False
+B3,max_up_share[60-10],xgb,XGBoost,mover,MOVER (SIS),0.4439754061911546,0.4292908706638045,0.4576323380081195,,proportion,supplement,,,,False
+B3,path_per_net[60-10],xgb,XGBoost,mover,MOVER (SIS),8.34822471563175,,,,ratio,main text candidate,path length per unit of absolute net displacement,,,False
+B3,directedness[60-10],rf,Random forest,mover,MOVER (SIS),0.1227925840928936,0.0992563255512566,0.141304347826087,,ratio,main text candidate,net change / total path length,,,False
+B3,delta[60-10],rf,Random forest,mover,MOVER (SIS),0.18375,,,,score,supplement,,,,False
+B3,gross_up[60-10],rf,Random forest,mover,MOVER (SIS),0.9193749999999998,,,,score,supplement,,,,False
+B3,gross_down[60-10],rf,Random forest,mover,MOVER (SIS),0.6837500000000001,,,,score,supplement,,,,False
+B3,max_up_share[60-10],rf,Random forest,mover,MOVER (SIS),0.435690653432589,0.4202898550724637,0.4472573839662448,,proportion,supplement,,,,False
+B3,path_per_net[60-10],rf,Random forest,mover,MOVER (SIS),8.489795918367347,,,,ratio,main text candidate,path length per unit of absolute net displacement,,,False
+B3,directedness[60-10],logreg,Logistic regression,mover,MOVER (SIS),0.123880926945647,0.1050739101963695,0.1443009775074411,,ratio,main text candidate,net change / total path length,,,False
+B3,delta[60-10],logreg,Logistic regression,mover,MOVER (SIS),0.1540006090805146,,,,score,supplement,,,,False
+B3,gross_up[60-10],logreg,Logistic regression,mover,MOVER (SIS),0.7380366706705701,,,,score,supplement,,,,False
+B3,gross_down[60-10],logreg,Logistic regression,mover,MOVER (SIS),0.571956009290624,,,,score,supplement,,,,False
+B3,max_up_share[60-10],logreg,Logistic regression,mover,MOVER (SIS),0.3932513368625943,0.3811664951100686,0.4077781527640399,,proportion,supplement,,,,False
+B3,path_per_net[60-10],logreg,Logistic regression,mover,MOVER (SIS),8.442368575467938,,,,ratio,main text candidate,path length per unit of absolute net displacement,,,False
+B3,directedness_all_pairs_overlap[60-5],all,all,epic_test,MOVER (EPIC) test,1.0,,,,boolean,main text candidate,"1 = every pairwise interval overlaps, so the value is not family-specific",,,False
+B3,directedness_all_pairs_overlap[60-5],all,all,vitaldb,VitalDB,0.0,,,,boolean,main text candidate,"1 = every pairwise interval overlaps, so the value is not family-specific",,,False
+B3,directedness_all_pairs_overlap[60-5],all,all,mover,MOVER (SIS),0.0,,,,boolean,main text candidate,"1 = every pairwise interval overlaps, so the value is not family-specific",,,False
+B3,directedness_all_pairs_overlap[60-10],all,all,epic_test,MOVER (EPIC) test,0.0,,,,boolean,main text candidate,"1 = every pairwise interval overlaps, so the value is not family-specific",,,False
+B3,directedness_all_pairs_overlap[60-10],all,all,vitaldb,VitalDB,0.0,,,,boolean,main text candidate,"1 = every pairwise interval overlaps, so the value is not family-specific",,,False
+B3,directedness_all_pairs_overlap[60-10],all,all,mover,MOVER (SIS),0.0,,,,boolean,main text candidate,"1 = every pairwise interval overlaps, so the value is not family-specific",,,False
+B4,event_side_change,transformer,ITE Transformer,epic_test,MOVER (EPIC) test,0.0521206742378707,0.004470430184792,0.1011854159130326,,score,main text candidate,,,,False
+B4,control_side_change,transformer,ITE Transformer,epic_test,MOVER (EPIC) test,-0.2739886522670335,-0.3173311713643081,-0.2321314826439562,,score,main text candidate,,,,False
+B4,event_side_share,transformer,ITE Transformer,epic_test,MOVER (EPIC) test,0.1598257700767933,0.0172472434600425,0.2723918146019976,0.001,proportion,main text candidate,share of the gap widening attributable to the event side; BH family B,B1-B4,0.003206896551724138,True
+B4,control_side_share,transformer,ITE Transformer,epic_test,MOVER (EPIC) test,0.8401742299232067,0.7276081853980022,0.9827527565399572,,proportion,main text candidate,,,,False
+B4,gap_widening,transformer,ITE Transformer,epic_test,MOVER (EPIC) test,0.3261093265049042,,,,score,supplement,,,,False
+B4,event_side_change,transformer,ITE Transformer,vitaldb,VitalDB,0.0356465229252676,-0.0065494861239601,0.0776295827148035,,score,main text candidate,,,,False
+B4,control_side_change,transformer,ITE Transformer,vitaldb,VitalDB,-0.2673008028203621,-0.2942937665048357,-0.2398292025971654,,score,main text candidate,,,,False
+B4,event_side_share,transformer,ITE Transformer,vitaldb,VitalDB,0.1176657454807779,-0.0258789593967329,0.2237848887897569,0.001,proportion,main text candidate,share of the gap widening attributable to the event side; BH family B,B1-B4,0.003206896551724138,True
+B4,control_side_share,transformer,ITE Transformer,vitaldb,VitalDB,0.882334254519222,0.7762151112102431,1.025878959396733,,proportion,main text candidate,,,,False
+B4,gap_widening,transformer,ITE Transformer,vitaldb,VitalDB,0.3029473257456297,,,,score,supplement,,,,False
+B4,event_side_change,transformer,ITE Transformer,mover,MOVER (SIS),0.1529869647265704,0.1202856789144665,0.1863973443962456,,score,main text candidate,,,,False
+B4,control_side_change,transformer,ITE Transformer,mover,MOVER (SIS),-0.1941676898343509,-0.2249486468192486,-0.1660153686840969,,score,main text candidate,,,,False
+B4,event_side_share,transformer,ITE Transformer,mover,MOVER (SIS),0.4406882140758481,0.3716070492484944,0.5039219062596764,0.078,proportion,main text candidate,share of the gap widening attributable to the event side; BH family B,B1-B4,0.17692682926829267,False
+B4,control_side_share,transformer,ITE Transformer,mover,MOVER (SIS),0.5593117859241519,0.4960780937403237,0.6283929507515056,,proportion,main text candidate,,,,False
+B4,gap_widening,transformer,ITE Transformer,mover,MOVER (SIS),0.3471546545609213,,,,score,supplement,,,,False
+B4,event_side_change,lstm,LSTM,epic_test,MOVER (EPIC) test,0.0877131328529555,0.0369995166283306,0.1362996524261211,,score,main text candidate,,,,False
+B4,control_side_change,lstm,LSTM,epic_test,MOVER (EPIC) test,-0.222776188200879,-0.2631808572448674,-0.1845001208511036,,score,main text candidate,,,,False
+B4,event_side_share,lstm,LSTM,epic_test,MOVER (EPIC) test,0.2824996768173784,0.1421662069858847,0.3958642248651872,0.001,proportion,main text candidate,share of the gap widening attributable to the event side; BH family B,B1-B4,0.003206896551724138,True
+B4,control_side_share,lstm,LSTM,epic_test,MOVER (EPIC) test,0.7175003231826216,0.6041357751348128,0.8578337930141152,,proportion,main text candidate,,,,False
+B4,gap_widening,lstm,LSTM,epic_test,MOVER (EPIC) test,0.3104893210538345,,,,score,supplement,,,,False
+B4,event_side_change,lstm,LSTM,vitaldb,VitalDB,0.1059481320574295,0.0676201192908737,0.1443463171040585,,score,main text candidate,,,,False
+B4,control_side_change,lstm,LSTM,vitaldb,VitalDB,-0.0853291299226402,-0.1041502525489781,-0.0652953086789899,,score,main text candidate,,,,False
+B4,event_side_share,lstm,LSTM,vitaldb,VitalDB,0.5538982049443433,0.4375909001030675,0.6492942007276189,0.326,proportion,main text candidate,share of the gap widening attributable to the event side; BH family B,B1-B4,0.60636,False
+B4,control_side_share,lstm,LSTM,vitaldb,VitalDB,0.4461017950556566,0.3507057992723812,0.5624090998969324,,proportion,main text candidate,,,,False
+B4,gap_widening,lstm,LSTM,vitaldb,VitalDB,0.1912772619800698,,,,score,supplement,,,,False
+B4,event_side_change,lstm,LSTM,mover,MOVER (SIS),0.2445118386917851,0.210655912716674,0.2786944356331051,,score,main text candidate,,,,False
+B4,control_side_change,lstm,LSTM,mover,MOVER (SIS),-0.0711587763065918,-0.0971991684010145,-0.0456647545594216,,score,main text candidate,,,,False
+B4,event_side_share,lstm,LSTM,mover,MOVER (SIS),0.7745790297682358,0.7093890085426215,0.844818856656456,0.001,proportion,main text candidate,share of the gap widening attributable to the event side; BH family B,B1-B4,0.003206896551724138,True
+B4,control_side_share,lstm,LSTM,mover,MOVER (SIS),0.2254209702317643,0.155181143343544,0.2906109914573785,,proportion,main text candidate,,,,False
+B4,gap_widening,lstm,LSTM,mover,MOVER (SIS),0.315670614998377,,,,score,supplement,,,,False
+B4,event_side_change,xgb,XGBoost,epic_test,MOVER (EPIC) test,0.1304644499354945,0.0855089534764048,0.1751304628411759,,score,main text candidate,,,,False
+B4,control_side_change,xgb,XGBoost,epic_test,MOVER (EPIC) test,-0.0949100218571817,-0.1272721823806186,-0.062360543378562,,score,main text candidate,,,,False
+B4,event_side_share,xgb,XGBoost,epic_test,MOVER (EPIC) test,0.5788785610799337,0.4499656620110561,0.7071356072486482,0.223,proportion,main text candidate,share of the gap widening attributable to the event side; BH family B,B1-B4,0.45084782608695656,False
+B4,control_side_share,xgb,XGBoost,epic_test,MOVER (EPIC) test,0.4211214389200662,0.2928643927513515,0.5500343379889436,,proportion,main text candidate,,,,False
+B4,gap_widening,xgb,XGBoost,epic_test,MOVER (EPIC) test,0.2253744717926762,,,,score,supplement,,,,False
+B4,event_side_change,xgb,XGBoost,vitaldb,VitalDB,0.1828467570434541,0.1438063936168579,0.2217300237439493,,score,main text candidate,,,,False
+B4,control_side_change,xgb,XGBoost,vitaldb,VitalDB,-0.0060447533947881,-0.0209918852502962,0.0093144084316936,,score,main text candidate,,,,False
+B4,event_side_share,xgb,XGBoost,vitaldb,VitalDB,0.967998808518372,0.8946262763339303,1.0542368135444942,0.001,proportion,main text candidate,share of the gap widening attributable to the event side; BH family B,B1-B4,0.003206896551724138,True
+B4,control_side_share,xgb,XGBoost,vitaldb,VitalDB,0.032001191481628,-0.0542368135444943,0.1053737236660696,,proportion,main text candidate,,,,False
+B4,gap_widening,xgb,XGBoost,vitaldb,VitalDB,0.1888915104382423,,,,score,supplement,,,,False
+B4,event_side_change,xgb,XGBoost,mover,MOVER (SIS),0.2760468217523407,0.245114307862526,0.3039949736466446,,score,main text candidate,,,,False
+B4,control_side_change,xgb,XGBoost,mover,MOVER (SIS),0.0066348921156366,-0.0163065585544938,0.0300563424417709,,score,main text candidate,,,,False
+B4,event_side_share,xgb,XGBoost,mover,MOVER (SIS),1.0246273137369368,0.944320427969672,1.1214574783335898,0.001,proportion,main text candidate,share of the gap widening attributable to the event side; BH family B,B1-B4,0.003206896551724138,True
+B4,control_side_share,xgb,XGBoost,mover,MOVER (SIS),-0.0246273137369368,-0.1214574783335899,0.0556795720303281,,proportion,main text candidate,,,,False
+B4,gap_widening,xgb,XGBoost,mover,MOVER (SIS),0.269411929636704,,,,score,supplement,,,,False
+B4,event_side_change,rf,Random forest,epic_test,MOVER (EPIC) test,0.1332348242811501,0.0944830570153175,0.1712088612606904,,score,main text candidate,,,,False
+B4,control_side_change,rf,Random forest,epic_test,MOVER (EPIC) test,-0.0588955696202532,-0.087172265625,-0.0316828408902016,,score,main text candidate,,,,False
+B4,event_side_share,rf,Random forest,epic_test,MOVER (EPIC) test,0.6934604232869215,0.5702354089537094,0.8196825598458435,0.001,proportion,main text candidate,share of the gap widening attributable to the event side; BH family B,B1-B4,0.003206896551724138,True
+B4,control_side_share,rf,Random forest,epic_test,MOVER (EPIC) test,0.3065395767130784,0.1803174401541564,0.4297645910462905,,proportion,main text candidate,,,,False
+B4,gap_widening,rf,Random forest,epic_test,MOVER (EPIC) test,0.1921303939014033,,,,score,supplement,,,,False
+B4,event_side_change,rf,Random forest,vitaldb,VitalDB,0.1673816397228636,0.1320892994141441,0.2004080939113234,,score,main text candidate,,,,False
+B4,control_side_change,rf,Random forest,vitaldb,VitalDB,0.0009525,-0.013401915948717,0.0144850734882335,,score,main text candidate,,,,False
+B4,event_side_share,rf,Random forest,vitaldb,VitalDB,1.0057231564231248,0.9262924330234013,1.096595632604647,0.001,proportion,main text candidate,share of the gap widening attributable to the event side; BH family B,B1-B4,0.003206896551724138,True
+B4,control_side_share,rf,Random forest,vitaldb,VitalDB,-0.0057231564231248,-0.0965956326046472,0.0737075669765986,,proportion,main text candidate,,,,False
+B4,gap_widening,rf,Random forest,vitaldb,VitalDB,0.1664291397228636,,,,score,supplement,,,,False
+B4,event_side_change,rf,Random forest,mover,MOVER (SIS),0.2562611940298507,0.2277171842765165,0.2851168631502586,,score,main text candidate,,,,False
+B4,control_side_change,rf,Random forest,mover,MOVER (SIS),0.0159552556818182,-0.0046236651774086,0.0359012649674537,,score,main text candidate,,,,False
+B4,event_side_share,rf,Random forest,mover,MOVER (SIS),1.0663955946802717,0.9827920096329714,1.169595609894717,0.001,proportion,main text candidate,share of the gap widening attributable to the event side; BH family B,B1-B4,0.003206896551724138,True
+B4,control_side_share,rf,Random forest,mover,MOVER (SIS),-0.0663955946802716,-0.169595609894717,0.0172079903670284,,proportion,main text candidate,,,,False
+B4,gap_widening,rf,Random forest,mover,MOVER (SIS),0.2403059383480324,,,,score,supplement,,,,False
+B4,event_side_change,logreg,Logistic regression,epic_test,MOVER (EPIC) test,0.1068368304654812,0.0683410023129178,0.1497868227582865,,score,main text candidate,,,,False
+B4,control_side_change,logreg,Logistic regression,epic_test,MOVER (EPIC) test,-0.0692543212540218,-0.0975573092057511,-0.0425511941299854,,score,main text candidate,,,,False
+B4,event_side_share,logreg,Logistic regression,epic_test,MOVER (EPIC) test,0.6067132244989937,0.4668872505222278,0.7392955851023182,0.118,proportion,main text candidate,share of the gap widening attributable to the event side; BH family B,B1-B4,0.2612857142857143,False
+B4,control_side_share,logreg,Logistic regression,epic_test,MOVER (EPIC) test,0.3932867755010063,0.2607044148976817,0.5331127494777721,,proportion,main text candidate,,,,False
+B4,gap_widening,logreg,Logistic regression,epic_test,MOVER (EPIC) test,0.1760911517195031,,,,score,supplement,,,,False
+B4,event_side_change,logreg,Logistic regression,vitaldb,VitalDB,0.1310047491791072,0.1051648377384045,0.1577138922011572,,score,main text candidate,,,,False
+B4,control_side_change,logreg,Logistic regression,vitaldb,VitalDB,0.0041278410202977,-0.0091600277489499,0.0175687678893824,,score,main text candidate,,,,False
+B4,event_side_share,logreg,Logistic regression,vitaldb,VitalDB,1.0325342182450643,0.931714571068272,1.16027682530114,0.001,proportion,main text candidate,share of the gap widening attributable to the event side; BH family B,B1-B4,0.003206896551724138,True
+B4,control_side_share,logreg,Logistic regression,vitaldb,VitalDB,-0.0325342182450646,-0.16027682530114,0.068285428931728,,proportion,main text candidate,,,,False
+B4,gap_widening,logreg,Logistic regression,vitaldb,VitalDB,0.1268769081588094,,,,score,supplement,,,,False
+B4,event_side_change,logreg,Logistic regression,mover,MOVER (SIS),0.1952497339640924,0.1733596861206351,0.2186788566284075,,score,main text candidate,,,,False
+B4,control_side_change,logreg,Logistic regression,mover,MOVER (SIS),0.0127626844658003,-0.0066567830476115,0.0317342540686123,,score,main text candidate,,,,False
+B4,event_side_share,logreg,Logistic regression,mover,MOVER (SIS),1.06993748050006,0.9667382968991578,1.19826140748372,0.001,proportion,main text candidate,share of the gap widening attributable to the event side; BH family B,B1-B4,0.003206896551724138,True
+B4,control_side_share,logreg,Logistic regression,mover,MOVER (SIS),-0.0699374805000601,-0.1982614074837201,0.0332617031008421,,proportion,main text candidate,,,,False
+B4,gap_widening,logreg,Logistic regression,mover,MOVER (SIS),0.1824870494982921,,,,score,supplement,,,,False
+B1b-cells,spearman_lead_vs_specificity,all,all,pooled,pooled,-0.8032503879489377,,,0.0007999200079992,rho,main text candidate,"15 cells; permutation over cell pairings, not a cluster bootstrap; 86 of 99 untied pairs put the longer lead with the lower specificity",B1b-cells,0.0063993600639936,True
+B1b-cells,spearman_lead_vs_ppv_lift,all,all,pooled,pooled,-0.7187922934666109,,,0.003999600039996,rho,supplement,"PPV minus prevalence, because prevalence runs 0.359 to 0.560",B1b-cells,0.015998400159984,True
+B1b-cells,spearman_lead_vs_specificity,all,all,epic_test,MOVER (EPIC) test,-0.9746794344808964,,,0.032996700329967,rho,main text candidate,"5 cells; permutation over cell pairings, not a cluster bootstrap; 9 of 9 untied pairs put the longer lead with the lower specificity",B1b-cells,0.0527947205279472,False
+B1b-cells,spearman_lead_vs_ppv_lift,all,all,epic_test,MOVER (EPIC) test,-0.9746794344808964,,,0.0320967903209679,rho,supplement,"PPV minus prevalence, because prevalence runs 0.359 to 0.560",B1b-cells,0.0527947205279472,False
+B1b-cells,spearman_lead_vs_specificity,all,all,vitaldb,VitalDB,-0.7,,,0.2300769923007699,rho,main text candidate,"5 cells; permutation over cell pairings, not a cluster bootstrap; 8 of 10 untied pairs put the longer lead with the lower specificity",B1b-cells,0.2629451340580227,False
+B1b-cells,spearman_lead_vs_ppv_lift,all,all,vitaldb,VitalDB,-0.7,,,0.2296770322967703,rho,supplement,"PPV minus prevalence, because prevalence runs 0.359 to 0.560",B1b-cells,0.2629451340580227,False
+B1b-cells,spearman_lead_vs_specificity,all,all,mover,MOVER (SIS),-0.9746794344808964,,,0.0317968203179682,rho,main text candidate,"5 cells; permutation over cell pairings, not a cluster bootstrap; 9 of 9 untied pairs put the longer lead with the lower specificity",B1b-cells,0.0527947205279472,False
+B1b-cells,spearman_lead_vs_ppv_lift,all,all,mover,MOVER (SIS),-0.1538967528127731,,,0.8376162383761624,rho,supplement,"PPV minus prevalence, because prevalence runs 0.359 to 0.560",B1b-cells,0.8376162383761624,False
+A7-figure,horizon_all_cases_min,all,all,epic_test,MOVER (EPIC) test,15.0,,,,min,main text candidate,,,,False
+A7-figure,horizon_fixed_cohort_min,all,all,epic_test,MOVER (EPIC) test,20.0,,,,min,main text candidate,,,,False
+A7-figure,crossing_min,all,all,epic_test,MOVER (EPIC) test,16.422830690759664,,,,min,main text candidate,interpolated innermost sign change of fixed minus all-cases AUROC,,,False
+A7-figure,horizon_all_cases_min,all,all,vitaldb,VitalDB,15.0,,,,min,main text candidate,,,,False
+A7-figure,horizon_fixed_cohort_min,all,all,vitaldb,VitalDB,35.0,,,,min,main text candidate,,,,False
+A7-figure,crossing_min,all,all,vitaldb,VitalDB,12.570683510026244,,,,min,main text candidate,interpolated innermost sign change of fixed minus all-cases AUROC,,,False
+A7-figure,horizon_all_cases_min,all,all,mover,MOVER (SIS),15.0,,,,min,main text candidate,,,,False
+A7-figure,horizon_fixed_cohort_min,all,all,mover,MOVER (SIS),20.0,,,,min,main text candidate,,,,False
+A7-figure,crossing_min,all,all,mover,MOVER (SIS),14.879638665694165,,,,min,main text candidate,interpolated innermost sign change of fixed minus all-cases AUROC,,,False

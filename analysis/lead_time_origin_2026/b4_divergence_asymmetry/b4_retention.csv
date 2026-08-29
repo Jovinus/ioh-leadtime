@@ -1,0 +1,16 @@
+family,cohort,n_spanning_edges_only,n_complete_all_bins,retention,n_event_complete,n_control_complete
+transformer,epic_test,708,708,1.0,313,395
+transformer,vitaldb,1433,1433,1.0,433,1000
+transformer,mover,1374,1374,1.0,670,704
+lstm,epic_test,708,708,1.0,313,395
+lstm,vitaldb,1433,1433,1.0,433,1000
+lstm,mover,1374,1374,1.0,670,704
+xgb,epic_test,708,708,1.0,313,395
+xgb,vitaldb,1433,1433,1.0,433,1000
+xgb,mover,1374,1374,1.0,670,704
+rf,epic_test,708,708,1.0,313,395
+rf,vitaldb,1433,1433,1.0,433,1000
+rf,mover,1374,1374,1.0,670,704
+logreg,epic_test,708,708,1.0,313,395
+logreg,vitaldb,1433,1433,1.0,433,1000
+logreg,mover,1374,1374,1.0,670,704

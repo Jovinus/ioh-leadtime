@@ -1,0 +1,79 @@
+{
+  "step": "a6_window_trend",
+  "run_time": "2026-08-20T22:45:32",
+  "git_commit": "727f8a6270cf7b8cd8d5410ee97bbe4f4928595f",
+  "sign_convention": "trajectory ordered by time_window_min DESCENDING (farthest-from-onset first); positive tau / Sen's slope == AUROC rises toward onset == clinical faithfulness",
+  "lead_time_bins_min": [
+    60,
+    55,
+    50,
+    45,
+    40,
+    35,
+    30,
+    25,
+    20,
+    15,
+    10,
+    5,
+    0
+  ],
+  "window_size_min": 2,
+  "bootstrap_seed": 20260706,
+  "n_bootstrap": 2000,
+  "bootstrap_resample_unit": "highest identifiable unit: patient (subject_id) for EPIC/VitalDB, surgical case (case_id) for MOVER/SIS",
+  "grid_n_cells": 0,
+  "versions": {
+    "numpy": "2.2.6",
+    "scipy": "1.16.1",
+    "scikit-learn": "1.7.1",
+    "pandas": "2.3.2",
+    "pymannkendall": "1.4.3"
+  },
+  "inputs": [],
+  "endpoints_min": [
+    5,
+    10
+  ],
+  "window_starts_min": [
+    60,
+    55,
+    50,
+    45,
+    40,
+    35,
+    30,
+    25,
+    20,
+    15,
+    10
+  ],
+  "groups": [
+    "all",
+    "event",
+    "control"
+  ],
+  "window_convention": "endpoint < t_to_event <= start, same as A2",
+  "bin_step_min": 5,
+  "min_points": 5,
+  "seed_base": 20340706,
+  "median_stats": [
+    "tau",
+    "tau_spanning",
+    "realised_span_min",
+    "delta",
+    "gross_up",
+    "gross_down",
+    "path_length",
+    "directedness",
+    "max_up_step",
+    "max_up_share",
+    "last5_share"
+  ],
+  "fraction_stats": [
+    "tau_positive",
+    "tau_spanning_positive",
+    "ascent",
+    "step_ascent"
+  ]
+}

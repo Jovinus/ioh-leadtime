@@ -1,0 +1,48 @@
+{
+  "step": "b1b_suppression",
+  "run_time": "2026-08-29T00:57:05",
+  "git_commit": "omitted for anonymous review",
+  "sign_convention": "trajectory ordered by time_window_min DESCENDING (farthest-from-onset first); positive tau / Sen's slope == AUROC rises toward onset == clinical faithfulness",
+  "lead_time_bins_min": [
+    60,
+    55,
+    50,
+    45,
+    40,
+    35,
+    30,
+    25,
+    20,
+    15,
+    10,
+    5,
+    0
+  ],
+  "window_size_min": 2,
+  "bootstrap_seed": 20260706,
+  "n_bootstrap": 2000,
+  "bootstrap_resample_unit": "highest identifiable unit: patient (subject_id) for EPIC/VitalDB, surgical case (case_id) for MOVER/SIS",
+  "grid_n_cells": 0,
+  "versions": {
+    "numpy": "2.2.6",
+    "scipy": "1.16.1",
+    "scikit-learn": "1.7.1",
+    "pandas": "2.3.2",
+    "pymannkendall": "1.4.3"
+  },
+  "inputs": [],
+  "suppress_min": [
+    0,
+    3,
+    5,
+    10,
+    15
+  ],
+  "rule": "discard every minute at or before `suppress` minutes of elapsed monitoring, then apply the unchanged transported threshold and the same first-crossing definition to the remainder",
+  "alert_window_min": 60,
+  "target_sensitivity": 0.8,
+  "note": "suppress_min=0 must reproduce Table 2; that is the check that the rest of the column is comparable to it",
+  "why_not_prop_settled": "B1's settled fraction classifies a case by its first crossing only, so it is a lower bound on post-suppression sensitivity, not the answer",
+  "n_cell_permutations": 10000,
+  "cross_cell_note": "b1b_lead_vs_operating_point.csv correlates the reported median lead with the operating point across the fifteen cells; the unit there is a cell, not a patient, so its P values are cell permutations and not bootstraps"
+}

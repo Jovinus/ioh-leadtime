@@ -1,0 +1,26 @@
+{
+  "epic_test": {
+    "horizon_all_cases_min": 15.0,
+    "horizon_fixed_cohort_min": 20.0,
+    "crossing_min": 16.422830690759664,
+    "n_cases_all_at_0": 1404,
+    "n_cases_all_at_60": 708,
+    "n_cases_fixed": 708
+  },
+  "vitaldb": {
+    "horizon_all_cases_min": 15.0,
+    "horizon_fixed_cohort_min": 35.0,
+    "crossing_min": 12.570683510026244,
+    "n_cases_all_at_0": 2804,
+    "n_cases_all_at_60": 1433,
+    "n_cases_fixed": 1433
+  },
+  "mover": {
+    "horizon_all_cases_min": 15.0,
+    "horizon_fixed_cohort_min": 20.0,
+    "crossing_min": 14.879638665694165,
+    "n_cases_all_at_0": 2641,
+    "n_cases_all_at_60": 1374,
+    "n_cases_fixed": 1374
+  }
+}

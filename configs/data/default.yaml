@@ -1,0 +1,12 @@
+# Default data config.
+# Cohort defaults follow HANDOFF §9 (train on EPIC).
+
+manifest:
+  sources: ["mover_epic"]      # change to ["vitaldb"] for primary external val
+  min_surgery_min: 30
+  max_surgery_min: 1440
+  max_asa: null                 # set to 3 to drop ASA 4; null keeps everything
+
+label_column: "in_event_d3"     # primary outcome: MAP<65 sustained >=3 min
+
+# max_seq_len etc. are intentionally absent — collate policy is TBD.

@@ -1,0 +1,51 @@
+{
+  "step": "b1_prevalent_incident",
+  "run_time": "2026-08-21T11:52:01",
+  "git_commit": "omitted for anonymous review",
+  "sign_convention": "trajectory ordered by time_window_min DESCENDING (farthest-from-onset first); positive tau / Sen's slope == AUROC rises toward onset == clinical faithfulness",
+  "lead_time_bins_min": [
+    60,
+    55,
+    50,
+    45,
+    40,
+    35,
+    30,
+    25,
+    20,
+    15,
+    10,
+    5,
+    0
+  ],
+  "window_size_min": 2,
+  "bootstrap_seed": 20260706,
+  "n_bootstrap": 2000,
+  "bootstrap_resample_unit": "highest identifiable unit: patient (subject_id) for EPIC/VitalDB, surgical case (case_id) for MOVER/SIS",
+  "grid_n_cells": 0,
+  "versions": {
+    "numpy": "2.2.6",
+    "scipy": "1.16.1",
+    "scikit-learn": "1.7.1",
+    "pandas": "2.3.2",
+    "pymannkendall": "1.4.3"
+  },
+  "inputs": [],
+  "alert_window_min": 60,
+  "alarm_rule": "case alerts iff score >= threshold at some minute in the window",
+  "prevalent_definition": "score at or above threshold at the case's first eligible scored minute; 'window' takes that minute inside 0 < t_to_event <= 60, 'record' takes the first scored minute of the whole case",
+  "thresholds": "validation-fixed, read from pre_submission_revision_2026, not reselected",
+  "target_sensitivities": [
+    0.7,
+    0.8,
+    0.9
+  ],
+  "seed_base": 20360706,
+  "start_score_window_min": 30,
+  "warmup_min": 5,
+  "warmup_alternatives_min": [
+    3,
+    10
+  ],
+  "warmup_definition": "an incident crossing whose elapsed monitoring time at the crossing is at most warmup_min minutes; incident by the letter of the definition, but produced by the input window filling rather than by any patient change"
+}

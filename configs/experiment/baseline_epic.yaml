@@ -1,0 +1,55 @@
+# Baseline EPIC training config — ITE Transformer, AKI-style ref-time
+# framing. Intended as the headline run that produces a checkpoint to be
+# evaluated on VitalDB (primary ext val) and MOVER SIS (secondary).
+
+experiment:
+  name: "ioh-prediction"
+  run_name: "baseline_epic"
+
+data:
+  sources: ["mover_epic"]
+  pos_min_pre_onset_min: 5
+  neg_min_pre_onset_min: 30
+  window_min: 120
+  max_seq_len: 2048
+  val_frac: 0.15
+  test_frac: 0.15           # 0 to disable test split; uses 2-way split when 0
+
+  seed: 1004
+
+model:
+  d_model: 128
+  num_layers: 2
+  num_heads: 4
+  dim_feedforward: null         # null -> 4 * d_model
+  dropout: 0.1
+  num_classes: 2                # softmax head; >2 for multi-class extension
+
+train:
+  # batch_size=128 sized for a 24 GB GPU (CUDA + FP16 + FlashAttention).
+  # See README for the BS / memory table. Drop to 64 if OOM, or to 32 on
+  # the current MPS dev machine for local smoke runs.
+  batch_size: 128
+  # LR scales linearly with batch — base lr was 3e-4 at BS=32, so 4x BS
+  # bumps lr to 1.2e-3. Tune down (e.g., 6e-4) if loss blows up early.
+  lr: 1.2e-3
+  epochs: 30
+  weight_decay: 1.0e-2
+  grad_clip: 1.0
+  warmup_frac: 0.05
+  loss_type: "cross_entropy"    # or "cosine_ce" (CE + 1-cosine, robust near boundary)
+  cosine_ce_weight: 0.1
+  class_weights: null           # null = uniform; e.g. [1.0, 2.0] up-weights positives
+  use_amp: true                 # autocast on both CUDA and MPS
+  amp_dtype: "bfloat16"         # "bfloat16" (Ampere+/MPS) or "float16" (older HW)
+  num_workers: 8
+  patience: 10
+  monitor: "val_auroc"
+  monitor_mode: "max"
+
+paths:
+  out_dir: "outputs/runs/baseline_epic"
+  ckpt_subdir: "ckpts"
+  predictions_subdir: "predictions"
+  manifest_path: "outputs/runs/baseline_epic/manifest.csv"
+  normalizer_path: "outputs/runs/baseline_epic/normalizer.parquet"

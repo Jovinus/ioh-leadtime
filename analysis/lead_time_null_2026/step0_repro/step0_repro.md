@@ -1,0 +1,116 @@
+# N step 0 — reproduction gate
+
+`per_case_leads` and the N2 crossing matrix against `analysis/lead_time_origin_2026/b1b_suppression/b1b_lead_vs_observation.csv`, alert window `0 < t_to_event <= 60`, transported 80% thresholds.
+
+**105/105 checks passed.**
+
+## All checks
+
+| check | expected | observed | tolerance | status |
+|---|---|---|---|---|
+| b1b/transformer/epic_test/n_detected | 611 | 611 | 0 | pass |
+| b1b/transformer/epic_test/median_lead_min | 24 | 24 | 1e-12 | pass |
+| b1b/transformer/epic_test/median_observed_min | 32 | 32 | 1e-12 | pass |
+| b1b/transformer/epic_test/lead_over_observed_median | 0.944444444444 | 0.944444444444 | 1e-12 | pass |
+| b1b/transformer/epic_test/spearman_lead_vs_observed | 0.706315065466 | 0.706315065466 | 1e-12 | pass |
+| matrix/transformer/epic_test/detected_case_set | 611 | 611 | 0 | pass |
+| matrix/transformer/epic_test/lead | 0 | 0 | 0 | pass |
+| b1b/transformer/vitaldb/n_detected | 684 | 684 | 0 | pass |
+| b1b/transformer/vitaldb/median_lead_min | 17 | 17 | 1e-12 | pass |
+| b1b/transformer/vitaldb/median_observed_min | 20 | 20 | 1e-12 | pass |
+| b1b/transformer/vitaldb/lead_over_observed_median | 0.923076923077 | 0.923076923077 | 1e-12 | pass |
+| b1b/transformer/vitaldb/spearman_lead_vs_observed | 0.90606235101 | 0.90606235101 | 1e-12 | pass |
+| matrix/transformer/vitaldb/detected_case_set | 684 | 684 | 0 | pass |
+| matrix/transformer/vitaldb/lead | 0 | 0 | 0 | pass |
+| b1b/transformer/mover/n_detected | 926 | 926 | 0 | pass |
+| b1b/transformer/mover/median_lead_min | 22 | 22 | 1e-12 | pass |
+| b1b/transformer/mover/median_observed_min | 29 | 29 | 1e-12 | pass |
+| b1b/transformer/mover/lead_over_observed_median | 0.899152542373 | 0.899152542373 | 1e-12 | pass |
+| b1b/transformer/mover/spearman_lead_vs_observed | 0.801161770449 | 0.801161770449 | 1e-12 | pass |
+| matrix/transformer/mover/detected_case_set | 926 | 926 | 0 | pass |
+| matrix/transformer/mover/lead | 0 | 0 | 0 | pass |
+| b1b/lstm/epic_test/n_detected | 634 | 634 | 0 | pass |
+| b1b/lstm/epic_test/median_lead_min | 23 | 23 | 1e-12 | pass |
+| b1b/lstm/epic_test/median_observed_min | 35 | 35 | 1e-12 | pass |
+| b1b/lstm/epic_test/lead_over_observed_median | 0.850925925926 | 0.850925925926 | 1e-12 | pass |
+| b1b/lstm/epic_test/spearman_lead_vs_observed | 0.650405934708 | 0.650405934708 | 1e-12 | pass |
+| matrix/lstm/epic_test/detected_case_set | 634 | 634 | 0 | pass |
+| matrix/lstm/epic_test/lead | 0 | 0 | 0 | pass |
+| b1b/lstm/vitaldb/n_detected | 495 | 495 | 0 | pass |
+| b1b/lstm/vitaldb/median_lead_min | 9 | 9 | 1e-12 | pass |
+| b1b/lstm/vitaldb/median_observed_min | 18 | 18 | 1e-12 | pass |
+| b1b/lstm/vitaldb/lead_over_observed_median | 0.619047619048 | 0.619047619048 | 1e-12 | pass |
+| b1b/lstm/vitaldb/spearman_lead_vs_observed | 0.758906682607 | 0.758906682607 | 1e-12 | pass |
+| matrix/lstm/vitaldb/detected_case_set | 495 | 495 | 0 | pass |
+| matrix/lstm/vitaldb/lead | 0 | 0 | 0 | pass |
+| b1b/lstm/mover/n_detected | 777 | 777 | 0 | pass |
+| b1b/lstm/mover/median_lead_min | 15 | 15 | 1e-12 | pass |
+| b1b/lstm/mover/median_observed_min | 37 | 37 | 1e-12 | pass |
+| b1b/lstm/mover/lead_over_observed_median | 0.716666666667 | 0.716666666667 | 1e-12 | pass |
+| b1b/lstm/mover/spearman_lead_vs_observed | 0.501115415283 | 0.501115415283 | 1e-12 | pass |
+| matrix/lstm/mover/detected_case_set | 777 | 777 | 0 | pass |
+| matrix/lstm/mover/lead | 0 | 0 | 0 | pass |
+| b1b/xgb/epic_test/n_detected | 637 | 637 | 0 | pass |
+| b1b/xgb/epic_test/median_lead_min | 21 | 21 | 1e-12 | pass |
+| b1b/xgb/epic_test/median_observed_min | 47 | 47 | 1e-12 | pass |
+| b1b/xgb/epic_test/lead_over_observed_median | 0.719298245614 | 0.719298245614 | 1e-12 | pass |
+| b1b/xgb/epic_test/spearman_lead_vs_observed | 0.558021301257 | 0.558021301257 | 1e-12 | pass |
+| matrix/xgb/epic_test/detected_case_set | 637 | 637 | 0 | pass |
+| matrix/xgb/epic_test/lead | 0 | 0 | 0 | pass |
+| b1b/xgb/vitaldb/n_detected | 699 | 699 | 0 | pass |
+| b1b/xgb/vitaldb/median_lead_min | 13 | 13 | 1e-12 | pass |
+| b1b/xgb/vitaldb/median_observed_min | 52 | 52 | 1e-12 | pass |
+| b1b/xgb/vitaldb/lead_over_observed_median | 0.466666666667 | 0.466666666667 | 1e-12 | pass |
+| b1b/xgb/vitaldb/spearman_lead_vs_observed | 0.598660425412 | 0.598660425412 | 1e-12 | pass |
+| matrix/xgb/vitaldb/detected_case_set | 699 | 699 | 0 | pass |
+| matrix/xgb/vitaldb/lead | 0 | 0 | 0 | pass |
+| b1b/xgb/mover/n_detected | 1113 | 1113 | 0 | pass |
+| b1b/xgb/mover/median_lead_min | 19 | 19 | 1e-12 | pass |
+| b1b/xgb/mover/median_observed_min | 60 | 60 | 1e-12 | pass |
+| b1b/xgb/mover/lead_over_observed_median | 0.6 | 0.6 | 1e-12 | pass |
+| b1b/xgb/mover/spearman_lead_vs_observed | 0.573348492833 | 0.573348492833 | 1e-12 | pass |
+| matrix/xgb/mover/detected_case_set | 1113 | 1113 | 0 | pass |
+| matrix/xgb/mover/lead | 0 | 0 | 0 | pass |
+| b1b/rf/epic_test/n_detected | 651 | 651 | 0 | pass |
+| b1b/rf/epic_test/median_lead_min | 22 | 22 | 1e-12 | pass |
+| b1b/rf/epic_test/median_observed_min | 49 | 49 | 1e-12 | pass |
+| b1b/rf/epic_test/lead_over_observed_median | 0.714285714286 | 0.714285714286 | 1e-12 | pass |
+| b1b/rf/epic_test/spearman_lead_vs_observed | 0.583928887736 | 0.583928887736 | 1e-12 | pass |
+| matrix/rf/epic_test/detected_case_set | 651 | 651 | 0 | pass |
+| matrix/rf/epic_test/lead | 0 | 0 | 0 | pass |
+| b1b/rf/vitaldb/n_detected | 809 | 809 | 0 | pass |
+| b1b/rf/vitaldb/median_lead_min | 15 | 15 | 1e-12 | pass |
+| b1b/rf/vitaldb/median_observed_min | 49 | 49 | 1e-12 | pass |
+| b1b/rf/vitaldb/lead_over_observed_median | 0.533333333333 | 0.533333333333 | 1e-12 | pass |
+| b1b/rf/vitaldb/spearman_lead_vs_observed | 0.650953551715 | 0.650953551715 | 1e-12 | pass |
+| matrix/rf/vitaldb/detected_case_set | 809 | 809 | 0 | pass |
+| matrix/rf/vitaldb/lead | 0 | 0 | 0 | pass |
+| b1b/rf/mover/n_detected | 1196 | 1196 | 0 | pass |
+| b1b/rf/mover/median_lead_min | 22 | 22 | 1e-12 | pass |
+| b1b/rf/mover/median_observed_min | 60 | 60 | 1e-12 | pass |
+| b1b/rf/mover/lead_over_observed_median | 0.666666666667 | 0.666666666667 | 1e-12 | pass |
+| b1b/rf/mover/spearman_lead_vs_observed | 0.618336211496 | 0.618336211496 | 1e-12 | pass |
+| matrix/rf/mover/detected_case_set | 1196 | 1196 | 0 | pass |
+| matrix/rf/mover/lead | 0 | 0 | 0 | pass |
+| b1b/logreg/epic_test/n_detected | 658 | 658 | 0 | pass |
+| b1b/logreg/epic_test/median_lead_min | 23 | 23 | 1e-12 | pass |
+| b1b/logreg/epic_test/median_observed_min | 45 | 45 | 1e-12 | pass |
+| b1b/logreg/epic_test/lead_over_observed_median | 0.780555555556 | 0.780555555556 | 1e-12 | pass |
+| b1b/logreg/epic_test/spearman_lead_vs_observed | 0.597302915984 | 0.597302915984 | 1e-12 | pass |
+| matrix/logreg/epic_test/detected_case_set | 658 | 658 | 0 | pass |
+| matrix/logreg/epic_test/lead | 0 | 0 | 0 | pass |
+| b1b/logreg/vitaldb/n_detected | 464 | 464 | 0 | pass |
+| b1b/logreg/vitaldb/median_lead_min | 14 | 14 | 1e-12 | pass |
+| b1b/logreg/vitaldb/median_observed_min | 48 | 48 | 1e-12 | pass |
+| b1b/logreg/vitaldb/lead_over_observed_median | 0.454545454545 | 0.454545454545 | 1e-12 | pass |
+| b1b/logreg/vitaldb/spearman_lead_vs_observed | 0.606717007823 | 0.606717007823 | 1e-12 | pass |
+| matrix/logreg/vitaldb/detected_case_set | 464 | 464 | 0 | pass |
+| matrix/logreg/vitaldb/lead | 0 | 0 | 0 | pass |
+| b1b/logreg/mover/n_detected | 1113 | 1113 | 0 | pass |
+| b1b/logreg/mover/median_lead_min | 21 | 21 | 1e-12 | pass |
+| b1b/logreg/mover/median_observed_min | 60 | 60 | 1e-12 | pass |
+| b1b/logreg/mover/lead_over_observed_median | 0.617647058824 | 0.617647058824 | 1e-12 | pass |
+| b1b/logreg/mover/spearman_lead_vs_observed | 0.596970078133 | 0.596970078133 | 1e-12 | pass |
+| matrix/logreg/mover/detected_case_set | 1113 | 1113 | 0 | pass |
+| matrix/logreg/mover/lead | 0 | 0 | 0 | pass |
+
