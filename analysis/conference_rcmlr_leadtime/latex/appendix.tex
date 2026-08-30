@@ -123,7 +123,10 @@ The gradient is the difference of the highest and lowest band medians, and its i
 paired cluster bootstrap of that difference: one weight matrix is drawn per cell and reused
 across bands, and the band edges and the window span are held fixed at their full-sample values
 so the ratio's denominator is not itself resampled. The interval excludes zero in all fifteen
-cells. \texttt{Lead\ min\ per\ window\ min} is the ratio of those two between-band median contrasts and not
+cells. Band medians and gradients are displayed rounded to the minute but computed on unrounded
+values, so where a band median falls on a half-minute a row's displayed endpoints need not
+differ by exactly the displayed gradient; logistic regression under VitalDB is the one row
+where they do not. \texttt{Lead\ min\ per\ window\ min} is the ratio of those two between-band median contrasts and not
 a per-case slope, so a value slightly above 1.0 carries no contradiction with the per-case
 constraint that a lead cannot exceed its own window.
 
