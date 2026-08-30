@@ -13,7 +13,7 @@ cases rises from the shortest to the longest realized pre-onset window band in a
 model-by-cohort combinations. The rise is 26 to 54 minutes. Read beside its operating point,
 the longest pooled median lead here, 24 minutes --- a median over the event cases a model
 detected --- stands beside a case-level specificity of 0.406 measured over all control cases; the
-minimum specificity across the fifteen combinations is 0.379. Two natural repairs leave the
+minimum specificity across the fifteen combinations is 0.379. Two natural responses leave the
 dependence in place; a horizon-specific detection rate reduces it without removing it, and
 restricting to a constant window removes it but reveals that the longest median co-occurs
 with the lowest detection rate. In our author-completed TRIPOD+AI item-level review, the closest requests are items
@@ -44,7 +44,7 @@ support the reading the
 label invites.
 
 \textbf{Why a warning interval matters here.} Mean arterial pressure is a routinely monitored
-haemodynamic measure during surgery. Sustained falls below roughly 65 mmHg are intraoperative
+hemodynamic measure during surgery. Sustained falls below roughly 65 mmHg are intraoperative
 hypotension, and accumulated exposure is associated with kidney and myocardial injury after
 surgery \citep{walsh2013map, salmasi2017ioh, wesselink2018ioh, sessler2019poqi}. The responses
 are ordinary anesthetic care, and none acts the instant it is chosen, so a warning interval is
@@ -71,14 +71,14 @@ Table A11 sets each reading the label invites beside what the number can carry, 
 new: the C-statistic has been argued uninformative for early warning scores, with per-alert and
 workload measures proposed instead \citep{romerobrufau2015cstatistic}; monitor alerting has been
 quantified as an alarm burden per patient-day \citep{paine2016alerts}; choice of evaluation sample moves reported
-performance for this exact task on these public data \citep{yang2025selection}. And cross-center
+performance for this exact task on these public data \citep{yang2025selection}; and the task's
+own retrospective traces its arc from hope to hype \citep{michard2023hype}. And cross-center
 evaluation separates learned methods from pressure-derived rules far less cleanly than
 single-center reports suggest \citep{chaari2026crosscenter}. Closest to this paper,
 \citet{lauritsen2021framing} names the temporal framing choices --- observation, prediction and lead
 windows, window shift, event trigger --- and shows discrimination and calibration moving with
 them, asking that a standard record those choices. Its windows are set by the developer, and
-what it measures moving is discrimination and calibration. That a lead time cannot exceed the
-window it is searched in is likewise definitional, and Section 3.3 treats it as such. What is
+what it measures moving is discrimination and calibration. That bound is likewise definitional, and Section 3.3 treats it as such. What is
 not established is \textbf{how strongly a reported first-crossing lead time moves with the realized,
 patient-varying window it was measured
 over}, and the substitutes those critiques recommend are what Section 6.2's second item asks
@@ -112,7 +112,7 @@ cases, 786 with a sustained event) and on two external cohorts, VitalDB \citep{l
 \citep{samad2023mover, samad2023moverdataset} with 2,641 cases and 1,409 events. MOVER's two arms come from one site and were de-identified separately, so patient overlap between the development cohort and MOVER (SIS) cannot be measured and is not excluded; VitalDB is the external cohort with no such question. MOVER (SIS) releases no usable subject key, so cases are the clustering unit there and subjects in the other two; all intervals in this paper are 95\% cluster bootstrap on that unit unless a caption says otherwise.
 
 \textbf{Models.} Five families: a transformer over irregularly sampled triplets
-\citep{tipirneni2022strats}, referred to throughout as the ITE Transformer, an LSTM, XGBoost, random
+\citep{tipirneni2022strats}, referred to throughout as the ITE (initial triplet embedding) Transformer, an LSTM, XGBoost, random
 forest and logistic regression. Two read the window as a sequence and three a per-minute
 feature vector; Appendix A.1 has the architectures and training. No model is proposed for
 clinical use and none of what follows is a ranking.
@@ -152,7 +152,7 @@ cells} (Table A1). Splitting detected cases by the length of their available pre
 puts the dependence in the metric's own units: median lead rises from the shortest to the
 longest realized band in \textbf{15 of 15} cells, by \textbf{+26 to +54 minutes}, each pointwise interval
 excluding zero, an endpoint contrast of \textbf{0.51 to 1.02 minutes of lead per minute of window
-difference}. The pattern is cross-family, not a property of one architecture. A single
+difference}. A single
 headline figure therefore describes the cohort's observation-length distribution as much as the
 model: across its three cohorts the transformer, whose bands are Table A9, reports 5 to 9
 minutes of median lead for its shortest-observed band and 46 to 59 for its longest, and the
@@ -225,7 +225,7 @@ already-settled donors or holding a short donor's last value.
 
 \textbf{Within three minutes of its first scored minute the transformer's median score is already
 above the threshold its operating point uses in every cohort, and it is there for event and
-control cases alike; in MOVER (EPIC) it takes one minute} (Figure A5).
+control cases alike; in MOVER (EPIC) it takes one minute} (Figure A5; event-aligned, Figure A4).
 
 In MOVER (EPIC) the median score rises from 0.530 at the first scored minute to 0.938 one
 minute later in control cases and from 0.541 to 0.951 in event cases, against a transported
@@ -245,7 +245,7 @@ families}. Separately, a cross-family property of the score paths is consistent 
 mechanism without establishing its cause (Appendix A.4, Table A3).
 
 \textbf{The obvious objection is that this model simply alerts continuously, and reporting the
-operating point beside the lead shows that it largely does} (Table A4). Its case-level
+operating point beside the lead shows that it largely does} (Table A4; composition and controls, Table A10). Its case-level
 specificity is 0.406, 0.379 and 0.467, so it alerts on 53 to 62\% of control cases, and its
 positive predictive value of 0.625, 0.380 and 0.585 sits 0.065, 0.021 and 0.051 above the
 prevalence it is measured against. That mechanism is specific to this model and can account for
@@ -265,8 +265,8 @@ the fifteen are not independent replications, since five share each cohort's win
 distribution and three share each family's fit, and any procedure permuting the pairing across
 all fifteen would treat as exchangeable units that are not. The ordering is nonetheless present
 within each cohort taken alone, where that structure is held fixed --- 9 of 9 untied pairs in
-both MOVER cohorts and 8 of 10 in VitalDB, Spearman $-$0.97, $-$0.97 and $-$0.70 --- though five
-combinations per cohort is thin. And a transported
+MOVER (EPIC), 8 of 10 in VitalDB and 9 of 9 in MOVER (SIS), Spearman $-$0.97, $-$0.70 and
+$-$0.97 --- though five combinations per cohort is thin. And a transported
 threshold does not deliver the same realized sensitivity everywhere: it runs from 0.461 to
 0.849 (Table A4), so this is a descriptive association among the operating points as
 transported, not a sensitivity-matched ranking of models. What it supports is narrower and
@@ -280,9 +280,10 @@ is the claim that cohort dependence makes the statistic invalid: it is that the 
 suppresses the window distribution a reader needs to interpret it. Neither is a claim about
 physiology. Mean arterial pressure is one of the model's input channels as well as the quantity
 the label is computed from, so nothing here shows that a score anticipates a physiological
-process.
+process. Under a pre-specified rule the score does not depart from its own baseline before
+mean arterial pressure departs from its (Appendix A.15).
 
-\section{Two natural remedies, and why neither works}\label{two-natural-remedies-and-why-neither-works}
+\section{Two natural responses, and why neither works}\label{two-natural-responses-and-why-neither-works}
 
 A metric with a plausible-looking repair that fails is worse than one with none, because the
 repair gets adopted.
@@ -290,7 +291,8 @@ repair gets adopted.
 \subsection{Prevalent alerts are not the explanation}\label{prevalent-alerts-are-not-the-explanation}
 
 The first thought is that the metric is dominated by prevalent alerts. Such cases are \textbf{2.6 to
-25.5\%} of detected event cases across the fifteen cells, and recomputing the median lead on
+25.5\%} of detected event cases across the fifteen cells, the per-cell composition being
+Figure A2, and recomputing the median lead on
 incident alerts alone costs \textbf{0 to 3 minutes in all fifteen cells}, the transformer included
 (Appendix A.11). The relationship of Section 3 is therefore carried by the ordinary cases.
 Prevalence stays low because most detected event cases have a window shorter than 60 minutes,
@@ -362,7 +364,7 @@ continuous-monitoring, first-crossing-timing case of that argument.
 \textbf{Item 12e, performance measures and rationale}, is where a lead time is declared: it asks
 \emph{which} measures were used and \emph{why}, not what else a measure could be responding to. \textbf{Item 15 separately addresses model output and threshold selection, while item 23a requests performance estimates with uncertainty.} Table A4 reports lead time beside sensitivity and specificity, a 24-minute lead beside a specificity of 0.406, but neither item explicitly requires a lead-time summary to be jointly presented or interpreted with its realized operating-point metrics. \textbf{Items 20a and 20b come closest of all}: both ask for follow-up time among the participant characteristics, and this study answers them with surgery duration and first-onset time. The raw material is therefore requested, as a description of the cohort. What is not requested is the distribution of the window the alert rule searches, nor any pairing of it with the timing statistic it bounds; that window is the variable the reported lead correlates with at $\rho$ = 0.501 to 0.906. The remaining near misses are in Table A8.
 
-\textbf{Item 14, model fairness, is the near miss.} The checklist's own fairness answer records that
+\textbf{Item 14, model fairness, is a near miss of a different kind.} The checklist's own fairness answer records that
 arterial-line placement selects toward longer, higher-risk operations. That observation length
 is not random was therefore \textbf{already disclosed}, filed as a limitation, where it reads as a
 caveat about which patients the findings extend to. Nothing in the standard connects it to the
@@ -385,9 +387,8 @@ reporting framework.
   horizon-specific detection curve may be added as a secondary disclosure, provided its
   denominator and its remaining dependence on pre-horizon alerting opportunity are stated. Any
   single median should be secondary and stratified by the available pre-onset windows it was
-  measured over: the transformer reports 5 to 9 minutes in its shortest-window band and 46 to
-  59 in its longest, and the pooled 17 to 24 carries neither. Tables A6 and A7 show the two
-  alternatives; Section 5.3 gives their limits.
+  measured over --- Section 3.1's spread is what a pooled median hides. Tables A6 and A7 show
+  the two alternatives; Section 5.3 gives their limits.
 \item
   \textbf{Report N(t) beside any event-aligned trajectory.} Here the risk set roughly halves
   between the event and 60 minutes before it (1,404 to 708, 2,804 to 1,433 and 2,641 to
@@ -430,25 +431,22 @@ onset, so each is assigned a pseudo-onset sampled once at a fixed seed from the 
 timing distribution. \textbf{Every control-side quantity here is conditional on that one draw}: the
 case-level specificity and positive predictive value of Table A4, the control-side minute
 share, and the cross-combination association of Section 4.1 that rests on them. Its resampling
-variability is not propagated into any interval we report, because redrawing would mean
-rerunning the whole control-side pipeline for every cell; it is one pre-specified draw, and we
-did not run a sensitivity analysis over it.
+variability is not propagated into any interval we report: it is one pre-specified draw, and
+we did not run a sensitivity analysis over it.
 
 \textbf{Properties of a pipeline, not of an architecture.} Section 4.1 describes what one model does
 under one scoring policy on these cohorts, not what sequence models must do; Section 3's effect
 is present in all five families, the ratio running 0.455 to 0.944.
 
-\textbf{The references bias upward.} Both shuffle variants make agreement easier to obtain, in the
-direction that favors our own reading, and they change the detected-case set. They are
-references built to favor agreement, not estimates of a case-independent process.
+\textbf{The references bias upward.} Both shuffle variants make agreement easier to obtain, and they
+change the detected-case set. They are not
+estimates of a case-independent process.
 
 \textbf{A reporting-affordance analysis, and one clinical domain.} What we analyze is the affordance
-of the label: what a reader is enabled to conclude from a reported quantity together with the
-disclosures a standard guarantees will accompany it, which we take to be the basis on which
-reporting standards themselves operate. Measured clinician comprehension lies outside that, and
-is the next study rather than this one; Section 6.2's four items are what it would test. The
-TRIPOD+AI assessment was author-completed, and the four disclosures were demonstrated here
-rather than validated across reporting settings or stakeholder groups. Three cohorts, two
-health systems and two countries still give one procedure setting and one monitored variable,
-so they cannot settle whether Section 6.2's four items are the right four elsewhere.
+of the label as Section 1 defines it, which we take to be the basis on which reporting
+standards themselves operate. Measured clinician comprehension lies outside that, and is the
+next study rather than this one; Section 6.2's four items are what it would test. Those four
+were demonstrated here rather than validated across reporting settings or stakeholder groups,
+and three cohorts, two health systems and two countries still give one procedure setting and
+one monitored variable, so they cannot settle whether they are the right four elsewhere.
 

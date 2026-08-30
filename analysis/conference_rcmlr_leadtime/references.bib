@@ -5,304 +5,331 @@
 % it, build_tex.py copies that into latex/references.bib, and build_package.py copies
 % that into the submission bundle.
 %
-% PROVENANCE. Every entry was verified field by field against an authoritative registry
-% -- Crossref (api.crossref.org/works/<DOI>), PubMed E-utilities, DataCite
-% (api.datacite.org), or the issuing repository's own record -- on 2026-08-29. Author
-% order and spelling are verified through at least the third author, and in full for
-% works with fewer than three. The `s2:' comment above each entry records the key the
-% same work carries in the hand-collected Semantic Scholar list, kept verbatim at
-% bibtex/ref_checked.semanticscholar.bib; where the two disagreed the registry won, and
-% every such case is listed in provenance/REFERENCE_RECONCILIATION_2026-08-29.md.
+% PROVENANCE. Rebuilt 2026-08-30 from the author's Zotero library, exported to
+% bibtex/neurips_workshop.bib, which is the final export and carries the SAME citation
+% keys as this file. Every field -- author, title, venue, year, volume, number, pages, DOI --
+% is Zotero's, so the whole bibliography has one provenance and any query about a field
+% has one answer: that is what the reference manager holds. Citation keys are the ONE
+% exception, below. Zotero's local `file' paths, `urldate', `abstract', `issn', `langid'
+% and `shorttitle' are dropped: the first would deanonymise the submission by naming the
+% author's home directory, and the rest do not belong in a submitted bibliography.
 %
-% CITATION KEYS ARE STABLE. They are the keys the manuscript's \cite commands use and
-% must not be renamed for style. The Semantic Scholar export uses different keys; that
-% mapping is the `s2:' comment, not a rename.
+% THREE REPAIRS, each recorded because taking the export literally renders a broken
+% reference rather than a merely different one:
+%   * lee2022vitaldbdataset -- Zotero carries no `year'; without it natbib prints an
+%     empty year. 2022 is the DataCite registration year.
+%   * samad2023moverdataset -- Zotero carries author={{Unknown}}, which prints the word
+%     "Unknown" in the reference list. The corporate author is the UCI Machine Learning
+%     Repository.
+%   * both datasets -- Zotero's `publisher' is ignored by plainnat in the misc entry
+%     type, so it is carried as `howpublished', which is the field that renders.
 %
-% Author lists ending in "and others" reproduce the source journal list's "et al"
-% exactly. They are not truncations introduced here, and expanding one entry without
-% the rest would make the list less consistent, not more.
+% NO AT-SIGN OUTSIDE AN ENTRY HEADER. BibTeX has no comment syntax: it scans for the
+% next at-sign and reads what follows as an entry type, whatever precedes it on the
+% line. An at-sign in this header therefore raises
+% `"," immediately follows an entry type' -- which Overleaf shows and Tectonic did not.
+% `note' and `url' are kept from the previous file where Zotero has no equivalent field;
+% davies2020hpi's note is what discloses the 2023 erratum and what it withdraws.
 %
-% The `number' (issue) field is deliberately omitted except where the source list
-% carried it. Volume plus page range or article number identifies every entry here
-% unambiguously, and adding the field to some entries only would be worse than either
-% extreme.
+% CITATION KEYS ARE STABLE and are NOT Zotero's. They are the keys the manuscript's
+% \cite commands use and must not be renamed for style. Zotero's own keys
+% were remapped to these on 2026-08-30, so the two files now share one set of ids and
+% the DOI remains a second, independent join. bibtex/neurips_workshop.bib additionally
+% holds davies2023erratum, the author-less 2023 erratum to davies2020hpi; it is not cited,
+% so it is not carried here -- davies2020hpi's `note' is what discloses it.
 %
-% This file ships inside the Overleaf bundle and may reach the anonymised mirror, so
-% nothing in it -- comments included -- may indicate which entries share an author with
-% this submission.
+% Verified after the rebuild by neurips_workshop/audit_references.py, which resolves every
+% DOI through doi.org content negotiation and compares title, author positions, year,
+% venue, volume and pages against the registered record.
+%
+% This file ships inside the Overleaf bundle and may reach the anonymised mirror, so it is
+% pure ASCII and carries no path, e-mail or name that is not a published author's.
 
-% s2: Wong2021ExternalVO
 @article{wong2021sepsis,
-  author  = {Wong, Andrew and Otles, Erkin and Donnelly, John P. and others},
-  title   = {External validation of a widely implemented proprietary sepsis prediction model in hospitalized patients},
-  journal = {JAMA Internal Medicine},
-  year    = {2021},
-  volume  = {181},
-  pages   = {1065--1070},
-  doi     = {10.1001/jamainternmed.2021.2626}
+  author       = {Wong, Andrew and Otles, Erkin and Donnelly, John P. and Krumm, Andrew and McCullough, Jeffrey
+               and {DeTroyer-Cooley}, Olivia and Pestrue, Justin and Phillips, Marie and
+               Konye, Judy and Penoza, Carleen and Ghous, Muhammad and Singh, Karandeep},
+  title        = {External {{Validation}} of a {{Widely Implemented Proprietary Sepsis Prediction Model}} in {{Hospitalized Patients}}},
+  journal      = {JAMA Internal Medicine},
+  year         = {2021},
+  volume       = {181},
+  number       = {8},
+  pages        = {1065},
+  doi          = {10.1001/jamainternmed.2021.2626}
 }
 
-% s2: Collins2024TRIPODAISU
 @article{collins2024tripodai,
-  author  = {Collins, Gary S. and Moons, Karel G. M. and Dhiman, Paula and others},
-  title   = {{TRIPOD+AI} statement: updated guidance for reporting clinical prediction models that use regression or machine learning methods},
-  journal = {BMJ},
-  year    = {2024},
-  volume  = {385},
-  pages   = {e078378},
-  doi     = {10.1136/bmj-2023-078378}
+  author       = {Collins, Gary S and Moons, Karel G M and Dhiman, Paula and Riley, Richard D and Beam, Andrew L
+               and Van Calster, Ben and Ghassemi, Marzyeh and Liu, Xiaoxuan and Reitsma,
+               Johannes B and Van Smeden, Maarten and Boulesteix, Anne-Laure and Camaradou,
+               Jennifer Catherine and Celi, Leo Anthony and Denaxas, Spiros and Denniston,
+               Alastair K and Glocker, Ben and Golub, Robert M and Harvey, Hugh and Heinze,
+               Georg and Hoffman, Michael M and Kengne, Andr{\'e} Pascal and Lam, Emily and
+               Lee, Naomi and Loder, Elizabeth W and {Maier-Hein}, Lena and Mateen, Bilal A
+               and McCradden, Melissa D and {Oakden-Rayner}, Lauren and Ordish, Johan and
+               Parnell, Richard and Rose, Sherri and Singh, Karandeep and Wynants, Laure and
+               Logullo, Patricia},
+  title        = {{{TRIPOD}}+{{AI}} Statement: Updated Guidance for Reporting Clinical Prediction Models That Use Regression or Machine Learning Methods},
+  journal      = {BMJ},
+  year         = {2024},
+  volume       = {385},
+  pages        = {e078378},
+  doi          = {10.1136/bmj-2023-078378}
 }
 
-% s2: Lauritsen2021TheFO
-% Verified 2026-08-29: Crossref gives npj Digital Medicine 4(1), article 158, published
-% 2021-11-15, seven authors, Lauritsen / Thiesson / Jorgensen in that order.
 @article{lauritsen2021framing,
-  author  = {Lauritsen, Simon Meyer and Thiesson, Bo and J{\o}rgensen, Marianne Johansson and others},
-  title   = {The framing of machine learning risk prediction models illustrated by evaluation of sepsis in general wards},
-  journal = {npj Digital Medicine},
-  year    = {2021},
-  volume  = {4},
-  pages   = {158},
-  doi     = {10.1038/s41746-021-00529-x}
+  author       = {Lauritsen, Simon Meyer and Thiesson, Bo and J{\o}rgensen, Marianne Johansson and Riis, Anders
+               Hammerich and Espelund, Ulrick Skipper and Weile, Jesper Bo and Lange, Jeppe},
+  title        = {The {{Framing}} of Machine Learning Risk Prediction Models Illustrated by Evaluation of Sepsis in General Wards},
+  journal      = {npj Digital Medicine},
+  year         = {2021},
+  volume       = {4},
+  number       = {1},
+  pages        = {158},
+  doi          = {10.1038/s41746-021-00529-x}
 }
 
-% s2: Lee2026DeepLM
 @article{lee2026aki,
-  author  = {Lee, Kyung Hyun and Yoon, Donghwee and Lim, Hyunsun and others},
-  title   = {Deep learning models for acute kidney injury prediction: multi-center external validation and evaluation under simulated continuous monitoring conditions},
-  journal = {npj Digital Medicine},
-  year    = {2026},
-  volume  = {9},
-  pages   = {544},
-  doi     = {10.1038/s41746-026-02722-2}
+  author       = {Lee, Kyung Hyun and Yoon, Donghwee and Lim, Hyunsun and Lee, Ki-Byung and Lee, Yong Kyu},
+  title        = {Deep Learning Models for Acute Kidney Injury Prediction: Multi-Center External Validation and Evaluation under Simulated Continuous Monitoring Conditions},
+  journal      = {npj Digital Medicine},
+  year         = {2026},
+  volume       = {9},
+  number       = {1},
+  pages        = {544},
+  doi          = {10.1038/s41746-026-02722-2}
 }
 
-% s2: Walsh2013RelationshipBI
 @article{walsh2013map,
-  author  = {Walsh, Michael and Devereaux, P. J. and Garg, Amit X. and others},
-  title   = {Relationship between intraoperative mean arterial pressure and clinical outcomes after noncardiac surgery: toward an empirical definition of hypotension},
-  journal = {Anesthesiology},
-  year    = {2013},
-  volume  = {119},
-  pages   = {507--515},
-  doi     = {10.1097/ALN.0b013e3182a10e26}
+  author       = {Walsh, Michael and Devereaux, Philip J. and Garg, Amit X. and Kurz, Andrea and Turan,
+               Alparslan and Rodseth, Reitze N. and Cywinski, Jacek and Thabane, Lehana and
+               Sessler, Daniel I.},
+  title        = {Relationship between {{Intraoperative Mean Arterial Pressure}} and {{Clinical Outcomes}} after {{Noncardiac Surgery}}: {{Toward}} an {{Empirical Definition}} of {{Hypotension}}},
+  journal      = {Anesthesiology},
+  year         = {2013},
+  volume       = {119},
+  number       = {3},
+  pages        = {507--515},
+  doi          = {10.1097/ALN.0b013e3182a10e26}
 }
 
-% s2: Hatib2018MachinelearningAT
 @article{hatib2018hpi,
-  author  = {Hatib, Feras and Jian, Zhongping and Buddi, Sai and others},
-  title   = {Machine-learning algorithm to predict hypotension based on high-fidelity arterial pressure waveform analysis},
-  journal = {Anesthesiology},
-  year    = {2018},
-  volume  = {129},
-  pages   = {663--674},
-  doi     = {10.1097/ALN.0000000000002300}
+  author       = {Hatib, Feras and Jian, Zhongping and Buddi, Sai and Lee, Christine and Settels, Jos and
+               Sibert, Karen and Rinehart, Joseph and Cannesson, Maxime},
+  title        = {Machine-Learning {{Algorithm}} to {{Predict Hypotension Based}} on {{High-fidelity Arterial Pressure Waveform Analysis}}},
+  journal      = {Anesthesiology},
+  year         = {2018},
+  volume       = {129},
+  number       = {4},
+  pages        = {663--674},
+  doi          = {10.1097/ALN.0000000000002300}
 }
 
-% s2: Davies2020AbilityOA, with the 2023 erratum carried in the note field rather than as
-% a separate entry (s2: 2023AbilityOA, which is an author-less stub).
-%
-% The 2023 erratum is a CORRECTION, not a retraction: Crossref types it update-to/correction
-% against 10.1213/ANE.0000000000004121. Section 1 cites this entry for what these monitors are
-% evaluated on, which the erratum leaves standing, so the note is disclosure rather than
-% repair. Never write "retracted". The note names what the correction withdraws because the
-% withdrawn conclusion is adjacent to the use this paper makes of the entry.
 @article{davies2020hpi,
-  author  = {Davies, Simon J. and Vistisen, Simon T. and Jian, Zhongping and others},
-  title   = {Ability of an arterial waveform analysis-derived {H}ypotension {P}rediction {I}ndex to predict future hypotensive events in surgical patients},
-  journal = {Anesthesia \& Analgesia},
-  year    = {2020},
-  volume  = {130},
-  pages   = {352--359},
-  doi     = {10.1213/ANE.0000000000004121},
-  note    = {Erratum: \emph{Anesth Analg} 137:e33, 2023, doi: 10.1213/ANE.0000000000006674, which withdraws the comparative conclusion that the index outperformed mean arterial pressure}
+  author       = {Davies, Simon James and Vistisen, Simon Tilma and Jian, Zhongping and Hatib, Feras and
+               Scheeren, Thomas W. L.},
+  title        = {Ability of an {{Arterial Waveform Analysis}}--{{Derived Hypotension Prediction Index}} to {{Predict Future Hypotensive Events}} in {{Surgical Patients}}},
+  journal      = {Anesthesia \& Analgesia},
+  year         = {2020},
+  volume       = {130},
+  number       = {2},
+  pages        = {352--359},
+  doi          = {10.1213/ANE.0000000000004121},
+  note         = {Erratum: \emph{Anesth Analg} 137:e33, 2023, doi: 10.1213/ANE.0000000000006674, which withdraws
+               the comparative conclusion that the index outperformed mean arterial pressure}
 }
 
-% s2: Wijnberge2020EffectOA
 @article{wijnberge2020hype,
-  author  = {Wijnberge, Marije and Geerts, Bart F. and Hol, Liselotte and others},
-  title   = {Effect of a machine learning-derived early warning system for intraoperative hypotension vs standard care on depth and duration of intraoperative hypotension during elective noncardiac surgery: the {HYPE} randomized clinical trial},
-  journal = {JAMA},
-  year    = {2020},
-  volume  = {323},
-  pages   = {1052--1060},
-  doi     = {10.1001/jama.2020.0592}
+  author       = {Wijnberge, Marije and Geerts, Bart F. and Hol, Liselotte and Lemmers, Nikki and Mulder, Marijn
+               P. and Berge, Patrick and Schenk, Jimmy and Terwindt, Lotte E. and Hollmann,
+               Markus W. and Vlaar, Alexander P. and Veelo, Denise P.},
+  title        = {Effect of a {{Machine Learning}}--{{Derived Early Warning System}} for {{Intraoperative Hypotension}} vs {{Standard Care}} on {{Depth}} and {{Duration}} of {{Intraoperative Hypotension During Elective Noncardiac Surgery}}: {{The HYPE Randomized Clinical Trial}}},
+  journal      = {JAMA},
+  year         = {2020},
+  volume       = {323},
+  number       = {11},
+  pages        = {1052},
+  doi          = {10.1001/jama.2020.0592}
 }
 
-% s2: Samad2023MedicalIO -- the descriptor ARTICLE, kept distinct from the UCI dataset
-% record below. The expanded repository name is a proper noun and is brace-protected so
-% plainnat does not case-fold it.
 @article{samad2023mover,
-  author  = {Samad, Muntaha and Angel, Mirana and Rinehart, Joseph and others},
-  title   = {{Medical Informatics Operating Room Vitals and Events Repository (MOVER)}: a public-access operating room database},
-  journal = {JAMIA Open},
-  year    = {2023},
-  volume  = {6},
-  pages   = {ooad084},
-  doi     = {10.1093/jamiaopen/ooad084}
+  author       = {Samad, Muntaha and Angel, Mirana and Rinehart, Joseph and Kanomata, Yuzo and Baldi, Pierre and
+               Cannesson, Maxime},
+  title        = {Medical {{Informatics Operating Room Vitals}} and {{Events Repository}} ({{MOVER}}): A Public-Access Operating Room Database},
+  journal      = {JAMIA Open},
+  year         = {2023},
+  volume       = {6},
+  number       = {4},
+  pages        = {ooad084},
+  doi          = {10.1093/jamiaopen/ooad084}
 }
 
-% s2: Lee2022VitalDBAH -- the descriptor ARTICLE, kept distinct from the PhysioNet
-% dataset record below.
 @article{lee2022vitaldb,
-  author  = {Lee, Hyung-Chul and Park, Yoonsang and Yoon, Soo Bin and others},
-  title   = {{VitalDB}, a high-fidelity multi-parameter vital signs database in surgical patients},
-  journal = {Scientific Data},
-  year    = {2022},
-  volume  = {9},
-  pages   = {279},
-  doi     = {10.1038/s41597-022-01411-5}
+  author       = {Lee, Hyung-Chul and Park, Yoonsang and Yoon, Soo Bin and Yang, Seong Mi and Park, Dongnyeok
+               and Jung, Chul-Woo},
+  title        = {{{VitalDB}}, a High-Fidelity Multi-Parameter Vital Signs Database in Surgical Patients},
+  journal      = {Scientific Data},
+  year         = {2022},
+  volume       = {9},
+  number       = {1},
+  pages        = {279},
+  doi          = {10.1038/s41597-022-01411-5}
 }
 
-% s2: Salmasi2017RelationshipBI
 @article{salmasi2017ioh,
-  author  = {Salmasi, Vafi and Maheshwari, Kamal and Yang, Dongsheng and others},
-  title   = {Relationship between intraoperative hypotension, defined by either reduction from baseline or absolute thresholds, and acute kidney and myocardial injury after noncardiac surgery: a retrospective cohort analysis},
-  journal = {Anesthesiology},
-  year    = {2017},
-  volume  = {126},
-  pages   = {47--65},
-  doi     = {10.1097/ALN.0000000000001432}
+  author       = {Salmasi, Vafi and Maheshwari, Kamal and Yang, Dongsheng and Mascha, Edward J. and Singh, Asha
+               and Sessler, Daniel I. and Kurz, Andrea},
+  title        = {Relationship between {{Intraoperative Hypotension}}, {{Defined}} by {{Either Reduction}} from {{Baseline}} or {{Absolute Thresholds}}, and {{Acute Kidney}} and {{Myocardial Injury}} after {{Noncardiac Surgery}}: {{A Retrospective Cohort Analysis}}},
+  journal      = {Anesthesiology},
+  year         = {2017},
+  volume       = {126},
+  number       = {1},
+  pages        = {47--65},
+  doi          = {10.1097/ALN.0000000000001432}
 }
 
-% s2: Sessler2019PerioperativeQI -- "Perioperative Quality Initiative" is the proper name
-% of the consensus body and is brace-protected so plainnat does not case-fold it.
 @article{sessler2019poqi,
-  author  = {Sessler, Daniel I. and Bloomstone, Joshua A. and Aronson, Solomon and others},
-  title   = {{Perioperative Quality Initiative} consensus statement on intraoperative blood pressure, risk and outcomes for elective surgery},
-  journal = {British Journal of Anaesthesia},
-  year    = {2019},
-  volume  = {122},
-  pages   = {563--574},
-  doi     = {10.1016/j.bja.2019.01.013}
+  author       = {Sessler, Daniel I. and Bloomstone, Joshua A. and Aronson, Solomon and Berry, Colin and Gan,
+               Tong J. and Kellum, John A. and Plumb, James and Mythen, Monty G. and Grocott,
+               Michael P.W. and Edwards, Mark R. and Miller, Timothy E. and Miller, Timothy E.
+               and Mythen, Monty G. and Grocott, Michael Pw. and Edwards, Mark R. and Ackland,
+               Gareth L. and Brudney, Charles S. and Cecconi, Maurizio and Ince, Can and
+               Irwin, Michael G. and Lacey, Jonathan and Pinsky, Michael R. and Sanders,
+               Robert and Hughes, Finton and Bader, Angela and Thompson, Annemarie and Hoeft,
+               Andreas and Williams, David and Shaw, Andrew D. and Sessler, Daniel I. and
+               Aronson, Sol and Berry, Colin and Gan, Tong J. and Kellum, John and Plumb,
+               James and Bloomstone, Joshua and McEvoy, Matthew D. and Thacker, Julie K.M. and
+               Gupta, Ruchir and Koepke, Elena and Feldheiser, Aarne and Levett, Denny and
+               Michard, Frederic and Hamilton, Mark},
+  title        = {Perioperative {{Quality Initiative}} Consensus Statement on Intraoperative Blood Pressure, Risk and Outcomes for Elective Surgery},
+  journal      = {British Journal of Anaesthesia},
+  year         = {2019},
+  volume       = {122},
+  number       = {5},
+  pages        = {563--574},
+  doi          = {10.1016/j.bja.2019.01.013}
 }
 
-% s2: Tipirneni2021SelfSupervisedTF -- Crossref gives the issue year as 2022 (TKDD 16(6),
-% article 105); 2021 is the online-first date the Semantic Scholar export carried.
 @article{tipirneni2022strats,
-  author  = {Tipirneni, Sindhu and Reddy, Chandan K.},
-  title   = {Self-supervised transformer for sparse and irregularly sampled multivariate clinical time-series},
-  journal = {ACM Transactions on Knowledge Discovery from Data},
-  year    = {2022},
-  volume  = {16},
-  number  = {6},
-  pages   = {105:1--105:17},
-  doi     = {10.1145/3516367}
+  author       = {Tipirneni, Sindhu and Reddy, Chandan K.},
+  title        = {Self-{{Supervised Transformer}} for {{Sparse}} and {{Irregularly Sampled Multivariate Clinical Time-Series}}},
+  journal      = {ACM Transactions on Knowledge Discovery from Data},
+  year         = {2022},
+  volume       = {16},
+  number       = {6},
+  pages        = {1--17},
+  doi          = {10.1145/3516367}
 }
 
-% s2: absent -- the Semantic Scholar export does not index dataset DOIs, so both dataset
-% records below were verified directly against DataCite and the issuing repository.
-%
-% Verified 2026-08-29 via doi.org content negotiation: type dataset, publisher PhysioNet,
-% version 1.0.0, exactly two creators (Hyung-Chul Lee, Chul-Woo Jung), year 2022. The
-% v1.0.0 DOI below is the one the paper's cohort was built from; 10.13026/w758-nw21 is the
-% moving "latest version" handle and is deliberately NOT cited. PhysioNet states the file
-% license as Creative Commons Attribution 4.0 International, which is what Appendix A.1 claims.
 @misc{lee2022vitaldbdataset,
   author       = {Lee, Hyung-Chul and Jung, Chul-Woo},
-  title        = {{VitalDB}, a high-fidelity multi-parameter vital signs database in surgical patients (version 1.0.0)},
-  year         = {2022},
+  title        = {{{VitalDB}}, a High-Fidelity Multi-Parameter Vital Signs Database in Surgical Patients},
   howpublished = {PhysioNet},
-  note         = {Dataset. doi: 10.13026/czw8-9p62},
-  doi          = {10.13026/czw8-9p62}
+  year         = {2022},
+  doi          = {10.13026/CZW8-9P62},
+  note         = {Dataset. doi: 10.13026/czw8-9p62}
 }
 
-% s2: absent -- see the note on the VitalDB dataset record above.
-%
-% CORPORATE AUTHOR, and this is a correction. Verified 2026-08-29: DataCite returns
-% creators = [{name: "Unknown"}] and every citation format UCI itself generates for record
-% 877 carries no personal author. The three personal names this entry used to carry were the
-% first three authors of the JAMIA Open descriptor article, which is a different work
-% (samad2023mover above). The whole title is brace-protected because the registered title is
-% capitalized and plainnat would otherwise case-fold everything after the acronym.
 @misc{samad2023moverdataset,
   author       = {{UCI Machine Learning Repository}},
-  title        = {{MOVER: Medical Informatics Operating Room Vitals and Events Repository}},
-  year         = {2023},
+  title        = {{{MOVER}}: {{Medical Informatics Operating Room Vitals}} and {{Events Repository}}},
   howpublished = {UCI Machine Learning Repository},
-  note         = {Dataset. doi: 10.24432/C5VS5G},
+  year         = {2023},
   doi          = {10.24432/C5VS5G},
-  url          = {https://archive.ics.uci.edu/dataset/877}
+  url          = {https://archive.ics.uci.edu/dataset/877},
+  note         = {Dataset. doi: 10.24432/C5VS5G}
 }
 
-% s2: Wesselink2018IntraoperativeHA
 @article{wesselink2018ioh,
-  author  = {Wesselink, E. M. and Kappen, T. H. and Torn, H. M. and others},
-  title   = {Intraoperative hypotension and the risk of postoperative adverse outcomes: a systematic review},
-  journal = {British Journal of Anaesthesia},
-  year    = {2018},
-  volume  = {121},
-  pages   = {706--721},
-  doi     = {10.1016/j.bja.2018.04.036}
+  author       = {Wesselink, E.M. and Kappen, T.H. and Torn, H.M. and Slooter, A.J.C. and Van Klei, W.A.},
+  title        = {Intraoperative Hypotension and the Risk of Postoperative Adverse Outcomes: A Systematic Review},
+  journal      = {British Journal of Anaesthesia},
+  year         = {2018},
+  volume       = {121},
+  number       = {4},
+  pages        = {706--721},
+  doi          = {10.1016/j.bja.2018.04.036}
 }
 
-% s2: Maheshwari2020HypotensionPI
 @article{maheshwari2020hpi,
-  author  = {Maheshwari, Kamal and Shimada, Tetsuya and Yang, Dongsheng and others},
-  title   = {{H}ypotension {P}rediction {I}ndex for prevention of hypotension during moderate- to high-risk noncardiac surgery},
-  journal = {Anesthesiology},
-  year    = {2020},
-  volume  = {133},
-  pages   = {1214--1222},
-  doi     = {10.1097/ALN.0000000000003557}
+  author       = {Maheshwari, Kamal and Shimada, Tetsuya and Yang, Dongsheng and Khanna, Sandeep and Cywinski,
+               Jacek B. and Irefin, Samuel A. and Ayad, Sabry and Turan, Alparslan and
+               Ruetzler, Kurt and Qiu, Yuwei and Saha, Partha and Mascha, Edward J. and
+               Sessler, Daniel I.},
+  title        = {Hypotension {{Prediction Index}} for {{Prevention}} of {{Hypotension}} during {{Moderate-}} to {{High-risk Noncardiac Surgery}}: {{A Pilot Randomized Trial}}},
+  journal      = {Anesthesiology},
+  year         = {2020},
+  volume       = {133},
+  number       = {6},
+  pages        = {1214--1222},
+  doi          = {10.1097/ALN.0000000000003557}
 }
 
-% s2: RomeroBrufau2015WhyTC
 @article{romerobrufau2015cstatistic,
-  author  = {Romero-Brufau, Santiago and Huddleston, Jeanne M. and Escobar, Gabriel J. and others},
-  title   = {Why the {C}-statistic is not informative to evaluate early warning scores and what metrics to use},
-  journal = {Critical Care},
-  year    = {2015},
-  volume  = {19},
-  pages   = {285},
-  doi     = {10.1186/s13054-015-0999-1}
+  author       = {{Romero-Brufau}, Santiago and Huddleston, Jeanne M. and Escobar, Gabriel J. and Liebow, Mark},
+  title        = {Why the {{C-statistic}} Is Not Informative to Evaluate Early Warning Scores and What Metrics to Use},
+  journal      = {Critical Care},
+  year         = {2015},
+  volume       = {19},
+  number       = {1},
+  pages        = {285},
+  doi          = {10.1186/s13054-015-0999-1}
 }
 
-% s2: Paine2015SystematicRO -- Crossref gives the issue year as 2016 (J Hosp Med 11(2));
-% 2015 is the online-first date the Semantic Scholar export carried.
 @article{paine2016alerts,
-  author  = {Paine, Christine Weirich and Goel, Veena V. and Ely, Elizabeth and others},
-  title   = {Systematic review of physiologic monitor alarm characteristics and pragmatic interventions to reduce alarm frequency},
-  journal = {Journal of Hospital Medicine},
-  year    = {2016},
-  volume  = {11},
-  pages   = {136--144},
-  doi     = {10.1002/jhm.2520}
+  author       = {Paine, Christine Weirich and Goel, Veena V. and Ely, Elizabeth and Stave, Christopher D. and
+               Stemler, Shannon and Zander, Miriam and Bonafide, Christopher P.},
+  title        = {Systematic {{Review}} of {{Physiologic Monitor Alarm Characteristics}} and {{Pragmatic Interventions}} to {{Reduce Alarm Frequency}}},
+  journal      = {Journal of Hospital Medicine},
+  year         = {2016},
+  volume       = {11},
+  number       = {2},
+  pages        = {136--144},
+  doi          = {10.1002/jhm.2520}
 }
 
-% s2: Yang2025TheEO -- the export's third author "Hyeon Keong Lee" is wrong; Crossref,
-% PubMed and the publisher PDF all give "Hyeonhoon Lee".
+@article{michard2023hype,
+  author       = {Michard, Frederic and Futier, Emmanuel},
+  title        = {Predicting Intraoperative Hypotension: From Hope to Hype and Back to Reality},
+  journal      = {British Journal of Anaesthesia},
+  year         = {2023},
+  volume       = {131},
+  number       = {2},
+  pages        = {199--201},
+  doi          = {10.1016/j.bja.2023.02.029}
+}
+
 @article{yang2025selection,
-  author  = {Yang, Hyun-Lim and Celi, Leo Anthony and Lee, Hyeonhoon and others},
-  title   = {The effect of selection bias on the performance of a deep learning-based intraoperative hypotension prediction model using real-world samples from a publicly available database},
-  journal = {British Journal of Anaesthesia},
-  year    = {2025},
-  volume  = {135},
-  pages   = {571--581},
-  doi     = {10.1016/j.bja.2025.03.024}
+  author       = {Yang, Hyun-Lim and Celi, Leo Anthony and Lee, Hyeonhoon and Park, Seong-A and Lee, SangJin and
+               Jung, Chul-Woo and Lee, Hyung-Chul},
+  title        = {The Effect of Selection Bias on the Performance of a Deep Learning-Based Intraoperative Hypotension Prediction Model Using Real-World Samples from a Publicly Available Database},
+  journal      = {British Journal of Anaesthesia},
+  year         = {2025},
+  volume       = {135},
+  number       = {3},
+  pages        = {571--581},
+  doi          = {10.1016/j.bja.2025.03.024}
 }
 
-% s2: Chaari2025TowardsRP -- Crossref gives the issue year as 2026 (J Clin Monit Comput
-% 40(1)); 2025 is the online-first date the Semantic Scholar export carried.
 @article{chaari2026crosscenter,
-  author  = {Chaari, Nada and Winski, Greg and Hallb{\"a}ck, Magnus and others},
-  title   = {Towards reliable prediction of intraoperative hypotension: a cross-center evaluation of deep learning-based and {MAP}-derived methods},
-  journal = {Journal of Clinical Monitoring and Computing},
-  year    = {2026},
-  volume  = {40},
-  number  = {1},
-  pages   = {43--57},
-  doi     = {10.1007/s10877-025-01357-0}
+  author       = {Chaari, Nada and Winski, Greg and Hallb{\"a}ck, Magnus and Lundstr{\"o}m, Niclas and
+               Bj{\"o}rne, H{\aa}kan and Jacobsson, Martin},
+  title        = {Towards Reliable Prediction of Intraoperative Hypotension: A Cross-Center Evaluation of Deep Learning-Based and {{MAP-derived}} Methods},
+  journal      = {Journal of Clinical Monitoring and Computing},
+  year         = {2025},
+  volume       = {40},
+  number       = {1},
+  pages        = {43--57},
+  doi          = {10.1007/s10877-025-01357-0}
 }
 
-% s2: Houwelingen2007DynamicPB -- single author, so all authors are verified. The "van"
-% particle belongs to the surname and is kept in the BibTeX name.
 @article{vanhouwelingen2007landmark,
-  author  = {van Houwelingen, Hans C.},
-  title   = {Dynamic prediction by landmarking in event history analysis},
-  journal = {Scandinavian Journal of Statistics},
-  year    = {2007},
-  volume  = {34},
-  pages   = {70--85},
-  doi     = {10.1111/j.1467-9469.2006.00529.x}
+  author       = {Van Houwelingen, Hans C.},
+  title        = {Dynamic {{Prediction}} by {{Landmarking}} in {{Event History Analysis}}},
+  journal      = {Scandinavian Journal of Statistics},
+  year         = {2007},
+  volume       = {34},
+  number       = {1},
+  pages        = {70--85},
+  doi          = {10.1111/j.1467-9469.2006.00529.x}
 }

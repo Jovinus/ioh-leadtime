@@ -223,17 +223,25 @@ def main() -> int:
         "N2 rho indistinguishable",
         f"distinguishable from the reference in {not_sig} of 15 cells",
     )
-    null_higher = int((longer["excess_spearman"] < 0).sum())
+    # Section 3.3 reports this WITHIN the cells the observed correlation is not
+    # distinguishable from, not over all fifteen -- "the larger within 6 of those 9".
+    undecided = longer[longer["p_spearman"] >= 0.05]
+    reference_larger = int((undecided["excess_spearman"] < 0).sum())
     check(
-        "N2 null higher count",
-        f"the reference is the larger in {null_higher} of 15" in PAPER,
-        f"'the reference is the larger in {null_higher} of 15'",
+        "N2 reference larger within the undecided cells",
+        f"the reference point estimate is the larger within {reference_larger} of those "
+        f"{len(undecided)}" in PAPER,
+        f"'the reference point estimate is the larger within {reference_larger} of those "
+        f"{len(undecided)}'",
     )
     longer_tr = longer[longer["family"] == "transformer"]
+    # A.3's closing paragraph is about the observed RATIO, and until 2026-08-30 its last
+    # sentence quoted the rank-correlation columns instead.  It now reports the ratio
+    # reference, so this is sourced from null_ratio_mean rather than null_spearman_mean.
     present(
-        "N2 transformer null rho",
-        f"null spans {longer_tr['null_spearman_mean'].min():.2f} to "
-        f"{longer_tr['null_spearman_mean'].max():.2f}",
+        "N2 transformer ratio reference",
+        f"ratio reference spans {longer_tr['null_ratio_mean'].min():.2f} to "
+        f"{longer_tr['null_ratio_mean'].max():.2f}",
     )
     present("N2 permutations", "1,000 per cell")
 
@@ -266,20 +274,29 @@ def main() -> int:
         f"at {score('transformer', 'epic_test', 5, 0):.3f} and "
         f"{score('transformer', 'epic_test', 5, 1):.3f}",
     )
+    # Section 4.1 gives the EPIC score pairs in full and reduces the two external cohorts to
+    # the minute each clears in.  So what is asserted for those two is the clearing minute
+    # itself: the first elapsed minute at which the median score is at or above the
+    # transported threshold in BOTH label groups.
+    def clears_at(cohort: str) -> int:
+        rows = profile[(profile["family"] == "transformer") & (profile["cohort"] == cohort)]
+        cut = float(cuts["transformer"])
+        for elapsed in sorted(rows["elapsed"].unique()):
+            both = rows[rows["elapsed"] == elapsed]
+            if len(both) == 2 and (both["score_median"] >= cut).all():
+                return int(elapsed)
+        raise SystemExit(f"transformer never clears its threshold in {cohort}")
+
     present(
-        "VitalDB minute 5 pair",
-        f"reaching {score('transformer', 'vitaldb', 5, 0):.3f} and "
-        f"{score('transformer', 'vitaldb', 5, 1):.3f}",
+        "external clearing minutes",
+        f"VitalDB clears at minute {WORDS[clears_at('vitaldb')]} and MOVER (SIS) at minute "
+        f"{WORDS[clears_at('mover')]}, in both groups",
     )
-    present(
-        "SIS minute 2 pair",
-        f"at {score('transformer', 'mover', 2, 0):.3f} and "
-        f"{score('transformer', 'mover', 2, 1):.3f} by minute two",
-    )
-    present(
-        "SIS minute 5 pair",
-        f"and {score('transformer', 'mover', 5, 0):.3f} and "
-        f"{score('transformer', 'mover', 5, 1):.3f} by minute five",
+    check(
+        "EPIC clears a minute earlier than either external cohort",
+        clears_at("epic_test") == 1
+        and f"in MOVER (EPIC) it takes {WORDS[1]} minute" in PAPER,
+        "MOVER (EPIC) to clear at elapsed minute one, as Section 4.1's lead sentence says",
     )
 
     # Non-transformer families: the highest median score reached in the first ten minutes,
@@ -639,8 +656,11 @@ def main() -> int:
     longest = lead.idxmax()
     present(
         "abstract longest lead",
-        f"the longest pooled median lead here, {lead.max():.0f} minutes, occurs at a case-level "
-        f"specificity of {spec[longest]:.3f}",
+        f"the longest pooled median lead here, {lead.max():.0f} minutes",
+    )
+    present(
+        "abstract longest lead sits beside its specificity",
+        f"stands beside a case-level specificity of {spec[longest]:.3f}",
     )
     present(
         "abstract minimum specificity",
@@ -688,10 +708,14 @@ def main() -> int:
     # §4.1: the cross-combination rank correlations, from the unrounded per-cell values.
     op = pd.read_csv(B / "b1b_suppression" / "b1b_lead_vs_operating_point.csv")
     pooled = op[op["scope"] == "pooled"].iloc[0]
+    # The cell-pairing permutation was withdrawn in the 2026-08-29 revision: its unit is a
+    # cell, and cells sharing a cohort or a family are not exchangeable.  Section 4.1 reports
+    # the correlation as a point estimate with the untied-pair count and no test, so no P or q
+    # is asserted here.  A.20's disclosure that the permutation was computed and is not
+    # reported is checked below, which is what keeps the withdrawal honest.
     present(
         "lead vs specificity across combinations",
-        f"(Spearman \u2212{abs(pooled.spearman_lead_vs_specificity):.3f}, permutation "
-        f"*P* = {pooled.p_permutation_specificity:.4f}, *q* = 0.006; "
+        f"(Spearman \u2212{abs(pooled.spearman_lead_vs_specificity):.3f}; "
         f"{int(pooled.n_pairs_longer_lead_lower_specificity)} of "
         f"{int(pooled.n_untied_pairs)} untied pairs)",
     )
@@ -796,13 +820,23 @@ def main() -> int:
         )
 
     # ---- A.19: the two resampling counts are different and both are stated ---------------
-    sys.path.insert(0, str(REPO / "analysis" / "lead_time_origin_2026"))
-    from b1b_suppression import N_CELL_PERMUTATIONS  # noqa: PLC0415
-
-    present("A.19 cell permutations", f"use {N_CELL_PERMUTATIONS:,} permutations")
+    # A.20 used to state the cell-pairing permutation count.  That test is withdrawn, so what
+    # is asserted now is the disclosure itself -- that it was computed, is not reported, and
+    # why -- plus the two counts the paper DOES rely on.
     present(
-        "A.19 permutation floor",
-        f"floored at 1/({N_CELL_PERMUTATIONS:,} + 1)",
+        "A.20 discloses the withdrawn permutation",
+        "A permutation of the pairing was computed while this analysis was being developed, "
+        "and is not reported",
+    )
+    present(
+        "A.20 states the reported resampling counts",
+        "Cluster bootstraps use 2,000 replicates",
+    )
+    present("A.20 permutations per cell", "draw 1,000 permutations per cell")
+    check(
+        "no withdrawn permutation count survives anywhere in the paper",
+        "10,000" not in PAPER,
+        "the paper to name no 10,000-permutation test",
     )
 
     # ---- report -------------------------------------------------------------------------
@@ -869,26 +903,42 @@ def main() -> int:
         f"the heading to say {WORDS[disclosures]}, the number of numbered items under it",
     )
     check(
-        "the abstract's repair count agrees with Section 5's heading",
-        ("natural repairs leave the dependence in place" in PAPER)
-        and (f"# 5 {WORDS[2].capitalize()} natural remedies" in _RAW)
-        and (f"{WORDS[2].capitalize()} natural repairs" in PAPER),
-        "the abstract and Section 5's heading to name the same number of repairs",
+        "the abstract's response count agrees with Section 5's heading",
+        ("natural responses leave the dependence in place" in PAPER)
+        and (f"# 5 {WORDS[2].capitalize()} natural responses" in _RAW)
+        and (f"{WORDS[2].capitalize()} natural responses" in PAPER),
+        "the abstract and Section 5's heading to name the same number of responses",
     )
 
-    # Table A8 states its own row count in its caption and again in Section 6.1. Both are
-    # asserted against the rows, which is the check that was missing when both said "four".
+    # Table A8's caption stated its own row count until 2026-08-30, when the count was wrong
+    # -- it said "five" over five rows describing six items, because the first row covers two.
+    # The caption now names no count, so what is asserted instead is that every item the
+    # caption says Section 6.1 discusses is actually discussed there, and that the items the
+    # table carries are disjoint from none of them.  A count that cannot be derived from the
+    # rows is exactly the blind spot that let "four" stand over five rows.
     a8 = _RAW[_RAW.index("**Table A8 |"):]
     a8_rows = sum(
         1 for line in a8.split("\n\n")[1].splitlines() if line.startswith("| ")
     ) - 1  # minus the header; the alignment rule starts "|-"
     present(
-        "Table A8 caption states its own row count",
-        f"**Table A8 | The {WORDS[a8_rows]} TRIPOD+AI items that came close and missed.**",
+        "Table A8 caption names what Section 6.1 discusses",
+        "**Table A8 | The TRIPOD+AI items that came close and missed.** Main text Section 6.1 "
+        "discusses items 12e, 15, 23a, 20a, 20b and 14",
     )
-    present(
-        "Section 6.1 states the same count",
-        f"{WORDS[a8_rows].capitalize()} more items came close and missed (Table A8)",
+    # 6.1 writes both "Item 12e," and "Items 20a and 20b", so the item token is matched
+    # after an item/items opener rather than immediately behind it.
+    section_61 = " ".join(section("## 6.1", "## 6.2").split())
+    for item in ("12e", "15", "23a", "20a", "20b", "14"):
+        check(
+            f"Section 6.1 discusses item {item}, as Table A8's caption says",
+            re.search(rf"\bitems?\b[^.]{{0,40}}\b{item}\b", section_61, re.IGNORECASE)
+            is not None,
+            f"Section 6.1 to discuss item {item}",
+        )
+    check(
+        "Table A8 carries at least one row per remaining near miss",
+        a8_rows >= 5,
+        f"Table A8 to carry its rows, got {a8_rows}",
     )
 
     total = PASSED + len(FAILURES)

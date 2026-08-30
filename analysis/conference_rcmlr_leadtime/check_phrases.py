@@ -86,6 +86,14 @@ ALLOWLIST: list[tuple[str, str, str]] = [
         r"physiologic monitor alarm characteristics",
         "Paine 2016's published title. A title is quoted, never edited.",
     ),
+    (
+        "PAPER.md",
+        r"alarm burden per patient-day",
+        "Section 1 names the quantity Paine 2016 defined, in that work's own words. The "
+        "house rule replaces `alarm` with `alert` when the paper speaks for itself; it "
+        "does not license renaming a cited work's metric. Deliberately narrow -- a bare "
+        "`alarm` anywhere else in PAPER.md still fails.",
+    ),
 ]
 
 SEARCH_SUFFIXES = {".md", ".bib", ".py"}
@@ -107,6 +115,30 @@ def allowed(path: Path, line: str) -> str | None:
         if path.name.endswith(suffix) and re.search(pattern, line, re.IGNORECASE):
             return reason
     return None
+
+
+def bibtex_at_signs() -> list[str]:
+    """Every at-sign in a .bib must open a real entry.
+
+    BibTeX has no comment syntax. It scans for the next at-sign and reads what follows as an
+    entry type, whatever precedes it on the line, so an at-sign inside a `%' header raises
+    `"," immediately follows an entry type'. Tectonic does not write a .blg, so the repository
+    had no way to see that: an `@misc' written in the bibliography's own provenance header
+    reached Overleaf before anything caught it. This is the check that would have.
+    """
+    problems: list[str] = []
+    for path in sorted(HERE.rglob("*.bib")) + sorted((HERE.parent.parent / "neurips_workshop"
+                                                      / "bibtex").glob("*.bib")):
+        if path.is_symlink():
+            continue
+        text = path.read_text()
+        for match in re.finditer(r"@", text):
+            if re.match(r"[A-Za-z]+\s*[{(]", text[match.end():]):
+                continue
+            line = text[: match.start()].count("\n") + 1
+            snippet = " ".join(text[match.end():match.end() + 60].split())
+            problems.append(f"{path.name}:{line}  @{snippet}")
+    return problems
 
 
 def main() -> int:
@@ -133,14 +165,22 @@ def main() -> int:
                         f"    use instead: {replacement}\n"
                         f"    line: {line.strip()[:110]}"
                     )
-    if hits:
-        print(f"{len(hits)} prohibited phrase(s) found\n")
-        for hit in hits:
-            print(hit + "\n")
+    at_signs = bibtex_at_signs()
+    if hits or at_signs:
+        if hits:
+            print(f"{len(hits)} prohibited phrase(s) found\n")
+            for hit in hits:
+                print(hit + "\n")
+        if at_signs:
+            print(f"{len(at_signs)} stray at-sign(s) in a .bib — BibTeX will read each as "
+                  f"an entry type:\n")
+            for problem in at_signs:
+                print("    " + problem)
+            print()
         return 1
     print(
         f"clean — no prohibited phrasing across {len(files)} file(s) "
-        f"({allowed_hits} allowlisted hit(s) skipped)"
+        f"({allowed_hits} allowlisted hit(s) skipped), and no stray at-sign in any .bib"
     )
     print(
         "\nStill needs a human read: is the plateau described as a defect of one "

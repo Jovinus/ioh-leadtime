@@ -114,9 +114,9 @@ constraint that a lead cannot exceed its own window.
 \toprule
 Model & Cohort & Bands & Window Q1$\rightarrow$last, min & Lead Q1$\rightarrow$last, min & Gradient, min (95\% CI) & Lead min per window min (95\% CI) \\
 \midrule
-Transformer & MOVER (EPIC) test & 4 & 10 $\rightarrow$ 60 & 9 $\rightarrow$ 46 & +37 {[}+35, +41{]} & 0.74 {[}0.70, 0.82{]} \\
-Transformer & VitalDB & 5 & 7 $\rightarrow$ 60 & 5 $\rightarrow$ 59 & +54 {[}+51, +55{]} & 1.02 {[}0.96, 1.04{]} \\
-Transformer & MOVER (SIS) & 4 & 8 $\rightarrow$ 60 & 6 $\rightarrow$ 46 & +40 {[}+37, +43{]} & 0.77 {[}0.71, 0.83{]} \\
+ITE Transformer & MOVER (EPIC) test & 4 & 10 $\rightarrow$ 60 & 9 $\rightarrow$ 46 & +37 {[}+35, +41{]} & 0.74 {[}0.70, 0.82{]} \\
+ITE Transformer & VitalDB & 5 & 7 $\rightarrow$ 60 & 5 $\rightarrow$ 59 & +54 {[}+51, +55{]} & 1.02 {[}0.96, 1.04{]} \\
+ITE Transformer & MOVER (SIS) & 4 & 8 $\rightarrow$ 60 & 6 $\rightarrow$ 46 & +40 {[}+37, +43{]} & 0.77 {[}0.71, 0.83{]} \\
 LSTM & MOVER (EPIC) test & 4 & 10 $\rightarrow$ 60 & 6 $\rightarrow$ 44 & +38 {[}+35, +41{]} & 0.77 {[}0.70, 0.82{]} \\
 LSTM & VitalDB & 5 & 6 $\rightarrow$ 60 & 3 $\rightarrow$ 34 & +31 {[}+21, +48{]} & 0.57 {[}0.39, 0.89{]} \\
 LSTM & MOVER (SIS) & 4 & 9 $\rightarrow$ 60 & 5 $\rightarrow$ 31 & +26 {[}+19, +30{]} & 0.51 {[}0.37, 0.59{]} \\
@@ -126,23 +126,23 @@ XGBoost & MOVER (SIS) & 3 & 12 $\rightarrow$ 60 & 5 $\rightarrow$ 36 & +31 {[}+2
 Random forest & MOVER (EPIC) test & 3 & 13 $\rightarrow$ 60 & 8 $\rightarrow$ 38 & +30 {[}+26, +34{]} & 0.64 {[}0.55, 0.72{]} \\
 Random forest & VitalDB & 3 & 9 $\rightarrow$ 60 & 3 $\rightarrow$ 34 & +31 {[}+29, +34{]} & 0.61 {[}0.57, 0.67{]} \\
 Random forest & MOVER (SIS) & 3 & 12 $\rightarrow$ 60 & 6 $\rightarrow$ 40 & +34 {[}+31, +36{]} & 0.71 {[}0.65, 0.75{]} \\
-Logistic reg. & MOVER (EPIC) test & 3 & 11 $\rightarrow$ 60 & 8 $\rightarrow$ 40 & +32 {[}+28, +35{]} & 0.65 {[}0.57, 0.71{]} \\
-Logistic reg. & VitalDB & 3 & 10 $\rightarrow$ 60 & 3 $\rightarrow$ 28 & +26 {[}+20, +28{]} & 0.51 {[}0.40, 0.56{]} \\
-Logistic reg. & MOVER (SIS) & 3 & 12 $\rightarrow$ 60 & 5 $\rightarrow$ 38 & +33 {[}+29, +36{]} & 0.69 {[}0.61, 0.75{]} \\
+Logistic regression & MOVER (EPIC) test & 3 & 11 $\rightarrow$ 60 & 8 $\rightarrow$ 40 & +32 {[}+28, +35{]} & 0.65 {[}0.57, 0.71{]} \\
+Logistic regression & VitalDB & 3 & 10 $\rightarrow$ 60 & 3 $\rightarrow$ 28 & +26 {[}+20, +28{]} & 0.51 {[}0.40, 0.56{]} \\
+Logistic regression & MOVER (SIS) & 3 & 12 $\rightarrow$ 60 & 5 $\rightarrow$ 38 & +33 {[}+29, +36{]} & 0.69 {[}0.61, 0.75{]} \\
 \bottomrule
 \end{tabular}
 \end{minipage}
 
 \vspace{0.8em}
 
-\subsection{Both nulls, all fifteen cells}\label{both-nulls-all-fifteen-cells}
+\subsection{Both references, all fifteen cells}\label{both-references-all-fifteen-cells}
 
 \begin{minipage}{\linewidth}
-\textbf{Table A2 \textbar{} Both nulls, all fifteen cells.} Observed ratio against the
-uniform-placement null of Section 3.3 and both variants of the
-cross-case shuffle. The uniform null's expectation is 0.5 by construction; the two shuffle
+\textbf{Table A2 \textbar{} Both references, all fifteen cells.} Observed ratio against the
+uniform-placement reference of Section 3.3 and both variants of the
+cross-case shuffle. The uniform reference's expectation is 0.5 by construction; the two shuffle
 variants differ only in how a donor shorter than its recipient is handled, and both bias
-the null upward. Intervals are the 2.5th and 97.5th percentiles of the null distribution.
+the reference upward. Intervals are the 2.5th and 97.5th percentiles of the reference distribution.
 
 \vspace{0.5em}
 \centering\footnotesize
@@ -157,11 +157,11 @@ the null upward. Intervals are the 2.5th and 97.5th percentiles of the null dist
   >{\raggedright\arraybackslash}p{(\columnwidth - 16\tabcolsep) * \real{0.100}}
   >{\raggedright\arraybackslash}p{(\columnwidth - 16\tabcolsep) * \real{0.100}}@{}}
 \toprule
-Model & Cohort & Observed ratio & Uniform null & Shuffle null, hold & Shuffle null, length-matched & Observed $\rho$ & Shuffle $\rho$, hold & Shuffle $\rho$, length-matched \\
+Model & Cohort & Observed ratio & Uniform ref. & Shuffle ref., hold & Shuffle ref., length-matched & Observed $\rho$ & Shuffle $\rho$, hold & Shuffle $\rho$, length-matched \\
 \midrule
-Transformer & MOVER (EPIC) test & 0.944 & 0.524 {[}0.491, 0.567{]} & 0.970 {[}0.967, 0.974{]} & 0.962 {[}0.951, 0.971{]} & 0.706 & 0.888 {[}0.855, 0.920{]} & 0.783 {[}0.705, 0.856{]} \\
-Transformer & VitalDB & 0.923 & 0.532 {[}0.500, 0.573{]} & 0.966 {[}0.963, 0.967{]} & 0.957 {[}0.947, 0.969{]} & 0.906 & 0.941 {[}0.926, 0.955{]} & 0.933 {[}0.890, 0.967{]} \\
-Transformer & MOVER (SIS) & 0.899 & 0.527 {[}0.500, 0.567{]} & 0.949 {[}0.941, 0.950{]} & 0.918 {[}0.900, 0.938{]} & 0.801 & 0.877 {[}0.855, 0.895{]} & 0.775 {[}0.713, 0.827{]} \\
+ITE Transformer & MOVER (EPIC) test & 0.944 & 0.524 {[}0.491, 0.567{]} & 0.970 {[}0.967, 0.974{]} & 0.962 {[}0.951, 0.971{]} & 0.706 & 0.888 {[}0.855, 0.920{]} & 0.783 {[}0.705, 0.856{]} \\
+ITE Transformer & VitalDB & 0.923 & 0.532 {[}0.500, 0.573{]} & 0.966 {[}0.963, 0.967{]} & 0.957 {[}0.947, 0.969{]} & 0.906 & 0.941 {[}0.926, 0.955{]} & 0.933 {[}0.890, 0.967{]} \\
+ITE Transformer & MOVER (SIS) & 0.899 & 0.527 {[}0.500, 0.567{]} & 0.949 {[}0.941, 0.950{]} & 0.918 {[}0.900, 0.938{]} & 0.801 & 0.877 {[}0.855, 0.895{]} & 0.775 {[}0.713, 0.827{]} \\
 LSTM & MOVER (EPIC) test & 0.851 & 0.522 {[}0.483, 0.563{]} & 0.913 {[}0.900, 0.923{]} & 0.866 {[}0.833, 0.893{]} & 0.650 & 0.825 {[}0.784, 0.860{]} & 0.673 {[}0.596, 0.743{]} \\
 LSTM & VitalDB & 0.619 & 0.534 {[}0.500, 0.583{]} & 0.870 {[}0.850, 0.883{]} & 0.752 {[}0.667, 0.833{]} & 0.759 & 0.845 {[}0.798, 0.886{]} & 0.705 {[}0.593, 0.804{]} \\
 LSTM & MOVER (SIS) & 0.717 & 0.524 {[}0.500, 0.562{]} & 0.873 {[}0.857, 0.887{]} & 0.700 {[}0.633, 0.767{]} & 0.501 & 0.682 {[}0.636, 0.727{]} & 0.455 {[}0.368, 0.547{]} \\
@@ -171,9 +171,9 @@ XGBoost & MOVER (SIS) & 0.600 & 0.518 {[}0.500, 0.550{]} & 0.779 {[}0.750, 0.800
 Random forest & MOVER (EPIC) test & 0.714 & 0.519 {[}0.483, 0.556{]} & 0.839 {[}0.816, 0.867{]} & 0.777 {[}0.733, 0.817{]} & 0.584 & 0.714 {[}0.665, 0.764{]} & 0.599 {[}0.531, 0.667{]} \\
 Random forest & VitalDB & 0.533 & 0.523 {[}0.500, 0.556{]} & 0.764 {[}0.721, 0.800{]} & 0.685 {[}0.625, 0.733{]} & 0.651 & 0.678 {[}0.622, 0.729{]} & 0.555 {[}0.479, 0.627{]} \\
 Random forest & MOVER (SIS) & 0.667 & 0.518 {[}0.500, 0.550{]} & 0.811 {[}0.783, 0.833{]} & 0.741 {[}0.700, 0.783{]} & 0.618 & 0.659 {[}0.625, 0.692{]} & 0.536 {[}0.486, 0.589{]} \\
-Logistic reg. & MOVER (EPIC) test & 0.781 & 0.520 {[}0.483, 0.557{]} & 0.872 {[}0.849, 0.898{]} & 0.802 {[}0.767, 0.842{]} & 0.597 & 0.739 {[}0.694, 0.779{]} & 0.612 {[}0.544, 0.676{]} \\
-Logistic reg. & VitalDB & 0.455 & 0.521 {[}0.471, 0.567{]} & 0.721 {[}0.667, 0.781{]} & 0.577 {[}0.500, 0.650{]} & 0.607 & 0.642 {[}0.549, 0.720{]} & 0.486 {[}0.374, 0.584{]} \\
-Logistic reg. & MOVER (SIS) & 0.618 & 0.518 {[}0.500, 0.550{]} & 0.782 {[}0.750, 0.800{]} & 0.734 {[}0.692, 0.767{]} & 0.597 & 0.644 {[}0.607, 0.682{]} & 0.548 {[}0.495, 0.595{]} \\
+Logistic regression & MOVER (EPIC) test & 0.781 & 0.520 {[}0.483, 0.557{]} & 0.872 {[}0.849, 0.898{]} & 0.802 {[}0.767, 0.842{]} & 0.597 & 0.739 {[}0.694, 0.779{]} & 0.612 {[}0.544, 0.676{]} \\
+Logistic regression & VitalDB & 0.455 & 0.521 {[}0.471, 0.567{]} & 0.721 {[}0.667, 0.781{]} & 0.577 {[}0.500, 0.650{]} & 0.607 & 0.642 {[}0.549, 0.720{]} & 0.486 {[}0.374, 0.584{]} \\
+Logistic regression & MOVER (SIS) & 0.618 & 0.518 {[}0.500, 0.550{]} & 0.782 {[}0.750, 0.800{]} & 0.734 {[}0.692, 0.767{]} & 0.597 & 0.644 {[}0.607, 0.682{]} & 0.548 {[}0.495, 0.595{]} \\
 \bottomrule
 \end{tabular}
 \end{minipage}
@@ -184,7 +184,7 @@ Three cells in this table are the ones Section 3.3 names as not exceeding the un
 reference, all of them VitalDB. The observed ratio sits below it for XGBoost by $-$0.054 and for
 logistic regression by $-$0.067, and random forest is indistinguishable from it (+0.011,
 \emph{P} = 0.824). For the transformer the excess over the uniform reference is +0.372 to +0.421.
-Under the length-matched shuffle variant the transformer's null spans 0.77 to 0.93. Every
+Under the length-matched variant the transformer's ratio reference spans 0.92 to 0.96. Every
 contrast quoted here is computed from the unrounded values rather than from the rounded columns
 above, so recomputing one from the table can differ in the third decimal.
 
@@ -206,21 +206,21 @@ by approximately nothing.
 \toprule
 Cohort & Model & Episodes & Directedness (95\% CI) & Path per unit net \\
 \midrule
-MOVER (EPIC) test & Transformer & 313 & 0.025 {[}0.002, 0.050{]} & 40.7 \\
+MOVER (EPIC) test & ITE Transformer & 313 & 0.025 {[}0.002, 0.050{]} & 40.7 \\
 MOVER (EPIC) test & LSTM & 313 & 0.043 {[}0.024, 0.057{]} & 25.9 \\
 MOVER (EPIC) test & XGBoost & 313 & 0.049 {[}0.033, 0.070{]} & 20.0 \\
 MOVER (EPIC) test & Random forest & 313 & 0.067 {[}0.038, 0.093{]} & 16.3 \\
-MOVER (EPIC) test & Logistic reg. & 313 & 0.061 {[}0.044, 0.089{]} & 17.6 \\
-VitalDB & Transformer & 433 & 0.021 {[}0.005, 0.038{]} & 146.6 \\
+MOVER (EPIC) test & Logistic regression & 313 & 0.061 {[}0.044, 0.089{]} & 17.6 \\
+VitalDB & ITE Transformer & 433 & 0.021 {[}0.005, 0.038{]} & 146.6 \\
 VitalDB & LSTM & 433 & 0.059 {[}0.035, 0.070{]} & 28.2 \\
 VitalDB & XGBoost & 433 & 0.069 {[}0.049, 0.099{]} & 17.9 \\
 VitalDB & Random forest & 433 & 0.075 {[}0.053, 0.094{]} & 14.4 \\
-VitalDB & Logistic reg. & 433 & 0.088 {[}0.063, 0.108{]} & 12.6 \\
-MOVER (SIS) & Transformer & 670 & 0.089 {[}0.066, 0.122{]} & 13.1 \\
+VitalDB & Logistic regression & 433 & 0.088 {[}0.063, 0.108{]} & 12.6 \\
+MOVER (SIS) & ITE Transformer & 670 & 0.089 {[}0.066, 0.122{]} & 13.1 \\
 MOVER (SIS) & LSTM & 670 & 0.142 {[}0.118, 0.183{]} & 7.9 \\
 MOVER (SIS) & XGBoost & 670 & 0.144 {[}0.120, 0.167{]} & 7.5 \\
 MOVER (SIS) & Random forest & 670 & 0.151 {[}0.132, 0.168{]} & 7.0 \\
-MOVER (SIS) & Logistic reg. & 670 & 0.134 {[}0.119, 0.154{]} & 7.9 \\
+MOVER (SIS) & Logistic regression & 670 & 0.134 {[}0.119, 0.154{]} & 7.9 \\
 \bottomrule
 \end{tabular}
 \end{minipage}
@@ -423,34 +423,36 @@ Logistic regression & MOVER (SIS) & 0.664 & 0.611 & 0.573 & 0.546 & 0.474 & 0.35
 \textbf{Table A7 \textbar{} Event cases observed for the whole 60-minute alert window.} Restricting to these
 cases makes the observation window a constant rather than a covariate, which is the
 full-window restriction of Section 5.3. \texttt{n} is the number of event cases observed for the
-whole window and \texttt{Detected} the share of them that alert at all. \texttt{Alerted\ by\ min\ 1} is one minus the
-Kaplan-Meier survival of time to first alert at the first elapsed monitoring minute, with each
-case censored at the end of its own window; it is the censoring-aware form of Section 4.1's
-settling. The censoring is not independent of the event, because for an event case a short
+whole window and \texttt{Detected} the share of them that alert at all.
+The censoring is not independent of the event, because for an event case a short
 observable run-up is an early-onset event rather than missing data, so this describes what the
 rule did under the observation these cohorts supplied. Intervals are 95\% cluster bootstrap.
+For the transformer in MOVER (EPIC) the median lead here differs from Table A5's top band by
+seven minutes although the two populations differ by two cases, because the detected
+full-window leads leave a gap between 47 and 54 minutes: 53 of 137 sit at the 60-minute
+ceiling and the lower tail is sparse, so a one-rank shift in the median crosses the gap.
 
 \vspace{0.5em}
 \centering\footnotesize
-\begin{tabular}{@{}llrrll@{}}
+\begin{tabular}{@{}llrrl@{}}
 \toprule
-Model & Cohort & n & Detected & Median lead, min (95\% CI) & Alerted by min 1 (95\% CI) \\
+Model & Cohort & n & Detected & Median lead, min (95\% CI) \\
 \midrule
-ITE Transformer & MOVER (EPIC) test & 311 & 0.441 & 47 {[}33, 59{]} & 0.532 {[}0.497, 0.565{]} \\
-ITE Transformer & VitalDB & 429 & 0.247 & 60 {[}60, 60{]} & 0.460 {[}0.428, 0.491{]} \\
-ITE Transformer & MOVER (SIS) & 665 & 0.304 & 57 {[}51, 59{]} & 0.308 {[}0.285, 0.332{]} \\
-LSTM & MOVER (EPIC) test & 311 & 0.598 & 40 {[}34, 46{]} & 0.228 {[}0.198, 0.257{]} \\
-LSTM & VitalDB & 429 & 0.200 & 33 {[}21, 45{]} & 0.087 {[}0.071, 0.105{]} \\
-LSTM & MOVER (SIS) & 665 & 0.433 & 28 {[}22, 33{]} & 0.138 {[}0.120, 0.157{]} \\
-XGBoost & MOVER (EPIC) test & 311 & 0.846 & 40 {[}34, 44{]} & 0.188 {[}0.161, 0.215{]} \\
-XGBoost & VitalDB & 429 & 0.762 & 33 {[}30, 36{]} & 0.062 {[}0.047, 0.077{]} \\
-XGBoost & MOVER (SIS) & 665 & 0.854 & 37 {[}34, 41{]} & 0.119 {[}0.101, 0.136{]} \\
-Random forest & MOVER (EPIC) test & 311 & 0.894 & 41 {[}35, 45{]} & 0.183 {[}0.157, 0.212{]} \\
-Random forest & VitalDB & 429 & 0.851 & 40 {[}36, 44{]} & 0.101 {[}0.082, 0.121{]} \\
-Random forest & MOVER (SIS) & 665 & 0.910 & 42 {[}39, 45{]} & 0.166 {[}0.147, 0.186{]} \\
-Logistic regression & MOVER (EPIC) test & 311 & 0.852 & 42 {[}36, 45{]} & 0.226 {[}0.198, 0.255{]} \\
-Logistic regression & VitalDB & 429 & 0.490 & 31 {[}26, 37{]} & 0.036 {[}0.025, 0.048{]} \\
-Logistic regression & MOVER (SIS) & 665 & 0.857 & 40 {[}37, 43{]} & 0.121 {[}0.104, 0.138{]} \\
+ITE Transformer & MOVER (EPIC) test & 311 & 0.441 & 47 {[}33, 59{]} \\
+ITE Transformer & VitalDB & 429 & 0.247 & 60 {[}60, 60{]} \\
+ITE Transformer & MOVER (SIS) & 665 & 0.304 & 57 {[}51, 59{]} \\
+LSTM & MOVER (EPIC) test & 311 & 0.598 & 40 {[}34, 46{]} \\
+LSTM & VitalDB & 429 & 0.200 & 33 {[}21, 45{]} \\
+LSTM & MOVER (SIS) & 665 & 0.433 & 28 {[}22, 33{]} \\
+XGBoost & MOVER (EPIC) test & 311 & 0.846 & 40 {[}34, 44{]} \\
+XGBoost & VitalDB & 429 & 0.762 & 33 {[}30, 36{]} \\
+XGBoost & MOVER (SIS) & 665 & 0.854 & 37 {[}34, 41{]} \\
+Random forest & MOVER (EPIC) test & 311 & 0.894 & 41 {[}35, 45{]} \\
+Random forest & VitalDB & 429 & 0.851 & 40 {[}36, 44{]} \\
+Random forest & MOVER (SIS) & 665 & 0.910 & 42 {[}39, 45{]} \\
+Logistic regression & MOVER (EPIC) test & 311 & 0.852 & 42 {[}36, 45{]} \\
+Logistic regression & VitalDB & 429 & 0.490 & 31 {[}26, 37{]} \\
+Logistic regression & MOVER (SIS) & 665 & 0.857 & 40 {[}37, 43{]} \\
 \bottomrule
 \end{tabular}
 \end{minipage}
@@ -460,7 +462,7 @@ Logistic regression & MOVER (SIS) & 665 & 0.857 & 40 {[}37, 43{]} & 0.121 {[}0.1
 \subsection{The reporting items that came close}\label{the-reporting-items-that-came-close}
 
 \begin{minipage}{\linewidth}
-\textbf{Table A8 \textbar{} The five TRIPOD+AI items that came close and missed.} Main text Section 6.1 keeps items 12e, 23a and 14, and reads item 15 beside 23a. The item numbering is that of the TRIPOD+AI statement
+\textbf{Table A8 \textbar{} The TRIPOD+AI items that came close and missed.} Main text Section 6.1 discusses items 12e, 15, 23a, 20a, 20b and 14; this table records the remaining items and the detail behind them. The item numbering is that of the TRIPOD+AI statement
 \citep{collins2024tripodai}. This is an author-completed self-assessment of one study, not a validity
 assessment of the standard.
 
@@ -473,7 +475,7 @@ assessment of the standard.
 \toprule
 Item & What it asked for & What it did not ask for \\
 \midrule
-12a, how the model was applied in validation & Calibration and thresholds fitted on the development validation split and transported unchanged, which is reported & Anything about what that disciplined choice implies; it is the exact setting in which Section 3 holds, so doing the right thing here does not help \\
+12f and 12g, recalibration and how evaluation predictions were calculated & Any recalibration arising from evaluation, and how evaluation predictions were computed: calibration and thresholds fitted on the development validation split and transported unchanged, which is reported & Anything about what that disciplined choice implies; it is the exact setting in which Section 3 holds, so doing the right thing here does not help \\
 20a and 20b, participant flow and characteristics & Participant flow and characteristics \emph{including follow-up time}, answered here with surgery duration and first-onset time & The distribution of the window the alert rule actually searches --- the run-up after the induction exclusion, capped at the 60-minute alert window --- or any pairing of it with the timing statistic it bounds. This is the closest the standard comes: it asks for the raw material as a cohort descriptor, and never connects it to the timing metric it constrains \\
 21, event counts & The number of participants and outcome events \emph{in each analysis}, which are reported & The same counts broken out by band of available window. The item's ``in each analysis'' clause reaches development, tuning and evaluation, not the window strata of a timing statistic \\
 8c, blinding of outcome assessment & A blinding statement; answered ``not applicable'' because the outcome is computed from a monitored channel that is also a predictor & The closest the checklist comes to Section 4, and still about blinding rather than about what a timing metric measures \\
@@ -760,7 +762,7 @@ A longer lead indicates a better model & A descriptive association running the o
 
 \subsection{Multiplicity}\label{multiplicity}
 
-The two nulls of Section 3.3 form one Benjamini--Hochberg family of 75 formal tests,
+The two references of Section 3.3 form one Benjamini--Hochberg family of 75 formal tests,
 adjusted within that family, of which 57 are significant at \emph{q} \textless{} 0.05. The stratification of Section 3.1 produces intervals rather than tests and does not enter the family.
 Every bootstrap interval in this paper, including the fifteen window-gradient intervals of
 Table A1, is a \textbf{pointwise descriptive interval}: no family-wise coverage claim is made across
@@ -771,7 +773,7 @@ than one simultaneous one.
 
 Cluster bootstraps use 2,000 replicates, with the clustering unit the subject for two cohorts
 and the case for MOVER (SIS), whose released subject key is a copy of the case identifier. The
-two nulls of Section 3.3 draw 1,000 permutations per cell. The cross-combination rank
+two references of Section 3.3 draw 1,000 permutations per cell. The cross-combination rank
 correlations of Section 4.1 are reported as \textbf{point estimates with no accompanying test}. A
 permutation of the pairing was computed while this analysis was being developed, and is not
 reported: its unit is a cell, and cells sharing a cohort or a model family are not

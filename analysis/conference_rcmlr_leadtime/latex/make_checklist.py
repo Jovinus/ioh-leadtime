@@ -43,7 +43,7 @@ ANSWERS: list[tuple[str, str]] = [
         r"\answerYes{}",
         "Section 7 is a separate limitations section covering the retrospective design, the "
         "single outcome definition, single training seed and operating-point family, the "
-        "pipeline-specific results, null selection and upward bias, the single clinical "
+        "pipeline-specific results, reference selection and upward bias, the single clinical "
         "domain, and the unvalidated communication and reporting proposals.",
     ),
     # 3 Theory
@@ -59,7 +59,7 @@ ANSWERS: list[tuple[str, str]] = [
         "supported: Section 2 gives the task, cohorts, scoring policy and alert rule; "
         "Appendix A.1 gives the split sizes and seed, the eligibility rules, the twenty "
         "inputs and how each family consumes them, every architecture and training "
-        "hyperparameter, and the software versions; Appendix A.19 records the seeds and "
+        "hyperparameter, and the software versions; Appendix A.20 records the seeds and "
         "resampling counts; both datasets are available under their providers' access "
         "procedures; and the analysis code is released at the anonymized repository "
         "Appendix A.1 names. Bit-for-bit reproduction from raw data is not supported here, "
@@ -97,13 +97,15 @@ ANSWERS: list[tuple[str, str]] = [
         r"\answerYes{}",
         "Every interval in the paper is a 95\\% cluster bootstrap on the clustering unit "
         "named in Section 2, the subject for two cohorts and the case for MOVER (SIS), at "
-        "2,000 replicates. The two nulls of Section 3.3 use 1,000 permutations per cell "
-        "and the cross-combination rank correlations of Section 4.1 use 10,000 "
-        "permutations of the cell pairing; nulls are reported as the 2.5th and 97.5th "
-        "percentiles of the null distribution rather than as symmetric error bars. Every "
+        "2,000 replicates. The two references of Section 3.3 use 1,000 permutations per "
+        "cell, and are reported as the 2.5th and 97.5th percentiles of the reference "
+        "distribution rather than as symmetric error bars. The cross-combination rank "
+        "correlations of Section 4.1 are reported as point estimates with no accompanying "
+        "test, because the fifteen combinations are not independent replications; "
+        "Appendix A.20 records why. Every "
         "interval is pointwise and descriptive, and no family-wise coverage is claimed "
-        "across the fifteen cells. Appendix A.18 records the multiplicity family and its "
-        "Benjamini--Hochberg adjustment, and Appendix A.19 the seeds and every "
+        "across the fifteen cells. Appendix A.19 records the multiplicity family and its "
+        "Benjamini--Hochberg adjustment, and Appendix A.20 the seeds and every "
         "resampling count.",
     ),
     # 8 Compute
@@ -182,7 +184,7 @@ ANSWERS: list[tuple[str, str]] = [
         "No large language model is a component of the methods. The five families evaluated "
         "are a transformer over irregularly sampled physiological triplets, an LSTM, "
         "XGBoost, a random forest and logistic regression, and no LLM enters the cohort "
-        "construction, the scoring policy, the alert rule or the null constructions. "
+        "construction, the scoring policy, the alert rule or the reference constructions. "
         "Generative AI was used only for English language editing of author-written text, "
         "which the policy states does not require declaration.",
     ),

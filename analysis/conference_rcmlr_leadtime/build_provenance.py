@@ -120,10 +120,10 @@ def main() -> None:
     n1 = pd.read_csv(N / "n1_uniform_placement" / "n1_uniform_placement.csv")
     src = N / "n1_uniform_placement" / "n1_uniform_placement.csv"
     n1_tr = n1[n1["family"] == "transformer"]
-    add("§3.3", "excess over the uniform null, transformer", src,
+    add("§3.3", "excess over the uniform reference, transformer", src,
         "min/max of excess_ratio, family=='transformer'",
         f"+{n1_tr['excess_ratio'].min():.3f} to +{n1_tr['excess_ratio'].max():.3f}")
-    add("§3.3", "cells below the uniform null", src,
+    add("§3.3", "cells below the uniform reference", src,
         "count of excess_ratio < 0, with the cell names",
         f"{int((n1['excess_ratio'] < 0).sum())} "
         f"({', '.join(n1[n1['excess_ratio'] < 0]['family'] + '/' + n1[n1['excess_ratio'] < 0]['cohort'])})")
@@ -132,16 +132,16 @@ def main() -> None:
     src = N / "n2_score_shuffle" / "n2_score_shuffle.csv"
     hold = n2[n2["variant"] == "hold"]
     longer = n2[n2["variant"] == "longer"]
-    add("§3.3", "shuffle null median ratio (hold)", src,
+    add("§3.3", "shuffle reference median ratio (hold)", src,
         "min/max of null_ratio_mean, variant=='hold'",
         f"{hold['null_ratio_mean'].min():.2f} to {hold['null_ratio_mean'].max():.2f}")
-    add("§3.3", "shuffle null Spearman (hold)", src,
+    add("§3.3", "shuffle reference Spearman (hold)", src,
         "min/max of null_spearman_mean, variant=='hold'",
         f"{hold['null_spearman_mean'].min():.2f} to {hold['null_spearman_mean'].max():.2f}")
-    add("§3.3", "cells with observed at or below the null", src,
+    add("§3.3", "cells with observed at or below the reference", src,
         "count of excess_ratio <= 0, variant=='hold'",
         f"{int((hold['excess_ratio'] <= 0).sum())} of 15")
-    add("§3.3", "rho indistinguishable from the null (length-matched)", src,
+    add("§3.3", "rho indistinguishable from the reference (length-matched)", src,
         "count of p_spearman >= 0.05, variant=='longer'",
         f"{int((longer['p_spearman'] >= 0.05).sum())} of 15")
 

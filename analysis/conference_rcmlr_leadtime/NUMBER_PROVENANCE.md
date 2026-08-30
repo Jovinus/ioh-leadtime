@@ -24,12 +24,12 @@ This file and `verify_numbers.py` are two independent gates over the same facts:
 | §3.2 | Spearman lead vs window, all cells | `analysis/lead_time_origin_2026/b1b_suppression/b1b_lead_vs_observation.csv` | min/max of spearman_lead_vs_observed | 0.501 to 0.906 |
 | §3.2 | transformer ratio / rho | `analysis/lead_time_origin_2026/b1b_suppression/b1b_lead_vs_observation.csv` | same columns, family=='transformer' | 0.899–0.944 / 0.706–0.906 |
 | §4.1 | share of monitored minutes at or above threshold | `analysis/lead_time_origin_2026/b1b_suppression/b1b_lead_vs_observation.csv` | median_above_fraction_events / _controls, transformer vs the rest | transformer 20.0–52.3% event, 2.5–18.3% control |
-| §3.3 | excess over the uniform null, transformer | `analysis/lead_time_null_2026/n1_uniform_placement/n1_uniform_placement.csv` | min/max of excess_ratio, family=='transformer' | +0.372 to +0.421 |
-| §3.3 | cells below the uniform null | `analysis/lead_time_null_2026/n1_uniform_placement/n1_uniform_placement.csv` | count of excess_ratio < 0, with the cell names | 2 (xgb/vitaldb, logreg/vitaldb) |
-| §3.3 | shuffle null median ratio (hold) | `analysis/lead_time_null_2026/n2_score_shuffle/n2_score_shuffle.csv` | min/max of null_ratio_mean, variant=='hold' | 0.72 to 0.97 |
-| §3.3 | shuffle null Spearman (hold) | `analysis/lead_time_null_2026/n2_score_shuffle/n2_score_shuffle.csv` | min/max of null_spearman_mean, variant=='hold' | 0.63 to 0.94 |
-| §3.3 | cells with observed at or below the null | `analysis/lead_time_null_2026/n2_score_shuffle/n2_score_shuffle.csv` | count of excess_ratio <= 0, variant=='hold' | 15 of 15 |
-| §3.3 | rho indistinguishable from the null (length-matched) | `analysis/lead_time_null_2026/n2_score_shuffle/n2_score_shuffle.csv` | count of p_spearman >= 0.05, variant=='longer' | 9 of 15 |
+| §3.3 | excess over the uniform reference, transformer | `analysis/lead_time_null_2026/n1_uniform_placement/n1_uniform_placement.csv` | min/max of excess_ratio, family=='transformer' | +0.372 to +0.421 |
+| §3.3 | cells below the uniform reference | `analysis/lead_time_null_2026/n1_uniform_placement/n1_uniform_placement.csv` | count of excess_ratio < 0, with the cell names | 2 (xgb/vitaldb, logreg/vitaldb) |
+| §3.3 | shuffle reference median ratio (hold) | `analysis/lead_time_null_2026/n2_score_shuffle/n2_score_shuffle.csv` | min/max of null_ratio_mean, variant=='hold' | 0.72 to 0.97 |
+| §3.3 | shuffle reference Spearman (hold) | `analysis/lead_time_null_2026/n2_score_shuffle/n2_score_shuffle.csv` | min/max of null_spearman_mean, variant=='hold' | 0.63 to 0.94 |
+| §3.3 | cells with observed at or below the reference | `analysis/lead_time_null_2026/n2_score_shuffle/n2_score_shuffle.csv` | count of excess_ratio <= 0, variant=='hold' | 15 of 15 |
+| §3.3 | rho indistinguishable from the reference (length-matched) | `analysis/lead_time_null_2026/n2_score_shuffle/n2_score_shuffle.csv` | count of p_spearman >= 0.05, variant=='longer' | 9 of 15 |
 | §4.1 | transformer score profile, MOVER (EPIC) test | `analysis/lead_time_origin_2026/b1_prevalent_incident/b1_score_profile.csv` | score_median by elapsed and label (control/event) | min 0: 0.530/0.541; min 1: 0.938/0.951; min 5: 0.973/0.975 |
 | §4.1 | transformer score profile, VitalDB | `analysis/lead_time_origin_2026/b1_prevalent_incident/b1_score_profile.csv` | score_median by elapsed and label (control/event) | min 0: 0.502/0.503; min 1: 0.886/0.932; min 5: 0.966/0.973 |
 | §4.1 | transformer score profile, MOVER (SIS) | `analysis/lead_time_origin_2026/b1_prevalent_incident/b1_score_profile.csv` | score_median by elapsed and label (control/event) | min 0: 0.517/0.530; min 1: 0.715/0.815; min 5: 0.942/0.962 |

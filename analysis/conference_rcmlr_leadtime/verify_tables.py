@@ -301,12 +301,13 @@ def table_a7() -> None:
         cell(f"{tag} lead", printed[0], round(s.lead_median_fully_observed))
         cell(f"{tag} lead lo", printed[1], round(s.lead_median_fully_observed_ci_lo))
         cell(f"{tag} lead hi", printed[2], round(s.lead_median_fully_observed_ci_hi))
-        printed = numbers(row[5])
-        # the table prints the alerted share, which is one minus the KM survival, so the
-        # interval bounds swap
-        cell(f"{tag} alerted", printed[0], round(1 - s.km_unalerted_by_min1, 3), 5e-4)
-        cell(f"{tag} alerted lo", printed[1], round(1 - s.km_unalerted_by_min1_ci_hi, 3), 5e-4)
-        cell(f"{tag} alerted hi", printed[2], round(1 - s.km_unalerted_by_min1_ci_lo, 3), 5e-4)
+        # Table A7 carried an "Alerted by min 1" column until 2026-08-30.  It printed
+        # ``km_unalerted_by_min1``, which n5 computes over EVERY event case -- the same field,
+        # and byte-identical values, as Table A10's column of that name.  Table A7's rows
+        # declare n = 311/429/665, the fully observed subset, so the column contradicted its
+        # own denominator.  Table A10 carries the quantity against the denominator it belongs
+        # to and Appendix A.11 sets the two estimands side by side, so the column was dropped
+        # rather than recomputed.  ``table_a10`` still checks the field.
 
 
 def table_a10() -> None:

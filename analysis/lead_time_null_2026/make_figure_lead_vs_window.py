@@ -115,7 +115,7 @@ def _panel(ax, family: str, cohort: str, cut: float, strata: pd.DataFrame,
             grid * float(row["null_ratio_ci_lo"]),
             grid * float(row["null_ratio_ci_hi"]),
             color=BAND, alpha=0.30, lw=0, zorder=3,
-            label="cross-case shuffle null",
+            label="cross-case shuffle reference",
         )
 
     cell_strata = strata[(strata["family"] == family) & (strata["cohort"] == cohort)]
