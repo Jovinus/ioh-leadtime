@@ -19,7 +19,7 @@ This file and `verify_numbers.py` are two independent gates over the same facts:
 | §3.1 | cells with a positive Q1→Q_last gradient | `analysis/lead_time_null_2026/n3_stratified/n3_summary.csv` | count of lead_gradient_min > 0 | 15 of 15 |
 | §3.1 | gradient range, minutes | `analysis/lead_time_null_2026/n3_stratified/n3_summary.csv` | min/max of lead_gradient_min | +26 to +54 |
 | §3.1 | lead minutes per window minute | `analysis/lead_time_null_2026/n3_stratified/n3_summary.csv` | min/max of lead_per_window_minute | 0.51 to 1.02 |
-| §3.1, Table A9 | every quintile median and interval | `analysis/lead_time_null_2026/n3_stratified/n3_strata.csv` | lead_median, lead_ci_lo/hi, ratio_median, ratio_ci_lo/hi, per cell and stratum | 53 rows, transformer rows shown in Table A9 |
+| §3.1, Table A3 | every quintile median and interval | `analysis/lead_time_null_2026/n3_stratified/n3_strata.csv` | lead_median, lead_ci_lo/hi, ratio_median, ratio_ci_lo/hi, per cell and stratum | 53 rows, transformer rows shown in Table A3 |
 | §3.2 | median lead / observed window, all cells | `analysis/lead_time_origin_2026/b1b_suppression/b1b_lead_vs_observation.csv` | min/max of lead_over_observed_median | 0.455 to 0.944 |
 | §3.2 | Spearman lead vs window, all cells | `analysis/lead_time_origin_2026/b1b_suppression/b1b_lead_vs_observation.csv` | min/max of spearman_lead_vs_observed | 0.501 to 0.906 |
 | §3.2 | transformer ratio / rho | `analysis/lead_time_origin_2026/b1b_suppression/b1b_lead_vs_observation.csv` | same columns, family=='transformer' | 0.899–0.944 / 0.706–0.906 |
@@ -33,8 +33,8 @@ This file and `verify_numbers.py` are two independent gates over the same facts:
 | §4.1 | transformer score profile, MOVER (EPIC) test | `analysis/lead_time_origin_2026/b1_prevalent_incident/b1_score_profile.csv` | score_median by elapsed and label (control/event) | min 0: 0.530/0.541; min 1: 0.938/0.951; min 5: 0.973/0.975 |
 | §4.1 | transformer score profile, VitalDB | `analysis/lead_time_origin_2026/b1_prevalent_incident/b1_score_profile.csv` | score_median by elapsed and label (control/event) | min 0: 0.502/0.503; min 1: 0.886/0.932; min 5: 0.966/0.973 |
 | §4.1 | transformer score profile, MOVER (SIS) | `analysis/lead_time_origin_2026/b1_prevalent_incident/b1_score_profile.csv` | score_median by elapsed and label (control/event) | min 0: 0.517/0.530; min 1: 0.715/0.815; min 5: 0.942/0.962 |
-| §4.2, Table A2 | directedness, all cells | `analysis/lead_time_origin_2026/b3_cross_family_path/b3_comparison.csv` | min/max of directedness_median, endpoint_min==5 (the 60→5 window only) | +0.021 to +0.151 |
-| §4.2, Table A2 | path per unit net displacement | `analysis/lead_time_origin_2026/b3_cross_family_path/b3_comparison.csv` | min/max of path_per_net, endpoint_min==5 | 7.0 to 146.6 |
+| §4.2, Table A5 | directedness, all cells | `analysis/lead_time_origin_2026/b3_cross_family_path/b3_comparison.csv` | min/max of directedness_median, endpoint_min==5 (the 60→5 window only) | +0.021 to +0.151 |
+| §4.2, Table A5 | path per unit net displacement | `analysis/lead_time_origin_2026/b3_cross_family_path/b3_comparison.csv` | min/max of path_per_net, endpoint_min==5 | 7.0 to 146.6 |
 | §5.1 | prevalent share of detected event cases | `analysis/lead_time_origin_2026/b1_prevalent_incident/b1_summary.csv` | min/max of prop_prevalent | 2.6% to 25.5% |
 | §5.1 | median lead lost by dropping prevalent alerts | `analysis/lead_time_origin_2026/b1_prevalent_incident/b1_summary.csv` | lead_median_all minus lead_median_incident | 0 to 3 minutes, all 15 cells |
 | §5.2 | sensitivity lost at N=5 | `analysis/lead_time_origin_2026/b1b_suppression/b1b_suppression.csv` | sensitivity at suppress_min 0 minus at 5, x100 | 3.6 to 6.8 points |
@@ -57,14 +57,14 @@ This file and `verify_numbers.py` are two independent gates over the same facts:
 | §5.3 | detected on the full window, XGBoost and random forest | `analysis/lead_time_null_2026/n5_time_to_alert/n5_time_to_alert.csv` | detection_fully_observed, family in (xgb, rf) | 0.762 to 0.910 |
 | §5.3 | event cases discarded by the full-window restriction | `analysis/lead_time_null_2026/n5_time_to_alert/n5_time_to_alert.csv` | 1 minus n_fully_observed/n_event_cases, as a percentage | 53 to 60% |
 | §6.2 | risk set at onset vs 60 min before | `analysis/patient_trajectory_2026/a7_observability/a7_auroc_by_sample.csv` | n_cases at bin_center_min 0 and 60, sample=='all' | 1,404→708, 2,804→1,433, 2,641→1,374 |
-| A.6 | first bin reaching AUROC 0.70, varying denominator | `analysis/patient_trajectory_2026/a7_observability/a7_auroc_by_sample.csv` | max bin_center_min with auroc >= 0.70, sample=='all' | 15, 15, 15 |
-| A.6 | first bin reaching AUROC 0.70, fixed cohort | `analysis/patient_trajectory_2026/a7_observability/a7_auroc_by_sample.csv` | same, sample=='reaches_60' | 20, 35, 20 |
-| A.6 | where the two curves cross | `analysis/patient_trajectory_2026/a7_observability/a7_auroc_by_sample.csv` | innermost sign change of fixed minus all, linearly interpolated | 16.4, 12.6, 14.9 |
-| A.7 | transformer event-minus-control gap at 60 min | `analysis/patient_trajectory_2026/a4_event_control_divergence/a4_event_control_means.csv` | gap_event_minus_control with CI at bin_center_min 60, published_13_bin | -0.023 [-0.080, 0.035]; -0.014 [-0.057, 0.030]; -0.006 [-0.043, 0.032] |
-| A.7 | farthest bin whose gap excludes zero, transformer | `analysis/patient_trajectory_2026/a4_event_control_divergence/a4_event_control_means.csv` | max bin_center_min with gap_ci_lo > 0 | 35 min, 20 min, 30 min |
-| A.7 | transformer event mean, 60 min to 5 min | `analysis/patient_trajectory_2026/a4_event_control_divergence/a4_event_control_means.csv` | mean_score_event at bin 5 minus bin 60 | +0.239, +0.266, +0.269 |
-| A.7 | transformer control mean, 60 min to 5 min | `analysis/patient_trajectory_2026/a4_event_control_divergence/a4_event_control_means.csv` | mean_score_control at bin 5 minus bin 60 | -0.252, -0.263, -0.196 |
-| A.7 | tabular families' gap at 60 min | `analysis/patient_trajectory_2026/a4_event_control_divergence/a4_event_control_means.csv` | gap_event_minus_control at bin 60, XGBoost / RF / logistic regression, nine cells | +0.049 to +0.109 |
-| A.7 | tabular families' control mean movement | `analysis/patient_trajectory_2026/a4_event_control_divergence/a4_event_control_means.csv` | mean_score_control at bin 5 minus bin 60, same nine cells | -0.070 to +0.021 |
+| A.17 | first bin reaching AUROC 0.70, varying denominator | `analysis/patient_trajectory_2026/a7_observability/a7_auroc_by_sample.csv` | max bin_center_min with auroc >= 0.70, sample=='all' | 15, 15, 15 |
+| A.17 | first bin reaching AUROC 0.70, fixed cohort | `analysis/patient_trajectory_2026/a7_observability/a7_auroc_by_sample.csv` | same, sample=='reaches_60' | 20, 35, 20 |
+| A.17 | where the two curves cross | `analysis/patient_trajectory_2026/a7_observability/a7_auroc_by_sample.csv` | innermost sign change of fixed minus all, linearly interpolated | 16.4, 12.6, 14.9 |
+| A.9 | transformer event-minus-control gap at 60 min | `analysis/patient_trajectory_2026/a4_event_control_divergence/a4_event_control_means.csv` | gap_event_minus_control with CI at bin_center_min 60, published_13_bin | -0.023 [-0.080, 0.035]; -0.014 [-0.057, 0.030]; -0.006 [-0.043, 0.032] |
+| A.9 | farthest bin whose gap excludes zero, transformer | `analysis/patient_trajectory_2026/a4_event_control_divergence/a4_event_control_means.csv` | max bin_center_min with gap_ci_lo > 0 | 35 min, 20 min, 30 min |
+| A.9 | transformer event mean, 60 min to 5 min | `analysis/patient_trajectory_2026/a4_event_control_divergence/a4_event_control_means.csv` | mean_score_event at bin 5 minus bin 60 | +0.239, +0.266, +0.269 |
+| A.9 | transformer control mean, 60 min to 5 min | `analysis/patient_trajectory_2026/a4_event_control_divergence/a4_event_control_means.csv` | mean_score_control at bin 5 minus bin 60 | -0.252, -0.263, -0.196 |
+| A.9 | tabular families' gap at 60 min | `analysis/patient_trajectory_2026/a4_event_control_divergence/a4_event_control_means.csv` | gap_event_minus_control at bin 60, XGBoost / RF / logistic regression, nine cells | +0.049 to +0.109 |
+| A.9 | tabular families' control mean movement | `analysis/patient_trajectory_2026/a4_event_control_divergence/a4_event_control_means.csv` | mean_score_control at bin 5 minus bin 60, same nine cells | -0.070 to +0.021 |
 
 58 quantities. No model was trained, refitted or re-scored to produce any of them, and no threshold, split, seed or operating point was reselected.

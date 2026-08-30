@@ -33,8 +33,8 @@ threshold, split, seed or operating point is reselected.
 | Paper object | Produced by | Reads |
 |---|---|---|
 | Figure 1, Figure A1 | `analysis/lead_time_null_2026/make_figure_lead_vs_window.py` | `n3_strata.csv`, `n2_score_shuffle.csv`, per-case leads recomputed from cached scores |
-| Figures 2, A2, A3, A4 | `analysis/conference_rcmlr_leadtime/build_conf_figures.py` | `b1_score_profile.csv`, `b1_summary.csv`, `a7_auroc_by_sample.csv`, `a4_event_control_means.csv` |
-| Table 1 and Tables A1–A12 | parsed from `PAPER.md` | the aggregate CSVs shipped beside each module |
+| Figures A2, A3, A4, A5 | `analysis/conference_rcmlr_leadtime/build_conf_figures.py` | `b1_score_profile.csv`, `b1_summary.csv`, `a7_auroc_by_sample.csv`, `a4_event_control_means.csv` |
+| Tables A1–A11 | parsed from `PAPER.md` | the aggregate CSVs shipped beside each module |
 | `main.pdf` | `analysis/conference_rcmlr_leadtime/latex/build_tex.py`, then `tectonic` | `PAPER.md`, `references.bib`, the figure PNGs |
 
 The aggregate result CSVs are included, so the tables and the figures can be checked without

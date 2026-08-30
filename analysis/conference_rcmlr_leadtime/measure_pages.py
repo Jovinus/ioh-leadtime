@@ -68,7 +68,13 @@ def variant_no_table1_no_figure1(text: str) -> str:
 
 
 def variant_no_table1(text: str) -> str:
-    """The Section 1 reader-facing table to a four-item list; the rows are prose already."""
+    """The Section 1 reader-facing table to a four-item list; the rows are prose already.
+
+    Obsolete since the table moved to the appendix, where it is now Appendix A.2, Table A1.
+    The marker below no longer matches, so the variant reports "already cut" -- which is the
+    right answer.  Pointing it at the appendix caption instead would cut a float that is not
+    in the body and report a 0.00 pp saving, which reads as a live candidate and is worse.
+    """
     return _drop_block(
         text,
         "**Table 1 | What the label invites, and what the number supports.**",
@@ -80,8 +86,8 @@ def variant_no_table1(text: str) -> str:
 #: pushes it over.  Both are load-bearing -- Table 1 is the reader-facing exhibit the reporting
 #: argument turns on, and Figure 1 is the paper's signature exhibit -- so neither is a cut
 #: anyone should make without reading what it costs first.  The earlier candidates (the path
-#: decomposition table, the alert-composition figure and the case-level operating point) are
-#: already in the appendix.
+#: decomposition table, the alert-composition figure, the case-level operating point and the
+#: reader-facing Table 1) are already in the appendix.
 VARIANTS = {
     "full draft": variant_full,
     "- Table 1": variant_no_table1,

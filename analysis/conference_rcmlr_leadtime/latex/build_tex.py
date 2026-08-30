@@ -84,7 +84,7 @@ def fix_unicode(text: str) -> str:
 # The caption's label and the filename's number are deliberately decoupled: the filename is
 # an artefact path fixed by whichever script produced the figure, while the label is
 # editorial and changes when a figure moves between the body and the appendix (Figure 3 ->
-# Figure A1). Requiring them to match, as an earlier version did with a backreference,
+# Figure A4). Requiring them to match, as an earlier version did with a backreference,
 # silently stopped wrapping the figure the moment it was renumbered.
 FIGURE_BLOCK = re.compile(
     r"\\includegraphics(?:\[[^\]]*\])?\{(?P<path>[^}]*Figure_[^}]*\.png)\}"
@@ -149,14 +149,14 @@ APPENDIX_TABLE = re.compile(
 
 
 #: A table with more row breaks than this cannot fit a page, so it must stay a ``longtable``
-#: and break across pages.  Table A5 is 51 rows; forcing it into an unbreakable ``tabular``
+#: and break across pages.  Table A4 is 51 rows; forcing it into an unbreakable ``tabular``
 #: inside a minipage produced a 923pt overfull vbox, which shipped an empty page before it and
 #: then ran the table off the bottom of the next one.  Every other appendix table is 14 to 16
 #: rows and fits comfortably.
 MAX_ROWS_FOR_TABULAR = 30
 
 #: Natural ``l``/``r`` column widths only help a table whose cells are short labels and
-#: numbers.  Table A8's cells are sentences, and swapping pandoc's ``p{...}`` widths for
+#: numbers.  Table A11's cells are sentences, and swapping pandoc's ``p{...}`` widths for
 #: natural ones stopped them wrapping and pushed a line 651pt past the right margin.
 MAX_CELL_FOR_NATURAL_WIDTHS = 40
 
@@ -187,15 +187,15 @@ def _anchor_appendix_exhibits(text: str) -> tuple[str, int]:
         # the caption paragraph in front of it and let it flow.
         if table.count("\\\\\n") > MAX_ROWS_FOR_TABULAR:
             return match.group("caption").strip() + "\n\n" + table
-        # longtable's page-breaking machinery is what split Table A3 and repeated its header;
+        # longtable's page-breaking machinery is what split Table A6 and repeated its header;
         # a tabular cannot split at all.
         table = table.replace("\\begin{longtable}[]", "\\begin{tabular}", 1)
         table = table.replace("\\end{longtable}", "\\end{tabular}", 1)
         table = re.sub(r"\n\\end(?:head|firsthead|lastfoot|foot)\n", "\n", table)
         # pandoc sizes columns from content length, which wraps every label cell and makes
-        # each row double height. Table A3 is narrow enough to take natural widths, which
+        # each row double height. Table A6 is narrow enough to take natural widths, which
         # give single-line rows. The wider two keep pandoc's widths: natural widths put
-        # Table A2 291pt past the text block, and widening its label columns out of the
+        # Table A5 291pt past the text block, and widening its label columns out of the
         # numeric ones only moved the wrapping into the confidence intervals, which made the
         # table taller rather than shorter.
         if (
@@ -224,7 +224,7 @@ def _anchor_appendix_exhibits(text: str) -> tuple[str, int]:
     # [H] pins the figure exactly where its subsection puts it, which is the requirement
     # here: nearly every appendix subsection is a heading plus one exhibit, and the exhibit
     # has to appear before the next heading. [!ht] packed the pages better but let a figure
-    # drift past the following heading, which put A.5 and A.6 on the page as bare titles.
+    # drift past the following heading, which put two consecutive subsections on the page as bare titles.
     # The cost is slack at the foot of a page, which \raggedbottom collects. [H] needs the
     # float package, loaded in main.tex. Body figures keep [t]: the body is against the page
     # limit and its pagination must not move.
@@ -275,7 +275,7 @@ def main() -> None:
 
     body = re.sub(r"\\texttt\{([^{}]*)\}", _breakable, body)
 
-    # pandoc sizes longtable columns by content length, which on the nine-column Table A2
+    # pandoc sizes longtable columns by content length, which on the nine-column Table A5
     # left the model column too narrow for "Transformer" and pushed the row 9.5pt past the
     # text block. Widen the label column out of the two widest columns, which hold five
     # characters each and have width to spare. Narrower tables are left alone.

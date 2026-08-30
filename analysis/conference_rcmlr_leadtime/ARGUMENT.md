@@ -142,16 +142,16 @@ connects it to a timing metric three tables away.
 | Exhibit | Where | What it shows | Cost of dropping it |
 |---|---|---|---|
 | **Table 1** | §1 | What the label invites, what the number supports, and the disclosure that would close the gap | ⛔ Not a candidate. The reader-facing exhibit the reporting argument turns on. `measure_pages.py` now prices removing it at 0.00 pp, which is a statement about page breaks, not about its value |
-| **Table A4** | A.5 | Case-level operating point behind every reported lead time, all fifteen cells with intervals | It answers the "it just alerts constantly" objection, and it is what §6.1's TRIPOD item 23a argument points at. Moved out of the body on 2026-08-29 to pay for Table 1 |
+| **Table A7** | A.5 | Case-level operating point behind every reported lead time, all fifteen cells with intervals | It answers the "it just alerts constantly" objection, and it is what §6.1's TRIPOD item 23a argument points at. Moved out of the body on 2026-08-29 to pay for Table 1 |
 | **Figure 1** | §3.3 | Every detected case's lead against its window, with the ceiling diagonal and the shuffle-null band | The null becomes a table of numbers; the reader cannot see that the null covers the observed points |
 | **Figure 2** | §4.1 | Median score against elapsed time, five families, event and control, each family's own threshold drawn on the same axes | Mechanism 1 becomes an assertion. Drawing the threshold on the same axes is the whole point — what separates the transformer is not the shape of its rise but whether the rise clears its own cut |
-| **Table A1** | A.1 | The quintile gradient in all fifteen cells | §3.1's "15 of 15" loses its per-cell backing |
-| **Table A2** | A.2 | Observed ratio against both nulls, all fifteen cells | §3.3's ranges lose their per-cell backing |
-| **Table A3** | A.3 | Path decomposition | §4.2 becomes prose ranges only; §6.2's fourth item loses its worked example |
+| **Table A2** | A.1 | The quintile gradient in all fifteen cells | §3.1's "15 of 15" loses its per-cell backing |
+| **Table A5** | A.2 | Observed ratio against both nulls, all fifteen cells | §3.3's ranges lose their per-cell backing |
+| **Table A6** | A.3 | Path decomposition | §4.2 becomes prose ranges only; §6.2's fourth item loses its worked example |
 | **Figure A1** | A.4 | Figure 1 for all five families | The "not one architecture" guard loses its picture |
-| **Figure A2** | A.5 | Prevalent / warm-up / settled composition | §6.2's first item loses its worked example, and it is the item that would have made §4.1 visible on inspection |
-| **Figure A3** | A.6 | Population AUROC with CI beside N(t): all cases against a cohort fixed to 60 minutes | ⭐ §6.2's third item goes back to being the only one of the four asserted without an exhibit |
-| **Figure A4** | A.7 | Event and control mean score on the event-aligned axis, five families, three cohorts | ⭐ The shape the reader arrived with is never put on the page, and the paper never meets its own audience's expectation |
+| **Figure A4** | A.5 | Prevalent / warm-up / settled composition | §6.2's first item loses its worked example, and it is the item that would have made §4.1 visible on inspection |
+| **Figure A5** | A.6 | Population AUROC with CI beside N(t): all cases against a cohort fixed to 60 minutes | ⭐ §6.2's third item goes back to being the only one of the four asserted without an exhibit |
+| **Figure A3** | A.7 | Event and control mean score on the event-aligned axis, five families, three cohorts | ⭐ The shape the reader arrived with is never put on the page, and the paper never meets its own audience's expectation |
 
 ### The two newest exhibits, and why they were added
 
@@ -159,7 +159,7 @@ Both close the same hole: the paper proved that its metrics do not measure what 
 suggest, but it never showed the reader the picture they walked in with. Argument without
 that picture is correct and abstract.
 
-**Figure A3 (A.6) — the denominator moves.** §6.2's third item asks that N(t) be reported
+**Figure A5 (A.6) — the denominator moves.** §6.2's third item asks that N(t) be reported
 beside any event-aligned trajectory. Items 1 and 4 point at exhibits; item 3 was asking the
 reader to take it on trust, which made it the weakest of the four. The figure also carries a
 result the prose did not: fixing the cohort to cases observable back to 60 minutes **raises
@@ -169,7 +169,7 @@ the first bin reaching AUROC 0.70 moves from 15 minutes in all three cohorts to 
 true one — which denominator is used is a reporting choice worth up to twenty minutes of
 quoted horizon, and it is not currently disclosed.
 
-**Figure A4 (A.7) — the shape a reader expects.** Averaged over cases, the score does what
+**Figure A3 (A.7) — the shape a reader expects.** Averaged over cases, the score does what
 everyone expects: it rises where an event follows and is flat or falls where none does, in
 all fifteen cells. Reporting that is not a concession, because two things about it are
 invisible in any trend statistic:
@@ -187,18 +187,18 @@ invisible in any trend statistic:
 So "the score rises in patients who are about to have an event" describes part of one cell.
 That is the same species of claim as the lead-time claim, and it fails in the same way.
 
-⚠ **Three things A.7 must keep disclosing**, because a reader will otherwise think Figure A4
+⚠ **Three things A.7 must keep disclosing**, because a reader will otherwise think Figure A3
 and Figure 2 contradict each other:
 
 - Control cases are aligned on the **sampled pseudo-onset** of §2, not on an event, so the
   control fall is behaviour over the last hour of a comparable window rather than an approach
   to anything.
-- **Figure 2 plots medians and Figure A4 plots means.** In these bins the two differ
+- **Figure 2 plots medians and Figure A3 plots means.** In these bins the two differ
   substantially, because the score's distribution within a bin is far from symmetric. They
   are not interchangeable.
 - **The alignments differ.** Figure 2's axis is elapsed time from the case's first scored
   minute and covers the first ten minutes of the record, where the transformer has just
-  settled above its own 0.894 threshold. Figure A4's bins sit far later in the case, where its
+  settled above its own 0.894 threshold. Figure A3's bins sit far later in the case, where its
   event mean is 0.383. Both are the same cached raw score from the same run: the score does
   not stay at the level it reaches during warm-up, which is what §4.2's directedness measures.
 

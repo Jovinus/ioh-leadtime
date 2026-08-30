@@ -87,9 +87,9 @@ def main() -> None:
 
     strata = pd.read_csv(N / "n3_stratified" / "n3_strata.csv")
     src = N / "n3_stratified" / "n3_strata.csv"
-    add("§3.1, Table A9", "every quintile median and interval", src,
+    add("§3.1, Table A3", "every quintile median and interval", src,
         "lead_median, lead_ci_lo/hi, ratio_median, ratio_ci_lo/hi, per cell and stratum",
-        f"{len(strata)} rows, transformer rows shown in Table A9")
+        f"{len(strata)} rows, transformer rows shown in Table A3")
 
     # --- §3.2 observed ----------------------------------------------------------------------
     observed = pd.read_csv(B / "b1b_suppression" / "b1b_lead_vs_observation.csv")
@@ -163,10 +163,10 @@ def main() -> None:
     b3 = pd.read_csv(B / "b3_cross_family_path" / "b3_comparison.csv")
     src = B / "b3_cross_family_path" / "b3_comparison.csv"
     b3 = b3[b3["endpoint_min"] == 5]
-    add("§4.2, Table A2", "directedness, all cells", src,
+    add("§4.2, Table A5", "directedness, all cells", src,
         "min/max of directedness_median, endpoint_min==5 (the 60→5 window only)",
         f"+{b3['directedness_median'].min():.3f} to +{b3['directedness_median'].max():.3f}")
-    add("§4.2, Table A2", "path per unit net displacement", src,
+    add("§4.2, Table A5", "path per unit net displacement", src,
         "min/max of path_per_net, endpoint_min==5",
         f"{b3['path_per_net'].min():.1f} to {b3['path_per_net'].max():.1f}")
 
@@ -205,7 +205,7 @@ def main() -> None:
         f"{d_lead.min():+.0f} to {d_lead.max():+.0f} minutes "
         f"({int((d_lead > 0).sum())} cells increased)")
 
-    # --- Table A4, the case-level operating point ------------------------------------
+    # --- Table A7, the case-level operating point ------------------------------------
     src = B / "b1b_suppression" / "b1b_suppression.csv"
     op = pd.read_csv(src)
     op = op[op["suppress_min"] == 0]
@@ -239,7 +239,7 @@ def main() -> None:
         "n_pairs_longer_lead_lower_specificity of n_untied_pairs, scope=='pooled'",
         f"{int(pooled.n_pairs_longer_lead_lower_specificity)} of {int(pooled.n_untied_pairs)}")
 
-    # --- §3.1 and Table A5, detection rate by band -----------------------------------------------
+    # --- §3.1 and Table A4, detection rate by band -----------------------------------------------
     src = N / "n4_band_detection" / "n4_detection_summary.csv"
     n4 = pd.read_csv(src)
     sequence = n4[n4["family"].isin(["transformer", "lstm"])]["detection_gradient"]
@@ -255,7 +255,7 @@ def main() -> None:
         "detection_gradient, family in (xgb, rf, logreg)",
         f"{tabular.min():+.3f} to {tabular.max():+.3f}")
 
-    # --- §5.3 and Tables A6, A7, the replacement estimands ---------------------------------------
+    # --- §5.3 and Tables A9, A10, the replacement estimands ---------------------------------------
     src = N / "n5_time_to_alert" / "n5_fixed_horizon.csv"
     fh = pd.read_csv(src)
     for horizon_min in (10, 30):
@@ -294,9 +294,9 @@ def main() -> None:
     add("§6.2", "risk set at onset vs 60 min before", src,
         "n_cases at bin_center_min 0 and 60, sample=='all'", ", ".join(spans))
 
-    # --- A.6 horizons and crossings ----------------------------------------------------------------
+    # --- A.17 horizons and crossings ----------------------------------------------------------------
     # horizon() and crossing() are the figure builder's, so the provenance record, the
-    # assertion in verify_numbers.py and the curve drawn in Figure A3 share one definition.
+    # assertion in verify_numbers.py and the curve drawn in Figure A5 share one definition.
     sys.path.insert(0, str(HERE))
     from build_conf_figures import FIXED_SAMPLE, crossing, horizon  # noqa: E402
 
@@ -309,17 +309,17 @@ def main() -> None:
         h_all.append(horizon(varying))
         h_fixed.append(horizon(fixed))
         xings.append(crossing(varying, fixed))
-    add("A.6", "first bin reaching AUROC 0.70, varying denominator", src,
+    add("A.17", "first bin reaching AUROC 0.70, varying denominator", src,
         "max bin_center_min with auroc >= 0.70, sample=='all'",
         ", ".join(f"{h:.0f}" for h in h_all))
-    add("A.6", "first bin reaching AUROC 0.70, fixed cohort", src,
+    add("A.17", "first bin reaching AUROC 0.70, fixed cohort", src,
         f"same, sample=='{FIXED_SAMPLE}'",
         ", ".join(f"{h:.0f}" for h in h_fixed))
-    add("A.6", "where the two curves cross", src,
+    add("A.17", "where the two curves cross", src,
         "innermost sign change of fixed minus all, linearly interpolated",
         ", ".join(f"{x:.1f}" for x in xings))
 
-    # --- A.7 event and control mean score ----------------------------------------------------------
+    # --- A.9 event and control mean score ----------------------------------------------------------
     a4_src = A / "a4_event_control_divergence" / "a4_event_control_means.csv"
     a4 = pd.read_csv(a4_src)
     a4 = a4[(a4["grid"] == "published_13_bin") & a4["mean_score_event"].notna()]
@@ -340,16 +340,16 @@ def main() -> None:
         rises.append(near["mean_score_event"] - far["mean_score_event"])
         falls.append(near["mean_score_control"] - far["mean_score_control"])
 
-    add("A.7", "transformer event-minus-control gap at 60 min", a4_src,
+    add("A.9", "transformer event-minus-control gap at 60 min", a4_src,
         "gap_event_minus_control with CI at bin_center_min 60, published_13_bin",
         "; ".join(far_gaps))
-    add("A.7", "farthest bin whose gap excludes zero, transformer", a4_src,
+    add("A.9", "farthest bin whose gap excludes zero, transformer", a4_src,
         "max bin_center_min with gap_ci_lo > 0",
         ", ".join(f"{s} min" for s in seps))
-    add("A.7", "transformer event mean, 60 min to 5 min", a4_src,
+    add("A.9", "transformer event mean, 60 min to 5 min", a4_src,
         "mean_score_event at bin 5 minus bin 60",
         ", ".join(f"{r:+.3f}" for r in rises))
-    add("A.7", "transformer control mean, 60 min to 5 min", a4_src,
+    add("A.9", "transformer control mean, 60 min to 5 min", a4_src,
         "mean_score_control at bin 5 minus bin 60",
         ", ".join(f"{f:+.3f}" for f in falls))
 
@@ -363,10 +363,10 @@ def main() -> None:
         for fam in ("xgb", "rf", "logreg")
         for coh in ("epic_test", "vitaldb", "mover")
     ]
-    add("A.7", "tabular families' gap at 60 min", a4_src,
+    add("A.9", "tabular families' gap at 60 min", a4_src,
         "gap_event_minus_control at bin 60, XGBoost / RF / logistic regression, nine cells",
         f"+{min(tab_far):.3f} to +{max(tab_far):.3f}")
-    add("A.7", "tabular families' control mean movement", a4_src,
+    add("A.9", "tabular families' control mean movement", a4_src,
         "mean_score_control at bin 5 minus bin 60, same nine cells",
         f"{min(tab_ctrl):+.3f} to {max(tab_ctrl):+.3f}")
 

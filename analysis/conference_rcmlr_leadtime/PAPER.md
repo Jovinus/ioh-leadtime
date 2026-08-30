@@ -83,7 +83,7 @@ The definition is the same in every one of those settings, and it carries a depe
 conceals. The first crossing is searched for inside the interval the patient was observed, so
 the lead is bounded above by that window. The window's length is set by event timing relative
 to eligibility, by monitoring practice and by case mix, not by the model. 
-Table A11 sets each reading the label invites beside what the number can carry, and the disclosure that would separate them.
+Table A1 sets each reading the label invites beside what the number can carry, and the disclosure that would separate them.
 
 **What is already known, and what is new here.** Criticism of early-warning evaluation is not
 new: the C-statistic has been argued uninformative for early warning scores, with per-alert and
@@ -167,13 +167,13 @@ for this secondary analysis (Appendix A.1).
 ## 3.1 The number moves with the window, in minutes
 
 **The reported lead time moves with the group in every one of the fifteen model-by-cohort
-cells** (Table A1). Splitting detected cases by the length of their available pre-onset window
+cells** (Table A2). Splitting detected cases by the length of their available pre-onset window
 puts the dependence in the metric's own units: median lead rises from the shortest to the
 longest realized band in **15 of 15** cells, by **+26 to +54 minutes**, each pointwise interval
 excluding zero, an endpoint contrast of **0.51 to 1.02 minutes of lead per minute of window
 difference**. A single
 headline figure therefore describes the cohort's observation-length distribution as much as the
-model: across its three cohorts the transformer, whose bands are Table A9, reports 5 to 9
+model: across its three cohorts the transformer, whose bands are Table A3, reports 5 to 9
 minutes of median lead for its shortest-observed band and 46 to 59 for its longest, and the
 pooled 17 to 24 minutes sits between them because that is where the median case happens to
 fall.
@@ -181,7 +181,7 @@ fall.
 **Detection is itself a function of window length, so we report that rate rather than
 conditioning on it silently.** Re-cut on all event cases, the detected share moves with window
 length in every cell, by 0.105 to 0.556, falling in the two families that read the window as a
-sequence and rising in the three that read a per-minute vector (Table A5). For the transformer
+sequence and rising in the three that read a per-minute vector (Table A4). For the transformer
 that selection runs *against* the reported gradient, which survives it; for the tabular
 families it runs with the gradient, so part of theirs may be survivorship.
 
@@ -199,9 +199,9 @@ first alert falls nearer the middle of the window than its start. So a claim tha
 ![](figures/Figure_2_wide.png)
 
 **Figure 1 | Alert lead time against the available pre-onset window.** Every detected event
-case under the ITE Transformer, three held-out cohorts; all fifteen model-by-cohort cells are Table A1, and the five-family scatter is Figure A1. The dashed diagonal is the ceiling. The shaded band is the 2.5th to 97.5th
+case under the ITE Transformer, three held-out cohorts; all fifteen model-by-cohort cells are Table A2, and the five-family scatter is Figure A1. The dashed diagonal is the ceiling. The shaded band is the 2.5th to 97.5th
 percentile envelope of the cross-case shuffle reference, not a per-case prediction interval.
-Red markers are the band medians of Table A9 with 95% cluster bootstrap intervals.
+Red markers are the band medians of Table A3 with 95% cluster bootstrap intervals.
 
 ## 3.3 Explicit references for the ceiling dependence
 
@@ -217,7 +217,7 @@ does, in 6 of 15 cells.
 case's own window gives a reference median of 0.518 to 0.534, which the observed ratio exceeds
 by **+0.372 to +0.421** for the transformer. It does not exceed it everywhere: in **2 of 15**
 cells the observed ratio sits *below* the reference and in one more it is indistinguishable
-from it, all three of which are VitalDB cells (Table A2).
+from it, all three of which are VitalDB cells (Table A5).
 
 **A cross-case shuffle preserves the aggregate relationship** (Figure 1). Each recipient keeps
 its window and reference time but receives another case's whole score sequence, aligned by
@@ -229,7 +229,7 @@ to do. The length-matched variant is weaker: there the observed correlation is *
 distinguishable from the reference in 9 of 15 cells**, and the reference point estimate is the
 larger within 6 of those 9. In the **remaining 6 cells the observed correlation exceeds the
 reference and is distinguishable from it** — the three tabular families in the two external
-cohorts, exactly (Table A2).
+cohorts, exactly (Table A5).
 
 **Under the hold variant the observed association did not exceed what a window-only
 reassignment can produce in any cell; under the length-matched variant it did so in 6 of 15.**
@@ -244,27 +244,27 @@ already-settled donors or holding a short donor's last value.
 
 **Within three minutes of its first scored minute the transformer's median score is already
 above the threshold its operating point uses in every cohort, and it is there for event and
-control cases alike; in MOVER (EPIC) it takes one minute** (Figure A5; event-aligned, Figure A4).
+control cases alike; in MOVER (EPIC) it takes one minute** (Figure A2; event-aligned, Figure A3).
 
 In MOVER (EPIC) the median score rises from 0.530 at the first scored minute to 0.938 one
 minute later in control cases and from 0.541 to 0.951 in event cases, against a transported
 threshold of **0.894**; by minute five the two groups sit at 0.973 and 0.975. VitalDB clears at
-minute two and MOVER (SIS) at minute three, in both groups (Appendix A.14).
+minute two and MOVER (SIS) at minute three, in both groups (Appendix A.8).
 
 The consequence is direct: a case whose score settles above threshold in its first monitored
 minutes registers its first crossing as soon as its alert window opens, so its lead is whatever
-that window holds. That is the near one-for-one contrast in Table A9.
+that window holds. That is the near one-for-one contrast in Table A3.
 
-**No other family does this in more than one cohort** (Figure A5): the LSTM clears its own
+**No other family does this in more than one cohort** (Figure A2): the LSTM clears its own
 threshold in MOVER (EPIC), in both groups, and in neither external cohort; the other three clear
 it nowhere. Sustained elevation is visible in the share of
 monitored minutes at or above threshold: **20.0 to 52.3% of the transformer's event minutes and
 2.5 to 18.3% of its control minutes, against 0 to 26.7% and 0 to 1.7% for the other four
 families**. Separately, a cross-family property of the score paths is consistent with this
-mechanism without establishing its cause (Appendix A.4, Table A3).
+mechanism without establishing its cause (Appendix A.10, Table A6).
 
 **The obvious objection is that this model simply alerts continuously, and reporting the
-operating point beside the lead shows that it largely does** (Table A4; composition and controls, Table A10). Its case-level
+operating point beside the lead shows that it largely does** (Table A7; composition and controls, Table A8). Its case-level
 specificity is 0.406, 0.379 and 0.467, so it alerts on 53 to 62% of control cases, and its
 positive predictive value of 0.625, 0.380 and 0.585 sits 0.065, 0.021 and 0.051 above the
 prevalence it is measured against. That mechanism is specific to this model and can account for
@@ -285,9 +285,9 @@ distribution and three share each family's fit, and any procedure permuting the 
 all fifteen would treat as exchangeable units that are not. The ordering is nonetheless present
 within each cohort taken alone, where that structure is held fixed — 9 of 9 untied pairs in
 MOVER (EPIC), 8 of 10 in VitalDB and 9 of 9 in MOVER (SIS), Spearman −0.97, −0.70 and
-−0.97 — though five combinations per cohort is thin. And a transported
+−0.97 — though five models per cohort is thin. And a transported
 threshold does not deliver the same realized sensitivity everywhere: it runs from 0.461 to
-0.849 (Table A4), so this is a descriptive association among the operating points as
+0.849 (Table A7), so this is a descriptive association among the operating points as
 transported, not a sensitivity-matched ranking of models. What it supports is narrower and
 still worth stating: a reader ranking these systems by the number they publish would not be
 ranking them by how usable their operating points are.
@@ -300,7 +300,7 @@ suppresses the window distribution a reader needs to interpret it. Neither is a 
 physiology. Mean arterial pressure is one of the model's input channels as well as the quantity
 the label is computed from, so nothing here shows that a score anticipates a physiological
 process. Under a pre-specified rule the score does not depart from its own baseline before
-mean arterial pressure departs from its (Appendix A.15).
+mean arterial pressure departs from its (Appendix A.13).
 
 # 5 Two natural responses, and why neither works
 
@@ -311,9 +311,9 @@ repair gets adopted.
 
 The first thought is that the metric is dominated by prevalent alerts. Such cases are **2.6 to
 25.5%** of detected event cases across the fifteen cells, the per-cell composition being
-Figure A2, and recomputing the median lead on
+Figure A4, and recomputing the median lead on
 incident alerts alone costs **0 to 3 minutes in all fifteen cells**, the transformer included
-(Appendix A.11). The relationship of Section 3 is therefore carried by the ordinary cases.
+(Appendix A.14). The relationship of Section 3 is therefore carried by the ordinary cases.
 Prevalence stays low because most detected event cases have a window shorter than 60 minutes,
 so it opens while the score is still settling: prevalence and a warm-up crossing are the same
 behavior either side of the first eligible minute.
@@ -343,16 +343,16 @@ in.
 Both repairs above change the alert rule and leave the estimand alone. The remaining option
 reverses that: condition on window length, or treat the first alert as a time-to-event censored
 when the window ends, as landmarking does [@vanhouwelingen2007landmark]. Both are computable
-from the same cached scores, so we report them rather than recommend them (Tables A6 and A7).
+from the same cached scores, so we report them rather than recommend them (Tables A9 and A10).
 
 **A horizon-specific detection rate reduces the dependence rather than removing it.** It makes
 the horizon explicit and conditions the denominator on event cases observed for at least *X*
 minutes before onset. That removes one ambiguity of the pooled median, but window length is still not constant: cases observed longer than *X* contribute different amounts of pre-horizon alerting opportunity. The rate runs 0.278 to 0.692 at a 10-minute horizon and 0.173 to 0.547 at
-30 minutes, declining smoothly, a shape a single median suppresses (Table A6). Restricted
+30 minutes, declining smoothly, a shape a single median suppresses (Table A9). Restricted
 instead to cases observed for the whole 60-minute window, so the window is a constant, the
 transformer reports the longest median lead of the five families in all three cohorts, 47, 60
 and 57 minutes, while detecting only 0.441, 0.247 and 0.304 of them against 0.762 to 0.910 for
-XGBoost and the random forest (Table A7). Conditioning removes variation in window length but
+XGBoost and the random forest (Table A10). Conditioning removes variation in window length but
 does not by itself reverse the lead-time ranking; jointly reporting the detected share reveals
 the corresponding deficit.
 
@@ -361,7 +361,7 @@ but it changes the estimand and the population, discarding 53 to 60% of event ca
 short-window cases a deployed monitor will meet. The horizon-specific curve keeps more cases at
 short horizons but does not equalize pre-horizon alerting opportunity. Neither repairs the
 pooled headline median, and the censoring is not independent of the event: short- and
-long-run-up cases differ in surgery duration and case mix (Appendix A.12).
+long-run-up cases differ in surgery duration and case mix (Appendix A.17).
 
 # 6 What reporting standards ask, and what they do not
 
@@ -370,7 +370,7 @@ procurement reviewer and a science writer, meet a number and a name, not the sco
 behind them, so what a reporting standard asks for limits what any of them can conclude. That
 is why auditing one metric is a communication result and not only a metrology one.
 
-**The authors completed an item-level TRIPOD+AI review for this work**, before Sections 3 to 5 were conducted, and found no item requesting the disclosures that reveal the dependence. TRIPOD+AI
+**The authors completed an item-level TRIPOD+AI review for this work**, before the analyses of Sections 3 to 5 were conducted, and found no item requesting the disclosures that reveal the dependence. TRIPOD+AI
 is a general minimum **reporting** standard rather than a validity tool, and one
 author-completed checklist cannot assess it in either direction. Section 6.2's items are
 therefore task-specific candidate disclosures that complement the standard rather than correct,
@@ -381,7 +381,7 @@ continuous-monitoring, first-crossing-timing case of that argument.
 ## 6.1 A checklist review that leaves the gap open
 
 **Item 12e, performance measures and rationale**, is where a lead time is declared: it asks
-*which* measures were used and *why*, not what else a measure could be responding to. **Item 15 separately addresses model output and threshold selection, while item 23a requests performance estimates with uncertainty.** Table A4 reports lead time beside sensitivity and specificity, a 24-minute lead beside a specificity of 0.406, but neither item explicitly requires a lead-time summary to be jointly presented or interpreted with its realized operating-point metrics. **Items 20a and 20b come closest of all**: both ask for follow-up time among the participant characteristics, and this study answers them with surgery duration and first-onset time. The raw material is therefore requested, as a description of the cohort. What is not requested is the distribution of the window the alert rule searches, nor any pairing of it with the timing statistic it bounds; that window is the variable the reported lead correlates with at ρ = 0.501 to 0.906. The remaining near misses are in Table A8.
+*which* measures were used and *why*, not what else a measure could be responding to. **Item 15 separately addresses model output and threshold selection, while item 23a requests performance estimates with uncertainty.** Table A7 reports lead time beside sensitivity and specificity, a 24-minute lead beside a specificity of 0.406, but neither item explicitly requires a lead-time summary to be jointly presented or interpreted with its realized operating-point metrics. **Items 20a and 20b come closest of all**: both ask for follow-up time among the participant characteristics, and this study answers them with surgery duration and first-onset time. The raw material is therefore requested, as a description of the cohort. What is not requested is the distribution of the window the alert rule searches, nor any pairing of it with the timing statistic it bounds; that window is the variable the reported lead correlates with at ρ = 0.501 to 0.906. The remaining near misses are in Table A11.
 
 **Item 14, model fairness, is a near miss of a different kind.** The checklist's own fairness answer records that
 arterial-line placement selects toward longer, higher-risk operations. That observation length
@@ -396,14 +396,14 @@ already produces; none requires a new experiment, and none has been validated as
 reporting framework.
 
 1. **Report alert composition by elapsed observation time**: for every operating point, the
-   prevalent, warm-up and settled shares of alerts, as Figure A2 defines them. One stacked bar
+   prevalent, warm-up and settled shares of alerts, as Figure A4 defines them. One stacked bar
    would have made Section 4.1 visible on sight.
 
 2. **Report a window-conditional timing statistic as the primary timing quantity.** A
    horizon-specific detection curve may be added as a secondary disclosure, provided its
    denominator and its remaining dependence on pre-horizon alerting opportunity are stated. Any
    single median should be secondary and stratified by the available pre-onset windows it was
-   measured over — Section 3.1's spread is what a pooled median hides. Tables A6 and A7 show
+   measured over — Section 3.1's spread is what a pooled median hides. Tables A9 and A10 show
    the two alternatives; Section 5.3 gives their limits.
 
 3. **Report N(t) beside any event-aligned trajectory.** Here the risk set roughly halves
@@ -412,11 +412,11 @@ reporting framework.
    denominator is not cosmetic**: recomputing the same bins on only the cases observable back
    to 60 minutes moves the first bin reaching AUROC 0.70 from 15 minutes in all three cohorts
    to 20, 35 and 20, so the horizon a reader would quote moves by up to twenty minutes on a
-   reporting choice alone, and neither curve is the true one (Figure A3).
+   reporting choice alone, and neither curve is the true one (Figure A5).
 
 4. **Report a path-versus-displacement summary for any score read as a trend**, so that a
    series traveling much farther than its net displacement is qualified before it is described
-   as rising or falling (Table A3 and Appendix A.4).
+   as rising or falling (Table A6 and Appendix A.10).
 
 The first three are disclosure items in the ordinary TRIPOD sense, naming a quantity that must
 appear beside one already required; the fourth is closer to a diagnostic, and we offer it as
@@ -441,10 +441,10 @@ conventions we did not vary; the label's dependence on a channel the models read
 **One model fit, one family of operating points, and one draw of the control reference times.**
 Models were trained at one seed and thresholds come from one validation split at one
 sensitivity target, transported unchanged; a different fit or target could move Section 5.1's
-composition, Section 3's magnitudes and Table A4's operating points. Control cases have no
+composition, Section 3's magnitudes and Table A7's operating points. Control cases have no
 onset, so each is assigned a pseudo-onset sampled once at a fixed seed from the event cases'
 timing distribution. **Every control-side quantity here is conditional on that one draw**: the
-case-level specificity and positive predictive value of Table A4, the control-side minute
+case-level specificity and positive predictive value of Table A7, the control-side minute
 share, and the cross-combination association of Section 4.1 that rests on them. Its resampling
 variability is not propagated into any interval we report: it is one pre-specified draw, and
 we did not run a sensitivity analysis over it.
@@ -543,9 +543,22 @@ added no data collection and no patient contact. Analysis code is available at a
 <https://anonymous.4open.science/r/ioh-leadtime-anon-BD0E>, under the Apache License 2.0.
 The repository carries the analysis code and the aggregate result files behind the tables and figures, and no patient-level or derived patient-level data of any kind; each dataset is obtained from its own provider under the access and license terms above.
 
+## What the label invites, and what the number supports
+
+**Table A1 | What the label invites, and what the number supports.** Column one is an affordance
+of the reported label in the sense Section 1 defines, not measured comprehension. Column two is what this paper's
+measurement supports in its place, and column three the disclosure that would separate them.
+
+| What the label invites | What the number supports here | The disclosure that would close the gap |
+|:--------------------|:--------------------------------------------|:---------------------------------|
+| The model warns about 24 minutes ahead | A median over detected event cases, itself a window-dependent set, under this cohort's window distribution (Section 3.1) | The pre-onset window distribution, and a window-conditional timing statistic (Section 6.2) |
+| Twenty-four minutes is a property of the model | Within one model and cohort, median lead rises across window bands by 26 to 54 minutes, in 15 of 15 cells (Table A2) | Any single median stratified by the realized available window (Section 6.2) |
+| Twenty-four minutes of usable warning | A lead read at case-level specificity 0.406, the lowest of the five families in that cohort (Table A7) | The operating point reported beside the lead (Sections 4.1, 6.3) |
+| A longer lead indicates a better model | A descriptive association running the other way: lead is opposite to specificity across the fifteen combinations, Spearman −0.803 (Section 4.1) | Lead and operating point reported together, not lead alone (Section 6.3) |
+
 ## Lead time by quantile-derived band of observed window, all fifteen cells
 
-**Table A1 | Median alert lead time by quantile-derived band of observed window, all fifteen
+**Table A2 | Median alert lead time by quantile-derived band of observed window, all fifteen
 cells.** Main text Section 3.1 reports the ITE Transformer. The gradient is positive in
 every cell.
 `Bands` is the number of quantile-derived groups actually realized: where the observed window is censored
@@ -577,124 +590,41 @@ constraint that a lead cannot exceed its own window.
 | Logistic regression | VitalDB | 3 | 10 → 60 | 3 → 28 | +26 [+20, +28] | 0.51 [0.40, 0.56] |
 | Logistic regression | MOVER (SIS) | 3 | 12 → 60 | 5 → 38 | +33 [+29, +36] | 0.69 [0.61, 0.75] |
 
-## Both references, all fifteen cells
+## Lead time by band, the transformer's three cohorts
 
-**Table A2 | Both references, all fifteen cells.** Observed ratio against the
-uniform-placement reference of Section 3.3 and both variants of the
-cross-case shuffle. The uniform reference's expectation is 0.5 by construction; the two shuffle
-variants differ only in how a donor shorter than its recipient is handled, and both bias
-the reference upward. Intervals are the 2.5th and 97.5th percentiles of the reference distribution.
+**Table A3 | Median alert lead time inside quantile-derived bands of observed window, ITE Transformer.** ITE
+Transformer, three held-out cohorts, at the transported 80%-sensitivity operating point.
+Quintile edges are cut within each cell on detected cases; where the observed window is censored
+at the 60-minute alert window the upper quintiles collapse and the realized band count is
+reported rather than assumed. `Observed window, min` is the median observed pre-onset window of that band's cases rather than
+an edge. Intervals are 95% cluster bootstrap over subjects, or over cases in MOVER (SIS). All fifteen cells are Table A2; the detection rate these bands condition on is Table A4.
+Section 3.1 reports the contrast this table carries.
 
-| Model | Cohort | Observed ratio | Uniform ref. | Shuffle ref., hold | Shuffle ref., length-matched | Observed ρ | Shuffle ρ, hold | Shuffle ρ, length-matched |
-|---|---|---:|---|---|---|---:|---|---|
-| ITE Transformer | MOVER (EPIC) test | 0.944 | 0.524 [0.491, 0.567] | 0.970 [0.967, 0.974] | 0.962 [0.951, 0.971] | 0.706 | 0.888 [0.855, 0.920] | 0.783 [0.705, 0.856] |
-| ITE Transformer | VitalDB | 0.923 | 0.532 [0.500, 0.573] | 0.966 [0.963, 0.967] | 0.957 [0.947, 0.969] | 0.906 | 0.941 [0.926, 0.955] | 0.933 [0.890, 0.967] |
-| ITE Transformer | MOVER (SIS) | 0.899 | 0.527 [0.500, 0.567] | 0.949 [0.941, 0.950] | 0.918 [0.900, 0.938] | 0.801 | 0.877 [0.855, 0.895] | 0.775 [0.713, 0.827] |
-| LSTM | MOVER (EPIC) test | 0.851 | 0.522 [0.483, 0.563] | 0.913 [0.900, 0.923] | 0.866 [0.833, 0.893] | 0.650 | 0.825 [0.784, 0.860] | 0.673 [0.596, 0.743] |
-| LSTM | VitalDB | 0.619 | 0.534 [0.500, 0.583] | 0.870 [0.850, 0.883] | 0.752 [0.667, 0.833] | 0.759 | 0.845 [0.798, 0.886] | 0.705 [0.593, 0.804] |
-| LSTM | MOVER (SIS) | 0.717 | 0.524 [0.500, 0.562] | 0.873 [0.857, 0.887] | 0.700 [0.633, 0.767] | 0.501 | 0.682 [0.636, 0.727] | 0.455 [0.368, 0.547] |
-| XGBoost | MOVER (EPIC) test | 0.719 | 0.519 [0.483, 0.558] | 0.842 [0.814, 0.867] | 0.760 [0.705, 0.800] | 0.558 | 0.701 [0.651, 0.751] | 0.581 [0.503, 0.649] |
-| XGBoost | VitalDB | 0.467 | 0.521 [0.483, 0.556] | 0.723 [0.667, 0.768] | 0.591 [0.517, 0.652] | 0.599 | 0.636 [0.569, 0.698] | 0.493 [0.400, 0.580] |
-| XGBoost | MOVER (SIS) | 0.600 | 0.518 [0.500, 0.550] | 0.779 [0.750, 0.800] | 0.681 [0.633, 0.722] | 0.573 | 0.632 [0.590, 0.673] | 0.488 [0.429, 0.541] |
-| Random forest | MOVER (EPIC) test | 0.714 | 0.519 [0.483, 0.556] | 0.839 [0.816, 0.867] | 0.777 [0.733, 0.817] | 0.584 | 0.714 [0.665, 0.764] | 0.599 [0.531, 0.667] |
-| Random forest | VitalDB | 0.533 | 0.523 [0.500, 0.556] | 0.764 [0.721, 0.800] | 0.685 [0.625, 0.733] | 0.651 | 0.678 [0.622, 0.729] | 0.555 [0.479, 0.627] |
-| Random forest | MOVER (SIS) | 0.667 | 0.518 [0.500, 0.550] | 0.811 [0.783, 0.833] | 0.741 [0.700, 0.783] | 0.618 | 0.659 [0.625, 0.692] | 0.536 [0.486, 0.589] |
-| Logistic regression | MOVER (EPIC) test | 0.781 | 0.520 [0.483, 0.557] | 0.872 [0.849, 0.898] | 0.802 [0.767, 0.842] | 0.597 | 0.739 [0.694, 0.779] | 0.612 [0.544, 0.676] |
-| Logistic regression | VitalDB | 0.455 | 0.521 [0.471, 0.567] | 0.721 [0.667, 0.781] | 0.577 [0.500, 0.650] | 0.607 | 0.642 [0.549, 0.720] | 0.486 [0.374, 0.584] |
-| Logistic regression | MOVER (SIS) | 0.618 | 0.518 [0.500, 0.550] | 0.782 [0.750, 0.800] | 0.734 [0.692, 0.767] | 0.597 | 0.644 [0.607, 0.682] | 0.548 [0.495, 0.595] |
-
-Three cells in this table are the ones Section 3.3 names as not exceeding the uniform
-reference, all of them VitalDB. The observed ratio sits below it for XGBoost by −0.054 and for
-logistic regression by −0.067, and random forest is indistinguishable from it (+0.011,
-*P* = 0.824). For the transformer the excess over the uniform reference is +0.372 to +0.421.
-Under the length-matched variant the transformer's ratio reference spans 0.92 to 0.96. Every
-contrast quoted here is computed from the unrounded values rather than from the rounded columns
-above, so recomputing one from the table can differ in the third decimal.
-
-## Path decomposition
-
-**Table A3 | Path decomposition over the window 60 to 5 minutes before onset.** Event
-episodes have observed scores at both window edges. Directedness
-is net displacement divided by total distance traveled, so 1 is a monotone climb and 0 is a
-round trip. Path per net is total distance divided by the absolute net change. Episodes
-observed at every bin center in the window; median 11 steps per episode. Intervals are 95%
-cluster bootstrap. Only this window is reported: over 60 to 10 minutes the transformer's net
-displacement is indistinguishable from zero in two cohorts, and the ratio is then a division
-by approximately nothing.
-
-| Cohort | Model | Episodes | Directedness (95% CI) | Path per unit net |
-|---|---|---:|---|---:|
-| MOVER (EPIC) test | ITE Transformer | 313 | 0.025 [0.002, 0.050] | 40.7 |
-| MOVER (EPIC) test | LSTM | 313 | 0.043 [0.024, 0.057] | 25.9 |
-| MOVER (EPIC) test | XGBoost | 313 | 0.049 [0.033, 0.070] | 20.0 |
-| MOVER (EPIC) test | Random forest | 313 | 0.067 [0.038, 0.093] | 16.3 |
-| MOVER (EPIC) test | Logistic regression | 313 | 0.061 [0.044, 0.089] | 17.6 |
-| VitalDB | ITE Transformer | 433 | 0.021 [0.005, 0.038] | 146.6 |
-| VitalDB | LSTM | 433 | 0.059 [0.035, 0.070] | 28.2 |
-| VitalDB | XGBoost | 433 | 0.069 [0.049, 0.099] | 17.9 |
-| VitalDB | Random forest | 433 | 0.075 [0.053, 0.094] | 14.4 |
-| VitalDB | Logistic regression | 433 | 0.088 [0.063, 0.108] | 12.6 |
-| MOVER (SIS) | ITE Transformer | 670 | 0.089 [0.066, 0.122] | 13.1 |
-| MOVER (SIS) | LSTM | 670 | 0.142 [0.118, 0.183] | 7.9 |
-| MOVER (SIS) | XGBoost | 670 | 0.144 [0.120, 0.167] | 7.5 |
-| MOVER (SIS) | Random forest | 670 | 0.151 [0.132, 0.168] | 7.0 |
-| MOVER (SIS) | Logistic regression | 670 | 0.134 [0.119, 0.154] | 7.9 |
-
-Directedness is net displacement divided by total distance traveled: over the window from 60 to 5
-minutes before onset it is **+0.021 to +0.151 across all fifteen cells**, each pointwise interval
-excluding zero, so no family approaches a directed climb. **Directedness describes path shape and does not
-establish when or whether a particular threshold is touched.** Three further things belong here. The ratio of the median path length to the absolute median net displacement is 7.0 to
-146.6 across the fifteen cells; because that ratio becomes unstable as net displacement
-approaches zero, directedness is the primary summary and both quantities describe path shape
-rather than prove a crossing mechanism. The transformer sits at the volatile end of both
-(directedness +0.021 to +0.089, path per unit net displacement 13.1 to 146.6) and logistic
-regression at the least volatile (+0.061 to +0.134, 7.9 to 17.6). And averaged over cases the
-score still behaves as a reader expects, rising where an event follows and staying much flatter
-where none does, but the transformer's event and control means are indistinguishable an hour
-before onset where the tabular families' are already apart (Figure A4). The property is present
-under this task and scoring policy and the transformer is its limiting case; the design does not
-isolate architecture from representation or training.
-
-## Case-level operating point, complete detail
-
-**Table A4 | Case-level operating point, all fifteen cells.** This is the operating point behind every reported lead time in the paper: every family, every cohort and every interval, and it is where the cross-combination claim of Section 4.1 is checked. Sensitivity and specificity are
-case-level as defined in Section 2, NNE is alerting cases per detected event and equals 1/PPV, and
-`Min. above thr.` is the median share of an event case's monitored minutes at or above the
-transported threshold. Cohort composition, prevalence, PPV in excess of prevalence, the
-control-side minute share and the share of event cases already alerting by the first elapsed
-minute are Table A10. Intervals are 95% cluster bootstrap over subjects, or over cases in MOVER
-(SIS). Section 4.1's cross-combination rank correlations are computed from the
-unrounded per-cell values rather than from the rounded columns here: recomputing the PPV-lift
-correlation from PPV and prevalence each rounded to three decimals gives −0.727 instead of
-−0.719, and the specificity correlation is unchanged at −0.803 either way.
-
-| Model | Cohort | Sensitivity (95% CI) | Specificity (95% CI) | PPV (95% CI) | NNE (95% CI) | Min. above thr., events (95% CI) | Median lead, min (95% CI) |
-|---|---|---|---|---|---|---|---|
-| ITE Transformer | MOVER (EPIC) test | 0.777 [0.746, 0.806] | 0.406 [0.368, 0.443] | 0.625 [0.594, 0.656] | 1.60 [1.53, 1.68] | 0.523 [0.444, 0.575] | 24 [21, 27] |
-| ITE Transformer | VitalDB | 0.679 [0.651, 0.707] | 0.379 [0.358, 0.403] | 0.380 [0.357, 0.402] | 2.63 [2.49, 2.80] | 0.444 [0.389, 0.500] | 17 [15, 19] |
-| ITE Transformer | MOVER (SIS) | 0.657 [0.632, 0.682] | 0.467 [0.441, 0.494] | 0.585 [0.561, 0.609] | 1.71 [1.64, 1.78] | 0.200 [0.150, 0.238] | 22 [20, 24] |
-| LSTM | MOVER (EPIC) test | 0.807 [0.779, 0.834] | 0.474 [0.433, 0.513] | 0.661 [0.631, 0.690] | 1.51 [1.45, 1.58] | 0.267 [0.209, 0.308] | 23 [20, 25] |
-| LSTM | VitalDB | 0.492 [0.460, 0.523] | 0.812 [0.795, 0.830] | 0.595 [0.563, 0.629] | 1.68 [1.59, 1.78] | 0.000 [0.000, 0.017] | 9 [8, 10] |
-| LSTM | MOVER (SIS) | 0.551 [0.526, 0.577] | 0.709 [0.683, 0.735] | 0.685 [0.657, 0.712] | 1.46 [1.40, 1.52] | 0.017 [0.017, 0.020] | 15 [14, 18] |
-| XGBoost | MOVER (EPIC) test | 0.810 [0.782, 0.835] | 0.608 [0.570, 0.647] | 0.725 [0.696, 0.754] | 1.38 [1.33, 1.44] | 0.117 [0.100, 0.133] | 21 [18, 23] |
-| XGBoost | VitalDB | 0.694 [0.665, 0.721] | 0.754 [0.735, 0.774] | 0.613 [0.584, 0.640] | 1.63 [1.56, 1.71] | 0.067 [0.050, 0.067] | 13 [12, 16] |
-| XGBoost | MOVER (SIS) | 0.790 [0.768, 0.810] | 0.638 [0.610, 0.666] | 0.714 [0.691, 0.736] | 1.40 [1.36, 1.45] | 0.100 [0.100, 0.117] | 19 [18, 22] |
-| Random forest | MOVER (EPIC) test | 0.828 [0.801, 0.854] | 0.555 [0.515, 0.597] | 0.703 [0.674, 0.732] | 1.42 [1.37, 1.48] | 0.150 [0.133, 0.167] | 22 [20, 24] |
-| Random forest | VitalDB | 0.803 [0.778, 0.827] | 0.674 [0.651, 0.695] | 0.580 [0.553, 0.604] | 1.72 [1.65, 1.81] | 0.133 [0.118, 0.150] | 15 [12, 18] |
-| Random forest | MOVER (SIS) | 0.849 [0.830, 0.867] | 0.559 [0.532, 0.586] | 0.688 [0.666, 0.710] | 1.45 [1.41, 1.50] | 0.172 [0.167, 0.183] | 22 [20, 25] |
-| Logistic regression | MOVER (EPIC) test | 0.837 [0.810, 0.864] | 0.518 [0.477, 0.557] | 0.688 [0.658, 0.719] | 1.45 [1.39, 1.52] | 0.139 [0.114, 0.162] | 23 [21, 26] |
-| Logistic regression | VitalDB | 0.461 [0.431, 0.492] | 0.825 [0.808, 0.842] | 0.596 [0.565, 0.631] | 1.68 [1.59, 1.77] | 0.000 [0.000, 0.000] | 14 [10, 16] |
-| Logistic regression | MOVER (SIS) | 0.790 [0.769, 0.812] | 0.585 [0.559, 0.611] | 0.685 [0.662, 0.708] | 1.46 [1.41, 1.51] | 0.117 [0.100, 0.130] | 21 [19, 23] |
+| Cohort | Band | n | Observed window, min | Median lead, min (95% CI) | Lead / window (95% CI) |
+|---|---:|---:|---:|---|---|
+| MOVER (EPIC) test | 1 | 139 | 10 | 9 [8, 9] | 0.88 [0.85, 0.89] |
+| MOVER (EPIC) test | 2 | 111 | 19 | 18 [17, 18] | 0.94 [0.94, 0.95] |
+| MOVER (EPIC) test | 3 | 121 | 33 | 31 [29, 32] | 0.97 [0.96, 0.97] |
+| MOVER (EPIC) test | 4 | 240 | 60 | 46 [44, 50] | 0.98 [0.96, 0.98] |
+| VitalDB | 1 | 143 | 7 | 5 [5, 6] | 0.83 [0.83, 0.83] |
+| VitalDB | 2 | 140 | 12 | 10 [10, 11] | 0.91 [0.90, 0.91] |
+| VitalDB | 3 | 132 | 20 | 19 [18, 20] | 0.94 [0.94, 0.95] |
+| VitalDB | 4 | 134 | 40 | 38 [37, 40] | 0.97 [0.97, 0.97] |
+| VitalDB | 5 | 135 | 60 | 59 [57, 60] | 0.98 [0.98, 1.00] |
+| MOVER (SIS) | 1 | 199 | 8 | 6 [5, 6] | 0.80 [0.80, 0.82] |
+| MOVER (SIS) | 2 | 179 | 17 | 14 [13, 15] | 0.86 [0.84, 0.91] |
+| MOVER (SIS) | 3 | 186 | 29 | 27 [26, 28] | 0.94 [0.93, 0.96] |
+| MOVER (SIS) | 4 | 362 | 60 | 46 [43, 49] | 0.95 [0.93, 0.97] |
 
 ## Detection rate by band of observed window, all fifteen cells
 
-**Table A5 | Detection rate by band of observed pre-onset window, all fifteen cells.** Bands are
+**Table A4 | Detection rate by band of observed pre-onset window, all fifteen cells.** Bands are
 quantiles of the observed window cut over **all** event cases with a positive observed window,
-not over the detected subset Table A9 and Table A1 cut on, because a within-band detection rate
+not over the detected subset Table A3 and Table A2 cut on, because a within-band detection rate
 needs every event case of that window length in its denominator. The two banding schemes are
-therefore not interchangeable, the band counts here are event-case counts rather than detected
-counts, and the median leads differ slightly from Table A1's. The detection rate summed over
-bands reproduces the case-level sensitivity of Table A4 exactly in all fifteen cells, which is the
+therefore not interchangeable; the band counts here are event-case counts rather than detected
+counts, and the median leads differ from Table A2's, sometimes by several minutes. The detection rate summed over
+bands reproduces the case-level sensitivity of Table A7 exactly in all fifteen cells, which is the
 check that the denominators are the same event cases. Intervals are 95% cluster bootstrap.
 
 | Model | Cohort | Band | Event cases | Detected | Window median, min | Detection rate (95% CI) | Median lead, min (95% CI) |
@@ -750,87 +680,12 @@ check that the denominators are the same event cases. Intervals are 95% cluster 
 | Logistic regression | MOVER (SIS) | 2 | 285 | 221 | 25 | 0.775 [0.727, 0.821] | 14 [12, 16] |
 | Logistic regression | MOVER (SIS) | 3 | 837 | 714 | 60 | 0.853 [0.829, 0.876] | 36 [34, 38] |
 
-## Replacement estimands, all horizons
-
-**Table A6 | Fixed-horizon detection rate at all seven horizons, and time to first alert.** The
-fixed-horizon detection rate is the share of event cases observed for at least the stated number
-of minutes before onset whose first alert came at least that many minutes before onset. Point
-estimates are shown here; each is a share of the cases in its own column, and its 95% cluster
-bootstrap interval is computed exactly as elsewhere in this appendix. Section 5.3 quotes the
-range across cells at the 10- and 30-minute horizons. `n observed` is the denominator at the
-first and last horizon, and its fall is the reason a single median is not comparable across cohorts. The
-60-minute column is the share of fully observed cases that alerted at the very first opportunity.
-
-| Model | Cohort | 5 min | 10 min | 15 min | 20 min | 30 min | 45 min | 60 min | n observed ≥5 → ≥60 |
-|---|---|---|---|---|---|---|---|---|---|
-| ITE Transformer | MOVER (EPIC) test | 0.733 | 0.690 | 0.646 | 0.605 | 0.512 | 0.339 | 0.170 | 786 → 311 |
-| ITE Transformer | VitalDB | 0.638 | 0.560 | 0.509 | 0.463 | 0.390 | 0.261 | 0.154 | 1007 → 429 |
-| ITE Transformer | MOVER (SIS) | 0.594 | 0.547 | 0.504 | 0.469 | 0.377 | 0.247 | 0.125 | 1409 → 665 |
-| LSTM | MOVER (EPIC) test | 0.721 | 0.663 | 0.635 | 0.597 | 0.490 | 0.331 | 0.109 | 786 → 311 |
-| LSTM | VitalDB | 0.343 | 0.278 | 0.265 | 0.223 | 0.173 | 0.102 | 0.030 | 1007 → 429 |
-| LSTM | MOVER (SIS) | 0.453 | 0.392 | 0.346 | 0.319 | 0.253 | 0.167 | 0.047 | 1409 → 665 |
-| XGBoost | MOVER (EPIC) test | 0.688 | 0.651 | 0.615 | 0.575 | 0.484 | 0.367 | 0.119 | 786 → 311 |
-| XGBoost | VitalDB | 0.502 | 0.470 | 0.453 | 0.425 | 0.366 | 0.237 | 0.054 | 1007 → 429 |
-| XGBoost | MOVER (SIS) | 0.656 | 0.597 | 0.565 | 0.520 | 0.460 | 0.326 | 0.080 | 1409 → 665 |
-| Random forest | MOVER (EPIC) test | 0.709 | 0.674 | 0.638 | 0.611 | 0.506 | 0.393 | 0.138 | 786 → 311 |
-| Random forest | VitalDB | 0.589 | 0.559 | 0.559 | 0.530 | 0.478 | 0.347 | 0.103 | 1007 → 429 |
-| Random forest | MOVER (SIS) | 0.736 | 0.674 | 0.640 | 0.600 | 0.526 | 0.403 | 0.114 | 1409 → 665 |
-| Logistic regression | MOVER (EPIC) test | 0.726 | 0.692 | 0.658 | 0.630 | 0.547 | 0.401 | 0.122 | 786 → 311 |
-| Logistic regression | VitalDB | 0.338 | 0.307 | 0.303 | 0.274 | 0.233 | 0.137 | 0.026 | 1007 → 429 |
-| Logistic regression | MOVER (SIS) | 0.664 | 0.611 | 0.573 | 0.546 | 0.474 | 0.353 | 0.093 | 1409 → 665 |
-
-## The full alert window as a constant
-
-**Table A7 | Event cases observed for the whole 60-minute alert window.** Restricting to these
-cases makes the observation window a constant rather than a covariate, which is the
-full-window restriction of Section 5.3. `n` is the number of event cases observed for the
-whole window and `Detected` the share of them that alert at all.
-The censoring is not independent of the event, because for an event case a short
-observable run-up is an early-onset event rather than missing data, so this describes what the
-rule did under the observation these cohorts supplied. Intervals are 95% cluster bootstrap.
-For the transformer in MOVER (EPIC) the median lead here differs from Table A5's top band by
-seven minutes although the two populations differ by two cases, because the detected
-full-window leads leave a gap between 47 and 54 minutes: 53 of 137 sit at the 60-minute
-ceiling and the lower tail is sparse, so a one-rank shift in the median crosses the gap.
-
-| Model | Cohort | n | Detected | Median lead, min (95% CI) |
-|---|---|---:|---:|---|
-| ITE Transformer | MOVER (EPIC) test | 311 | 0.441 | 47 [33, 59] |
-| ITE Transformer | VitalDB | 429 | 0.247 | 60 [60, 60] |
-| ITE Transformer | MOVER (SIS) | 665 | 0.304 | 57 [51, 59] |
-| LSTM | MOVER (EPIC) test | 311 | 0.598 | 40 [34, 46] |
-| LSTM | VitalDB | 429 | 0.200 | 33 [21, 45] |
-| LSTM | MOVER (SIS) | 665 | 0.433 | 28 [22, 33] |
-| XGBoost | MOVER (EPIC) test | 311 | 0.846 | 40 [34, 44] |
-| XGBoost | VitalDB | 429 | 0.762 | 33 [30, 36] |
-| XGBoost | MOVER (SIS) | 665 | 0.854 | 37 [34, 41] |
-| Random forest | MOVER (EPIC) test | 311 | 0.894 | 41 [35, 45] |
-| Random forest | VitalDB | 429 | 0.851 | 40 [36, 44] |
-| Random forest | MOVER (SIS) | 665 | 0.910 | 42 [39, 45] |
-| Logistic regression | MOVER (EPIC) test | 311 | 0.852 | 42 [36, 45] |
-| Logistic regression | VitalDB | 429 | 0.490 | 31 [26, 37] |
-| Logistic regression | MOVER (SIS) | 665 | 0.857 | 40 [37, 43] |
-
-## The reporting items that came close
-
-**Table A8 | The TRIPOD+AI items that came close and missed.** Main text Section 6.1 discusses items 12e, 15, 23a, 20a, 20b and 14; this table records the remaining items and the detail behind them. The item numbering is that of the TRIPOD+AI statement
-[@collins2024tripodai]. This is an author-completed self-assessment of one study, not a validity
-assessment of the standard.
-
-| Item | What it asked for | What it did not ask for |
-|---|---|---|
-| 12f and 12g, recalibration and how evaluation predictions were calculated | Any recalibration arising from evaluation, and how evaluation predictions were computed: calibration and thresholds fitted on the development validation split and transported unchanged, which is reported | Anything about what that disciplined choice implies; it is the exact setting in which Section 3 holds, so doing the right thing here does not help |
-| 20a and 20b, participant flow and characteristics | Participant flow and characteristics *including follow-up time*, answered here with surgery duration and first-onset time | The distribution of the window the alert rule actually searches — the run-up after the induction exclusion, capped at the 60-minute alert window — or any pairing of it with the timing statistic it bounds. This is the closest the standard comes: it asks for the raw material as a cohort descriptor, and never connects it to the timing metric it constrains |
-| 21, event counts | The number of participants and outcome events *in each analysis*, which are reported | The same counts broken out by band of available window. The item's "in each analysis" clause reaches development, tuning and evaluation, not the window strata of a timing statistic |
-| 8c, blinding of outcome assessment | A blinding statement; answered "not applicable" because the outcome is computed from a monitored channel that is also a predictor | The closest the checklist comes to Section 4, and still about blinding rather than about what a timing metric measures |
-| 15, model output | Details and rationale for classification, and how any threshold was identified; answered with the transported threshold itself | Joint presentation or interpretation of a lead-time summary with the realized operating-point metrics that threshold defines, which is where the artifact lives (Table A4) |
-
 ## The relationship in all five families
 
 Figure 1 plots the transformer in three cohorts. The lead-to-window relationship it shows is
 not particular to that model: in the per-case scatter for MOVER (EPIC) test it is present in
 every family, with the transformer the limiting case rather than the exception. Figure A1 covers
-that cohort only; the other two are in Table A1, where the gradient is positive with its interval
+that cohort only; the other two are in Table A2, where the gradient is positive with its interval
 excluding zero in every cell.
 
 ![](figures/Figure_A2_wide.png)
@@ -839,77 +694,66 @@ excluding zero in every cell.
 (EPIC) test.** Axes and overlays as in Figure 1. The relationship holds in every family; the
 transformer is the limiting case rather than the exception.
 
-## Alert composition
+## Both references, all fifteen cells
 
-Section 5.1 reports the prevalent share as a single number per cell. For the transformer that
-share is 8.7, 9.6 and 9.0% in the three cohorts, and removing those cases moves its median lead
-from 24, 17 and 22 minutes to 21, 15 and 19. Splitting detected event cases by when their first
-crossing fell separates alerts that were already active at the first eligible minute from those
-raised while the score was still settling and those raised later, which is the disclosure
-Section 6.2's first item asks for.
+**Table A5 | Both references, all fifteen cells.** Observed ratio against the
+uniform-placement reference of Section 3.3 and both variants of the
+cross-case shuffle. The uniform reference's expectation is 0.5 by construction; the two shuffle
+variants differ only in how a donor shorter than its recipient is handled, and both bias
+the reference upward. Intervals are the 2.5th and 97.5th percentiles of the reference distribution.
 
-**That share and Table A10's `Alerted by elapsed min 1` are different quantities rather than two
-estimates of one.** The prevalent share counts detected event cases whose first crossing falls at
-elapsed minute zero, the first minute of the case's own alert window, over the detected event
-cases of that cell: 53 of 611, 66 of 684 and 83 of 926 for the transformer. Table A10's column
-counts event cases whose first crossing falls at elapsed minute zero **or** minute one, over
-every event case with a positive observed window, detected or not, as one minus the Kaplan-Meier
-survival of time to first alert with each case censored at the end of its own window: 418 of 786,
-463 of 1,007 and 434 of 1,409. Numerator, denominator and conditioning set all differ, and the
-extra minute is the larger of the differences: minute one alone adds 365, 397 and 351 cases,
-which is Section 4.1's settling read on the elapsed axis and not a second estimate of the same
-immediate-alert probability. No case is censored before elapsed minute one in any of the three
-cohorts, so the survival estimate at that mark equals the crude share.
+| Model | Cohort | Observed ratio | Uniform ref. | Shuffle ref., hold | Shuffle ref., length-matched | Observed ρ | Shuffle ρ, hold | Shuffle ρ, length-matched |
+|---|---|---:|---|---|---|---:|---|---|
+| ITE Transformer | MOVER (EPIC) test | 0.944 | 0.524 [0.491, 0.567] | 0.970 [0.967, 0.974] | 0.962 [0.951, 0.971] | 0.706 | 0.888 [0.855, 0.920] | 0.783 [0.705, 0.856] |
+| ITE Transformer | VitalDB | 0.923 | 0.532 [0.500, 0.573] | 0.966 [0.963, 0.967] | 0.957 [0.947, 0.969] | 0.906 | 0.941 [0.926, 0.955] | 0.933 [0.890, 0.967] |
+| ITE Transformer | MOVER (SIS) | 0.899 | 0.527 [0.500, 0.567] | 0.949 [0.941, 0.950] | 0.918 [0.900, 0.938] | 0.801 | 0.877 [0.855, 0.895] | 0.775 [0.713, 0.827] |
+| LSTM | MOVER (EPIC) test | 0.851 | 0.522 [0.483, 0.563] | 0.913 [0.900, 0.923] | 0.866 [0.833, 0.893] | 0.650 | 0.825 [0.784, 0.860] | 0.673 [0.596, 0.743] |
+| LSTM | VitalDB | 0.619 | 0.534 [0.500, 0.583] | 0.870 [0.850, 0.883] | 0.752 [0.667, 0.833] | 0.759 | 0.845 [0.798, 0.886] | 0.705 [0.593, 0.804] |
+| LSTM | MOVER (SIS) | 0.717 | 0.524 [0.500, 0.562] | 0.873 [0.857, 0.887] | 0.700 [0.633, 0.767] | 0.501 | 0.682 [0.636, 0.727] | 0.455 [0.368, 0.547] |
+| XGBoost | MOVER (EPIC) test | 0.719 | 0.519 [0.483, 0.558] | 0.842 [0.814, 0.867] | 0.760 [0.705, 0.800] | 0.558 | 0.701 [0.651, 0.751] | 0.581 [0.503, 0.649] |
+| XGBoost | VitalDB | 0.467 | 0.521 [0.483, 0.556] | 0.723 [0.667, 0.768] | 0.591 [0.517, 0.652] | 0.599 | 0.636 [0.569, 0.698] | 0.493 [0.400, 0.580] |
+| XGBoost | MOVER (SIS) | 0.600 | 0.518 [0.500, 0.550] | 0.779 [0.750, 0.800] | 0.681 [0.633, 0.722] | 0.573 | 0.632 [0.590, 0.673] | 0.488 [0.429, 0.541] |
+| Random forest | MOVER (EPIC) test | 0.714 | 0.519 [0.483, 0.556] | 0.839 [0.816, 0.867] | 0.777 [0.733, 0.817] | 0.584 | 0.714 [0.665, 0.764] | 0.599 [0.531, 0.667] |
+| Random forest | VitalDB | 0.533 | 0.523 [0.500, 0.556] | 0.764 [0.721, 0.800] | 0.685 [0.625, 0.733] | 0.651 | 0.678 [0.622, 0.729] | 0.555 [0.479, 0.627] |
+| Random forest | MOVER (SIS) | 0.667 | 0.518 [0.500, 0.550] | 0.811 [0.783, 0.833] | 0.741 [0.700, 0.783] | 0.618 | 0.659 [0.625, 0.692] | 0.536 [0.486, 0.589] |
+| Logistic regression | MOVER (EPIC) test | 0.781 | 0.520 [0.483, 0.557] | 0.872 [0.849, 0.898] | 0.802 [0.767, 0.842] | 0.597 | 0.739 [0.694, 0.779] | 0.612 [0.544, 0.676] |
+| Logistic regression | VitalDB | 0.455 | 0.521 [0.471, 0.567] | 0.721 [0.667, 0.781] | 0.577 [0.500, 0.650] | 0.607 | 0.642 [0.549, 0.720] | 0.486 [0.374, 0.584] |
+| Logistic regression | MOVER (SIS) | 0.618 | 0.518 [0.500, 0.550] | 0.782 [0.750, 0.800] | 0.734 [0.692, 0.767] | 0.597 | 0.644 [0.607, 0.682] | 0.548 [0.495, 0.595] |
 
-![](figures/Figure_3_wide.png)
+Three cells in this table are the ones Section 3.3 names as not exceeding the uniform
+reference, all of them VitalDB. The observed ratio sits below it for XGBoost by 0.054 and for
+logistic regression by 0.067, and random forest is indistinguishable from it (+0.011,
+*P* = 0.824). For the transformer the excess over the uniform reference is +0.372 to +0.421.
+Under the length-matched variant the transformer's ratio reference spans 0.92 to 0.96. Every
+contrast quoted here is computed from the unrounded values rather than from the rounded columns
+above, so recomputing one from the table can differ in the third decimal.
 
-**Figure A2 | Composition of detected event cases by elapsed monitoring time at the first
-crossing.** Prevalent cases are above threshold at their first eligible minute; warm-up
-cases cross within five minutes of it; settled cases cross later. Five model families,
-three cohorts, at the transported 80%-sensitivity operating point. The composition differs
-sharply across families, in that the transformer's alerts are concentrated in the first five
-minutes, the LSTM's are partly so and the tabular families' are not, while the lead-to-window
-relationship of Section 3 holds in all of them. That is why Section 4 separates the
-transformer's direct mechanism from the cross-family directedness result.
+## Score against elapsed monitoring time
 
-## Risk-set composition, and what fixing the cohort does
+Section 4.1 reads the first ten monitored minutes of every case, and reports that the ITE
+Transformer clears its own threshold there in every cohort. The margins for the others are wide.
+Over those ten minutes the highest median score reached in either group is 0.69 against a
+threshold of 0.78 for logistic regression in MOVER (EPIC), 0.65 against a threshold of 0.91 for
+XGBoost, and 0.54 against a threshold of 0.79 for random forest. The LSTM is the one exception:
+in MOVER (EPIC) it reaches 0.99 in event and 0.99 in control cases against a threshold of 0.97,
+clearing it in both groups, and it clears it in neither external cohort. This is that view for
+all fifteen cells, on the elapsed axis rather than the event-aligned one of Figure A3.
 
-The population trajectory scores every case that has a minute in the bin, so its denominator
-shrinks and its composition shifts as the bin moves away from onset. For an event case the
-observable run-up *is* its time to onset, so a short run-up is not missing data. It is an
-early-onset event, and the far bins keep only the long run-ups. That is the same selection
-that drives Section 3.
+![](figures/Figure_1_wide.png)
 
-**Fixing the cohort moves the trajectory in both directions** (Figure A3). Recomputing the
-same bins on the cases observable back to 60 minutes raises the far end and lowers the near
-end, and the two curves cross at 16.4, 12.6 and 14.9 minutes before onset. The first bin
-reaching AUROC 0.70 moves from 15 minutes in all three cohorts to 20, 35 and 20. Neither
-curve is the true one: which denominator is used is a reporting choice, it changes the
-horizon a reader would quote by up to twenty minutes, and it is not currently disclosed.
-That is the whole of Section 6.2's third item.
-
-**Short and long run-ups are different operations, which is why Section 5.3 calls this censoring
-non-independent.** Splitting event cases at a 40-minute observable run-up, the long group's
-operations are longer in every cohort, by a standardized mean difference of 0.394, 0.515 and
-0.428, the largest imbalance on the list in all three; procedure group and ASA class are also
-imbalanced beyond 0.1 in each. So a case with a short run-up is not a briefly watched version of
-a case with a long one.
-
-![](figures/Figure_A3_wide.png)
-
-**Figure A3 | Population AUROC with its own risk set, event-aligned.** ITE Transformer, 2-minute
-bins from 60 minutes before onset to onset, in three held-out cohorts. Solid and filled is every
-case with a minute in the bin, the convention in the published literature, whose denominator
-varies; dashed and
-open is the cohort fixed to cases observable back to 60 minutes. Bands are 95% cluster bootstrap
-over subjects, or over cases in MOVER (SIS). The lower row is the number of cases contributing to
-each bin, on its own scale per cohort. The dotted line marks 0.5, the solid rule 0.70, and the
-cross marks where the two curves meet.
+**Figure A2 | Median score against elapsed monitoring time, with each family's own alert
+threshold.** Rows are cohorts, columns are model families. Elapsed time is measured from the
+case's first scored minute. The dashed rule in each panel is that family's transported
+raw-score threshold at the 80%-sensitivity target, transferred unchanged from the MOVER
+(EPIC) validation split. Only the ITE Transformer's early rise clears its own threshold in
+every cohort, and it does so in event and control cases together; the LSTM does the same in
+MOVER (EPIC) alone. The elevation ends around minute 20, past the
+right edge of this axis. This axis is elapsed time; the event-aligned view is Figure A3.
 
 ## Event and control score on the event-aligned axis
 
 The shape a reader expects of a continuously read score, rising in the cases that go on to
-have an event and much flatter in the rest, is **present in all fifteen cells** (Figure A4).
+have an event and much flatter in the rest, is **present in all fifteen cells** (Figure A3).
 Three things about it are worth reporting, and none is visible in a trend statistic.
 
 **When the separation arrives runs opposite to near-onset discrimination.** For the three
@@ -942,48 +786,130 @@ a widening gap separately is what makes it visible.
 
 Three things this figure is not. The control series is aligned on the sampled pseudo-onset of
 Section 2 rather than on an event, so its fall is behavior over the last hour of a comparable
-window and not an approach to anything. Figure A5 plots medians and this figure means, and the
-two are not interchangeable here. And the two figures use different alignments: Figure A5's
+window and not an approach to anything. Figure A2 plots medians and this figure means, and the
+two are not interchangeable here. And the two figures use different alignments: Figure A2's
 axis is elapsed time from the case's first scored minute and covers the first ten minutes of
 the record, where the transformer has just settled above its own 0.894 threshold, whereas the bins here
 sit far later in the case, where its event mean is 0.383. **The two are not in conflict, and
 the length of the plateau is what reconciles them.** The median score holds at or above the
 transported threshold through elapsed minute 24, 21 and 17 in event cases and 23, 20 and 16
-in controls, then falls to 0.03 to 0.31 by minute 30. Figure A5 covers the first ten of those
+in controls, then falls to 0.03 to 0.31 by minute 30. Figure A2 covers the first ten of those
 minutes and stops inside the plateau; every bin in this figure falls after it in all but the
 shortest records.
 
 ![](figures/Figure_A4_wide.png)
 
-**Figure A4 | Mean score in event and control cases against minutes before onset.** Rows are
-cohorts, columns are model families, the same grid as Figure A5, on the event-aligned axis
+**Figure A3 | Mean score in event and control cases against minutes before onset.** Rows are
+cohorts, columns are model families, the same grid as Figure A2, on the event-aligned axis
 instead of the elapsed one. Event cases solid and filled, control cases dashed and open; bands
 are 95% cluster bootstrap. Bins are the 13 centers at five-minute spacing from 60 minutes
 before onset; the
 bin at onset is empty by construction, because no minute is strictly before its own reference
 time, so the series ends at 5 minutes. Control cases are aligned on a sampled pseudo-onset.
 
-## Score against elapsed monitoring time
+## Path decomposition
 
-Section 4.1 reads the first ten monitored minutes of every case, and reports that the ITE
-Transformer clears its own threshold there in every cohort. The margins for the others are wide.
-Over those ten minutes the highest median score reached in either group is 0.69 against a
-threshold of 0.78 for logistic regression in MOVER (EPIC), 0.65 against a threshold of 0.91 for
-XGBoost, and 0.54 against a threshold of 0.79 for random forest. The LSTM is the one exception:
-in MOVER (EPIC) it reaches 0.99 in event and 0.99 in control cases against a threshold of 0.97,
-clearing it in both groups, and it clears it in neither external cohort. This is that view for
-all fifteen cells, on the elapsed axis rather than the event-aligned one of Figure A4.
+**Table A6 | Path decomposition over the window 60 to 5 minutes before onset.** Event
+episodes have observed scores at both window edges. Directedness
+is net displacement divided by total distance traveled, so 1 is a monotone climb and 0 is a
+round trip. Path per net is total distance divided by the absolute net change. Episodes
+observed at every bin center in the window; median 11 steps per episode. Intervals are 95%
+cluster bootstrap. Only this window is reported: over 60 to 10 minutes the transformer's net
+displacement is indistinguishable from zero in two cohorts, and the ratio is then a division
+by approximately nothing.
 
-![](figures/Figure_1_wide.png)
+| Cohort | Model | Episodes | Directedness (95% CI) | Path per unit net |
+|---|---|---:|---|---:|
+| MOVER (EPIC) test | ITE Transformer | 313 | 0.025 [0.002, 0.050] | 40.7 |
+| MOVER (EPIC) test | LSTM | 313 | 0.043 [0.024, 0.057] | 25.9 |
+| MOVER (EPIC) test | XGBoost | 313 | 0.049 [0.033, 0.070] | 20.0 |
+| MOVER (EPIC) test | Random forest | 313 | 0.067 [0.038, 0.093] | 16.3 |
+| MOVER (EPIC) test | Logistic regression | 313 | 0.061 [0.044, 0.089] | 17.6 |
+| VitalDB | ITE Transformer | 433 | 0.021 [0.005, 0.038] | 146.6 |
+| VitalDB | LSTM | 433 | 0.059 [0.035, 0.070] | 28.2 |
+| VitalDB | XGBoost | 433 | 0.069 [0.049, 0.099] | 17.9 |
+| VitalDB | Random forest | 433 | 0.075 [0.053, 0.094] | 14.4 |
+| VitalDB | Logistic regression | 433 | 0.088 [0.063, 0.108] | 12.6 |
+| MOVER (SIS) | ITE Transformer | 670 | 0.089 [0.066, 0.122] | 13.1 |
+| MOVER (SIS) | LSTM | 670 | 0.142 [0.118, 0.183] | 7.9 |
+| MOVER (SIS) | XGBoost | 670 | 0.144 [0.120, 0.167] | 7.5 |
+| MOVER (SIS) | Random forest | 670 | 0.151 [0.132, 0.168] | 7.0 |
+| MOVER (SIS) | Logistic regression | 670 | 0.134 [0.119, 0.154] | 7.9 |
 
-**Figure A5 | Median score against elapsed monitoring time, with each family's own alert
-threshold.** Rows are cohorts, columns are model families. Elapsed time is measured from the
-case's first scored minute. The dashed rule in each panel is that family's transported
-raw-score threshold at the 80%-sensitivity target, transferred unchanged from the MOVER
-(EPIC) validation split. Only the ITE Transformer's early rise clears its own threshold in
-every cohort, and it does so in event and control cases together; the LSTM does the same in
-MOVER (EPIC) alone. The elevation ends around minute 20, past the
-right edge of this axis. This axis is elapsed time; the event-aligned view is Figure A4.
+Directedness is net displacement divided by total distance traveled: over the window from 60 to 5
+minutes before onset it is **+0.021 to +0.151 across all fifteen cells**, each pointwise interval
+excluding zero, so no family approaches a directed climb. **Directedness describes path shape and does not
+establish when or whether a particular threshold is touched.** Three further things belong here. The ratio of the median path length to the absolute median net displacement is 7.0 to
+146.6 across the fifteen cells; because that ratio becomes unstable as net displacement
+approaches zero, directedness is the primary summary and both quantities describe path shape
+rather than prove a crossing mechanism. The transformer sits at the volatile end of both
+(directedness +0.021 to +0.089, path per unit net displacement 13.1 to 146.6) and logistic
+regression at the least volatile (+0.061 to +0.134, 7.9 to 17.6). And averaged over cases the
+score still behaves as a reader expects, rising where an event follows and staying much flatter
+where none does, but the transformer's event and control means are indistinguishable an hour
+before onset where the tabular families' are already apart (Figure A3). The property is present
+under this task and scoring policy and the transformer is its limiting case; the design does not
+isolate architecture from representation or training.
+
+## Case-level operating point, complete detail
+
+**Table A7 | Case-level operating point, all fifteen cells.** This is the operating point behind every reported lead time in the paper: every family, every cohort and every interval, and it is where the cross-combination claim of Section 4.1 is checked. Sensitivity and specificity are
+case-level as defined in Section 2, NNE is alerting cases per detected event and equals 1/PPV, and
+`Min. above thr.` is the median share of an event case's monitored minutes at or above the
+transported threshold. Cohort composition, prevalence, PPV in excess of prevalence, the
+control-side minute share and the share of event cases already alerting by the first elapsed
+minute are Table A8. Intervals are 95% cluster bootstrap over subjects, or over cases in MOVER
+(SIS). Section 4.1's cross-combination rank correlations are computed from the
+unrounded per-cell values rather than from the rounded columns here: recomputing the PPV-lift
+correlation from PPV and prevalence each rounded to three decimals gives −0.727 instead of
+−0.719, and the specificity correlation is unchanged at −0.803 either way.
+
+| Model | Cohort | Sensitivity (95% CI) | Specificity (95% CI) | PPV (95% CI) | NNE (95% CI) | Min. above thr., events (95% CI) | Median lead, min (95% CI) |
+|---|---|---|---|---|---|---|---|
+| ITE Transformer | MOVER (EPIC) test | 0.777 [0.746, 0.806] | 0.406 [0.368, 0.443] | 0.625 [0.594, 0.656] | 1.60 [1.53, 1.68] | 0.523 [0.444, 0.575] | 24 [21, 27] |
+| ITE Transformer | VitalDB | 0.679 [0.651, 0.707] | 0.379 [0.358, 0.403] | 0.380 [0.357, 0.402] | 2.63 [2.49, 2.80] | 0.444 [0.389, 0.500] | 17 [15, 19] |
+| ITE Transformer | MOVER (SIS) | 0.657 [0.632, 0.682] | 0.467 [0.441, 0.494] | 0.585 [0.561, 0.609] | 1.71 [1.64, 1.78] | 0.200 [0.150, 0.238] | 22 [20, 24] |
+| LSTM | MOVER (EPIC) test | 0.807 [0.779, 0.834] | 0.474 [0.433, 0.513] | 0.661 [0.631, 0.690] | 1.51 [1.45, 1.58] | 0.267 [0.209, 0.308] | 23 [20, 25] |
+| LSTM | VitalDB | 0.492 [0.460, 0.523] | 0.812 [0.795, 0.830] | 0.595 [0.563, 0.629] | 1.68 [1.59, 1.78] | 0.000 [0.000, 0.017] | 9 [8, 10] |
+| LSTM | MOVER (SIS) | 0.551 [0.526, 0.577] | 0.709 [0.683, 0.735] | 0.685 [0.657, 0.712] | 1.46 [1.40, 1.52] | 0.017 [0.017, 0.020] | 15 [14, 18] |
+| XGBoost | MOVER (EPIC) test | 0.810 [0.782, 0.835] | 0.608 [0.570, 0.647] | 0.725 [0.696, 0.754] | 1.38 [1.33, 1.44] | 0.117 [0.100, 0.133] | 21 [18, 23] |
+| XGBoost | VitalDB | 0.694 [0.665, 0.721] | 0.754 [0.735, 0.774] | 0.613 [0.584, 0.640] | 1.63 [1.56, 1.71] | 0.067 [0.050, 0.067] | 13 [12, 16] |
+| XGBoost | MOVER (SIS) | 0.790 [0.768, 0.810] | 0.638 [0.610, 0.666] | 0.714 [0.691, 0.736] | 1.40 [1.36, 1.45] | 0.100 [0.100, 0.117] | 19 [18, 22] |
+| Random forest | MOVER (EPIC) test | 0.828 [0.801, 0.854] | 0.555 [0.515, 0.597] | 0.703 [0.674, 0.732] | 1.42 [1.37, 1.48] | 0.150 [0.133, 0.167] | 22 [20, 24] |
+| Random forest | VitalDB | 0.803 [0.778, 0.827] | 0.674 [0.651, 0.695] | 0.580 [0.553, 0.604] | 1.72 [1.65, 1.81] | 0.133 [0.118, 0.150] | 15 [12, 18] |
+| Random forest | MOVER (SIS) | 0.849 [0.830, 0.867] | 0.559 [0.532, 0.586] | 0.688 [0.666, 0.710] | 1.45 [1.41, 1.50] | 0.172 [0.167, 0.183] | 22 [20, 25] |
+| Logistic regression | MOVER (EPIC) test | 0.837 [0.810, 0.864] | 0.518 [0.477, 0.557] | 0.688 [0.658, 0.719] | 1.45 [1.39, 1.52] | 0.139 [0.114, 0.162] | 23 [21, 26] |
+| Logistic regression | VitalDB | 0.461 [0.431, 0.492] | 0.825 [0.808, 0.842] | 0.596 [0.565, 0.631] | 1.68 [1.59, 1.77] | 0.000 [0.000, 0.000] | 14 [10, 16] |
+| Logistic regression | MOVER (SIS) | 0.790 [0.769, 0.812] | 0.585 [0.559, 0.611] | 0.685 [0.662, 0.708] | 1.46 [1.41, 1.51] | 0.117 [0.100, 0.130] | 21 [19, 23] |
+
+## Cohort composition and the control side
+
+**Table A8 | Cohort composition, PPV against prevalence, and the control side.** `PPV −
+prevalence` is the lift over the base rate of the cohort the PPV is measured in, because raw PPV
+is not comparable across cohorts whose prevalence runs from 0.359 to 0.560. `Alerted by elapsed
+min 1` is one minus the Kaplan-Meier survival of time to first alert at the first elapsed
+monitoring minute, censored at the end of each case's own window; it is the censoring-aware form
+of Section 4.1's settling. It is **not** the prevalent share of Section 5.1, which uses a
+different numerator and a different denominator; Appendix A.14 sets the two estimands out side by
+side. Intervals are 95% cluster bootstrap.
+
+| Model | Cohort | Event cases | Control cases | Prevalence | PPV − prevalence | Min. above thr., controls (95% CI) | Alerted by elapsed min 1 (95% CI) |
+|---|---|---:|---:|---:|---:|---|---|
+| ITE Transformer | MOVER (EPIC) test | 786 | 618 | 0.560 | +0.065 | 0.150 [0.050, 0.233] | 0.532 [0.497, 0.565] |
+| ITE Transformer | VitalDB | 1007 | 1797 | 0.359 | +0.021 | 0.183 [0.163, 0.233] | 0.460 [0.428, 0.491] |
+| ITE Transformer | MOVER (SIS) | 1409 | 1232 | 0.534 | +0.051 | 0.025 [0.017, 0.047] | 0.308 [0.285, 0.332] |
+| LSTM | MOVER (EPIC) test | 786 | 618 | 0.560 | +0.101 | 0.017 [0.000, 0.027] | 0.228 [0.198, 0.257] |
+| LSTM | VitalDB | 1007 | 1797 | 0.359 | +0.236 | 0.000 [0.000, 0.000] | 0.087 [0.071, 0.105] |
+| LSTM | MOVER (SIS) | 1409 | 1232 | 0.534 | +0.151 | 0.000 [0.000, 0.000] | 0.138 [0.120, 0.157] |
+| XGBoost | MOVER (EPIC) test | 786 | 618 | 0.560 | +0.165 | 0.000 [0.000, 0.000] | 0.188 [0.161, 0.215] |
+| XGBoost | VitalDB | 1007 | 1797 | 0.359 | +0.253 | 0.000 [0.000, 0.000] | 0.062 [0.047, 0.077] |
+| XGBoost | MOVER (SIS) | 1409 | 1232 | 0.534 | +0.180 | 0.000 [0.000, 0.000] | 0.119 [0.101, 0.136] |
+| Random forest | MOVER (EPIC) test | 786 | 618 | 0.560 | +0.143 | 0.000 [0.000, 0.000] | 0.183 [0.157, 0.212] |
+| Random forest | VitalDB | 1007 | 1797 | 0.359 | +0.221 | 0.000 [0.000, 0.000] | 0.101 [0.082, 0.121] |
+| Random forest | MOVER (SIS) | 1409 | 1232 | 0.534 | +0.154 | 0.000 [0.000, 0.000] | 0.166 [0.147, 0.186] |
+| Logistic regression | MOVER (EPIC) test | 786 | 618 | 0.560 | +0.128 | 0.000 [0.000, 0.017] | 0.226 [0.198, 0.255] |
+| Logistic regression | VitalDB | 1007 | 1797 | 0.359 | +0.237 | 0.000 [0.000, 0.000] | 0.036 [0.025, 0.048] |
+| Logistic regression | MOVER (SIS) | 1409 | 1232 | 0.534 | +0.152 | 0.000 [0.000, 0.000] | 0.121 [0.104, 0.138] |
 
 ## Departure timing: searched for, not found
 
@@ -1006,80 +932,154 @@ analyses at a 2.0 scale threshold, a five-minute run length, and a search capped
 The question was pre-specified and the answer constrains Section 4: whatever produces the
 reported lead, it is not the score moving before the monitored variable does.
 
-## Lead time by band, the transformer's three cohorts
+## Alert composition
 
-**Table A9 | Median alert lead time inside quantile-derived bands of observed window, ITE Transformer.** ITE
-Transformer, three held-out cohorts, at the transported 80%-sensitivity operating point.
-Quintile edges are cut within each cell on detected cases; where the observed window is censored
-at the 60-minute alert window the upper quintiles collapse and the realized band count is
-reported rather than assumed. `Observed window, min` is the median observed pre-onset window of that band's cases rather than
-an edge. Intervals are 95% cluster bootstrap over subjects, or over cases in MOVER (SIS). All fifteen cells are Table A1; the detection rate these bands condition on is Table A5.
-Section 3.1 reports the contrast this table carries.
+Section 5.1 reports the prevalent share as a single number per cell. For the transformer that
+share is 8.7, 9.6 and 9.0% in the three cohorts, and removing those cases moves its median lead
+from 24, 17 and 22 minutes to 21, 15 and 19. Splitting detected event cases by when their first
+crossing fell separates alerts that were already active at the first eligible minute from those
+raised while the score was still settling and those raised later, which is the disclosure
+Section 6.2's first item asks for.
 
-| Cohort | Band | n | Observed window, min | Median lead, min (95% CI) | Lead / window (95% CI) |
-|---|---:|---:|---:|---|---|
-| MOVER (EPIC) test | 1 | 139 | 10 | 9 [8, 9] | 0.88 [0.85, 0.89] |
-| MOVER (EPIC) test | 2 | 111 | 19 | 18 [17, 18] | 0.94 [0.94, 0.95] |
-| MOVER (EPIC) test | 3 | 121 | 33 | 31 [29, 32] | 0.97 [0.96, 0.97] |
-| MOVER (EPIC) test | 4 | 240 | 60 | 46 [44, 50] | 0.98 [0.96, 0.98] |
-| VitalDB | 1 | 143 | 7 | 5 [5, 6] | 0.83 [0.83, 0.83] |
-| VitalDB | 2 | 140 | 12 | 10 [10, 11] | 0.91 [0.90, 0.91] |
-| VitalDB | 3 | 132 | 20 | 19 [18, 20] | 0.94 [0.94, 0.95] |
-| VitalDB | 4 | 134 | 40 | 38 [37, 40] | 0.97 [0.97, 0.97] |
-| VitalDB | 5 | 135 | 60 | 59 [57, 60] | 0.98 [0.98, 1.00] |
-| MOVER (SIS) | 1 | 199 | 8 | 6 [5, 6] | 0.80 [0.80, 0.82] |
-| MOVER (SIS) | 2 | 179 | 17 | 14 [13, 15] | 0.86 [0.84, 0.91] |
-| MOVER (SIS) | 3 | 186 | 29 | 27 [26, 28] | 0.94 [0.93, 0.96] |
-| MOVER (SIS) | 4 | 362 | 60 | 46 [43, 49] | 0.95 [0.93, 0.97] |
+**That share and Table A8's `Alerted by elapsed min 1` are different quantities rather than two
+estimates of one.** The prevalent share counts detected event cases whose first crossing falls at
+elapsed minute zero, the first minute of the case's own alert window, over the detected event
+cases of that cell: 53 of 611, 66 of 684 and 83 of 926 for the transformer. Table A8's column
+counts event cases whose first crossing falls at elapsed minute zero **or** minute one, over
+every event case with a positive observed window, detected or not, as one minus the Kaplan-Meier
+survival of time to first alert with each case censored at the end of its own window: 418 of 786,
+463 of 1,007 and 434 of 1,409. Numerator, denominator and conditioning set all differ, and the
+extra minute is the larger of the differences: minute one alone adds 365, 397 and 351 cases,
+which is Section 4.1's settling read on the elapsed axis and not a second estimate of the same
+immediate-alert probability. No case is censored before elapsed minute one in any of the three
+cohorts, so the survival estimate at that mark equals the crude share.
 
-## Cohort composition and the control side
+![](figures/Figure_3_wide.png)
 
-**Table A10 | Cohort composition, PPV against prevalence, and the control side.** `PPV −
-prevalence` is the lift over the base rate of the cohort the PPV is measured in, because raw PPV
-is not comparable across cohorts whose prevalence runs from 0.359 to 0.560. `Alerted by elapsed
-min 1` is one minus the Kaplan-Meier survival of time to first alert at the first elapsed
-monitoring minute, censored at the end of each case's own window; it is the censoring-aware form
-of Section 4.1's settling. It is **not** the prevalent share of Section 5.1, which uses a
-different numerator and a different denominator; Appendix A.11 sets the two estimands out side by
-side. Intervals are 95% cluster bootstrap.
+**Figure A4 | Composition of detected event cases by elapsed monitoring time at the first
+crossing.** Prevalent cases are above threshold at their first eligible minute; warm-up
+cases cross within five minutes of it; settled cases cross later. Five model families,
+three cohorts, at the transported 80%-sensitivity operating point. The composition differs
+sharply across families, in that the transformer's alerts are concentrated in the first five
+minutes, the LSTM's are partly so and the tabular families' are not, while the lead-to-window
+relationship of Section 3 holds in all of them. That is why Section 4 separates the
+transformer's direct mechanism from the cross-family directedness result.
 
-| Model | Cohort | Event cases | Control cases | Prevalence | PPV − prevalence | Min. above thr., controls (95% CI) | Alerted by elapsed min 1 (95% CI) |
-|---|---|---:|---:|---:|---:|---|---|
-| ITE Transformer | MOVER (EPIC) test | 786 | 618 | 0.560 | +0.065 | 0.150 [0.050, 0.233] | 0.532 [0.497, 0.565] |
-| ITE Transformer | VitalDB | 1007 | 1797 | 0.359 | +0.021 | 0.183 [0.163, 0.233] | 0.460 [0.428, 0.491] |
-| ITE Transformer | MOVER (SIS) | 1409 | 1232 | 0.534 | +0.051 | 0.025 [0.017, 0.047] | 0.308 [0.285, 0.332] |
-| LSTM | MOVER (EPIC) test | 786 | 618 | 0.560 | +0.101 | 0.017 [0.000, 0.027] | 0.228 [0.198, 0.257] |
-| LSTM | VitalDB | 1007 | 1797 | 0.359 | +0.236 | 0.000 [0.000, 0.000] | 0.087 [0.071, 0.105] |
-| LSTM | MOVER (SIS) | 1409 | 1232 | 0.534 | +0.151 | 0.000 [0.000, 0.000] | 0.138 [0.120, 0.157] |
-| XGBoost | MOVER (EPIC) test | 786 | 618 | 0.560 | +0.165 | 0.000 [0.000, 0.000] | 0.188 [0.161, 0.215] |
-| XGBoost | VitalDB | 1007 | 1797 | 0.359 | +0.253 | 0.000 [0.000, 0.000] | 0.062 [0.047, 0.077] |
-| XGBoost | MOVER (SIS) | 1409 | 1232 | 0.534 | +0.180 | 0.000 [0.000, 0.000] | 0.119 [0.101, 0.136] |
-| Random forest | MOVER (EPIC) test | 786 | 618 | 0.560 | +0.143 | 0.000 [0.000, 0.000] | 0.183 [0.157, 0.212] |
-| Random forest | VitalDB | 1007 | 1797 | 0.359 | +0.221 | 0.000 [0.000, 0.000] | 0.101 [0.082, 0.121] |
-| Random forest | MOVER (SIS) | 1409 | 1232 | 0.534 | +0.154 | 0.000 [0.000, 0.000] | 0.166 [0.147, 0.186] |
-| Logistic regression | MOVER (EPIC) test | 786 | 618 | 0.560 | +0.128 | 0.000 [0.000, 0.017] | 0.226 [0.198, 0.255] |
-| Logistic regression | VitalDB | 1007 | 1797 | 0.359 | +0.237 | 0.000 [0.000, 0.000] | 0.036 [0.025, 0.048] |
-| Logistic regression | MOVER (SIS) | 1409 | 1232 | 0.534 | +0.152 | 0.000 [0.000, 0.000] | 0.121 [0.104, 0.138] |
+## Replacement estimands, all horizons
 
-## What the label invites, and what the number supports
+**Table A9 | Fixed-horizon detection rate at all seven horizons, and time to first alert.** The
+fixed-horizon detection rate is the share of event cases observed for at least the stated number
+of minutes before onset whose first alert came at least that many minutes before onset. Point
+estimates are shown here; each is a share of the cases in its own column, and its 95% cluster
+bootstrap interval is computed exactly as elsewhere in this appendix. Section 5.3 quotes the
+range across cells at the 10- and 30-minute horizons. `n observed` is the denominator at the
+first and last horizon, and its fall is the reason a single median is not comparable across cohorts. The
+60-minute column is the share of fully observed cases that alerted at the very first opportunity.
 
-**Table A11 | What the label invites, and what the number supports.** Column one is an affordance
-of the reported label in the sense Section 1 defines, not measured comprehension. Column two is what this paper's
-measurement supports in its place, and column three the disclosure that would separate them.
+| Model | Cohort | 5 min | 10 min | 15 min | 20 min | 30 min | 45 min | 60 min | n observed ≥5 → ≥60 |
+|---|---|---|---|---|---|---|---|---|---|
+| ITE Transformer | MOVER (EPIC) test | 0.733 | 0.690 | 0.646 | 0.605 | 0.512 | 0.339 | 0.170 | 786 → 311 |
+| ITE Transformer | VitalDB | 0.638 | 0.560 | 0.509 | 0.463 | 0.390 | 0.261 | 0.154 | 1007 → 429 |
+| ITE Transformer | MOVER (SIS) | 0.594 | 0.547 | 0.504 | 0.469 | 0.377 | 0.247 | 0.125 | 1409 → 665 |
+| LSTM | MOVER (EPIC) test | 0.721 | 0.663 | 0.635 | 0.597 | 0.490 | 0.331 | 0.109 | 786 → 311 |
+| LSTM | VitalDB | 0.343 | 0.278 | 0.265 | 0.223 | 0.173 | 0.102 | 0.030 | 1007 → 429 |
+| LSTM | MOVER (SIS) | 0.453 | 0.392 | 0.346 | 0.319 | 0.253 | 0.167 | 0.047 | 1409 → 665 |
+| XGBoost | MOVER (EPIC) test | 0.688 | 0.651 | 0.615 | 0.575 | 0.484 | 0.367 | 0.119 | 786 → 311 |
+| XGBoost | VitalDB | 0.502 | 0.470 | 0.453 | 0.425 | 0.366 | 0.237 | 0.054 | 1007 → 429 |
+| XGBoost | MOVER (SIS) | 0.656 | 0.597 | 0.565 | 0.520 | 0.460 | 0.326 | 0.080 | 1409 → 665 |
+| Random forest | MOVER (EPIC) test | 0.709 | 0.674 | 0.638 | 0.611 | 0.506 | 0.393 | 0.138 | 786 → 311 |
+| Random forest | VitalDB | 0.589 | 0.559 | 0.559 | 0.530 | 0.478 | 0.347 | 0.103 | 1007 → 429 |
+| Random forest | MOVER (SIS) | 0.736 | 0.674 | 0.640 | 0.600 | 0.526 | 0.403 | 0.114 | 1409 → 665 |
+| Logistic regression | MOVER (EPIC) test | 0.726 | 0.692 | 0.658 | 0.630 | 0.547 | 0.401 | 0.122 | 786 → 311 |
+| Logistic regression | VitalDB | 0.338 | 0.307 | 0.303 | 0.274 | 0.233 | 0.137 | 0.026 | 1007 → 429 |
+| Logistic regression | MOVER (SIS) | 0.664 | 0.611 | 0.573 | 0.546 | 0.474 | 0.353 | 0.093 | 1409 → 665 |
 
-| What the label invites | What the number supports here | The disclosure that would close the gap |
-|:--------------------|:--------------------------------------------|:---------------------------------|
-| The model warns about 24 minutes ahead | A median over detected event cases, itself a window-dependent set, under this cohort's window distribution (Section 3.1) | The pre-onset window distribution, and a window-conditional timing statistic (Section 6.2) |
-| Twenty-four minutes is a property of the model | Within one model and cohort, median lead rises across window bands by 26 to 54 minutes, in 15 of 15 cells (Table A1) | Any single median stratified by the realized available window (Section 6.2) |
-| Twenty-four minutes of usable warning | A lead read at case-level specificity 0.406, the lowest of the five families in that cohort (Table A4) | The operating point reported beside the lead (Sections 4.1, 6.3) |
-| A longer lead indicates a better model | A descriptive association running the other way: lead is opposite to specificity across the fifteen combinations, Spearman −0.803 (Section 4.1) | Lead and operating point reported together, not lead alone (Section 6.3) |
+## The full alert window as a constant
+
+**Table A10 | Event cases observed for the whole 60-minute alert window.** Restricting to these
+cases makes the observation window a constant rather than a covariate, which is the
+full-window restriction of Section 5.3. `n` is the number of event cases observed for the
+whole window and `Detected` the share of them that alert at all.
+The censoring is not independent of the event, because for an event case a short
+observable run-up is an early-onset event rather than missing data, so this describes what the
+rule did under the observation these cohorts supplied. Intervals are 95% cluster bootstrap.
+For the transformer in MOVER (EPIC) the median lead here differs from Table A4's top band by
+seven minutes although the two populations differ by two cases, because the detected
+full-window leads leave a gap between 47 and 54 minutes: 53 of 137 sit at the 60-minute
+ceiling and the lower tail is sparse, so a one-rank shift in the median crosses the gap.
+
+| Model | Cohort | n | Detected | Median lead, min (95% CI) |
+|---|---|---:|---:|---|
+| ITE Transformer | MOVER (EPIC) test | 311 | 0.441 | 47 [33, 59] |
+| ITE Transformer | VitalDB | 429 | 0.247 | 60 [60, 60] |
+| ITE Transformer | MOVER (SIS) | 665 | 0.304 | 57 [51, 59] |
+| LSTM | MOVER (EPIC) test | 311 | 0.598 | 40 [34, 46] |
+| LSTM | VitalDB | 429 | 0.200 | 33 [21, 45] |
+| LSTM | MOVER (SIS) | 665 | 0.433 | 28 [22, 33] |
+| XGBoost | MOVER (EPIC) test | 311 | 0.846 | 40 [34, 44] |
+| XGBoost | VitalDB | 429 | 0.762 | 33 [30, 36] |
+| XGBoost | MOVER (SIS) | 665 | 0.854 | 37 [34, 41] |
+| Random forest | MOVER (EPIC) test | 311 | 0.894 | 41 [35, 45] |
+| Random forest | VitalDB | 429 | 0.851 | 40 [36, 44] |
+| Random forest | MOVER (SIS) | 665 | 0.910 | 42 [39, 45] |
+| Logistic regression | MOVER (EPIC) test | 311 | 0.852 | 42 [36, 45] |
+| Logistic regression | VitalDB | 429 | 0.490 | 31 [26, 37] |
+| Logistic regression | MOVER (SIS) | 665 | 0.857 | 40 [37, 43] |
+
+## Risk-set composition, and what fixing the cohort does
+
+The population trajectory scores every case that has a minute in the bin, so its denominator
+shrinks and its composition shifts as the bin moves away from onset. For an event case the
+observable run-up *is* its time to onset, so a short run-up is not missing data. It is an
+early-onset event, and the far bins keep only the long run-ups. That is the same selection
+that drives Section 3.
+
+**Fixing the cohort moves the trajectory in both directions** (Figure A5). Recomputing the
+same bins on the cases observable back to 60 minutes raises the far end and lowers the near
+end, and the two curves cross at 16.4, 12.6 and 14.9 minutes before onset. The first bin
+reaching AUROC 0.70 moves from 15 minutes in all three cohorts to 20, 35 and 20. Neither
+curve is the true one: which denominator is used is a reporting choice, it changes the
+horizon a reader would quote by up to twenty minutes, and it is not currently disclosed.
+That is the whole of Section 6.2's third item.
+
+**Short and long run-ups are different operations, which is why Section 5.3 calls this censoring
+non-independent.** Splitting event cases at a 40-minute observable run-up, the long group's
+operations are longer in every cohort, by a standardized mean difference of 0.394, 0.515 and
+0.428, the largest imbalance on the list in all three; procedure group and ASA class are also
+imbalanced beyond 0.1 in each. So a case with a short run-up is not a briefly watched version of
+a case with a long one.
+
+![](figures/Figure_A3_wide.png)
+
+**Figure A5 | Population AUROC with its own risk set, event-aligned.** ITE Transformer, 2-minute
+bins from 60 minutes before onset to onset, in three held-out cohorts. Solid and filled is every
+case with a minute in the bin, the convention in the published literature, whose denominator
+varies; dashed and
+open is the cohort fixed to cases observable back to 60 minutes. Bands are 95% cluster bootstrap
+over subjects, or over cases in MOVER (SIS). The lower row is the number of cases contributing to
+each bin, on its own scale per cohort. The dotted line marks 0.5, the solid rule 0.70, and the
+cross marks where the two curves meet.
+
+## The reporting items that came close
+
+**Table A11 | The TRIPOD+AI items that came close and missed.** Main text Section 6.1 discusses items 12e, 15, 23a, 20a, 20b and 14; this table records the remaining items, together with the detail behind those the main text discusses. The item numbering is that of the TRIPOD+AI statement
+[@collins2024tripodai]. This is an author-completed self-assessment of one study, not a validity
+assessment of the standard.
+
+| Item | What it asked for | What it did not ask for |
+|---|---|---|
+| 12f and 12g, recalibration and how evaluation predictions were calculated | Any recalibration arising from evaluation, and how evaluation predictions were computed: calibration and thresholds fitted on the development validation split and transported unchanged, which is reported | Anything about what that disciplined choice implies; it is the exact setting in which Section 3 holds, so doing the right thing here does not help |
+| 20a and 20b, participant flow and characteristics | Participant flow and characteristics *including follow-up time*, answered here with surgery duration and first-onset time | The distribution of the window the alert rule actually searches — the run-up after the induction exclusion, capped at the 60-minute alert window — or any pairing of it with the timing statistic it bounds. This is the closest the standard comes: it asks for the raw material as a cohort descriptor, and never connects it to the timing metric it constrains |
+| 21, event counts | The number of participants and outcome events *in each analysis*, which are reported | The same counts broken out by band of available window. The item's "in each analysis" clause reaches development, tuning and evaluation, not the window strata of a timing statistic |
+| 8c, blinding of outcome assessment | A blinding statement; answered "not applicable" because the outcome is computed from a monitored channel that is also a predictor | The closest the checklist comes to Section 4, and still about blinding rather than about what a timing metric measures |
+| 15, model output | Details and rationale for classification, and how any threshold was identified; answered with the transported threshold itself | Joint presentation or interpretation of a lead-time summary with the realized operating-point metrics that threshold defines, which is where the artifact lives (Table A7) |
 
 ## Multiplicity
 
 The two references of Section 3.3 form one Benjamini–Hochberg family of 75 formal tests,
 adjusted within that family, of which 57 are significant at *q* < 0.05. The stratification of Section 3.1 produces intervals rather than tests and does not enter the family.
 Every bootstrap interval in this paper, including the fifteen window-gradient intervals of
-Table A1, is a **pointwise descriptive interval**: no family-wise coverage claim is made across
+Table A2, is a **pointwise descriptive interval**: no family-wise coverage claim is made across
 the fifteen contrasts, and "each interval excludes zero" is fifteen separate statements rather
 than one simultaneous one.
 
