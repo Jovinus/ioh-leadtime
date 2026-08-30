@@ -220,6 +220,30 @@ def _anchor_appendix_exhibits(text: str) -> tuple[str, int]:
             + "\n\\end{minipage}\n\n\\vspace{0.8em}"
         )
 
+    # Each appendix subsection starts on a fresh page.  Nearly every one is a heading plus a
+    # single exhibit and its commentary, so a break between them presents one self-contained
+    # result per page instead of running the tail of one topic into the head of the next.
+    # The cost is slack at the foot of the short subsections, which is the point: \raggedbottom
+    # is already set, so the space collects there rather than stretching the paragraphs.
+    #
+    # \clearpage rather than \newpage: the appendix figures are floats, and \newpage leaves a
+    # pending float to be flushed onto the following page, ahead of the heading it belongs
+    # under.  A.1 is skipped -- it already follows the \clearpage that opens the appendix, and
+    # breaking before it too would strand the appendix title alone on a page.
+    seen = 0
+
+    def _break(match: "re.Match[str]") -> str:
+        nonlocal seen
+        seen += 1
+        return match.group(0) if seen == 1 else "\n\\clearpage\n" + match.group(1)
+
+    tail, n_seen = re.subn(r"\n(\\subsection\{)", _break, tail)
+    if n_seen - 1 != 19:
+        raise AssertionError(
+            f"expected 19 page breaks, one before each appendix subsection after A.1, "
+            f"got {n_seen - 1}"
+        )
+
     tail, n_tables = APPENDIX_TABLE.subn(repl, tail)
     # [H] pins the figure exactly where its subsection puts it, which is the requirement
     # here: nearly every appendix subsection is a heading plus one exhibit, and the exhibit
