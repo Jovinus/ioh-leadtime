@@ -59,7 +59,7 @@ ANSWERS: list[tuple[str, str]] = [
         "supported: Section 2 gives the task, cohorts, scoring policy and alert rule; "
         "Appendix A.1 gives the split sizes and seed, the eligibility rules, the twenty "
         "inputs and how each family consumes them, every architecture and training "
-        "hyperparameter, and the software versions; Appendix A.19 records the seeds and "
+        "hyperparameter, and the software versions; Appendix A.18 records the seeds and "
         "resampling counts; both datasets are available under their providers' access "
         "procedures; and the analysis code is released at the repository "
         "Appendix A.1 names. Bit-for-bit reproduction from raw data is not supported here, "
@@ -102,10 +102,10 @@ ANSWERS: list[tuple[str, str]] = [
         "distribution rather than as symmetric error bars. The cross-combination rank "
         "correlations of Section 4 are reported as point estimates with no accompanying "
         "test, because the fifteen combinations are not independent replications; "
-        "Appendix A.19 records why. Every "
+        "Appendix A.18 records why. Every "
         "interval is pointwise and descriptive, and no family-wise coverage is claimed "
-        "across the fifteen cells. Appendix A.18 records the multiplicity family and its "
-        "Benjamini--Hochberg adjustment, and Appendix A.19 the seeds and every "
+        "across the fifteen cells. Appendix A.17 records the multiplicity family and its "
+        "Benjamini--Hochberg adjustment, and Appendix A.18 the seeds and every "
         "resampling count.",
     ),
     # 8 Compute

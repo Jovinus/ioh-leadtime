@@ -209,7 +209,7 @@ a badly placed threshold. A reader given only "24 minutes" sees none of this.
 three minutes of its first scored minute the transformer's median score clears its own threshold
 in every cohort, in event and control cases alike; in MOVER (EPIC) it rises from 0.530 to 0.938
 in one minute in control cases and from 0.541 to 0.951 in event cases, against a threshold of
-**0.894** (Figure A1, Appendix A.7). A case whose score settles above threshold that early
+**0.894** (Figure A1, Appendix A.6). A case whose score settles above threshold that early
 registers its first crossing as soon as its alert window opens, so its lead is whatever that
 window holds. In the median event case **20.0 to 52.3% of the transformer's monitored minutes**, and in the
 median control case **2.5 to 18.3%**, sit at or above threshold, against 0 to 26.7% and 0 to 1.7%
@@ -231,14 +231,14 @@ the limiting case rather than the exception.
 **None of this is a statement about physiology.** MAP is both an input channel and the quantity
 the label is computed from, so nothing here shows that a score foresees a physiological process.
 Under a pre-specified rule the score does not depart from its own baseline before MAP departs from
-its (Appendix A.12).
+its (Appendix A.11).
 
 # 5 Two natural repairs, and why neither works
 
 **Prevalent alerts are not the explanation.** Alerts already active at the first eligible minute
 are **2.6 to 25.5%** of detected event cases across the fifteen cells, and recomputing the median
 lead on the remaining alerts alone costs **0 to 3 minutes in all fifteen cells** (Figure 3,
-Appendix A.13). The window dependence is carried by ordinary cases. For the transformer,
+Appendix A.12). The window dependence is carried by ordinary cases. For the transformer,
 prevalence stays low because
 most detected event cases have windows shorter than 60 minutes that open while the score is still
 settling: a prevalent alert and a warm-up crossing are the same behavior either side of the first
@@ -275,7 +275,7 @@ for at least *X* minutes before onset, runs 0.278 to 0.692 at a 10-minute horizo
 lead of the five families in all three cohorts, 47, 60 and 57 minutes, while detecting only
 0.441, 0.247 and 0.304 of those cases against 0.762 to 0.910 for XGBoost and the random forest
 (Table A9). The restriction discards 53 to 60% of event cases, the short-window cases a deployed
-monitor will meet, and those cases differ in surgery duration and case mix (Appendix A.16).
+monitor will meet, and those cases differ in surgery duration and case mix (Appendix A.15).
 Neither statistic repairs the pooled median; both make visible what it hides.
 
 # 6 What TRIPOD+AI asks for, and four disclosures
@@ -354,7 +354,7 @@ already produces; none requires a new experiment.
    choice alone.
 4. **A path-versus-displacement summary for any score read as a trend**, so that a series
    traveling much farther than its net displacement is not described as rising (Table A5,
-   Appendix A.9). This is closer to a diagnostic than a disclosure, and the weakest of the four.
+   Appendix A.8). This is closer to a diagnostic than a disclosure, and the weakest of the four.
 
 **Four items are a burden, so they should replace text rather than add to it.** Each is one
 figure or one row beside a number a paper already reports; if there is room for only one, it
@@ -392,10 +392,6 @@ items are what it would test. The four items are demonstrated here, not validate
 settings, and three cohorts in two countries still give one procedure setting and one monitored
 variable. The seven reports of Table 3 show that the omission occurs, not how
 often; a systematic survey of reported lead times would.
-
-# Acknowledgments and Disclosure of Funding
-
-This work received no funding. The authors declare no competing interests.
 
 # Appendix A: methods and complete per-cell results
 
@@ -602,14 +598,6 @@ check that the denominators are the same event cases. Intervals are 95% cluster 
 | Logistic regression | MOVER (SIS) | 2 | 285 | 221 | 25 | 0.775 [0.727, 0.821] | 14 [12, 16] |
 | Logistic regression | MOVER (SIS) | 3 | 837 | 714 | 60 | 0.853 [0.829, 0.876] | 36 [34, 38] |
 
-## The relationship in all five families
-
-Figure 1 plots the transformer in three cohorts. The lead-to-window relationship it shows is
-not particular to that model: in the per-case scatter for MOVER (EPIC) test it is present in
-every family, with the transformer the limiting case rather than the exception (Figure 2, in the
-main text). Figure 2 covers that cohort only; the other two are in Table A1, where the gradient is positive with its interval
-excluding zero in every cell.
-
 ## Both references, all fifteen cells
 
 **Table A4 | Both references, all fifteen cells.** Observed ratio against the
@@ -704,7 +692,7 @@ window and not an approach to anything. Figure A1 plots medians and this figure 
 two are not interchangeable here. And the two figures use different alignments: Figure A1's
 axis is elapsed time from the case's first scored minute and covers the first ten minutes of
 the record, where the transformer has just settled above its own 0.894 threshold, whereas the bins here
-sit far later in the case, where its event mean is 0.383. **The two are not in conflict, and
+sit far later in the case: in MOVER (EPIC), 60 minutes before onset, its event mean is 0.383. **The two are not in conflict, and
 the length of the plateau is what reconciles them.** The median score holds at or above the
 transported threshold through elapsed minute 24, 21 and 17 in event cases and 23, 20 and 16
 in controls, then falls to 0.03 to 0.31 by minute 30. Figure A1 covers the first ten of those
@@ -804,7 +792,7 @@ is not comparable across cohorts whose prevalence runs from 0.359 to 0.560. `Ale
 min 1` is one minus the Kaplan-Meier survival of time to first alert at the first elapsed
 monitoring minute, censored at the end of each case's own window; it is the censoring-aware form
 of Section 4's settling. It is **not** the prevalent share of Section 5, which uses a
-different numerator and a different denominator; Appendix A.13 sets the two estimands out side by
+different numerator and a different denominator; Appendix A.12 sets the two estimands out side by
 side. Intervals are 95% cluster bootstrap.
 
 | Model | Cohort | Event cases | Control cases | Prevalence | PPV − prevalence | Min. above thr., controls (95% CI) | Alerted by elapsed min 1 (95% CI) |

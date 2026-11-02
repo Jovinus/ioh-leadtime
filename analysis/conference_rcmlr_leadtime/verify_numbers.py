@@ -763,24 +763,24 @@ def main() -> int:
         event_n.append(len(events))
         minute_one.append(int((elapsed == 1).sum()))
     present(
-        "A.13 prevalent numerators",
+        "A.12 prevalent numerators",
         f"{prevalent[0]} of {detected_n[0]:,}, {prevalent[1]} of {detected_n[1]:,} and "
         f"{prevalent[2]} of {detected_n[2]:,} for the transformer",
     )
     present(
-        "A.13 elapsed-minute-one numerators",
+        "A.12 elapsed-minute-one numerators",
         f"{by_min1[0]} of {event_n[0]:,}, {by_min1[1]} of {event_n[1]:,} and "
         f"{by_min1[2]} of {event_n[2]:,}",
     )
     present(
-        "A.13 minute-one contribution",
+        "A.12 minute-one contribution",
         f"minute one alone adds {minute_one[0]}, {minute_one[1]} and {minute_one[2]} cases",
     )
     km = pd.read_csv(N / "n5_time_to_alert" / "n5_time_to_alert.csv")
     km = km[km["family"] == "transformer"].set_index("cohort")
     for cohort, numerator, denominator in zip(COHORT_ORDER, by_min1, event_n):
         check(
-            f"A.12 KM equals the crude share, {cohort}",
+            f"A.11 KM equals the crude share, {cohort}",
             abs((1 - km.loc[cohort, "km_unalerted_by_min1"]) - numerator / denominator) < 5e-4,
             "one minus the survival at minute 1 to equal the crude cumulative share",
         )
@@ -792,7 +792,7 @@ def main() -> int:
     )
     duration = balance[balance["variable"].str.startswith("surgery_min")].set_index("cohort")
     present(
-        "A.16 surgery-duration imbalance",
+        "A.15 surgery-duration imbalance",
         "by a standardized mean difference of "
         + ", ".join(f"{duration.loc[c, 'smd']:.3f}" for c in COHORT_ORDER[:2])
         + f" and {duration.loc[COHORT_ORDER[2], 'smd']:.3f}",
@@ -800,7 +800,7 @@ def main() -> int:
     for cohort in COHORT_ORDER:
         rows = balance[balance["cohort"] == cohort].dropna(subset=["smd"])
         check(
-            f"A.15 duration is the largest imbalance, {cohort}",
+            f"A.14 duration is the largest imbalance, {cohort}",
             rows["smd"].abs().idxmax() == duration.loc[cohort].name
             or rows.loc[rows["smd"].abs().idxmax(), "variable"].startswith("surgery_min"),
             "operation length to be the largest standardized mean difference",
@@ -811,15 +811,15 @@ def main() -> int:
     # is asserted now is the disclosure itself -- that it was computed, is not reported, and
     # why -- plus the two counts the paper DOES rely on.
     present(
-        "A.19 discloses the withdrawn permutation",
+        "A.18 discloses the withdrawn permutation",
         "A permutation of the pairing was computed while this analysis was being developed, "
         "and is not reported",
     )
     present(
-        "A.19 states the reported resampling counts",
+        "A.18 states the reported resampling counts",
         "Cluster bootstraps use 2,000 replicates",
     )
-    present("A.19 permutations per cell", "draw 1,000 permutations per cell")
+    present("A.18 permutations per cell", "draw 1,000 permutations per cell")
     check(
         "no withdrawn permutation count survives anywhere in the paper",
         "10,000" not in PAPER,
@@ -833,11 +833,11 @@ def main() -> int:
     n_long = pd.read_csv(N / "collect_results" / "n_results_long.csv")
     adjusted = n_long[n_long["q_value"].notna()]
     present(
-        "A.18 BH family size",
+        "A.17 BH family size",
         f"one Benjamini\u2013Hochberg family of {len(adjusted)} formal tests",
     )
     present(
-        "A.18 significant after adjustment",
+        "A.17 significant after adjustment",
         f"of which {int((adjusted['q_value'] < 0.05).sum())} are significant at *q* < 0.05",
     )
 
@@ -925,6 +925,16 @@ def main() -> int:
         a8_rows >= 5,
         f"Table A10 to carry its rows, got {a8_rows}",
     )
+
+    # A.7: the transformer's event mean 60 minutes before onset in MOVER (EPIC).
+    a4m = pd.read_csv(REPO / "analysis" / "patient_trajectory_2026" / "a4_event_control_divergence"
+                      / "a4_event_control_means.csv")
+    cell60 = a4m[(a4m["family"] == "transformer") & (a4m["cohort"] == "epic_test")
+                 & (a4m["grid"] == "published_13_bin") & (a4m["bin_center_min"] == 60)]
+    assert len(cell60) == 1, "expected one 60-minute transformer/EPIC bin"
+    present("A.7 transformer event mean at 60 min, MOVER (EPIC)",
+            f"in MOVER (EPIC), 60 minutes before onset, its event mean is "
+            f"{cell60['mean_score_event'].iloc[0]:.3f}")
 
     # ---- Camera-ready additions (2026-11-02): case-level AUROC and the usable-model rows --
     auroc = pd.read_csv(B / "b5_case_auroc" / "b5_case_auroc.csv").set_index(["family", "cohort"])

@@ -378,8 +378,9 @@ def main() -> None:
         count=1,
         flags=re.DOTALL,
     )
-    if n_ack != 1:
-        raise AssertionError("acknowledgments section not converted to the ack environment")
+    # The section is optional (the camera-ready carries none); convert it only if present.
+    if n_ack > 1:
+        raise AssertionError("more than one acknowledgments section")
     # Section numbers come from LaTeX, so strip the ones carried in the headings.
     body = re.sub(r"\\section\{(\d+)\s+", r"\\section{", body)
     body = re.sub(r"\\subsection\{(\d+\.\d+)\s+", r"\\subsection{", body)
