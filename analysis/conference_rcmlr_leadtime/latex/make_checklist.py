@@ -183,9 +183,7 @@ ANSWERS: list[tuple[str, str]] = [
         "No large language model is a component of the methods. The five families evaluated "
         "are a transformer over irregularly sampled physiological triplets, an LSTM, "
         "XGBoost, a random forest and logistic regression, and no LLM enters the cohort "
-        "construction, the scoring policy, the alert rule or the reference constructions. "
-        "Coding assistants were used to implement author-specified analyses and to draft and "
-        "edit text, as the acknowledgments declare; none is part of the methods.",
+        "construction, the scoring policy, the alert rule or the reference constructions.",
     ),
 ]
 
