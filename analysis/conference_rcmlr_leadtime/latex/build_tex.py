@@ -345,7 +345,7 @@ def main() -> None:
             table = table.replace("\\begin{longtable}[]", "\\begin{tabular}", 1)
             table = table.replace("\\end{longtable}", "\\end{tabular}", 1)
             table = re.sub(r"\n\\end(?:head|firsthead|lastfoot|foot)\n", "\n", table)
-            return ("\\begin{table}[t]\n" + m.group("caption").strip()
+            return ("\\begin{table}[H]\n" + m.group("caption").strip()
                     + "\n\n\\vspace{0.4em}\n\\centering\\footnotesize\n" + table
                     + "\n\\end{table}")
         _head, n_body_tables = re.subn(
@@ -358,7 +358,10 @@ def main() -> None:
         # Camera-ready: body figures float ([!tb]). Pinned with [H], each one left a large
         # stretch of white on its page under \flushbottom once the body had three figures and
         # three tables. The appendix keeps [H] so each exhibit stays under its own heading.
-        _head = _head.replace("\\begin{figure}[H]", "\\begin{figure}[!tb]")
+        # Superseded the same day: floating body exhibits to the page top split the Section 1
+        # findings list around Table 1. Body exhibits now stay exactly where the text puts them
+        # ([H], as emitted), and main.tex sets \\raggedbottom so the slack collects at the foot
+        # of a page instead of stretching the gaps between paragraphs.
         body = _head + "\\section{Appendix A:" + _tail
 
     # The markdown abstract is a section; LaTeX wants the abstract environment.

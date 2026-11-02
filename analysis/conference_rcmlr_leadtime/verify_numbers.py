@@ -306,13 +306,13 @@ def main() -> int:
         "transformer above-threshold share",
         f"**{tr['median_above_fraction_events'].min() * 100:.1f} to "
         f"{tr['median_above_fraction_events'].max() * 100:.1f}% of the transformer's monitored "
-        f"minutes**, and in the median control case "
+        f"minutes** sit at or above threshold; in the median control case, "
         f"**{tr['median_above_fraction_controls'].min() * 100:.1f} to "
         f"{tr['median_above_fraction_controls'].max() * 100:.1f}%**",
     )
     present(
         "other families above-threshold share",
-        f"against {others['median_above_fraction_events'].min() * 100:.0f} to "
+        f"For the other four families these are {others['median_above_fraction_events'].min() * 100:.0f} to "
         f"{others['median_above_fraction_events'].max() * 100:.1f}% and "
         f"{others['median_above_fraction_controls'].min() * 100:.0f} to "
         f"{others['median_above_fraction_controls'].max() * 100:.1f}%",
@@ -419,7 +419,7 @@ def main() -> int:
     increased = int((d_lead > 0).sum())
     present(
         "suppression cells increased",
-        f"in {WORDS[increased]} cells *increasing* it",
+        f"in {WORDS[increased]} cells the lead *increases*",
     )
 
     # ---- §6.2: N(t) shrinkage ---------------------------------------------------------------
@@ -649,8 +649,7 @@ def main() -> int:
     longest = lead.idxmax()
     present(
         "abstract longest lead and its specificity",
-        f"the longest median lead, {lead.max():.0f} minutes, was read at a "
-        f"specificity of {spec[longest]:.3f}",
+        f"lead, {lead.max():.0f} minutes, came with a specificity of {spec[longest]:.3f}",
     )
     check(
         "0.406 is not the minimum specificity",
@@ -701,13 +700,14 @@ def main() -> int:
     # reported is checked below, which is what keeps the withdrawal honest.
     present(
         "lead vs specificity across combinations",
-        f"(Spearman \u2212{abs(pooled.spearman_lead_vs_specificity):.3f}; discordant in "
+        f"(Spearman \u2212{abs(pooled.spearman_lead_vs_specificity):.3f}; in "
         f"{int(pooled.n_pairs_longer_lead_lower_specificity)} of "
-        f"{int(pooled.n_untied_pairs)} untied pairs)",
+        f"{int(pooled.n_untied_pairs)} untied pairs of cells, the one with the longer lead had the "
+        f"lower specificity)",
     )
     present(
         "lead vs PPV lift",
-        f"to PPV in excess of prevalence (\u2212"
+        f"positive predictive value (PPV) above the event rate (\u2212"
         f"{abs(pooled.spearman_lead_vs_ppv_lift):.3f})",
     )
     present(
@@ -873,7 +873,7 @@ def main() -> int:
     present(
         "abstract gradient range",
         f"rose by {summary['lead_gradient_min'].min():.0f} to "
-        f"{summary['lead_gradient_min'].max():.0f} minutes from the shortest",
+        f"{summary['lead_gradient_min'].max():.0f} minutes from the patients observed for the shortest",
     )
 
     # Counts the paper states about its own structure, each against the structure itself.
@@ -890,7 +890,7 @@ def main() -> int:
     )
     check(
         "the abstract's response count agrees with Section 5's heading",
-        (f"{WORDS[2].capitalize()} natural repairs leave the dependence in place" in PAPER)
+        (f"{WORDS[2].capitalize()} natural repairs, discounting" in PAPER)
         and (f"# 5 {WORDS[2].capitalize()} natural repairs" in _RAW),
         "the abstract and Section 5's heading to name the same number of responses",
     )
