@@ -305,9 +305,10 @@ def main() -> int:
     present(
         "transformer above-threshold share",
         f"**{tr['median_above_fraction_events'].min() * 100:.1f} to "
-        f"{tr['median_above_fraction_events'].max() * 100:.1f}% of the transformer's event "
-        f"minutes and {tr['median_above_fraction_controls'].min() * 100:.1f} to "
-        f"{tr['median_above_fraction_controls'].max() * 100:.1f}% of its control minutes",
+        f"{tr['median_above_fraction_events'].max() * 100:.1f}% of the transformer's monitored "
+        f"minutes**, and in the median control case "
+        f"**{tr['median_above_fraction_controls'].min() * 100:.1f} to "
+        f"{tr['median_above_fraction_controls'].max() * 100:.1f}%**",
     )
     present(
         "other families above-threshold share",
@@ -344,11 +345,14 @@ def main() -> int:
         f"+{b3_tr['directedness_median'].max():.3f}, path per unit net displacement "
         f"{b3_tr['path_per_net'].min():.1f} to {b3_tr['path_per_net'].max():.1f})",
     )
+    # Camera-ready review: logistic regression is not the least volatile family in every
+    # cohort (random forest is, in two), so the paper now states the tabular families' range.
+    b3_tab = b3[b3["family"].isin(["xgb", "rf", "logreg"])]
     present(
-        "logreg least volatile",
-        f"(+{b3_lr['directedness_median'].min():.3f} to "
-        f"+{b3_lr['directedness_median'].max():.3f}, "
-        f"{b3_lr['path_per_net'].min():.1f} to {b3_lr['path_per_net'].max():.1f})",
+        "tabular families least volatile",
+        f"(+{b3_tab['directedness_median'].min():.3f} to "
+        f"+{b3_tab['directedness_median'].max():.3f}, {b3_tab['path_per_net'].min():.1f} to "
+        f"{b3_tab['path_per_net'].max():.1f})",
     )
     steps = int(b3["median_n_steps"].iloc[0])
     present("median steps", f"median {steps} steps per episode")
@@ -697,7 +701,7 @@ def main() -> int:
     # reported is checked below, which is what keeps the withdrawal honest.
     present(
         "lead vs specificity across combinations",
-        f"(Spearman \u2212{abs(pooled.spearman_lead_vs_specificity):.3f}; "
+        f"(Spearman \u2212{abs(pooled.spearman_lead_vs_specificity):.3f}; discordant in "
         f"{int(pooled.n_pairs_longer_lead_lower_specificity)} of "
         f"{int(pooled.n_untied_pairs)} untied pairs)",
     )

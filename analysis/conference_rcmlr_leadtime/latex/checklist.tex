@@ -7,7 +7,7 @@
 \item {\bf Claims}
     \item[] Question: Do the main claims made in the abstract and introduction accurately reflect the paper's contributions and scope?
     \item[] Answer: \answerYes{}
-    \item[] Justification: The abstract and Section 1 state the four contributions and their scope, and both say the paper measures neither clinician comprehension nor physiology. Section 3 and Section 7 distinguish the observed lead--window association from what the upward-biased references can establish, and Section 4 treats the cross-family score-path property as descriptive rather than causal.
+    \item[] Justification: The abstract and Section 1 state the four findings and their scope. Section 4 states that the paper makes no claim about physiology and Section 7 that it measures no reader comprehension. Section 3 and Section 7 distinguish the observed lead--window association from what the upward-biased references can establish, and Section 4 treats the lead--specificity ordering as descriptive rather than causal.
     \item[] Guidelines:
     \begin{itemize}
         \item The answer \answerNA{} means that the abstract and introduction do not include the claims made in the paper.
@@ -19,7 +19,7 @@
 \item {\bf Limitations}
     \item[] Question: Does the paper discuss the limitations of the work performed by the authors?
     \item[] Answer: \answerYes{}
-    \item[] Justification: Section 7 is a separate limitations section covering the retrospective design, the single outcome definition, single training seed and operating-point family, the the shared hospital of two cohorts, a weak headline exemplar, reference upward bias, the single clinical domain, the non-systematic literature sample, and the unvalidated communication and reporting proposals.
+    \item[] Justification: Section 7 is a separate limitations section covering the retrospective design, the single outcome definition, single training seed and sensitivity target, the shared hospital of two cohorts, a weak headline exemplar, reference upward bias, the single clinical domain, the non-systematic literature sample, and the unvalidated communication and reporting proposals.
     \item[] Guidelines:
     \begin{itemize}
         \item The answer \answerNA{} means that the paper has no limitation while the answer \answerNo{} means that the paper has limitations, but those are not discussed in the paper. 
@@ -97,7 +97,7 @@
 \item {\bf Experiment statistical significance}
     \item[] Question: Does the paper report error bars suitably and correctly defined or other appropriate information about the statistical significance of the experiments?
     \item[] Answer: \answerYes{}
-    \item[] Justification: Every interval in the paper is a 95\% cluster bootstrap on the clustering unit named in Section 2, the subject for two cohorts and the case for MOVER (SIS), at 2,000 replicates. The two references of Section 3 use 1,000 permutations per cell, and are reported as the 2.5th and 97.5th percentiles of the reference distribution rather than as symmetric error bars. The cross-combination rank correlations of Section 4 are reported as point estimates with no accompanying test, because the fifteen combinations are not independent replications; Appendix A.19 records why. Every interval is pointwise and descriptive, and no family-wise coverage is claimed across the fifteen cells. Appendix A.18 records the multiplicity family and its Benjamini--Hochberg adjustment, and Appendix A.19 the seeds and every resampling count.
+    \item[] Justification: Every confidence interval in the paper is a 95\% cluster bootstrap on the clustering unit named in Section 2, the subject for two cohorts and the case for MOVER (SIS), at 2,000 replicates. The two references of Section 3 use 1,000 permutations per cell, and are reported as the 2.5th and 97.5th percentiles of the reference distribution rather than as symmetric error bars. The cross-combination rank correlations of Section 4 are reported as point estimates with no accompanying test, because the fifteen combinations are not independent replications; Appendix A.19 records why. Every interval is pointwise and descriptive, and no family-wise coverage is claimed across the fifteen cells. Appendix A.18 records the multiplicity family and its Benjamini--Hochberg adjustment, and Appendix A.19 the seeds and every resampling count.
     \item[] Guidelines:
     \begin{itemize}
         \item The answer \answerNA{} means that the paper does not include experiments.

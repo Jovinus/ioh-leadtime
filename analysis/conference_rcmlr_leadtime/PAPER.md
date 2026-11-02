@@ -24,8 +24,8 @@ band in all fifteen model-by-cohort combinations. Longer leads also came with wo
 points: median lead ran opposite to case-level specificity (Spearman −0.803), and the longest
 median lead, 24 minutes, was read at a specificity of 0.406. Two natural repairs leave the
 dependence in place. TRIPOD+AI asks for neither the window distribution nor the operating point
-beside the lead, and none of seven published lead-time reports we examined summarizes the
-observation window or stratifies the lead by it. We propose four disclosures that make a reported lead time interpretable.
+beside the lead, and none of seven published lead-time reports we examined reports the window
+distribution beside the lead or stratifies the lead by it. We propose four disclosures that would make a reported lead time interpretable.
 
 # 1 Introduction
 
@@ -33,9 +33,9 @@ observation window or stratifies the lead by it. We propose four disclosures tha
 during care is asked how early it warns, and the usual answer is the **median alert lead time**:
 the interval between the first minute a case's score crosses an alert threshold and the onset of
 the event, taken over the event cases the model detected. It is reported for sepsis
-[@wong2021sepsis], for acute kidney injury [@lee2026aki], and for intraoperative hypotension,
-where a commercial index has been evaluated on how far ahead it warns
-[@hatib2018hpi; @davies2020hpi; @wijnberge2020hype; @maheshwari2020hpi]. The label is already
+[@wong2021sepsis] and acute kidney injury [@lee2026aki], and in intraoperative hypotension a
+commercial index is described by how far ahead it warns [@hatib2018hpi; @davies2020hpi] and has
+been tested in trials [@wijnberge2020hype; @maheshwari2020hpi]. The label is already
 plain language, so it travels well beyond the paper that computed it: "the system warns a median
 of 24 minutes ahead" reads as a property of the system, to a clinician, a purchaser or a
 regulator alike.
@@ -56,14 +56,14 @@ measurements support, and column three the disclosure that would separate the tw
 |:--------------------|:--------------------------------------------|:---------------------------------|
 | The model warns about 24 minutes ahead | A median over detected event cases, itself a window-dependent set, under this cohort's window distribution (Section 3) | The pre-onset window distribution, and a window-conditional timing statistic (Section 6.3) |
 | Twenty-four minutes is a property of the model | Within one model and cohort, median lead rises across window bands by 26 to 54 minutes, in 15 of 15 cells (Table 2) | Any single median stratified by the realized available window (Section 6.3) |
-| Twenty-four minutes of usable warning | A lead read at case-level specificity 0.406, the lowest of the five families in that cohort (Table 2) | The operating point reported beside the lead (Section 4) |
+| Twenty-four minutes of usable warning | A lead read at case-level specificity 0.406, the lowest of the five families in that cohort (Table 2) | The operating point reported beside the lead (Section 6.3) |
 | A longer lead indicates a better model | Lead runs opposite to specificity across the fifteen combinations, Spearman −0.803 (Section 4) | Lead and operating point reported together, not lead alone (Section 6.3) |
 
 **What we find.** On three perioperative cohorts and five model families:
 
 1. **The dependence is large**: up to 54 minutes within one model and cohort (Section 3).
 2. **Longer reported leads came with worse operating points** (Section 4).
-3. **Two natural repairs do not remove it** (Section 5).
+3. **Two natural repairs do not remove the window dependence** (Section 5).
 4. **Neither TRIPOD+AI nor published reports provide the window**, and we propose four
    disclosures that would (Section 6).
 
@@ -98,7 +98,7 @@ split (1,404 cases, 786 with a sustained event) and on two external cohorts: Vit
 MOVER [@samad2023mover; @samad2023moverdataset], with 2,641 cases and 1,409 events. The two MOVER
 arms come from one hospital and were de-identified separately, so patient overlap between them
 cannot be measured; VitalDB, from a different country and health system, has no such question.
-All intervals are 95% cluster bootstrap, over patients, or over cases in MOVER (SIS), which
+All confidence intervals are 95% cluster bootstrap, over patients, or over cases in MOVER (SIS), which
 releases no usable subject key.
 
 **Models.** Five families: a transformer over irregularly sampled (type, time, value) triplets
@@ -136,7 +136,8 @@ a description of the cohort's window distribution as of the model.
 **Table 2 | Lead time, its window dependence, and the operating point it was read at.** One row
 per model and cohort, at the transported 80%-sensitivity threshold. `Band lead` is the
 median lead, in minutes, in the shortest and the longest band of available pre-onset window, and `Rise` their
-difference (intervals, Table A1). `Pooled lead` is the single median, in minutes, a paper would report.
+difference (intervals, Table A1). `Pooled lead` is the single median, in minutes, a paper would report. `Rise` is computed on
+unrounded medians, so it can differ by one minute from the displayed endpoints (Table A1).
 Sensitivity and specificity are case-level (Section 2; intervals, Table A6). `Case AUROC` is the
 threshold-free discrimination of the case's maximum score over its alert window, the statistic
 the alert rule thresholds, with its 95% cluster bootstrap interval.
@@ -169,14 +170,16 @@ medians of Table A2 with 95% cluster bootstrap intervals.
 
 **The same fact as a ratio.** The median ratio of a case's lead to its own window is 0.455 to
 0.944, and the Spearman correlation between lead and window is 0.501 to 0.906, across the fifteen
-cells; the transformer is the extreme at 0.899 to 0.944. Detection also depends on window length
+cells; the transformer's ratio is the highest, 0.899 to 0.944. Detection also depends on window length
 (Table A3), so for the tabular families part of the rise may be survivorship.
 
-**How much of this exceeds the ceiling, we cannot say, and the reporting point does not depend
-on it.** Because a lead cannot exceed its window, some positive dependence arises by
+**How much of this is the model rather than the ceiling, we cannot say, and the reporting point
+does not depend on it.** Because a lead cannot exceed its window, some positive dependence arises by
 construction. A reference that places a pseudo-crossing uniformly on each case's window has
 median ratio 0.518 to 0.534, which the transformer's observed ratio exceeds by **+0.372 to
-+0.421**; in **2 of 15** cells, all VitalDB, the observed ratio sits *below* it. A cross-case
++0.421**; in **2 of 15** cells, both VitalDB, the observed ratio sits *below* it. Exceeding this
+reference shows only that first crossings come early in the window, which a score that settles
+above threshold produces without any patient-specific timing (Section 4). A cross-case
 shuffle that gives each case another case's score sequence reproduces the association: its median
 ratio is **0.72 to 0.97** and its Spearman **0.63 to 0.94**, at or above the observed value in
 **15 of 15** cells, and a length-matched variant is **not distinguishable from the observed
@@ -188,14 +191,14 @@ their windows did.
 # 4 Longer reported leads came with worse operating points
 
 **Across the fifteen cells, median lead runs opposite to case-level specificity** (Spearman
-−0.803; 86 of 99 untied pairs) and to PPV in excess of prevalence (−0.719), and the ordering holds
-within each cohort (9 of 9, 8 of 10 and 9 of 9 untied pairs; Spearman −0.97, −0.70 and −0.97).
+−0.803; discordant in 86 of 99 untied pairs) and to PPV in excess of prevalence (−0.719), and the ordering holds
+within each cohort (discordant in 9 of 9, 8 of 10 and 9 of 9 untied pairs; Spearman −0.97, −0.70 and −0.97).
 This is descriptive: the cells share cohorts and fits, and transported thresholds give realized
 sensitivities from 0.461 to 0.849 (Table 2). But it is enough for reporting: **a reader ranking
-these systems by their published lead would be ranking them against their operating points.**
+these systems by their reported lead would be ranking them against their operating points.**
 
-**The transformer has the longest leads, the lowest specificity and the lowest case-level AUROC
-in every cohort.** Its median leads, 24, 17 and 22 minutes, are the longest of the five families
+**The transformer has the longest or tied-longest leads, the lowest specificity and the lowest
+case-level AUROC in every cohort.** Its median leads, 24, 17 and 22 minutes, are the longest of the five families
 in two cohorts and tied for longest in the third. Its specificity is 0.406, 0.379 and 0.467, so it
 alerts on 53 to 62% of control cases, and its PPV sits 0.065, 0.021 and 0.051 above prevalence.
 Its case-level AUROC is 0.651, 0.642 and 0.641, against 0.693 to 0.807 for the other four
@@ -208,8 +211,9 @@ in every cohort, in event and control cases alike; in MOVER (EPIC) it rises from
 in one minute in control cases and from 0.541 to 0.951 in event cases, against a threshold of
 **0.894** (Figure A1, Appendix A.7). A case whose score settles above threshold that early
 registers its first crossing as soon as its alert window opens, so its lead is whatever that
-window holds. **20.0 to 52.3% of the transformer's event minutes and 2.5 to 18.3% of its control
-minutes** sit at or above threshold, against 0 to 26.7% and 0 to 1.7% for the other four families.
+window holds. In the median event case **20.0 to 52.3% of the transformer's monitored minutes**, and in the
+median control case **2.5 to 18.3%**, sit at or above threshold, against 0 to 26.7% and 0 to 1.7%
+for the other four families.
 
 **The window dependence does not need a degenerate model.** XGBoost and the random forest have
 specificity 0.555 to 0.754 and case-level AUROC 0.746 to 0.807, usable operating points by the
@@ -234,7 +238,8 @@ its (Appendix A.12).
 **Prevalent alerts are not the explanation.** Alerts already active at the first eligible minute
 are **2.6 to 25.5%** of detected event cases across the fifteen cells, and recomputing the median
 lead on the remaining alerts alone costs **0 to 3 minutes in all fifteen cells** (Figure 3,
-Appendix A.13). The window dependence is carried by ordinary cases. Prevalence stays low because
+Appendix A.13). The window dependence is carried by ordinary cases. For the transformer,
+prevalence stays low because
 most detected event cases have windows shorter than 60 minutes that open while the score is still
 settling: a prevalent alert and a warm-up crossing are the same behavior either side of the first
 eligible minute, which is why Figure 3 shows both.
@@ -252,7 +257,8 @@ asks for.
 **Suppressing the first minutes of monitoring is a poor trade.** Discarding every minute at or
 before *N* = 5 minutes of elapsed monitoring and applying the unchanged threshold costs **3.6 to
 6.8 percentage points of case-level sensitivity** for **0 to 3.2 percentage points of
-specificity**, and moves median lead by **−3 to +1 minutes**, in two cells *increasing* it
+specificity** (not tabulated; computed from the same cached scores, with the aggregate results in
+the code release), and moves median lead by **−3 to +1 minutes**, in two cells *increasing* it
 because short-window cases drop out of the detected set. The surviving alerts still fire at the
 first opportunity within whatever window remains. Lowering the threshold to restore sensitivity
 cannot recover more specificity than the fixed-threshold gain, since suppression only removes
@@ -296,12 +302,12 @@ checked it alone; DECIDE-AI and TRIPOD-LLM were not reviewed.
 
 ## 6.2 Published reports give the lead without its window
 
-**None of seven published lead-time reports we examined summarizes the window over which the
-first alert was searched, or stratifies the lead by it** (Table 3). Most give only length of stay
-as a cohort descriptor; @henry2015trewscore shows each patient's window as a bar in a figure,
+**None of seven published lead-time reports we examined reports the distribution of the window
+over which the first alert was searched beside the lead, or stratifies the lead by it** (Table 3).
+Three give only length of stay as a cohort descriptor; @henry2015trewscore shows each patient's window as a bar in a figure,
 truncated at 120 hours, without a summary. The operating point fares better: two report
-sensitivity and specificity in the same sentence or table row as the lead, @churpek2020aki for
-every threshold, which is the pairing Section 6.3 asks for; @wong2021sepsis, an external
+sensitivity and specificity in the same sentence or table row as the lead (@henry2015trewscore;
+@churpek2020aki, for every threshold, which is the pairing Section 6.3 asks for); @wong2021sepsis, an external
 validation of a widely deployed proprietary model, gives them in the preceding sentence at the
 same threshold; and @koyner2018aki in the adjacent sentence, for a different prediction
 target. Our own earlier report is among those that omit the window,
@@ -334,7 +340,7 @@ already produces; none requires a new experiment.
 
 1. **Alert composition by elapsed observation time**: for every operating point, the prevalent,
    warm-up and settled shares of alerts, as in Figure 3. One stacked bar would have made Section 4
-   visible on sight.
+   visible at a glance.
 2. **A window-conditional timing statistic, with the window distribution**: a horizon-specific
    detection curve or a fixed-window estimand as the primary timing quantity, with its
    denominator stated, and any single median stratified by available pre-onset window (Section 3,
@@ -471,7 +477,8 @@ The repository carries the analysis code and the aggregate result files behind t
 ## Lead time by quantile-derived band of observed window, all fifteen cells
 
 **Table A1 | Median alert lead time by quantile-derived band of observed window, all fifteen
-cells.** Main text Section 3 reports the ITE Transformer. The gradient is positive in
+cells.** Table 2 in the main text gives each cell's endpoints and rise; this table adds band
+counts, windows and intervals. The gradient is positive in
 every cell.
 `Bands` is the number of quantile-derived groups actually realized: where the observed window is censored
 at the 60-minute alert window the upper quintiles collapse onto a single value, and
@@ -538,8 +545,8 @@ quantiles of the observed window cut over **all** event cases with a positive ob
 not over the detected subset Table A2 and Table A1 cut on, because a within-band detection rate
 needs every event case of that window length in its denominator. The two banding schemes are
 therefore not interchangeable; the band counts here are event-case counts rather than detected
-counts, and the median leads differ from Table A1's, sometimes by several minutes. The detection rate summed over
-bands reproduces the case-level sensitivity of Table A6 exactly in all fifteen cells, which is the
+counts, and the median leads differ from Table A1's, sometimes by several minutes. Detected cases summed over
+bands, divided by event cases, reproduce the case-level sensitivity of Table A6 exactly in all fifteen cells, which is the
 check that the denominators are the same event cases. Intervals are 95% cluster bootstrap.
 
 | Model | Cohort | Band | Event cases | Detected | Window median, min | Detection rate (95% CI) | Median lead, min (95% CI) |
@@ -629,10 +636,9 @@ the reference upward. Intervals are the 2.5th and 97.5th percentiles of the refe
 | Logistic regression | VitalDB | 0.455 | 0.521 [0.471, 0.567] | 0.721 [0.667, 0.781] | 0.577 [0.500, 0.650] | 0.607 | 0.642 [0.549, 0.720] | 0.486 [0.374, 0.584] |
 | Logistic regression | MOVER (SIS) | 0.618 | 0.518 [0.500, 0.550] | 0.782 [0.750, 0.800] | 0.734 [0.692, 0.767] | 0.597 | 0.644 [0.607, 0.682] | 0.548 [0.495, 0.595] |
 
-Three cells in this table are the ones Section 3 names as not exceeding the uniform
-reference, all of them VitalDB. The observed ratio sits below it for XGBoost by 0.054 and for
-logistic regression by 0.067, and random forest is indistinguishable from it (+0.011,
-*P* = 0.824). For the transformer the excess over the uniform reference is +0.372 to +0.421.
+Section 3 names the two cells, both VitalDB, where the observed ratio sits below the uniform
+reference: XGBoost by 0.054 and logistic regression by 0.067. A third, random forest in VitalDB,
+is indistinguishable from it (+0.011, *P* = 0.824). For the transformer the excess over the uniform reference is +0.372 to +0.421.
 Under the length-matched variant the transformer's ratio reference spans 0.92 to 0.96. Every
 contrast quoted here is computed from the unrounded values rather than from the rounded columns
 above, so recomputing one from the table can differ in the third decimal.
@@ -665,13 +671,12 @@ The shape a reader expects of a continuously read score, rising in the cases tha
 have an event and much flatter in the rest, is **present in all fifteen cells** (Figure A2).
 Three things about it are worth reporting, and none is visible in a trend statistic.
 
-**When the separation arrives runs opposite to near-onset discrimination.** For the three
+**The transformer's event and control scores separate latest.** For the three
 tabular families the event and control means are already distinguishable 60 minutes before
 onset in every cohort, the gap at that range running +0.049 to +0.109 with each pointwise
 interval excluding zero. For the transformer the gap at 60 minutes **covers zero in all three
 cohorts** (−0.023 [−0.080, 0.035], −0.014 [−0.057, 0.030] and −0.006 [−0.043, 0.032]), and
-first excludes it at 35, 20 and 30 minutes. The LSTM sits between the two. The family whose
-scores separate latest is the one with the highest discrimination near onset.
+first excludes it at 35, 20 and 30 minutes. The LSTM sits between the two.
 
 **The event mean rises toward onset, and for the transformer the control mean falls by as
 much.** Over the hour the transformer's event mean rises +0.239, +0.266 and +0.269, which is
@@ -695,7 +700,7 @@ a widening gap separately is what makes it visible.
 
 Three things this figure is not. The control series is aligned on the sampled pseudo-onset of
 Section 2 rather than on an event, so its fall is behavior over the last hour of a comparable
-window and not an approach to anything. Figure A1 plots medians and this figure means, and the
+window and not an approach to anything. Figure A1 plots medians and this figure plots means, and the
 two are not interchangeable here. And the two figures use different alignments: Figure A1's
 axis is elapsed time from the case's first scored minute and covers the first ten minutes of
 the record, where the transformer has just settled above its own 0.894 threshold, whereas the bins here
@@ -753,7 +758,7 @@ establish when or whether a particular threshold is touched.** Three further thi
 approaches zero, directedness is the primary summary and both quantities describe path shape
 rather than prove a crossing mechanism. The transformer sits at the volatile end of both
 (directedness +0.021 to +0.089, path per unit net displacement 13.1 to 146.6) and logistic
-regression at the least volatile (+0.061 to +0.134, 7.9 to 17.6). And averaged over cases the
+the tabular families at the least volatile (+0.049 to +0.151, 7.0 to 20.0). And averaged over cases the
 score still behaves as a reader expects, rising where an event follows and staying much flatter
 where none does, but the transformer's event and control means are indistinguishable an hour
 before onset where the tabular families' are already apart (Figure A2). The property is present
@@ -865,11 +870,11 @@ cohorts, so the survival estimate at that mark equals the crude share.
 
 ## Replacement estimands, all horizons
 
-**Table A8 | Fixed-horizon detection rate at all seven horizons, and time to first alert.** The
+**Table A8 | Fixed-horizon detection rate at all seven horizons.** The
 fixed-horizon detection rate is the share of event cases observed for at least the stated number
 of minutes before onset whose first alert came at least that many minutes before onset. Point
 estimates are shown here; each is a share of the cases in its own column, and its 95% cluster
-bootstrap interval is computed exactly as elsewhere in this appendix. Section 5 quotes the
+bootstrap interval (not shown) is computed exactly as elsewhere in this appendix. Section 5 quotes the
 range across cells at the 10- and 30-minute horizons. `n observed` is the denominator at the
 first and last horizon, and its fall is the reason a single median is not comparable across cohorts. The
 60-minute column is the share of fully observed cases that alerted at the very first opportunity.
@@ -938,10 +943,9 @@ end, and the two curves cross at 16.4, 12.6 and 14.9 minutes before onset. The f
 reaching AUROC 0.70 moves from 15 minutes in all three cohorts to 20, 35 and 20. Neither
 curve is the true one: which denominator is used is a reporting choice, it changes the
 horizon a reader would quote by up to twenty minutes, and it is not currently disclosed.
-That is the whole of Section 6.3's third item.
+That is the second half of Section 6.3's third item.
 
-**Short and long run-ups are different operations, which is why Section 5 calls this censoring
-non-independent.** Splitting event cases at a 40-minute observable run-up, the long group's
+**Short and long run-ups are different operations, as Section 5 notes.** Splitting event cases at a 40-minute observable run-up, the long group's
 operations are longer in every cohort, by a standardized mean difference of 0.394, 0.515 and
 0.428, the largest imbalance on the list in all three; procedure group and ASA class are also
 imbalanced beyond 0.1 in each. So a case with a short run-up is not a briefly watched version of

@@ -32,18 +32,18 @@ ANSWERS: list[tuple[str, str]] = [
     # 1 Claims
     (
         r"\answerYes{}",
-        "The abstract and Section 1 state the four contributions and their scope, and both "
-        "say the paper measures neither clinician comprehension nor physiology. Section 3 "
-        "and Section 7 distinguish the observed lead--window association from what the "
-        "upward-biased references can establish, and Section 4 treats the cross-family "
-        "score-path property as descriptive rather than causal.",
+        "The abstract and Section 1 state the four findings and their scope. Section 4 "
+        "states that the paper makes no claim about physiology and Section 7 that it measures "
+        "no reader comprehension. Section 3 and Section 7 distinguish the observed "
+        "lead--window association from what the upward-biased references can establish, and "
+        "Section 4 treats the lead--specificity ordering as descriptive rather than causal.",
     ),
     # 2 Limitations
     (
         r"\answerYes{}",
         "Section 7 is a separate limitations section covering the retrospective design, the "
-        "single outcome definition, single training seed and operating-point family, the "
-        "the shared hospital of two cohorts, a weak headline exemplar, reference upward "
+        "single outcome definition, single training seed and sensitivity target, the "
+        "shared hospital of two cohorts, a weak headline exemplar, reference upward "
         "bias, the single clinical domain, the non-systematic literature sample, and the unvalidated communication and reporting proposals.",
     ),
     # 3 Theory
@@ -95,7 +95,7 @@ ANSWERS: list[tuple[str, str]] = [
     # 7 Statistical significance
     (
         r"\answerYes{}",
-        "Every interval in the paper is a 95\\% cluster bootstrap on the clustering unit "
+        "Every confidence interval in the paper is a 95\\% cluster bootstrap on the clustering unit "
         "named in Section 2, the subject for two cohorts and the case for MOVER (SIS), at "
         "2,000 replicates. The two references of Section 3 use 1,000 permutations per "
         "cell, and are reported as the 2.5th and 97.5th percentiles of the reference "

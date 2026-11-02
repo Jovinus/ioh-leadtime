@@ -1,16 +1,13 @@
-% RCMLR 2026 workshop submission -- "Twenty-four minutes of warning: what a reported lead
-% time licenses, and what reporting standards do not ask". The title lives here AND in
-% PAPER.md front matter; keep them in step, build_tex.py does not sync it.
+% RCMLR 2026 workshop paper, CAMERA-READY -- "Median alert lead time tracks how long patients
+% were observed, and runs opposite to specificity". The title lives here AND in PAPER.md front
+% matter; keep them in step, build_tex.py does not sync it.
 %
 % TEMPLATE: neurips_2026.sty, the official style file, fetched from
 % https://media.neurips.cc/Conferences/NeurIPS2026/Formatting_Instructions_For_NeurIPS_2026.zip
-% (CC BY 4.0). Its option interface is identical to the 2025 file: `dblblindworkshop`,
-% `sglblindworkshop`, `final`, `preprint`, `nonatbib`, and \workshoptitle.
+% (CC BY 4.0), unmodified.
 %
-% ANONYMITY: the review is DOUBLE-BLIND (confirmed by the author, 2026-08-28), so
-% `dblblindworkshop` is correct and stays. It keeps \@anonymous true, so the \author block
-% below is ignored and the title page prints the anonymous placeholders instead. Do not
-% switch to `sglblindworkshop` for the review copy; that is the camera-ready change.
+% CAMERA-READY: `final` is added to the workshop track option, as the template instructs. It
+% prints the author block, the workshop footer and the acknowledgments, and removes line numbers.
 \documentclass{article}
 \usepackage[dblblindworkshop, final]{neurips_2026}
 \workshoptitle{Responsible Communication of Machine Learning Research in Biomedicine}
@@ -44,8 +41,7 @@
 \providecommand{\pandocbounded}[1]{#1}
 
 % The venue forbids changing the paper formatting, so the record of why this is here:
-% every table in this paper is in the APPENDIX -- the body carries no tabular and no
-% longtable -- and the appendix tables are wide enough that at the body's 10pt they run
+% the appendix tables are wide enough that at the body's 10pt they run
 % off the text block. Compiled without this line the build emits 318 Overfull \hbox
 % warnings, the widest 84pt past the right margin; with it, 16 and none above 6.51pt.
 % So this keeps the tables INSIDE the template's margins rather than buying any space:

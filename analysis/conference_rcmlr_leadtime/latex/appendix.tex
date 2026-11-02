@@ -87,7 +87,8 @@ The repository carries the analysis code and the aggregate result files behind t
 
 \begin{minipage}{\linewidth}
 \textbf{Table A1 \textbar{} Median alert lead time by quantile-derived band of observed window, all fifteen
-cells.} Main text Section 3 reports the ITE Transformer. The gradient is positive in
+cells.} Table 2 in the main text gives each cell's endpoints and rise; this table adds band
+counts, windows and intervals. The gradient is positive in
 every cell.
 \texttt{Bands} is the number of quantile-derived groups actually realized: where the observed window is censored
 at the 60-minute alert window the upper quintiles collapse onto a single value, and
@@ -196,8 +197,8 @@ quantiles of the observed window cut over \textbf{all} event cases with a positi
 not over the detected subset Table A2 and Table A1 cut on, because a within-band detection rate
 needs every event case of that window length in its denominator. The two banding schemes are
 therefore not interchangeable; the band counts here are event-case counts rather than detected
-counts, and the median leads differ from Table A1's, sometimes by several minutes. The detection rate summed over
-bands reproduces the case-level sensitivity of Table A6 exactly in all fifteen cells, which is the
+counts, and the median leads differ from Table A1's, sometimes by several minutes. Detected cases summed over
+bands, divided by event cases, reproduce the case-level sensitivity of Table A6 exactly in all fifteen cells, which is the
 check that the denominators are the same event cases. Intervals are 95\% cluster bootstrap.
 
 \begin{longtable}[]{@{}
@@ -356,10 +357,9 @@ Logistic regression & MOVER (SIS) & 0.618 & 0.518 {[}0.500, 0.550{]} & 0.782 {[}
 
 \vspace{0.8em}
 
-Three cells in this table are the ones Section 3 names as not exceeding the uniform
-reference, all of them VitalDB. The observed ratio sits below it for XGBoost by 0.054 and for
-logistic regression by 0.067, and random forest is indistinguishable from it (+0.011,
-\emph{P} = 0.824). For the transformer the excess over the uniform reference is +0.372 to +0.421.
+Section 3 names the two cells, both VitalDB, where the observed ratio sits below the uniform
+reference: XGBoost by 0.054 and logistic regression by 0.067. A third, random forest in VitalDB,
+is indistinguishable from it (+0.011, \emph{P} = 0.824). For the transformer the excess over the uniform reference is +0.372 to +0.421.
 Under the length-matched variant the transformer's ratio reference spans 0.92 to 0.96. Every
 contrast quoted here is computed from the unrounded values rather than from the rounded columns
 above, so recomputing one from the table can differ in the third decimal.
@@ -388,13 +388,12 @@ The shape a reader expects of a continuously read score, rising in the cases tha
 have an event and much flatter in the rest, is \textbf{present in all fifteen cells} (Figure A2).
 Three things about it are worth reporting, and none is visible in a trend statistic.
 
-\textbf{When the separation arrives runs opposite to near-onset discrimination.} For the three
+\textbf{The transformer's event and control scores separate latest.} For the three
 tabular families the event and control means are already distinguishable 60 minutes before
 onset in every cohort, the gap at that range running +0.049 to +0.109 with each pointwise
 interval excluding zero. For the transformer the gap at 60 minutes \textbf{covers zero in all three
 cohorts} ($-$0.023 {[}$-$0.080, 0.035{]}, $-$0.014 {[}$-$0.057, 0.030{]} and $-$0.006 {[}$-$0.043, 0.032{]}), and
-first excludes it at 35, 20 and 30 minutes. The LSTM sits between the two. The family whose
-scores separate latest is the one with the highest discrimination near onset.
+first excludes it at 35, 20 and 30 minutes. The LSTM sits between the two.
 
 \textbf{The event mean rises toward onset, and for the transformer the control mean falls by as
 much.} Over the hour the transformer's event mean rises +0.239, +0.266 and +0.269, which is
@@ -418,7 +417,7 @@ a widening gap separately is what makes it visible.
 
 Three things this figure is not. The control series is aligned on the sampled pseudo-onset of
 Section 2 rather than on an event, so its fall is behavior over the last hour of a comparable
-window and not an approach to anything. Figure A1 plots medians and this figure means, and the
+window and not an approach to anything. Figure A1 plots medians and this figure plots means, and the
 two are not interchangeable here. And the two figures use different alignments: Figure A1's
 axis is elapsed time from the case's first scored minute and covers the first ten minutes of
 the record, where the transformer has just settled above its own 0.894 threshold, whereas the bins here
@@ -484,7 +483,7 @@ establish when or whether a particular threshold is touched.} Three further thin
 approaches zero, directedness is the primary summary and both quantities describe path shape
 rather than prove a crossing mechanism. The transformer sits at the volatile end of both
 (directedness +0.021 to +0.089, path per unit net displacement 13.1 to 146.6) and logistic
-regression at the least volatile (+0.061 to +0.134, 7.9 to 17.6). And averaged over cases the
+the tabular families at the least volatile (+0.049 to +0.151, 7.0 to 20.0). And averaged over cases the
 score still behaves as a reader expects, rising where an event follows and staying much flatter
 where none does, but the transformer's event and control means are indistinguishable an hour
 before onset where the tabular families' are already apart (Figure A2). The property is present
@@ -665,11 +664,11 @@ cohorts, so the survival estimate at that mark equals the crude share.
 \subsection{Replacement estimands, all horizons}\label{replacement-estimands-all-horizons}
 
 \begin{minipage}{\linewidth}
-\textbf{Table A8 \textbar{} Fixed-horizon detection rate at all seven horizons, and time to first alert.} The
+\textbf{Table A8 \textbar{} Fixed-horizon detection rate at all seven horizons.} The
 fixed-horizon detection rate is the share of event cases observed for at least the stated number
 of minutes before onset whose first alert came at least that many minutes before onset. Point
 estimates are shown here; each is a share of the cases in its own column, and its 95\% cluster
-bootstrap interval is computed exactly as elsewhere in this appendix. Section 5 quotes the
+bootstrap interval (not shown) is computed exactly as elsewhere in this appendix. Section 5 quotes the
 range across cells at the 10- and 30-minute horizons. \texttt{n\ observed} is the denominator at the
 first and last horizon, and its fall is the reason a single median is not comparable across cohorts. The
 60-minute column is the share of fully observed cases that alerted at the very first opportunity.
@@ -789,10 +788,9 @@ end, and the two curves cross at 16.4, 12.6 and 14.9 minutes before onset. The f
 reaching AUROC 0.70 moves from 15 minutes in all three cohorts to 20, 35 and 20. Neither
 curve is the true one: which denominator is used is a reporting choice, it changes the
 horizon a reader would quote by up to twenty minutes, and it is not currently disclosed.
-That is the whole of Section 6.3's third item.
+That is the second half of Section 6.3's third item.
 
-\textbf{Short and long run-ups are different operations, which is why Section 5 calls this censoring
-non-independent.} Splitting event cases at a 40-minute observable run-up, the long group's
+\textbf{Short and long run-ups are different operations, as Section 5 notes.} Splitting event cases at a 40-minute observable run-up, the long group's
 operations are longer in every cohort, by a standardized mean difference of 0.394, 0.515 and
 0.428, the largest imbalance on the list in all three; procedure group and ASA class are also
 imbalanced beyond 0.1 in each. So a case with a short run-up is not a briefly watched version of
