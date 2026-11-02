@@ -71,8 +71,8 @@ ANSWERS: list[tuple[str, str]] = [
     # 5 Open access to data and code
     (
         r"\answerYes{}",
-        "The analysis code is released at a public repository under the Apache License "
-        "2.0, which Appendix A.1 names, together with the aggregate result files behind every "
+        "The analysis code is released at https://github.com/Jovinus/ioh-leadtime, archived "
+        "at DOI 10.5281/zenodo.23881391, under the Apache License 2.0, together with the aggregate result files behind every "
         "table and figure, so "
         "the table and figure checks run from the repository as shipped. Neither dataset is "
         "redistributed there, and neither are the cached per-minute scores, which are derived "
