@@ -24,7 +24,7 @@ band in all fifteen model-by-cohort combinations. Longer leads also came with wo
 points: median lead ran opposite to case-level specificity (Spearman −0.803), and the longest
 median lead, 24 minutes, was read at a specificity of 0.406. Two natural repairs leave the
 dependence in place. TRIPOD+AI asks for neither the window distribution nor the operating point
-beside the lead, and none of six published lead-time reports we examined summarizes the
+beside the lead, and none of seven published lead-time reports we examined summarizes the
 observation window or stratifies the lead by it. We propose four disclosures that make a reported lead time interpretable.
 
 # 1 Introduction
@@ -296,22 +296,24 @@ checked it alone; DECIDE-AI and TRIPOD-LLM were not reviewed.
 
 ## 6.2 Published reports give the lead without its window
 
-**None of six published lead-time reports we examined summarizes the window over which the
+**None of seven published lead-time reports we examined summarizes the window over which the
 first alert was searched, or stratifies the lead by it** (Table 3). Most give only length of stay
 as a cohort descriptor; @henry2015trewscore shows each patient's window as a bar in a figure,
 truncated at 120 hours, without a summary. The operating point fares better: two report
 sensitivity and specificity in the same sentence or table row as the lead, @churpek2020aki for
-every threshold, which is the pairing Section 6.3 asks for, and a third in the adjacent sentence
-for a different prediction target. Our own earlier report is among those that omit the window,
+every threshold, which is the pairing Section 6.3 asks for; @wong2021sepsis, an external
+validation of a widely deployed proprietary model, gives them in the preceding sentence at the
+same threshold; and @koyner2018aki in the adjacent sentence, for a different prediction
+target. Our own earlier report is among those that omit the window,
 though its cohort required at least 72 hours of pre-event data. These are reports we had
 collected, not a systematic sample, so they show that the omission occurs in practice, not how
 often. Fixed-horizon designs, such as the derivation of the hypotension prediction index
 [@hatib2018hpi; @davies2020hpi], are not first-crossing statistics and are not scored.
 
-**Table 3 | Six published reports of an alert lead time, scored against Section 6.3.**
+**Table 3 | Seven published reports of an alert lead time, scored against Section 6.3.**
 `Window` is whether pre-event observation time is summarized or the lead stratified by it;
 `Operating point` is whether sensitivity and specificity (or PPV) appear beside the lead. Values
-are as printed in each paper; h, hours. Four reports time the lead from the first alert or
+are as printed in each paper; h, hours. Five reports time the lead from the first alert or
 identification; @koyner2018aki and @giannini2019sepsis do not state which alert they time.
 
 | Report | Task | Reported lead, median (IQR) | Window | Operating point beside lead |
@@ -321,6 +323,7 @@ identification; @koyner2018aki and @giannini2019sepsis do not state which alert 
 | @koyner2018aki | Acute kidney injury | 41 h (12–141) | No; length of stay only | Adjacent sentence, for a 24-hour target |
 | @giannini2019sepsis | Severe sepsis | 6 h 34 min (0 h 50 min–53 h 19 min) | No | Elsewhere, from a separate cohort |
 | @churpek2020aki | Acute kidney injury | 27, 34.5 and 39 h, three sites | Supplementary cumulative-incidence figure, not linked to the lead | Yes, same table row |
+| @wong2021sepsis | Sepsis, proprietary vendor model | 2.5 h (0.5–15.6) | No | Preceding sentence, same threshold |
 | @lee2026aki | Acute kidney injury | 84, 93 and 73 h, three cohorts | No; length of stay only | Separate tables at that threshold; detection and alert burden at another |
 
 
@@ -381,7 +384,7 @@ not rest on it (Section 4), but the specificity contrast is sharpest there.
 inferable, not what readers actually infer; measuring that is the next study, and Section 6.3's
 items are what it would test. The four items are demonstrated here, not validated across
 settings, and three cohorts in two countries still give one procedure setting and one monitored
-variable. The six reports of Table 3 show that the omission occurs, not how
+variable. The seven reports of Table 3 show that the omission occurs, not how
 often; a systematic survey of reported lead times would.
 
 # Acknowledgments and Disclosure of Funding
