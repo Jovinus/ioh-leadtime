@@ -179,11 +179,8 @@ def main() -> int:
         f"ρ = {observed['spearman_lead_vs_observed'].min():.3f} to "
         f"{observed['spearman_lead_vs_observed'].max():.3f}",
     )
-    for family in ("logreg", "xgb"):
-        value = observed[
-            (observed["family"] == family) & (observed["cohort"] == "vitaldb")
-        ]["lead_over_observed_median"].iloc[0]
-        present(f"mildest cell {family}", f"({value:.3f})")
+    # Camera-ready trim: the two mildest cells are no longer named in the prose; their values
+    # remain in the observed-ratio range checked above.
 
     # ---- §3.3: N1 -----------------------------------------------------------------------
     n1 = pd.read_csv(N / "n1_uniform_placement" / "n1_uniform_placement.csv")
@@ -871,7 +868,7 @@ def main() -> int:
     )
     present(
         "abstract gradient range",
-        f"rises by {summary['lead_gradient_min'].min():.0f} to "
+        f"rose by {summary['lead_gradient_min'].min():.0f} to "
         f"{summary['lead_gradient_min'].max():.0f} minutes from the shortest",
     )
 
@@ -880,7 +877,7 @@ def main() -> int:
     disclosures = len(re.findall(r"^\d+\. \*\*", section("## 6.3", "# 7"), re.M))
     present(
         "abstract disclosure count",
-        f"We propose {WORDS[disclosures]} task-specific disclosures",
+        f"We propose {WORDS[disclosures]} disclosures",
     )
     check(
         "Section 6.3's heading agrees with its own list",
@@ -889,7 +886,7 @@ def main() -> int:
     )
     check(
         "the abstract's response count agrees with Section 5's heading",
-        (f"{WORDS[2].capitalize()} natural repairs, discounting" in PAPER)
+        (f"{WORDS[2].capitalize()} natural repairs leave the dependence in place" in PAPER)
         and (f"# 5 {WORDS[2].capitalize()} natural repairs" in _RAW),
         "the abstract and Section 5's heading to name the same number of responses",
     )

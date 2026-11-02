@@ -288,16 +288,9 @@ Logistic regression & MOVER (SIS) & 3 & 837 & 714 & 60 & 0.853 {[}0.829, 0.876{]
 
 Figure 1 plots the transformer in three cohorts. The lead-to-window relationship it shows is
 not particular to that model: in the per-case scatter for MOVER (EPIC) test it is present in
-every family, with the transformer the limiting case rather than the exception. Figure A1 covers
-that cohort only; the other two are in Table A1, where the gradient is positive with its interval
+every family, with the transformer the limiting case rather than the exception (Figure 2, in the
+main text). Figure 2 covers that cohort only; the other two are in Table A1, where the gradient is positive with its interval
 excluding zero in every cell.
-
-\begin{figure}[H]
-  \centering
-  \includegraphics[width=\linewidth]{figures/Figure_A2_wide.pdf}
-  \caption{\textbf{Alert lead time against observed window length, five model families, MOVER (EPIC) test.} Axes and overlays as in Figure 1. The relationship holds in every family; the transformer is the limiting case rather than the exception.}
-  \label{fig:A1}
-\end{figure}
 
 \subsection{Both references, all fifteen cells}\label{both-references-all-fifteen-cells}
 
@@ -380,19 +373,19 @@ threshold of 0.78 for logistic regression in MOVER (EPIC), 0.65 against a thresh
 XGBoost, and 0.54 against a threshold of 0.79 for random forest. The LSTM is the one exception:
 in MOVER (EPIC) it reaches 0.99 in event and 0.99 in control cases against a threshold of 0.97,
 clearing it in both groups, and it clears it in neither external cohort. This is that view for
-all fifteen cells, on the elapsed axis rather than the event-aligned one of Figure A3.
+all fifteen cells, on the elapsed axis rather than the event-aligned one of Figure A2.
 
 \begin{figure}[H]
   \centering
   \includegraphics[width=\linewidth]{figures/Figure_1_wide.pdf}
-  \caption{\textbf{Median score against elapsed monitoring time, with each family's own alert threshold.} Rows are cohorts, columns are model families. Elapsed time is measured from the case's first scored minute. The dashed rule in each panel is that family's transported raw-score threshold at the 80\%-sensitivity target, transferred unchanged from the MOVER (EPIC) validation split. Only the ITE Transformer's early rise clears its own threshold in every cohort, and it does so in event and control cases together; the LSTM does the same in MOVER (EPIC) alone. The elevation ends around minute 20, past the right edge of this axis. This axis is elapsed time; the event-aligned view is Figure A3.}
-  \label{fig:A2}
+  \caption{\textbf{Median score against elapsed monitoring time, with each family's own alert threshold.} Rows are cohorts, columns are model families. Elapsed time is measured from the case's first scored minute. The dashed rule in each panel is that family's transported raw-score threshold at the 80\%-sensitivity target, transferred unchanged from the MOVER (EPIC) validation split. Only the ITE Transformer's early rise clears its own threshold in every cohort, and it does so in event and control cases together; the LSTM does the same in MOVER (EPIC) alone. The elevation ends around minute 20, past the right edge of this axis. This axis is elapsed time; the event-aligned view is Figure A2.}
+  \label{fig:A1}
 \end{figure}
 
 \subsection{Event and control score on the event-aligned axis}\label{event-and-control-score-on-the-event-aligned-axis}
 
 The shape a reader expects of a continuously read score, rising in the cases that go on to
-have an event and much flatter in the rest, is \textbf{present in all fifteen cells} (Figure A3).
+have an event and much flatter in the rest, is \textbf{present in all fifteen cells} (Figure A2).
 Three things about it are worth reporting, and none is visible in a trend statistic.
 
 \textbf{When the separation arrives runs opposite to near-onset discrimination.} For the three
@@ -425,22 +418,22 @@ a widening gap separately is what makes it visible.
 
 Three things this figure is not. The control series is aligned on the sampled pseudo-onset of
 Section 2 rather than on an event, so its fall is behavior over the last hour of a comparable
-window and not an approach to anything. Figure A2 plots medians and this figure means, and the
-two are not interchangeable here. And the two figures use different alignments: Figure A2's
+window and not an approach to anything. Figure A1 plots medians and this figure means, and the
+two are not interchangeable here. And the two figures use different alignments: Figure A1's
 axis is elapsed time from the case's first scored minute and covers the first ten minutes of
 the record, where the transformer has just settled above its own 0.894 threshold, whereas the bins here
 sit far later in the case, where its event mean is 0.383. \textbf{The two are not in conflict, and
 the length of the plateau is what reconciles them.} The median score holds at or above the
 transported threshold through elapsed minute 24, 21 and 17 in event cases and 23, 20 and 16
-in controls, then falls to 0.03 to 0.31 by minute 30. Figure A2 covers the first ten of those
+in controls, then falls to 0.03 to 0.31 by minute 30. Figure A1 covers the first ten of those
 minutes and stops inside the plateau; every bin in this figure falls after it in all but the
 shortest records.
 
 \begin{figure}[H]
   \centering
   \includegraphics[width=\linewidth]{figures/Figure_A4_wide.pdf}
-  \caption{\textbf{Mean score in event and control cases against minutes before onset.} Rows are cohorts, columns are model families, the same grid as Figure A2, on the event-aligned axis instead of the elapsed one. Event cases solid and filled, control cases dashed and open; bands are 95\% cluster bootstrap. Bins are the 13 centers at five-minute spacing from 60 minutes before onset; the bin at onset is empty by construction, because no minute is strictly before its own reference time, so the series ends at 5 minutes. Control cases are aligned on a sampled pseudo-onset.}
-  \label{fig:A3}
+  \caption{\textbf{Mean score in event and control cases against minutes before onset.} Rows are cohorts, columns are model families, the same grid as Figure A1, on the event-aligned axis instead of the elapsed one. Event cases solid and filled, control cases dashed and open; bands are 95\% cluster bootstrap. Bins are the 13 centers at five-minute spacing from 60 minutes before onset; the bin at onset is empty by construction, because no minute is strictly before its own reference time, so the series ends at 5 minutes. Control cases are aligned on a sampled pseudo-onset.}
+  \label{fig:A2}
 \end{figure}
 
 \subsection{Path decomposition}\label{path-decomposition}
@@ -494,7 +487,7 @@ rather than prove a crossing mechanism. The transformer sits at the volatile end
 regression at the least volatile (+0.061 to +0.134, 7.9 to 17.6). And averaged over cases the
 score still behaves as a reader expects, rising where an event follows and staying much flatter
 where none does, but the transformer's event and control means are indistinguishable an hour
-before onset where the tabular families' are already apart (Figure A3). The property is present
+before onset where the tabular families' are already apart (Figure A2). The property is present
 under this task and scoring policy and the transformer is its limiting case; the design does not
 isolate architecture from representation or training.
 
@@ -790,7 +783,7 @@ observable run-up \emph{is} its time to onset, so a short run-up is not missing 
 early-onset event, and the far bins keep only the long run-ups. That is the same selection
 that drives Section 3.
 
-\textbf{Fixing the cohort moves the trajectory in both directions} (Figure A4). Recomputing the
+\textbf{Fixing the cohort moves the trajectory in both directions} (Figure A3). Recomputing the
 same bins on the cases observable back to 60 minutes raises the far end and lowers the near
 end, and the two curves cross at 16.4, 12.6 and 14.9 minutes before onset. The first bin
 reaching AUROC 0.70 moves from 15 minutes in all three cohorts to 20, 35 and 20. Neither
@@ -809,7 +802,7 @@ a case with a long one.
   \centering
   \includegraphics[width=\linewidth]{figures/Figure_A3_wide.pdf}
   \caption{\textbf{Population AUROC with its own risk set, event-aligned.} ITE Transformer, 2-minute bins from 60 minutes before onset to onset, in three held-out cohorts. Solid and filled is every case with a minute in the bin, the convention in the published literature, whose denominator varies; dashed and open is the cohort fixed to cases observable back to 60 minutes. Bands are 95\% cluster bootstrap over subjects, or over cases in MOVER (SIS). The lower row is the number of cases contributing to each bin, on its own scale per cohort. The dotted line marks 0.5, the solid rule 0.70, and the cross marks where the two curves meet.}
-  \label{fig:A4}
+  \label{fig:A3}
 \end{figure}
 
 \subsection{The reporting items that came close}\label{the-reporting-items-that-came-close}

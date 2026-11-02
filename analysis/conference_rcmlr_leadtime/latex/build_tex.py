@@ -355,6 +355,10 @@ def main() -> None:
         )
         if n_body_tables != 3:
             raise AssertionError(f"expected 3 body tables, wrapped {n_body_tables}")
+        # Camera-ready: body figures float ([!tb]). Pinned with [H], each one left a large
+        # stretch of white on its page under \flushbottom once the body had three figures and
+        # three tables. The appendix keeps [H] so each exhibit stays under its own heading.
+        _head = _head.replace("\\begin{figure}[H]", "\\begin{figure}[!tb]")
         body = _head + "\\section{Appendix A:" + _tail
 
     # The markdown abstract is a section; LaTeX wants the abstract environment.
