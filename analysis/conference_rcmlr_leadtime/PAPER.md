@@ -422,7 +422,7 @@ results and text and take full responsibility for the paper.
 ## Cohorts, models, training and compute
 
 **Cohorts and eligibility.** Two public datasets supply the three cohorts: VitalDB, and
-MOVER, whose single release carries both an EPIC-derived and an SIS-derived arm. Both are de-identified. VitalDB v1.0.0 is openly accessible from PhysioNet under the Creative Commons Attribution 4.0 International (CC BY 4.0) license; MOVER is available from the UCI Machine Learning Repository to researchers who sign its data use agreement. Development
+MOVER, whose single release carries both an EPIC-derived and an SIS-derived arm. Both are de-identified. VitalDB v1.0.0 is openly accessible from PhysioNet under the Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0) license; MOVER is available from the UCI Machine Learning Repository to researchers who sign its data use agreement. Development
 used MOVER's EPIC arm. The subject-aware split at
 seed 1004 gave 6,409 training, 1,375 validation and 1,404 test cases
 out of 9,188, split on unique subject identifiers so that a patient with several operations
@@ -488,7 +488,7 @@ this paper add no training and read cached per-minute scores on the same machine
 was PyTorch 2.10.0, scikit-learn 1.7.1, XGBoost 3.3.0, NumPy
 2.2.6, pandas 2.3.2 and SciPy 1.16.1.
 
-**Data and code.** Both source datasets are public and de-identified. VitalDB v1.0.0 is openly accessible from PhysioNet under the Creative Commons Attribution 4.0 International (CC BY 4.0) license; MOVER is available from the UCI Machine Learning Repository under its data use agreement, one download supplying both arms used here. The Institutional Review Board of Ewha Womans University Mokdong Hospital granted an exemption from review and waived informed consent for this secondary analysis of publicly available
+**Data and code.** Both source datasets are public and de-identified. VitalDB v1.0.0 is openly accessible from PhysioNet under the Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0) license; MOVER is available from the UCI Machine Learning Repository under its data use agreement, one download supplying both arms used here. The Institutional Review Board of Ewha Womans University Mokdong Hospital granted an exemption from review and waived informed consent for this secondary analysis of publicly available
 de-identified data (EUMC 2026-08-011). This work
 added no data collection and no patient contact. Analysis code is available at <https://github.com/Jovinus/ioh-leadtime>, archived at
 <https://doi.org/10.5281/zenodo.23881391>, under the Apache License 2.0.

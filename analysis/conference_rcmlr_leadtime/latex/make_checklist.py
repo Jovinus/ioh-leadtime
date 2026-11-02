@@ -77,8 +77,8 @@ ANSWERS: list[tuple[str, str]] = [
         "the table and figure checks run from the repository as shipped. Neither dataset is "
         "redistributed there, and neither are the cached per-minute scores, which are derived "
         "patient-level data. Each is obtained from its own provider: VitalDB v1.0.0 is openly "
-        "accessible from PhysioNet under the Creative Commons Attribution 4.0 International "
-        "(CC BY 4.0) license, and MOVER is available from the UCI Machine Learning Repository "
+        "accessible from PhysioNet under the Creative Commons Attribution-NonCommercial-"
+        "ShareAlike 4.0 International (CC BY-NC-SA 4.0) license, and MOVER is available from the UCI Machine Learning Repository "
         "to researchers who sign its data use agreement, as Appendix A.1 records. Appendix A.1 "
         "specifies the construction to the level a reimplementation needs.",
     ),
@@ -147,7 +147,7 @@ ANSWERS: list[tuple[str, str]] = [
         r"\answerYes{}",
         "Section 2 cites both the descriptor paper and the dataset record for VitalDB and "
         "for MOVER. Appendix A.1 names the terms: VitalDB v1.0.0 under the Creative Commons "
-        "Attribution 4.0 International (CC BY 4.0) license, openly accessible from PhysioNet, "
+        "Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0) license, openly accessible from PhysioNet, "
         "and MOVER free to download from the UCI Machine Learning Repository for researchers "
         "who sign its data use agreement. Software versions are listed in the "
         "same subsection.",
