@@ -84,7 +84,7 @@ def fix_unicode(text: str) -> str:
 # The caption's label and the filename's number are deliberately decoupled: the filename is
 # an artefact path fixed by whichever script produced the figure, while the label is
 # editorial and changes when a figure moves between the body and the appendix (Figure 3 ->
-# Figure A4). Requiring them to match, as an earlier version did with a backreference,
+# Figure 2). Requiring them to match, as an earlier version did with a backreference,
 # silently stopped wrapping the figure the moment it was renumbered.
 FIGURE_BLOCK = re.compile(
     r"\\includegraphics(?:\[[^\]]*\])?\{(?P<path>[^}]*Figure_[^}]*\.png)\}"
@@ -149,14 +149,14 @@ APPENDIX_TABLE = re.compile(
 
 
 #: A table with more row breaks than this cannot fit a page, so it must stay a ``longtable``
-#: and break across pages.  Table A4 is 51 rows; forcing it into an unbreakable ``tabular``
+#: and break across pages.  Table A3 is 51 rows; forcing it into an unbreakable ``tabular``
 #: inside a minipage produced a 923pt overfull vbox, which shipped an empty page before it and
 #: then ran the table off the bottom of the next one.  Every other appendix table is 14 to 16
 #: rows and fits comfortably.
 MAX_ROWS_FOR_TABULAR = 30
 
 #: Natural ``l``/``r`` column widths only help a table whose cells are short labels and
-#: numbers.  Table A11's cells are sentences, and swapping pandoc's ``p{...}`` widths for
+#: numbers.  Table A10's cells are sentences, and swapping pandoc's ``p{...}`` widths for
 #: natural ones stopped them wrapping and pushed a line 651pt past the right margin.
 MAX_CELL_FOR_NATURAL_WIDTHS = 40
 
@@ -187,21 +187,28 @@ def _anchor_appendix_exhibits(text: str) -> tuple[str, int]:
         # the caption paragraph in front of it and let it flow.
         if table.count("\\\\\n") > MAX_ROWS_FOR_TABULAR:
             return match.group("caption").strip() + "\n\n" + table
-        # longtable's page-breaking machinery is what split Table A6 and repeated its header;
+        # longtable's page-breaking machinery is what split Table A5 and repeated its header;
         # a tabular cannot split at all.
         table = table.replace("\\begin{longtable}[]", "\\begin{tabular}", 1)
         table = table.replace("\\end{longtable}", "\\end{tabular}", 1)
         table = re.sub(r"\n\\end(?:head|firsthead|lastfoot|foot)\n", "\n", table)
         # pandoc sizes columns from content length, which wraps every label cell and makes
-        # each row double height. Table A6 is narrow enough to take natural widths, which
+        # each row double height. Table A5 is narrow enough to take natural widths, which
         # give single-line rows. The wider two keep pandoc's widths: natural widths put
-        # Table A5 291pt past the text block, and widening its label columns out of the
+        # Table A4 291pt past the text block, and widening its label columns out of the
         # numeric ones only moved the wrapping into the confidence intervals, which made the
         # table taller rather than shorter.
+        # Measure data rows only: pandoc 3 sets header cells in minipages, whose markup lines
+        # would otherwise count as 60-character "cells" and block natural widths everywhere.
+        data_rows = table[table.index("\\midrule"):] if "\\midrule" in table else table
         if (
             table.count("arraybackslash") <= 6
-            and _longest_cell(table) <= MAX_CELL_FOR_NATURAL_WIDTHS
+            and _longest_cell(data_rows) <= MAX_CELL_FOR_NATURAL_WIDTHS
         ):
+            table = re.sub(
+                r"\\begin\{minipage\}\[b\]\{\\linewidth\}\\(?:raggedright|raggedleft)\s*(.*?)\s*\\end\{minipage\}",
+                r"\1", table, flags=re.DOTALL,
+            )
             table = re.sub(
                 r"\n?\s*>\{\\raggedright\\arraybackslash\}p\{[^{}]*\{[^{}]*\}[^{}]*\}",
                 "l",
@@ -264,6 +271,19 @@ def main() -> None:
         raw,
     )
 
+    # pandoc 3.x wraps every image as \pandocbounded{\includegraphics[keepaspectratio]{..}};
+    # 2.12 emitted the bare \includegraphics the figure pattern expects. Unwrap so both work.
+    # (Base's pandoc 2.12 is x86_64 and no longer runs on this machine; the build now uses an
+    # arm64 pandoc 3.8 -- see README.)
+    raw = re.sub(
+        r"\\pandocbounded\{(\\includegraphics(?:\[[^\]]*\])?\{[^}]*\})\}", r"\1", raw
+    )
+    # pandoc 3.x longtables carry a separate first head and a foot (\endfirsthead ...
+    # \endlastfoot) with the \bottomrule up front; 2.12 emitted one \endhead and put the
+    # \bottomrule last. Everything below (and the tabular conversion of appendix tables) was
+    # written for the 2.12 shape, so normalise to it.
+    raw = re.sub(r"\\endfirsthead\n.*?\\endlastfoot\n", "\\\\endhead\n", raw, flags=re.DOTALL)
+    raw = re.sub(r"\n\\end\{longtable\}", "\n\\\\bottomrule\\\\noalign{}\n\\\\end{longtable}", raw)
     body = wrap_figures(fix_unicode(raw))
 
     # A source path inside \texttt cannot hyphenate, and the longest of them overflowed the
@@ -275,7 +295,7 @@ def main() -> None:
 
     body = re.sub(r"\\texttt\{([^{}]*)\}", _breakable, body)
 
-    # pandoc sizes longtable columns by content length, which on the nine-column Table A5
+    # pandoc sizes longtable columns by content length, which on the nine-column Table A4
     # left the model column too narrow for "Transformer" and pushed the row 9.5pt past the
     # text block. Widen the label column out of the two widest columns, which hold five
     # characters each and have width to spare. Narrower tables are left alone.
@@ -299,6 +319,44 @@ def main() -> None:
         r"\\begin\{longtable\}.*?\\end\{longtable\}", _rebalance, body, flags=re.DOTALL
     )
 
+    # Body tables of short numeric cells (Table 2) get natural column widths: pandoc's p{}
+    # widths wrapped every row of it onto two lines. Tables of sentences (Tables 1 and 3) keep
+    # pandoc's widths. Only the body is touched here; the appendix has its own handling below.
+    def _natural(match: "re.Match[str]") -> str:
+        table = match.group(0)
+        # Data rows only: longtable repeats its minipage header after each \\midrule.
+        rows = table[table.index("\\endlastfoot"):] if "\\endlastfoot" in table else table
+        if _longest_cell(rows) > 30:
+            return table
+        table = re.sub(r"\n?\s*>\{\\raggedright\\arraybackslash\}p\{[^{}]*\{[^{}]*\}[^{}]*\}", "l", table)
+        table = re.sub(r"\n?\s*>\{\\raggedleft\\arraybackslash\}p\{[^{}]*\{[^{}]*\}[^{}]*\}", "r", table)
+        # Header cells were wrapped in minipages sized to the old p{} widths.
+        table = re.sub(r"\\begin\{minipage\}\[b\]\{\\linewidth\}\\(?:raggedright|raggedleft)\s*(.*?)\s*\\end\{minipage\}", r"\1", table, flags=re.DOTALL)
+        return table
+
+    if "\\section{Appendix A:" in body:
+        _head, _tail = body.split("\\section{Appendix A:", 1)
+        _head = re.sub(r"\\begin\{longtable\}.*?\\end\{longtable\}", _natural, _head, flags=re.DOTALL)
+        # Body tables are short (4 to 15 rows), so each becomes an unsplittable tabular in a
+        # minipage with its caption: as a longtable, Table 2's caption stranded at the foot of
+        # one page with the rows on the next.
+        def _keep_with_caption(m: "re.Match[str]") -> str:
+            table = m.group("table")
+            table = table.replace("\\begin{longtable}[]", "\\begin{tabular}", 1)
+            table = table.replace("\\end{longtable}", "\\end{tabular}", 1)
+            table = re.sub(r"\n\\end(?:head|firsthead|lastfoot|foot)\n", "\n", table)
+            return ("\\begin{table}[t]\n" + m.group("caption").strip()
+                    + "\n\n\\vspace{0.4em}\n\\centering\\footnotesize\n" + table
+                    + "\n\\end{table}")
+        _head, n_body_tables = re.subn(
+            r"^(?P<caption>\\textbf\{Table \d+ \\textbar\{\}.*?)\n\n"
+            r"(?P<table>\\begin\{longtable\}.*?\\end\{longtable\})",
+            _keep_with_caption, _head, flags=re.DOTALL | re.MULTILINE,
+        )
+        if n_body_tables != 3:
+            raise AssertionError(f"expected 3 body tables, wrapped {n_body_tables}")
+        body = _head + "\\section{Appendix A:" + _tail
+
     # The markdown abstract is a section; LaTeX wants the abstract environment.
     body = re.sub(
         r"\\section\{Abstract\}(?:\\label\{[^}]*\})?\s*\n+(.*?)(?=\n\\section\{)",
@@ -307,6 +365,17 @@ def main() -> None:
         count=1,
         flags=re.DOTALL,
     )
+    # Camera-ready: the acknowledgments section becomes the style file's `ack` environment,
+    # which prints the official unnumbered "Acknowledgments and Disclosure of Funding" heading.
+    body, n_ack = re.subn(
+        r"\\section\{Acknowledgments and Disclosure of Funding\}(?:\\label\{[^}]*\})?\s*\n+(.*?)(?=\n\\section\{|\Z)",
+        lambda m: "\\begin{ack}\n" + m.group(1).strip() + "\n\\end{ack}\n\n",
+        body,
+        count=1,
+        flags=re.DOTALL,
+    )
+    if n_ack != 1:
+        raise AssertionError("acknowledgments section not converted to the ack environment")
     # Section numbers come from LaTeX, so strip the ones carried in the headings.
     body = re.sub(r"\\section\{(\d+)\s+", r"\\section{", body)
     body = re.sub(r"\\subsection\{(\d+\.\d+)\s+", r"\\subsection{", body)

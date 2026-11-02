@@ -12,7 +12,7 @@
 % below is ignored and the title page prints the anonymous placeholders instead. Do not
 % switch to `sglblindworkshop` for the review copy; that is the camera-ready change.
 \documentclass{article}
-\usepackage[dblblindworkshop]{neurips_2026}
+\usepackage[dblblindworkshop, final]{neurips_2026}
 \workshoptitle{Responsible Communication of Machine Learning Research in Biomedicine}
 
 \usepackage[utf8]{inputenc}
@@ -43,30 +43,34 @@
 \setlength{\cslhangindent}{1.5em}
 \providecommand{\pandocbounded}[1]{#1}
 
-% Both main-text tables are dense; give them room without shrinking the body text.
+% The venue forbids changing the paper formatting, so the record of why this is here:
+% every table in this paper is in the APPENDIX -- the body carries no tabular and no
+% longtable -- and the appendix tables are wide enough that at the body's 10pt they run
+% off the text block. Compiled without this line the build emits 318 Overfull \hbox
+% warnings, the widest 84pt past the right margin; with it, 16 and none above 6.51pt.
+% So this keeps the tables INSIDE the template's margins rather than buying any space:
+% margins, body font size and leading are untouched and measure identical to the
+% unmodified template (textwidth 397.485pt, textheight 650.43pt, 10pt, 10.95pt leading).
 \usepackage{etoolbox}
 \AtBeginEnvironment{longtable}{\footnotesize}
 
-% The style file builds a workshop-aware notice from \workshoptitle, but only reaches for it
-% under `final'. Under `dblblindworkshop' it emits the generic main-track notice instead, which
-% names a conference this paper was not submitted to. Restate the notice here rather than editing
-% neurips_2026.sty, which stays as shipped.
-\makeatletter
-\renewcommand{\@noticestring}{%
-  Submitted to the NeurIPS \@neuripsyear\ Workshop on \@workshoptitle. Do not distribute.%
-}
-\makeatother
+% CAMERA-READY: under `final` the style file prints its own workshop notice (\@trackname),
+% so the submission-time "Do not distribute" override that lived here is gone.
 
 \graphicspath{{../}}
 
-\title{Twenty-four minutes of warning: what a reported lead time licenses, and what reporting standards do not ask}
+\title{Median alert lead time tracks how long patients were observed, and runs opposite to specificity}
 
-% Anonymous under dblblindworkshop; this block is ignored until the option is
-% changed to sglblindworkshop.
+% Camera-ready author block (de-anonymised 2026-11-02), as supplied by the first author.
 \author{%
-  Anonymous Author(s) \\
-  Affiliation \\
-  \texttt{email}
+  Kyung Hyun Lee$^{1,*}$ \quad Donghwee Yoon$^{2}$ \quad Sunguk Jang$^{3}$ \quad Sungsoo Hong$^{1}$ \\
+  \textbf{Sungjun Hong}$^{4}$ \quad \textbf{Jeonghyeop Lim}$^{1}$ \quad \textbf{Sangwon Byun}$^{5}$ \quad \textbf{Seung Min Baik}$^{6,*}$ \\[0.5em]
+  \parbox{\linewidth}{\centering\normalfont\small
+  $^{1}$Sungkyunkwan University \quad $^{2}$Handong Global University\\
+  $^{3}$Korea Advanced Institute of Science and Technology (KAIST)\\
+  $^{4}$Independent researcher \quad $^{5}$Incheon National University \quad
+  $^{6}$Ewha Womans University\\[0.3em]
+  $^{*}$Co-corresponding authors: \texttt{lkh256@g.skku.edu}, \texttt{baiksm@ewha.ac.kr}}
 }
 
 \begin{document}

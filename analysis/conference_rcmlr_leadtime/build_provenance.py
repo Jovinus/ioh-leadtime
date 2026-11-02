@@ -87,9 +87,9 @@ def main() -> None:
 
     strata = pd.read_csv(N / "n3_stratified" / "n3_strata.csv")
     src = N / "n3_stratified" / "n3_strata.csv"
-    add("§3.1, Table A3", "every quintile median and interval", src,
+    add("§3.1, Table A2", "every quintile median and interval", src,
         "lead_median, lead_ci_lo/hi, ratio_median, ratio_ci_lo/hi, per cell and stratum",
-        f"{len(strata)} rows, transformer rows shown in Table A3")
+        f"{len(strata)} rows, transformer rows shown in Table A2")
 
     # --- §3.2 observed ----------------------------------------------------------------------
     observed = pd.read_csv(B / "b1b_suppression" / "b1b_lead_vs_observation.csv")
@@ -163,10 +163,10 @@ def main() -> None:
     b3 = pd.read_csv(B / "b3_cross_family_path" / "b3_comparison.csv")
     src = B / "b3_cross_family_path" / "b3_comparison.csv"
     b3 = b3[b3["endpoint_min"] == 5]
-    add("§4.2, Table A5", "directedness, all cells", src,
+    add("§4.2, Table A4", "directedness, all cells", src,
         "min/max of directedness_median, endpoint_min==5 (the 60→5 window only)",
         f"+{b3['directedness_median'].min():.3f} to +{b3['directedness_median'].max():.3f}")
-    add("§4.2, Table A5", "path per unit net displacement", src,
+    add("§4.2, Table A4", "path per unit net displacement", src,
         "min/max of path_per_net, endpoint_min==5",
         f"{b3['path_per_net'].min():.1f} to {b3['path_per_net'].max():.1f}")
 
@@ -205,7 +205,7 @@ def main() -> None:
         f"{d_lead.min():+.0f} to {d_lead.max():+.0f} minutes "
         f"({int((d_lead > 0).sum())} cells increased)")
 
-    # --- Table A7, the case-level operating point ------------------------------------
+    # --- Table A6, the case-level operating point ------------------------------------
     src = B / "b1b_suppression" / "b1b_suppression.csv"
     op = pd.read_csv(src)
     op = op[op["suppress_min"] == 0]
@@ -239,7 +239,7 @@ def main() -> None:
         "n_pairs_longer_lead_lower_specificity of n_untied_pairs, scope=='pooled'",
         f"{int(pooled.n_pairs_longer_lead_lower_specificity)} of {int(pooled.n_untied_pairs)}")
 
-    # --- §3.1 and Table A4, detection rate by band -----------------------------------------------
+    # --- §3.1 and Table A3, detection rate by band -----------------------------------------------
     src = N / "n4_band_detection" / "n4_detection_summary.csv"
     n4 = pd.read_csv(src)
     sequence = n4[n4["family"].isin(["transformer", "lstm"])]["detection_gradient"]
@@ -296,7 +296,7 @@ def main() -> None:
 
     # --- A.17 horizons and crossings ----------------------------------------------------------------
     # horizon() and crossing() are the figure builder's, so the provenance record, the
-    # assertion in verify_numbers.py and the curve drawn in Figure A5 share one definition.
+    # assertion in verify_numbers.py and the curve drawn in Figure A4 share one definition.
     sys.path.insert(0, str(HERE))
     from build_conf_figures import FIXED_SAMPLE, crossing, horizon  # noqa: E402
 

@@ -89,10 +89,10 @@ def numbers(text: str) -> list[str]:
 
 
 def table_a2() -> None:
-    """Table A2: all fifteen cells, from n3_summary.csv."""
+    """Table A1: all fifteen cells, from n3_summary.csv."""
     summary = pd.read_csv(NULL / "n3_stratified" / "n3_summary.csv")
     family = cohort = None
-    for row in parse("Table A2"):
+    for row in parse("Table A1"):
         if row[0]:
             family = family_of(row[0])
         if row[1]:
@@ -101,7 +101,7 @@ def table_a2() -> None:
         if len(src) != 1:
             raise SystemExit(f"n3_summary has {len(src)} rows for {family}/{cohort}")
         s = src.iloc[0]
-        tag = f"Table A2 {family}/{cohort}"
+        tag = f"Table A1 {family}/{cohort}"
         cell(f"{tag} bands", row[2], s.n_bands)
         window, lead = numbers(row[3]), numbers(row[4])
         cell(f"{tag} window Q1", window[0], round(s.window_median_lowest_band))
@@ -119,7 +119,7 @@ def table_a2() -> None:
 
 
 def table_a3() -> None:
-    """Table A3: transformer quintiles, three cohorts, from n3_strata.csv.
+    """Table A2: transformer quintiles, three cohorts, from n3_strata.csv.
 
     This was main text Table 1 until the operating-point table took that number, and Table 1 is
     now the Section 1 reader-facing table; the checks are
@@ -127,7 +127,7 @@ def table_a3() -> None:
     """
     strata = pd.read_csv(NULL / "n3_stratified" / "n3_strata.csv")
     cohort = None
-    for row in parse("Table A3"):
+    for row in parse("Table A2"):
         if row[0]:
             cohort = COHORT[row[0]]
         stratum = int(row[1])
@@ -139,7 +139,7 @@ def table_a3() -> None:
         if len(src) != 1:
             raise SystemExit(f"n3_strata has {len(src)} rows for {cohort} Q{stratum}")
         s = src.iloc[0]
-        tag = f"Table A3 {cohort} Q{stratum}"
+        tag = f"Table A2 {cohort} Q{stratum}"
         cell(f"{tag} n", row[2], s.n_cases)
         cell(f"{tag} window", row[3], round(s.window_median))
         lead, interval = row[4].split("[")
@@ -151,10 +151,10 @@ def table_a3() -> None:
 
 
 def table_a4() -> None:
-    """Table A4: detection rate by band, from n4_band_detection.csv."""
+    """Table A3: detection rate by band, from n4_band_detection.csv."""
     bands = pd.read_csv(NULL / "n4_band_detection" / "n4_band_detection.csv")
     family = cohort = None
-    for row in parse("Table A4"):
+    for row in parse("Table A3"):
         if row[0]:
             family = family_of(row[0])
         if row[1]:
@@ -165,7 +165,7 @@ def table_a4() -> None:
         if len(src) != 1:
             raise SystemExit(f"n4_band_detection has {len(src)} rows for {family}/{cohort} b{stratum}")
         s = src.iloc[0]
-        tag = f"Table A4 {family}/{cohort} b{stratum}"
+        tag = f"Table A3 {family}/{cohort} b{stratum}"
         cell(f"{tag} events", row[3], s.n_event_cases)
         cell(f"{tag} detected", row[4], s.n_detected)
         cell(f"{tag} window", row[5], round(s.window_median))
@@ -178,16 +178,16 @@ def table_a4() -> None:
 
 
 def table_a5() -> None:
-    """Table A5: both nulls, all fifteen cells, from the N1 and N2 CSVs."""
+    """Table A4: both nulls, all fifteen cells, from the N1 and N2 CSVs."""
     n1 = pd.read_csv(NULL / "n1_uniform_placement" / "n1_uniform_placement.csv")
     n2 = pd.read_csv(NULL / "n2_score_shuffle" / "n2_score_shuffle.csv")
-    for row in parse("Table A5"):
+    for row in parse("Table A4"):
         family, cohort = family_of(row[0]), COHORT[row[1]]
         uniform = n1[(n1.family == family) & (n1.cohort == cohort)].iloc[0]
         pair = n2[(n2.family == family) & (n2.cohort == cohort)]
         hold = pair[pair.variant == "hold"].iloc[0]
         matched = pair[pair.variant != "hold"].iloc[0]
-        tag = f"Table A5 {family}/{cohort}"
+        tag = f"Table A4 {family}/{cohort}"
         cell(f"{tag} observed ratio", row[2], round(uniform.observed_ratio_median, 3), 5e-4)
         cell(f"{tag} observed rho", row[6], round(hold.observed_spearman, 3), 5e-4)
         for column, source, mean, lo, hi in (
@@ -204,11 +204,11 @@ def table_a5() -> None:
 
 
 def table_a6() -> None:
-    """Table A6: path decomposition over 60 to 5 minutes, from b3_comparison.csv."""
+    """Table A5: path decomposition over 60 to 5 minutes, from b3_comparison.csv."""
     b3 = pd.read_csv(ORIGIN / "b3_cross_family_path" / "b3_comparison.csv")
     b3 = b3[b3.endpoint_min == 5]
     cohort = None
-    for row in parse("Table A6"):
+    for row in parse("Table A5"):
         if row[0]:
             cohort = COHORT[row[0]]
         family = family_of(row[1])
@@ -216,7 +216,7 @@ def table_a6() -> None:
         if len(src) != 1:
             raise SystemExit(f"b3_comparison has {len(src)} rows for {family}/{cohort}")
         s = src.iloc[0]
-        tag = f"Table A6 {family}/{cohort}"
+        tag = f"Table A5 {family}/{cohort}"
         cell(f"{tag} episodes", row[2], s.n_episodes_spanning)
         printed = numbers(row[3])
         cell(f"{tag} directedness", printed[0], round(s.directedness_median, 3), 5e-4)
@@ -242,13 +242,13 @@ def _row_of(frame: pd.DataFrame, family: str, cohort: str, name: str) -> pd.Seri
 
 
 def table_a7() -> None:
-    """Table A7: the same operating point for all fifteen cells, with intervals."""
+    """Table A6: the same operating point for all fifteen cells, with intervals."""
     sup, mech, _ = _operating()
-    for row in parse("Table A7"):
+    for row in parse("Table A6"):
         family, cohort = family_of(row[0]), COHORT[row[1]]
         r = _row_of(sup, family, cohort, "b1b_suppression")
         q = _row_of(mech, family, cohort, "b1b_lead_vs_observation")
-        tag = f"Table A7 {family}/{cohort}"
+        tag = f"Table A6 {family}/{cohort}"
         for column, value, lo, hi, digits in (
             (2, r.sensitivity, r.sensitivity_ci_lo, r.sensitivity_ci_hi, 3),
             (3, r.specificity, r.specificity_ci_lo, r.specificity_ci_hi, 3),
@@ -269,15 +269,15 @@ def table_a7() -> None:
 
 
 def table_a8() -> None:
-    """Table A8: cohort composition and the control side."""
+    """Table A7: cohort composition and the control side."""
     sup, mech, n5 = _operating()
-    for row in parse("Table A8"):
+    for row in parse("Table A7"):
         family, cohort = family_of(row[0]), COHORT[row[1]]
         r = _row_of(sup, family, cohort, "b1b_suppression")
         q = _row_of(mech, family, cohort, "b1b_lead_vs_observation")
         k = _row_of(n5, family, cohort, "n5_time_to_alert")
         prevalence = r.n_event / (r.n_event + r.n_control)
-        tag = f"Table A8 {family}/{cohort}"
+        tag = f"Table A7 {family}/{cohort}"
         cell(f"{tag} events", row[2], r.n_event)
         cell(f"{tag} controls", row[3], r.n_control)
         cell(f"{tag} prevalence", row[4], round(prevalence, 3), 5e-4)
@@ -293,12 +293,12 @@ def table_a8() -> None:
 
 
 def table_a9() -> None:
-    """Table A9: fixed-horizon detection at all seven horizons, from n5_fixed_horizon.csv."""
+    """Table A8: fixed-horizon detection at all seven horizons, from n5_fixed_horizon.csv."""
     horizons = pd.read_csv(NULL / "n5_time_to_alert" / "n5_fixed_horizon.csv")
-    for row in parse("Table A9"):
+    for row in parse("Table A8"):
         family, cohort = family_of(row[0]), COHORT[row[1]]
         cellrows = horizons[(horizons.family == family) & (horizons.cohort == cohort)]
-        tag = f"Table A9 {family}/{cohort}"
+        tag = f"Table A8 {family}/{cohort}"
         for offset, horizon in enumerate((5, 10, 15, 20, 30, 45, 60)):
             src = cellrows[cellrows.horizon_min == horizon]
             if len(src) != 1:
@@ -313,28 +313,63 @@ def table_a9() -> None:
 
 
 def table_a10() -> None:
-    """Table A10: the full alert window as a constant, from n5_time_to_alert.csv."""
+    """Table A9: the full alert window as a constant, from n5_time_to_alert.csv."""
     _, _, n5 = _operating()
-    for row in parse("Table A10"):
+    for row in parse("Table A9"):
         family, cohort = family_of(row[0]), COHORT[row[1]]
         s = _row_of(n5, family, cohort, "n5_time_to_alert")
-        tag = f"Table A10 {family}/{cohort}"
+        tag = f"Table A9 {family}/{cohort}"
         cell(f"{tag} n", row[2], s.n_fully_observed)
         cell(f"{tag} detected", row[3], round(s.detection_fully_observed, 3), 5e-4)
         printed = numbers(row[4])
         cell(f"{tag} lead", printed[0], round(s.lead_median_fully_observed))
         cell(f"{tag} lead lo", printed[1], round(s.lead_median_fully_observed_ci_lo))
         cell(f"{tag} lead hi", printed[2], round(s.lead_median_fully_observed_ci_hi))
-        # Table A10 carried an "Alerted by min 1" column until 2026-08-30.  It printed
+        # Table A9 carried an "Alerted by min 1" column until 2026-08-30.  It printed
         # ``km_unalerted_by_min1``, which n5 computes over EVERY event case -- the same field,
-        # and byte-identical values, as Table A8's column of that name.  Table A10's rows
+        # and byte-identical values, as Table A7's column of that name.  Table A9's rows
         # declare n = 311/429/665, the fully observed subset, so the column contradicted its
-        # own denominator.  Table A8 carries the quantity against the denominator it belongs
+        # own denominator.  Table A7 carries the quantity against the denominator it belongs
         # to and Appendix A.14 sets the two estimands side by side, so the column was dropped
         # rather than recomputed.  ``table_a8`` still checks the field.
 
 
+def table_2() -> None:
+    """Body Table 2 (camera-ready): band leads, rise, pooled lead, operating point, AUROC.
+
+    Each column comes from the source the corresponding appendix table uses, so Table 2 and
+    Tables A1/A6 cannot disagree: band leads and rise from n3_summary.csv (Table A1), pooled
+    lead, sensitivity and specificity from b1b_suppression.csv (Table A6), case AUROC from
+    b5_case_auroc.csv.
+    """
+    summary = pd.read_csv(NULL / "n3_stratified" / "n3_summary.csv")
+    sup = pd.read_csv(ORIGIN / "b1b_suppression" / "b1b_suppression.csv")
+    sup = sup[sup["suppress_min"] == 0]
+    auc = pd.read_csv(ORIGIN / "b5_case_auroc" / "b5_case_auroc.csv")
+    rows = parse("Table 2")
+    if len(rows) != 15:
+        raise SystemExit(f"Table 2 has {len(rows)} rows, expected 15")
+    for row in rows:
+        family, cohort = family_of(row[0]), COHORT[row[1]]
+        tag = f"Table 2 {family}/{cohort}"
+        s = summary[(summary.family == family) & (summary.cohort == cohort)].iloc[0]
+        r = sup[(sup.family == family) & (sup.cohort == cohort)].iloc[0]
+        a = auc[(auc.family == family) & (auc.cohort == cohort)].iloc[0]
+        band = numbers(row[2])
+        cell(f"{tag} lead Q1", band[0], round(s.lead_median_lowest_band))
+        cell(f"{tag} lead Qlast", band[1], round(s.lead_median_highest_band))
+        cell(f"{tag} rise", numbers(row[3])[0], round(s.lead_gradient_min))
+        cell(f"{tag} pooled", numbers(row[4])[0], round(r.lead_median))
+        cell(f"{tag} sens", numbers(row[5])[0], round(r.sensitivity, 3), 0.0005)
+        cell(f"{tag} spec", numbers(row[6])[0], round(r.specificity, 3), 0.0005)
+        au = numbers(row[7])
+        cell(f"{tag} auroc", au[0], round(a.case_auroc, 3), 0.0005)
+        cell(f"{tag} auroc lo", au[1], round(a.ci_low, 3), 0.0005)
+        cell(f"{tag} auroc hi", au[2], round(a.ci_high, 3), 0.0005)
+
+
 def main() -> int:
+    table_2()
     table_a2()
     table_a3()
     table_a4()

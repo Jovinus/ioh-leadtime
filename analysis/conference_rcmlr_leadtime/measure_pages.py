@@ -70,7 +70,7 @@ def variant_no_table1_no_figure1(text: str) -> str:
 def variant_no_table1(text: str) -> str:
     """The Section 1 reader-facing table to a four-item list; the rows are prose already.
 
-    Obsolete since the table moved to the appendix, where it is now Appendix A.2, Table A1.
+    Obsolete since the table moved to the appendix, where it is now Appendix A.2, Table 1.
     The marker below no longer matches, so the variant reports "already cut" -- which is the
     right answer.  Pointing it at the appendix caption instead would cut a float that is not
     in the body and report a 0.00 pp saving, which reads as a live candidate and is worse.

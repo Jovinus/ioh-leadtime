@@ -3,8 +3,8 @@
 NAMES HERE ARE ARTEFACT NAMES -- the ``Figure_<n>_wide`` filenames -- not the paper's
 labels.  The two are deliberately decoupled (``latex/build_tex.py`` says why), and the
 appendix was reordered on 2026-08-30, so the correspondence is worth stating once:
-Figure_1 is the paper's Figure A2, Figure_2 is Figure 1, Figure_3 is Figure A4,
-Figure_A2 is Figure A1, Figure_A3 is Figure A5, and Figure_A4 is Figure A3.
+Figure_1 is the paper's Figure A2, Figure_2 is Figure 1, Figure_3 is Figure 2,
+Figure_A2 is Figure A1, Figure_A3 is Figure A4, and Figure_A4 is Figure A3.
 
 Figure 1 is the mechanism in one picture: median score against elapsed minutes since the
 case's first scored minute, five families, event and control overlaid, with each family's
@@ -13,7 +13,7 @@ same axes is the whole point -- what separates the transformer from the rest is 
 shape of its early rise but whether that rise clears the cut the operating point uses.
 
 Figure 3 is the prevalent / warm-up / settled composition, stacked, per family and cohort.
-It appears in the paper as Figure A4; the filename is the artefact path and the label is
+It appears in the paper as Figure 2; the filename is the artefact path and the label is
 editorial, and ``latex/build_tex.py`` documents why the two are deliberately decoupled.
 
 Figures A3 and A4 are the two event-aligned exhibits.  A3 puts the published population

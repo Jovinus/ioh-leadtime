@@ -1,7 +1,10 @@
-# Twenty-four minutes of warning — analysis code
+# Median alert lead time — analysis code
 
-Code for the workshop paper *Twenty-four minutes of warning: what a reported lead time
-licenses, and what reporting standards do not ask*. The paper as submitted is `paper.pdf`.
+Code for the paper *Median alert lead time tracks how long patients were observed, and runs
+opposite to specificity* (Kyung Hyun Lee, Donghwee Yoon, Sunguk Jang, Sungsoo Hong, Sungjun
+Hong, Jeonghyeop Lim, Sangwon Byun, Seung Min Baik), NeurIPS 2026 Workshop on Responsible
+Communication of Machine Learning Research in Biomedicine (RCMLR). The camera-ready paper is
+`paper.pdf`.
 
 **No patient data is included in this repository, and none can be.** See
 [Data](#data-and-why-none-of-it-is-here).
@@ -21,7 +24,7 @@ threshold, split, seed or operating point is reselected.
 | `ioh_prediction/` | The model, the dataset/collate layer, and the deployment-simulation evaluation harness (time-window metrics, alert simulation, calibration, bootstrap) |
 | `scripts/` | Training and external-evaluation entry points that produced the cached scores |
 | `configs/` | Experiment configurations |
-| `analysis/lead_time_origin_2026/` | Where a reported lead time comes from: lead against observed window, suppression checks (module B) |
+| `analysis/lead_time_origin_2026/` | Where a reported lead time comes from: lead against observed window, suppression checks, and case-level AUROC per cell (`b5_case_auroc.py`) (module B) |
 | `analysis/lead_time_null_2026/` | Whether the lead-to-window relationship is more than arithmetic: uniform-placement and score-shuffle nulls, window-stratified leads, the two repairs (module N) |
 | `analysis/patient_trajectory_2026/` | The three trajectory and observability steps this paper reads: event-versus-control divergence, the window-start sweep, and observable run-up length (module A) |
 | `analysis/ioh_faithfulness_2026/lib.py` | Shared helper the analysis modules import: the highest-identifiable-cluster attachment, table-to-Markdown rendering, and the run-manifest writer |
@@ -33,8 +36,9 @@ threshold, split, seed or operating point is reselected.
 | Paper object | Produced by | Reads |
 |---|---|---|
 | Figure 1, Figure A1 | `analysis/lead_time_null_2026/make_figure_lead_vs_window.py` | `n3_strata.csv`, `n2_score_shuffle.csv`, per-case leads recomputed from cached scores |
-| Figures A2, A3, A4, A5 | `analysis/conference_rcmlr_leadtime/build_conf_figures.py` | `b1_score_profile.csv`, `b1_summary.csv`, `a7_auroc_by_sample.csv`, `a4_event_control_means.csv` |
-| Tables A1–A11 | parsed from `PAPER.md` | the aggregate CSVs shipped beside each module |
+| Figures 2, A2, A3, A4 | `analysis/conference_rcmlr_leadtime/build_conf_figures.py` | `b1_score_profile.csv`, `b1_summary.csv`, `a7_auroc_by_sample.csv`, `a4_event_control_means.csv` |
+| Table 2, Tables A1–A10 | parsed from `PAPER.md` | the aggregate CSVs shipped beside each module; Table 2's case AUROC column from `b5_case_auroc.csv` |
+| Table 3 | `PAPER.md` | values as printed in the six cited papers (not derived from these data) |
 | `main.pdf` | `analysis/conference_rcmlr_leadtime/latex/build_tex.py`, then `tectonic` | `PAPER.md`, `references.bib`, the figure PNGs |
 
 The aggregate result CSVs are included, so the tables and the figures can be checked without
@@ -47,7 +51,7 @@ Two of the paper's gates run against this tree as shipped:
 
 ```bash
 cd analysis/conference_rcmlr_leadtime
-python verify_tables.py     # 1583/1583 table cells agree with their source CSVs
+python verify_tables.py     # 1658/1658 table cells agree with their source CSVs
 python check_phrases.py     # terminology check over the manuscript sources
 ```
 
@@ -71,9 +75,10 @@ either. Both are obtained directly from their own project sites once access is g
   download supplies both arms used in the paper.
 
 Both source datasets are public and de-identified and were obtained from their providers under
-the access and license terms above. An institutional review board granted this secondary analysis an
-exemption from review and a waiver of consent; its identity and protocol number are withheld for
-anonymous review. This work added no data collection and no patient contact.
+the access and license terms above. The Institutional Review Board of Ewha Womans University
+Mokdong Hospital granted an exemption from review and waived informed consent for this secondary
+analysis of publicly available de-identified data (EUMC 2026-08-011). This work added no data
+collection and no patient contact.
 
 What is excluded for that reason: the per-minute vitals parquets, the cached per-minute model
 scores (`outputs/runs/*/predictions/`), the fitted calibrators, and every case- or
@@ -98,4 +103,5 @@ and per-cell offsets recorded in each step's `run_manifest.json`. Every module w
 unit and the library versions it ran under.
 
 Figure builds pin matplotlib 3.10.8; a different minor version changes text extents and
-therefore the figure bytes.
+therefore the figure bytes. The LaTeX body is generated with pandoc 3.8 (`latex/build_tex.py`
+normalises its longtable and image output) and compiled with `tectonic`.

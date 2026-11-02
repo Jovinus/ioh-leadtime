@@ -33,9 +33,9 @@ ANSWERS: list[tuple[str, str]] = [
     (
         r"\answerYes{}",
         "The abstract and Section 1 state the four contributions and their scope, and both "
-        "say the paper measures neither clinician comprehension nor physiology. Section 3.3 "
+        "say the paper measures neither clinician comprehension nor physiology. Section 3 "
         "and Section 7 distinguish the observed lead--window association from what the "
-        "upward-biased references can establish, and Section 4.1 treats the cross-family "
+        "upward-biased references can establish, and Section 4 treats the cross-family "
         "score-path property as descriptive rather than causal.",
     ),
     # 2 Limitations
@@ -43,8 +43,8 @@ ANSWERS: list[tuple[str, str]] = [
         r"\answerYes{}",
         "Section 7 is a separate limitations section covering the retrospective design, the "
         "single outcome definition, single training seed and operating-point family, the "
-        "pipeline-specific results, reference selection and upward bias, the single clinical "
-        "domain, and the unvalidated communication and reporting proposals.",
+        "the shared hospital of two cohorts, a weak headline exemplar, reference upward "
+        "bias, the single clinical domain, the non-systematic literature sample, and the unvalidated communication and reporting proposals.",
     ),
     # 3 Theory
     (
@@ -59,9 +59,9 @@ ANSWERS: list[tuple[str, str]] = [
         "supported: Section 2 gives the task, cohorts, scoring policy and alert rule; "
         "Appendix A.1 gives the split sizes and seed, the eligibility rules, the twenty "
         "inputs and how each family consumes them, every architecture and training "
-        "hyperparameter, and the software versions; Appendix A.20 records the seeds and "
+        "hyperparameter, and the software versions; Appendix A.19 records the seeds and "
         "resampling counts; both datasets are available under their providers' access "
-        "procedures; and the analysis code is released at the anonymized repository "
+        "procedures; and the analysis code is released at the repository "
         "Appendix A.1 names. Bit-for-bit reproduction from raw data is not supported here, "
         "because the repository carries no patient-level or derived patient-level files: the "
         "cached per-minute scores the analyses read are derived patient-level data and are not "
@@ -71,7 +71,7 @@ ANSWERS: list[tuple[str, str]] = [
     # 5 Open access to data and code
     (
         r"\answerYes{}",
-        "The analysis code is released at an anonymized repository under the Apache License "
+        "The analysis code is released at a public repository under the Apache License "
         "2.0, which Appendix A.1 names, together with the aggregate result files behind every "
         "table and figure, so "
         "the table and figure checks run from the repository as shipped. Neither dataset is "
@@ -97,15 +97,15 @@ ANSWERS: list[tuple[str, str]] = [
         r"\answerYes{}",
         "Every interval in the paper is a 95\\% cluster bootstrap on the clustering unit "
         "named in Section 2, the subject for two cohorts and the case for MOVER (SIS), at "
-        "2,000 replicates. The two references of Section 3.3 use 1,000 permutations per "
+        "2,000 replicates. The two references of Section 3 use 1,000 permutations per "
         "cell, and are reported as the 2.5th and 97.5th percentiles of the reference "
         "distribution rather than as symmetric error bars. The cross-combination rank "
-        "correlations of Section 4.1 are reported as point estimates with no accompanying "
+        "correlations of Section 4 are reported as point estimates with no accompanying "
         "test, because the fifteen combinations are not independent replications; "
-        "Appendix A.20 records why. Every "
+        "Appendix A.19 records why. Every "
         "interval is pointwise and descriptive, and no family-wise coverage is claimed "
-        "across the fifteen cells. Appendix A.19 records the multiplicity family and its "
-        "Benjamini--Hochberg adjustment, and Appendix A.20 the seeds and every "
+        "across the fifteen cells. Appendix A.18 records the multiplicity family and its "
+        "Benjamini--Hochberg adjustment, and Appendix A.19 the seeds and every "
         "resampling count.",
     ),
     # 8 Compute
@@ -122,9 +122,8 @@ ANSWERS: list[tuple[str, str]] = [
         r"\answerYes{}",
         "The research conforms to the NeurIPS Code of Ethics. It is a secondary analysis of "
         "de-identified data obtained under their respective provider access and license "
-        "terms, with an "
-        "institutional review board exemption and consent waiver recorded in Section 2 and "
-        "Appendix A.1, and it proposes no model for clinical use.",
+        "terms, with an institutional review board exemption and consent waiver (EUMC "
+        "2026-08-011) recorded in Appendix A.1, and it proposes no model for clinical use.",
     ),
     # 10 Broader impacts
     (
@@ -133,7 +132,7 @@ ANSWERS: list[tuple[str, str]] = [
         "median alert lead time invites a warning-time interpretation while remaining "
         "strongly coupled to observation length, which can overstate what a deployed monitor offers. "
         "Section 5 shows that two natural repairs fail, including one whose sensitivity cost "
-        "is quantified, and Section 6.2 proposes four reporting items as the mitigation. "
+        "is quantified, and Section 6.3 proposes four reporting items as the mitigation. "
         "Section 7 is explicit that this is retrospective assessment and not deployment "
         "clearance.",
     ),
@@ -156,7 +155,7 @@ ANSWERS: list[tuple[str, str]] = [
     # 13 New assets
     (
         r"\answerYes{}",
-        "The analysis code is released at the anonymized repository named in Appendix A.1, "
+        "The analysis code is released at the repository named in Appendix A.1, "
         "under the Apache License 2.0. It carries the documentation and the aggregate result "
         "files needed to inspect and reproduce the reported tables and figures from the "
         "released artifacts. No new dataset, model or checkpoint is released, and no "
@@ -172,11 +171,11 @@ ANSWERS: list[tuple[str, str]] = [
     # 15 IRB
     (
         r"\answerYes{}",
-        "Section 2 records that an institutional review board granted an exemption from "
-        "review and waived informed consent for this secondary analysis. Both source datasets "
-        "are public and de-identified and were obtained from their providers under the access "
-        "and license terms in Appendix A.1; the institution and protocol number are withheld for "
-        "anonymous review. This work added no data collection and no patient contact.",
+        "Appendix A.1 records that the Institutional Review Board of Ewha Womans University "
+        "Mokdong Hospital granted an exemption from review and waived informed consent for "
+        "this secondary analysis (EUMC 2026-08-011). Both source datasets are public and de-identified and were obtained from "
+        "their providers under the access and license terms in Appendix A.1. This work added no "
+        "data collection and no patient contact.",
     ),
     # 16 LLM usage
     (
@@ -185,8 +184,8 @@ ANSWERS: list[tuple[str, str]] = [
         "are a transformer over irregularly sampled physiological triplets, an LSTM, "
         "XGBoost, a random forest and logistic regression, and no LLM enters the cohort "
         "construction, the scoring policy, the alert rule or the reference constructions. "
-        "Generative AI was used only for English language editing of author-written text, "
-        "which the policy states does not require declaration.",
+        "Coding assistants were used to implement author-specified analyses and to draft and "
+        "edit text, as the acknowledgments declare; none is part of the methods.",
     ),
 ]
 
