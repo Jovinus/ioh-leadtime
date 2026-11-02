@@ -393,6 +393,10 @@ settings, and three cohorts in two countries still give one procedure setting an
 variable. The seven reports of Table 3 show that the omission occurs, not how
 often; a systematic survey of reported lead times would.
 
+# Acknowledgments and Disclosure of Funding
+
+This work received no funding. The authors declare no competing interests.
+
 # Appendix A: methods and complete per-cell results
 
 ## Cohorts, models, training and compute
