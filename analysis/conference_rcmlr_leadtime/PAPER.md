@@ -24,8 +24,8 @@ band in all fifteen model-by-cohort combinations. Longer leads also came with wo
 points: median lead ran opposite to case-level specificity (Spearman −0.803), and the longest
 median lead, 24 minutes, was read at a specificity of 0.406. Two natural repairs leave the
 dependence in place. TRIPOD+AI asks for neither the window distribution nor the operating point
-beside the lead, and none of six published lead-time reports we examined gives the window
-distribution. We propose four disclosures that make a reported lead time interpretable.
+beside the lead, and none of six published lead-time reports we examined summarizes the
+observation window or stratifies the lead by it. We propose four disclosures that make a reported lead time interpretable.
 
 # 1 Introduction
 
@@ -34,7 +34,7 @@ during care is asked how early it warns, and the usual answer is the **median al
 the interval between the first minute a case's score crosses an alert threshold and the onset of
 the event, taken over the event cases the model detected. It is reported for sepsis
 [@wong2021sepsis], for acute kidney injury [@lee2026aki], and for intraoperative hypotension,
-where a commercial index is evaluated on the interval between its alert and the event
+where a commercial index has been evaluated on how far ahead it warns
 [@hatib2018hpi; @davies2020hpi; @wijnberge2020hype; @maheshwari2020hpi]. The label is already
 plain language, so it travels well beyond the paper that computed it: "the system warns a median
 of 24 minutes ahead" reads as a property of the system, to a clinician, a purchaser or a
@@ -64,7 +64,7 @@ measurements support, and column three the disclosure that would separate the tw
 1. **The dependence is large**: up to 54 minutes within one model and cohort (Section 3).
 2. **Longer reported leads came with worse operating points** (Section 4).
 3. **Two natural repairs do not remove it** (Section 5).
-4. **Neither TRIPOD+AI nor published reports ask for the window**, and we propose four
+4. **Neither TRIPOD+AI nor published reports provide the window**, and we propose four
    disclosures that would (Section 6).
 
 **Related work.** Early-warning evaluation has been criticized before: the C-statistic has been
@@ -296,30 +296,32 @@ checked it alone; DECIDE-AI and TRIPOD-LLM were not reviewed.
 
 ## 6.2 Published reports give the lead without its window
 
-**None of six published first-crossing lead-time reports we examined gives the distribution of
-the window the first alert was searched in, or stratifies the lead by it** (Table 3). The most
-any gives is length of stay as a cohort descriptor or a figure of per-patient observation not
-linked to the lead. The operating point fares better: three put sensitivity and specificity in
-the same sentence or table row as the lead, and @churpek2020aki does so for every threshold,
-which is the pairing Section 6.3 asks for. Our own earlier report is among those that omit the
-window, though its cohort required at least 72 hours of pre-event data. These are reports we had
+**None of six published lead-time reports we examined summarizes the window over which the
+first alert was searched, or stratifies the lead by it** (Table 3). Most give only length of stay
+as a cohort descriptor; @henry2015trewscore shows each patient's window as a bar in a figure,
+truncated at 120 hours, without a summary. The operating point fares better: two report
+sensitivity and specificity in the same sentence or table row as the lead, @churpek2020aki for
+every threshold, which is the pairing Section 6.3 asks for, and a third in the adjacent sentence
+for a different prediction target. Our own earlier report is among those that omit the window,
+though its cohort required at least 72 hours of pre-event data. These are reports we had
 collected, not a systematic sample, so they show that the omission occurs in practice, not how
 often. Fixed-horizon designs, such as the derivation of the hypotension prediction index
 [@hatib2018hpi; @davies2020hpi], are not first-crossing statistics and are not scored.
 
-**Table 3 | Six published reports of a first-crossing lead time, scored against Section 6.3.**
-`Window` is whether the distribution of pre-event observation time is reported or the lead
-stratified by it; `Operating point` is whether sensitivity and specificity (or PPV) appear beside
-the lead. Values are as printed in each paper; h, hours.
+**Table 3 | Six published reports of an alert lead time, scored against Section 6.3.**
+`Window` is whether pre-event observation time is summarized or the lead stratified by it;
+`Operating point` is whether sensitivity and specificity (or PPV) appear beside the lead. Values
+are as printed in each paper; h, hours. Four reports time the lead from the first alert or
+identification; @koyner2018aki and @giannini2019sepsis do not state which alert they time.
 
 | Report | Task | Reported lead, median (IQR) | Window | Operating point beside lead |
 |:----------|:----------|:--------------|:--------------|:------------------|
-| @henry2015trewscore | Septic shock | 28.2 h (10.6–94.2) | Figure only, truncated at 120 h | Yes, same sentence |
+| @henry2015trewscore | Septic shock | 28.2 h (10.6–94.2) | Per-patient bars in a figure, truncated at 120 h; no summary | Yes, same sentence |
 | @kang2016realtime | Ward deterioration | 24.7 h and 29.6 h | No; length of stay only | Threshold only; specificity elsewhere |
-| @koyner2018aki | Acute kidney injury | 41 h (12–141) | No; length of stay only | Yes, adjacent sentence, for a 24-hour target |
+| @koyner2018aki | Acute kidney injury | 41 h (12–141) | No; length of stay only | Adjacent sentence, for a 24-hour target |
 | @giannini2019sepsis | Severe sepsis | 6 h 34 min (0 h 50 min–53 h 19 min) | No | Elsewhere, from a separate cohort |
-| @churpek2020aki | Acute kidney injury | 27, 34.5 and 39 h, three sites | Cumulative incidence figure only | Yes, same table row |
-| @lee2026aki | Acute kidney injury | 84, 93 and 73 h, three cohorts | No; length of stay only | Threshold only; detection and alert burden at another threshold |
+| @churpek2020aki | Acute kidney injury | 27, 34.5 and 39 h, three sites | Supplementary cumulative-incidence figure, not linked to the lead | Yes, same table row |
+| @lee2026aki | Acute kidney injury | 84, 93 and 73 h, three cohorts | No; length of stay only | Separate tables at that threshold; detection and alert burden at another |
 
 
 ## 6.3 Four disclosures for continuously monitored models
